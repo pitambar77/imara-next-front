@@ -19,20 +19,7 @@ import TripsSection from "../../components/TripsSection";
 import Banner from "../../components/Banner";
 
 const ZanzibarLanding = ({ trips, data }) => {
-  // const [data, setData] = useState(null);
-  // const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   API.get("/zanzibardetails")
-  //     .then((res) => {
-  //       setData(res.data[0]); // 👈 single page
-  //     })
-  //     .catch((err) => console.error("Destination error:", err))
-  //     .finally(() => setLoading(false));
-  // }, []);
-
-  // if (loading) return <p className="p-10 text-center">Loading...</p>;
-  // if (!data) return <p className="p-10 text-center">No data found</p>;
 
   if (!data) {
     return <p className="p-10 text-center">No data found</p>;

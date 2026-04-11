@@ -30,14 +30,14 @@ const handleTabClick = (id) => {
   };
 
   return (
-    <div className=" hidden md:block bg-white pt-12  sticky top-28 z-9 ">
+    <div className=" hidden md:block bg-white sticky top-[80px] z-40 border-b border-gray-200 ">
        <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
-      <div className="flex flex-wrap items-center gap-8 border-b border-gray-200 pb-3">
+      <div className="flex flex-wrap items-center gap-8 py-4">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => handleTabClick(tab.id)}
-            className={`text-[16px] uppercase cursor-pointer font-semibold pb-2 transition relative ${
+            className={`text-sm uppercase cursor-pointer font-semibold pb-2 transition relative ${
               activeTab === tab.id
                 ? "text-[#d87028] border-b-2 border-[#d87028]"
                 : "text-gray-700 hover:text-[#d87028]"

@@ -38,25 +38,6 @@ const TripsSection = ({
     rootMargin: "200px",
   });
 
-  /* ================= FETCH ================= */
-
-  // useEffect(() => {
-  //   const fetchTrips = async () => {
-  //     try {
-  //       const res = await API.get("/packages");
-  //       setTrips(res.data || []);
-  //     } catch (err) {
-  //       console.error("Trip fetch error:", err);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchTrips();
-  // }, []);
-
-  /* ================= FILTER ================= */
-
   const filteredTrips = useMemo(() => {
     return trips.filter(
       (trip) =>
@@ -82,19 +63,6 @@ const TripsSection = ({
     return () => (document.body.style.overflow = "auto");
   }, [selectedTrip]);
 
-  // if (loading) {
-  //   return (
-  //     <div className="grid grid-cols-4 gap-6 py-10">
-  //       {[...Array(4)].map((_, i) => (
-  //         <div
-  //           key={i}
-  //           className="h-[320px] bg-gray-200 animate-pulse rounded-lg"
-  //         ></div>
-  //       ))}
-  //     </div>
-  //   );
-  // }
-
   return (
     <section className={`w-full py-8 sm:py-12 md:py-16 ${bg}`}>
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0  ">
@@ -111,49 +79,49 @@ const TripsSection = ({
             {subtitle && (
               <p className="text-center text-[#444] text-[18px] ">{subtitle}</p>
             )}
-            <div ref={ref}>
-              {layout === "slider" && inView && showArrows && (
-                <div className="hidden md:flex absolute right-0 gap-3">
-                  <button
-                    ref={swiperNavPrevRef}
-                    className="bg-white border border-gray-300 hover:border-[#d97129c4] hover:text-[#d97129c4] duration-300 rounded-full p-3 shadow-sm cursor-pointer"
-                  >
-                    <FaArrowLeftLong />
-                  </button>
 
-                  <button
-                    ref={swiperNavNextRef}
-                    className="bg-white border border-gray-300 hover:border-[#d97129c4] hover:text-[#d97129c4] duration-300 rounded-full p-3 shadow-sm cursor-pointer"
-                  >
-                    <FaArrowRight />
-                  </button>
-                </div>
-              )}
-            </div>
+            {layout === "slider" && showArrows && (
+              <div className="hidden md:flex absolute right-0 gap-3">
+                <button
+                  ref={swiperNavPrevRef}
+                  className="bg-white border border-gray-300 hover:border-[#d97129c4] hover:text-[#d97129c4] duration-300 rounded-full p-3 shadow-sm cursor-pointer"
+                >
+                  <FaArrowLeftLong />
+                </button>
+
+                <button
+                  ref={swiperNavNextRef}
+                  className="bg-white border border-gray-300 hover:border-[#d97129c4] hover:text-[#d97129c4] duration-300 rounded-full p-3 shadow-sm cursor-pointer"
+                >
+                  <FaArrowRight />
+                </button>
+              </div>
+            )}
           </div>
         )}
 
         {/* ================= GRID ================= */}
-
-        {layout === "grid" && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredTrips.map((trip) => (
-              <TripCard
-                key={trip._id}
-                trip={{
-                  id: trip._id,
-                  image: trip.landingImage || trip.image,
-                  title: trip.title,
-                  days: trip.accomoDay,
-                  country: "Tanzania",
-                  discountedPrice: trip.price,
-                  description: trip.description,
-                }}
-                onQuickView={() => setSelectedTrip(trip)}
-              />
-            ))}
-          </div>
-        )}
+        <div ref={ref}>
+          {layout === "grid" && inView && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {filteredTrips.map((trip) => (
+                <TripCard
+                  key={trip._id}
+                  trip={{
+                    id: trip._id,
+                    image: trip.landingImage || trip.image,
+                    title: trip.title,
+                    days: trip.accomoDay,
+                    country: "Tanzania",
+                    discountedPrice: trip.price,
+                    description: trip.description,
+                  }}
+                  onQuickView={() => setSelectedTrip(trip)}
+                />
+              ))}
+            </div>
+          )}
+        </div>
 
         {/* ================= SLIDER ================= */}
 

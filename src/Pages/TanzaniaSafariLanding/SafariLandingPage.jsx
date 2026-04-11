@@ -39,7 +39,7 @@ const SafariLandingPage = ({ trips, destination }) => {
   return (
     <div>
       <Banner
-        image={destination.image}
+        image={'/tanzania destination.webp'}
         title={destination.title}
         buttonText="Plan A Trip"
         onButtonClick={"/tailor-made-form"}
