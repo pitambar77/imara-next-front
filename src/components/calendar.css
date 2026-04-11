@@ -1,0 +1,184 @@
+/* Calendar wrapper */
+.rdrCalendarWrapper {
+  font-family: inherit;
+  font-size: 13px;
+}
+
+/* Month spacing */
+.rdrMonths {
+  gap: 40px;
+}
+
+/* Month title */
+.rdrMonthName {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+  color: #d97129;
+}
+
+/* Weekday row */
+.rdrWeekDays {
+  display: grid !important;
+  grid-template-columns: repeat(7, 40px);
+  justify-content: center;
+  margin-bottom: 4px;
+  font-size: 13px;
+  color: #666;
+}
+
+/* Weekday label */
+.rdrWeekDay {
+  width: 40px;
+  text-align: center;
+}
+
+/* Days grid */
+.rdrDays {
+  display: grid !important;
+  grid-template-columns: repeat(7, 40px);
+  justify-content: center;
+}
+
+/* Day size */
+.rdrDay {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+/* Day number */
+.rdrDayNumber span {
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+/* Selected day */
+.rdrDay.rdrDaySelected span {
+  background: #d97129 !important;
+  color: #fff !important;
+  border-radius: 50%;
+}
+
+/* Hover style */
+.rdrDay:hover .rdrDayNumber span {
+  background: transparent !important;
+  
+  color: #d97129;
+}
+
+/* Remove hover shadow */
+.rdrDay:hover {
+  box-shadow: none !important;
+}
+
+/* Today indicator */
+.rdrDayToday span:after {
+  border-bottom: 2px solid #d97129 !important;
+}
+
+/* Navigation arrows */
+.rdrNextPrevButton {
+  background: #f5f5f5;
+}
+
+.rdrNextPrevButton:hover {
+  background: #eaeaea;
+}
+
+/* Remove default blue selection */
+.rdrSelected {
+  background: #d97129 !important;
+}
+
+/* Remove focus outline */
+.rdrDayNumber span:focus {
+  outline: none;
+}
+
+/* Remove default blue hover preview */
+.rdrDayHovered span,
+.rdrDayPassive span {
+  border: none !important;
+}
+
+/* Hover day style */
+.rdrDay:hover .rdrDayNumber span {
+  background: transparent !important;
+  color: #d97129;
+  border-radius: 50%;
+}
+
+/* Remove default preview circle */
+.rdrDayPassive .rdrDayNumber span {
+  border: none !important;
+}
+
+/* Remove focus blue outline */
+.rdrDayNumber span:focus {
+  outline: none !important;
+}
+
+/* Remove default blue preview circle */
+.rdrDayStartPreview,
+.rdrDayEndPreview,
+.rdrDayInPreview {
+  border: none !important;
+}
+
+/* Remove preview border around date */
+.rdrDayStartPreview .rdrDayNumber span,
+.rdrDayEndPreview .rdrDayNumber span,
+.rdrDayInPreview .rdrDayNumber span {
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Remove blue preview circle completely */
+.rdrDayStartPreview,
+.rdrDayEndPreview,
+.rdrDayInPreview {
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Remove preview border around numbers */
+.rdrDayStartPreview .rdrDayNumber span,
+.rdrDayEndPreview .rdrDayNumber span,
+.rdrDayInPreview .rdrDayNumber span {
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Remove preview pseudo element */
+.rdrDayStartPreview:before,
+.rdrDayEndPreview:before,
+.rdrDayInPreview:before {
+  display: none !important;
+}
+
+/* Remove default blue focus ring from day buttons */
+.rdrDay:focus,
+.rdrDay:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove focus from day number */
+.rdrDayNumber span:focus,
+.rdrDayNumber span:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove internal focus styling */
+.rdrDayNumber:focus {
+  outline: none !important;
+}
+
+/* Ensure no preview border appears */
+.rdrDayStartPreview,
+.rdrDayEndPreview,
+.rdrDayInPreview {
+  border: none !important;
+  box-shadow: none !important;
+}

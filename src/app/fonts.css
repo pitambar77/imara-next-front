@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('/fonts/fonnts.com-AcuminPro-Black.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'fonnts.com-AcuminPro-Bold';
+  src: url('/fonts/fonnts.com-AcuminPro-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Soleil';
+  src: url('/fonts/soleil/fonnts.com-SoleilRegular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
