@@ -1,5 +1,7 @@
 import "./globals.css";
-
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 

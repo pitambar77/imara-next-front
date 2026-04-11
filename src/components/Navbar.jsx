@@ -18,6 +18,7 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const pathname = usePathname();
+  const router = useRouter();
 
   const isActive = (path) => pathname === path;
 

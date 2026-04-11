@@ -9,6 +9,10 @@ import { Navigation, Pagination } from "swiper/modules";
 import { FaArrowLeftLong, FaArrowRight } from "react-icons/fa6";
 import PrimaryButton from "./PrimaryButton";
 
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 const TripsSection = ({
   title,
   subtitle,

@@ -6,7 +6,7 @@ import { slugify } from "@/utils/slugify";
 import SerengetiNationalPark from "@/Pages/SerengetiNationalPark/SerengetiNationalPark";
 
 export async function generateMetadata({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
 
   const destinations = await getDestinationDetails();
 
