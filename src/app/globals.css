@@ -5,6 +5,7 @@
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
 
+
 /* Custom Swiper pagination style */
 .custom-swiper .swiper-pagination {
   bottom: 30px !important;
@@ -56,6 +57,7 @@ button,
 span {
   font-family: "Soleil";
 }
+
 
 /* Remove arrows in Chrome, Safari, Edge */
 input[type="number"]::-webkit-outer-spin-button,

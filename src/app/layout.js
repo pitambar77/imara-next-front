@@ -1,35 +1,3 @@
-// import "./globals.css";
-// import Navbar from "@/components/Navbar";
-// import Footer from "@/components/Footer";
-
-// export const metadata = {
-//   title: "Imara Kileleni Safaris",
-//   description: "Safari tours in Tanzania",
-//   icons: {
-//     icon: "/imaralogo.png",
-//   },
-// };
-
-// export default function RootLayout({ children }) {
-//   return (
-//     <html lang="en">
-//       <head>
-//         <link
-//           rel="preload"
-//           as="image"
-//           href="/tanzania.webp"
-//           fetchPriority="high"
-//         />
-//       </head>
-//       <body>
-//         <Navbar />
-//         {children}
-//         <Footer />
-//       </body>
-//     </html>
-//   );
-// }
-
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -50,6 +18,9 @@ export const metadata = {
   icons: {
     icon: "/imaralogo.png",
   },
+  alternates: {
+    canonical: "https://imarakilelenisafaris.com",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -62,6 +33,7 @@ export default function RootLayout({ children }) {
           href="/tanzania.webp"
           fetchPriority="high"
         />
+        <link rel="canonical" href="https://imarakilelenisafaris.com/" />
       </head>
 
       <body>
@@ -89,6 +61,17 @@ export default function RootLayout({ children }) {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-QR83H3B29S');
+          `}
+        </Script>
+
+        {/* Microsoft Clarity */}
+        <Script id="clarity" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "vfkj3g5erd");
           `}
         </Script>
       </body>
