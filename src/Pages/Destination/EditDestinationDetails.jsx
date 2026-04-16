@@ -1,41 +1,46 @@
-// // src/pages/Destination/EditDestination.jsx
 // import React, { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
-// // import DestinationForm from "../../components/Destination/DestinationForm";
-// import API from "../../api/axios.js";
+// import { useParams, useNavigate } from "react-router-dom";
+// import API from "../../api/axios";
 // import DestinationDetailsForm from "../../components/Destination/DestinationDetailsForm";
 
 // const EditDestinationDetails = () => {
 //   const { id } = useParams();
-//   const [destinationData, setDestinationData] = useState(null);
+//   const navigate = useNavigate();
+//   const [editData, setEditData] = useState(null);
 
 //   useEffect(() => {
-//     API.get(`/destinationdetails/${id}`).then((res) => setDestinationData(res.data));
+//     API.get(`/destinationdetails/${id}`).then((res) => {
+//       setEditData(res.data);
+//     });
 //   }, [id]);
 
+//   if (!editData) return <p className="p-6">Loading...</p>;
+
 //   return (
-//     <div className="p-6">
-//       {destinationData ? (
-//         // <DestinationForm editData={destinationData} onSuccess={() => window.location.href = "/admin/destination/list"} />
-//         <DestinationDetailsForm/>
-//       ) : (
-//         <p>Loading...</p>
-//       )}
+//     <>
+//     <div className=" p-6">
+//   <DestinationDetailsForm
+//       editData={editData}
+//       onSuccess={() => navigate("/dashboard/destination-details")}
+//     />
 //     </div>
+
+//     </>
+
 //   );
 // };
 
-// export default EditDestinationDetails
+// export default EditDestinationDetails;
+
+"use client";
 
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import API from "../../api/axios";
-import DestinationDetailsForm from "../../components/Destination/DestinationDetailsForm";
+import API from "@/api/axios";
+import { useRouter } from "next/navigation";
+import DestinationDetailsForm from "@/components/Destination/DestinationDetailsForm";
 
-
-const EditDestinationDetails = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
+export default function EditDestinationDetails({ id }) {
+  const router = useRouter();
   const [editData, setEditData] = useState(null);
 
   useEffect(() => {
@@ -47,17 +52,11 @@ const EditDestinationDetails = () => {
   if (!editData) return <p className="p-6">Loading...</p>;
 
   return (
-    <>
-    <div className=" p-6">
-  <DestinationDetailsForm
-      editData={editData}
-      onSuccess={() => navigate("/dashboard/destination-details")}
-    />
+    <div className="p-6">
+      <DestinationDetailsForm
+        editData={editData}
+        onSuccess={() => router.push("/dashboard/destination")}
+      />
     </div>
-   
-    </>
-   
   );
-};
-
-export default EditDestinationDetails;
+}

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import API from "../../api/axios.js";
 
 const KilimanjaroLandingList = () => {
   const [data, setData] = useState([]);
-  const navigate = useNavigate();
+    const router = useRouter();
 
   const fetchData = async () => {
     try {
@@ -36,7 +37,7 @@ const KilimanjaroLandingList = () => {
       <div className="flex justify-between mb-6">
         <h2 className="text-2xl font-bold">Kilimanjaro Landing Pages</h2>
         <button
-          onClick={() => navigate("/dashboard/kilimanjaro/create")}
+          onClick={() => router.push("/dashboard/kilimanjaro/create")}
           className="bg-green-600 text-white px-4 py-2 rounded"
         >
           + Create New
@@ -58,18 +59,28 @@ const KilimanjaroLandingList = () => {
               <td className="border p-2">{item.subtitle}</td>
               <td className="border p-2 space-x-2">
                 <Link
-                  to={`/dashboard/kilimanjaro/${item._id}`}
+                  href={`/dashboard/kilimanjaro/${item._id}`}
                   className="bg-blue-600 text-white px-3 py-1 rounded"
                 >
                   View
                 </Link>
 
-                <Link
-                  to={`/dashboard/kilimanjaro/edit/${item._id}`}
+                <button
+                  onClick={() => router.push(`/dashboard/kilimanjaro/${item._id}`)}
                   className="bg-yellow-500 text-white px-3 py-1 rounded"
                 >
                   Edit
-                </Link>
+                </button>
+                <button
+                  onClick={() =>
+                    router.push(
+                      `/dashboard/kilimanjaro/seo/${item._id}`,
+                    )
+                  }
+                  className="bg-purple-600 text-white px-3 py-1 rounded"
+                >
+                  SEO
+                </button>
 
                 <button
                   onClick={() => handleDelete(item._id)}

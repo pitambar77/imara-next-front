@@ -12,6 +12,7 @@ const SeoForm = ({ referenceId, referenceType }) => {
     keywords: "",
     canonicalUrl: "",
     ogImage: "",
+    schemaMarkup: "", // ✅ ADD THIS
     noIndex: false,
   };
 
@@ -38,6 +39,7 @@ const SeoForm = ({ referenceId, referenceType }) => {
           keywords: res.data.keywords || "",
           canonicalUrl: res.data.canonicalUrl || "",
           ogImage: res.data.ogImage || "",
+          schemaMarkup: JSON.stringify(res.data.schemaMarkup || "", null, 2), // ✅
           noIndex: res.data.noIndex || false,
         });
       } catch (err) {
@@ -50,29 +52,61 @@ const SeoForm = ({ referenceId, referenceType }) => {
 
   /* ================= SUBMIT ================= */
 
+  // const handleSubmit = async () => {
+  //   try {
+  //     setLoading(true);
+  //     setMessage("");
+
+  //     if (seoId) {
+  //       await API.put(`/seo/${seoId}`, form);
+  //       setMessage("SEO Updated Successfully ✅");
+  //     } else {
+  //       const res = await API.post("/seo", {
+  //         ...form,
+  //         referenceId,
+  //         referenceType,
+  //       });
+
+  //       setSeoId(res.data._id);
+  //       setMessage("SEO Created Successfully ✅");
+  //       console.log("Reference ID:", referenceId);
+  //       console.log("Reference Type:", referenceType);
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //     setMessage("Something went wrong ❌");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const handleSubmit = async () => {
     try {
       setLoading(true);
       setMessage("");
 
+      // ✅ Convert schema text → JSON object
+      const payload = {
+        ...form,
+        schemaMarkup: form.schemaMarkup ? JSON.parse(form.schemaMarkup) : null,
+      };
+
       if (seoId) {
-        await API.put(`/seo/${seoId}`, form);
+        await API.put(`/seo/${seoId}`, payload);
         setMessage("SEO Updated Successfully ✅");
       } else {
         const res = await API.post("/seo", {
-          ...form,
+          ...payload,
           referenceId,
           referenceType,
         });
 
         setSeoId(res.data._id);
         setMessage("SEO Created Successfully ✅");
-        console.log("Reference ID:", referenceId);
-        console.log("Reference Type:", referenceType);
       }
     } catch (error) {
       console.error(error);
-      setMessage("Something went wrong ❌");
+      setMessage("Invalid JSON or something went wrong ❌");
     } finally {
       setLoading(false);
     }
@@ -155,6 +189,29 @@ const SeoForm = ({ referenceId, referenceType }) => {
           value={form.ogImage}
           onChange={(e) => setForm({ ...form, ogImage: e.target.value })}
         />
+
+        {/* Schema Markup */}
+        <div>
+          <label className="block font-medium text-gray-700 mb-1">
+            Schema Markup (JSON-LD)
+          </label>
+
+          <textarea
+            rows="8"
+            className="w-full border rounded-lg px-3 py-2 font-mono text-sm"
+            placeholder='{
+ "@context": "https://schema.org",
+ "@type": "TouristDestination",
+ "name": "Serengeti National Park"
+}'
+            value={form.schemaMarkup}
+            onChange={(e) => setForm({ ...form, schemaMarkup: e.target.value })}
+          />
+
+          <p className="text-xs text-gray-500 mt-1">
+            Paste valid JSON schema here
+          </p>
+        </div>
 
         {/* No Index */}
         <div className="flex items-center gap-3">

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import API from "../../api/axios";
 
 const DestinationDetailsList = () => {
   const [list, setList] = useState([]);
-  const navigate = useNavigate();
+const router = useRouter();
 
   const fetchData = async () => {
     try {
@@ -37,7 +38,7 @@ const DestinationDetailsList = () => {
       <div className="flex justify-between mb-4">
         <h2 className="text-2xl font-bold">Destination Details</h2>
         <Link
-          to="/dashboard/create-destination-details"
+          href="/dashboard/destination-details/create"
           className="bg-green-600 text-white px-4 py-2 rounded"
         >
           + Create
@@ -61,7 +62,7 @@ const DestinationDetailsList = () => {
               <td className="border p-2 flex gap-2">
                 <button
                   onClick={() =>
-                    navigate(`/dashboard/edit-destination-details/${item._id}`)
+                    router.push(`/dashboard/destination/${item._id}`)
                   }
                   className="bg-blue-600 text-white px-3 py-1 rounded"
                 >
@@ -69,7 +70,7 @@ const DestinationDetailsList = () => {
                 </button>
 
                 <Link
-                  to={`/destination-details/${item._id}`}
+                  href={`/destination/${item._id}`}
                   className="bg-gray-600 text-white px-3 py-1 rounded"
                 >
                   View
@@ -79,7 +80,7 @@ const DestinationDetailsList = () => {
 
                 <button
                   onClick={() =>
-                    navigate(`/dashboard/seo/destination/${item._id}`)
+                    router.push(`/dashboard/destination/seo/${item._id}`)
                   }
                   className="bg-purple-600 text-white px-3 py-1 rounded"
                 >

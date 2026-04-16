@@ -1,21 +1,13 @@
-import { useParams } from "react-router-dom";
-import SeoForm from "../../components/SeoForm";
+"use client";
 
-const DestinationSeo = () => {
-  const { id } = useParams();
+import SeoForm from "@/components/SeoForm";
 
+export default function DestinationSeo({ id }) {
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-6">
-        Destination SEO Settings
-      </h2>
+      <h2 className="text-2xl font-bold mb-6">Destination SEO Settings</h2>
 
-      <SeoForm
-        referenceId={id}
-        referenceType="destinationdetails"
-      />
+      <SeoForm referenceId={id} referenceType="destinationdetails" />
     </div>
   );
-};
-
-export default DestinationSeo;
+}

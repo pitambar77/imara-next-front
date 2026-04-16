@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import API from "../../api/axios.js";
 import { useEffect } from "react";
@@ -26,8 +28,7 @@ const PackageForm = ({ editData }) => {
   const [mainPreview, setMainPreview] = useState(null);
 
   const [landingImage, setLandingImage] = useState(null);
-const [landingPreview, setLandingPreview] = useState(null);
-
+  const [landingPreview, setLandingPreview] = useState(null);
 
   /* ================= ITINERARY ================= */
   const [itinerary, setItinerary] = useState([
@@ -92,13 +93,12 @@ const [landingPreview, setLandingPreview] = useState(null);
   };
 
   const handleLandingImage = (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
+    const file = e.target.files[0];
+    if (!file) return;
 
-  setLandingImage(file);
-  setLandingPreview(URL.createObjectURL(file));
-};
-
+    setLandingImage(file);
+    setLandingPreview(URL.createObjectURL(file));
+  };
 
   /* ================= Itinary HANDLERS ================= */
 
@@ -120,7 +120,6 @@ const [landingPreview, setLandingPreview] = useState(null);
             description: [],
             image: null,
             imagePreview: null,
-           
           },
         ],
       },
@@ -147,16 +146,15 @@ const [landingPreview, setLandingPreview] = useState(null);
     setItinerary(updated);
   };
 
-//   const handleDayLandingImage = (i, j, e) => {
-//   const file = e.target.files[0];
-//   if (!file) return;
+  //   const handleDayLandingImage = (i, j, e) => {
+  //   const file = e.target.files[0];
+  //   if (!file) return;
 
-//   const updated = [...itinerary];
-//   updated[i].section[j].landingImage = file;
-//   updated[i].section[j].landingImagePreview = URL.createObjectURL(file);
-//   setItinerary(updated);
-// };
-
+  //   const updated = [...itinerary];
+  //   updated[i].section[j].landingImage = file;
+  //   updated[i].section[j].landingImagePreview = URL.createObjectURL(file);
+  //   setItinerary(updated);
+  // };
 
   const addDay = (i) => {
     const updated = [...itinerary];
@@ -377,11 +375,10 @@ const [landingPreview, setLandingPreview] = useState(null);
     }
 
     /* Landing image */
-if (editData.landingImage) {
-  setLandingPreview(editData.landingImage);
-  setLandingImage(null);
-}
-
+    if (editData.landingImage) {
+      setLandingPreview(editData.landingImage);
+      setLandingImage(null);
+    }
 
     /* Itinerary */
     if (editData.itinerary?.length) {
@@ -395,7 +392,7 @@ if (editData.landingImage) {
             image: null,
             imagePreview: s.image || null,
           })),
-        }))
+        })),
       );
     }
 
@@ -409,7 +406,7 @@ if (editData.landingImage) {
             image: null,
             imagePreview: s.image || null,
           })),
-        }))
+        })),
       );
     }
 
@@ -420,7 +417,7 @@ if (editData.landingImage) {
           ...i,
           image: null,
           imagePreview: i.image || null,
-        }))
+        })),
       );
     }
 
@@ -431,7 +428,7 @@ if (editData.landingImage) {
           ...i,
           image: null,
           imagePreview: i.image || null,
-        }))
+        })),
       );
     }
   }, [editData]);
@@ -451,9 +448,8 @@ if (editData.landingImage) {
     }
 
     if (landingImage) {
-  data.append("landingImage", landingImage);
-}
-
+      data.append("landingImage", landingImage);
+    }
 
     /* ================= ITINERARY ================= */
     // data.append(
@@ -476,12 +472,9 @@ if (editData.landingImage) {
             ...sec,
             image: sec.imagePreview || sec.image || null, // ✅ KEEP OLD IMAGE
           })),
-        }))
-      )
+        })),
+      ),
     );
-
-
-
 
     itinerary.forEach((item) => {
       if (item.image) {
@@ -494,7 +487,7 @@ if (editData.landingImage) {
         if (sec.image) {
           data.append("itineraryImages", sec.image);
         }
-      })
+      }),
     );
 
     /* ================= EXPERIENCE ================= */
@@ -517,8 +510,8 @@ if (editData.landingImage) {
             ...sec,
             image: sec.imagePreview || sec.image || null,
           })),
-        }))
-      )
+        })),
+      ),
     );
 
     experience.forEach((exp) =>
@@ -526,7 +519,7 @@ if (editData.landingImage) {
         if (sec.image) {
           data.append("experienceImages", sec.image);
         }
-      })
+      }),
     );
 
     /* ================= INCLUDE ================= */
@@ -541,8 +534,8 @@ if (editData.landingImage) {
         include.map((i) => ({
           ...i,
           image: i.imagePreview || i.image || null,
-        }))
-      )
+        })),
+      ),
     );
 
     include.forEach((item) => {
@@ -563,8 +556,8 @@ if (editData.landingImage) {
         exclude.map((i) => ({
           ...i,
           image: i.imagePreview || i.image || null,
-        }))
-      )
+        })),
+      ),
     );
 
     exclude.forEach((item) => {
@@ -588,7 +581,7 @@ if (editData.landingImage) {
       alert(
         editData
           ? "✅ Package updated successfully"
-          : "✅ Package created successfully"
+          : "✅ Package created successfully",
       );
     } catch (err) {
       console.error("❌ Package create error:", err);
@@ -597,12 +590,10 @@ if (editData.landingImage) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4 pb-20">
-      <h2 className="col-span-2 text-2xl font-bold">Create Package</h2>
-
+    <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4 ">
       {/* main section */}
 
-      <section className="col-span-2 grid grid-cols-2 gap-4 mt-4">
+      <section className="col-span-2 grid grid-cols-2 gap-4">
         <input
           className="border p-2"
           name="destination"
@@ -738,28 +729,26 @@ if (editData.landingImage) {
             alt="Main Preview"
           />
         )}
-
       </section>
 
-<section className="col-span-2 mt-6">
-  <label className="font-semibold block mb-2">Landing Image</label>
+      <section className="col-span-2 mt-6">
+        <label className="font-semibold block mb-2">Landing Image</label>
 
-  <input
-    type="file"
-    accept="image/*"
-    onChange={handleLandingImage}
-    className="border p-2 w-full"
-  />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleLandingImage}
+          className="border p-2 w-full"
+        />
 
-  {landingPreview && (
-    <img
-      src={landingPreview}
-      className="w-40 mt-3 rounded shadow"
-      alt="Landing Preview"
-    />
-  )}
-</section>
-
+        {landingPreview && (
+          <img
+            src={landingPreview}
+            className="w-40 mt-3 rounded shadow"
+            alt="Landing Preview"
+          />
+        )}
+      </section>
 
       {/* Include section  */}
 

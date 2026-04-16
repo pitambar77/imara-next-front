@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import API from "../../api/axios";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 const PackageList = () => {
   const [packages, setPackages] = useState([]);
-  const navigate = useNavigate();
+const router = useRouter();
 
   const fetchPackages = async () => {
     const res = await API.get("/packages");
@@ -26,7 +26,7 @@ const PackageList = () => {
       <div className="flex justify-between mb-6">
         <h2 className="text-2xl font-bold">Packages</h2>
         <button
-          onClick={() => navigate("/admin/packages/create")}
+          onClick={() => router.push("/dashboard/package/create")}
           className="bg-green-600 text-white px-4 py-2 rounded"
         >
           + Create Package
@@ -51,7 +51,8 @@ const PackageList = () => {
               <td className="p-2 border space-x-2">
                 <button
                   onClick={() =>
-                    navigate(`/admin/packages/edit/${pkg._id}`)
+                    router.push(`/dashboard/package/${pkg._id}`)
+
                   }
                   className="bg-blue-600 text-white px-3 py-1 rounded"
                 >
@@ -62,7 +63,7 @@ const PackageList = () => {
 
                 <button
                   onClick={() =>
-                    navigate(`/admin/seo/package/${pkg._id}`)
+                    router.push(`/dashboard/package/seo/${pkg._id}`)
                   }
                   className="bg-purple-600 text-white px-3 py-1 rounded"
                 >

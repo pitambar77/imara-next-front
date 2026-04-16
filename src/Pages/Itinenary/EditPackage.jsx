@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import API from "../../api/axios";
-import PackageForm from "../../components/packages/PackageForm";
+"use client";
 
-const EditPackage = () => {
-  const { id } = useParams();
+import React, { useEffect, useState } from "react";
+import API from "@/api/axios";
+import PackageForm from "@/components/packages/PackageForm";
+
+export default function EditPackage({ id }) {
   const [editData, setEditData] = useState(null);
 
   useEffect(() => {
@@ -16,10 +16,8 @@ const EditPackage = () => {
   if (!editData) return <p className="p-6">Loading...</p>;
 
   return (
-    <div className=" p-6">
-      <PackageForm editData={editData} />;
+    <div className="p-6">
+      <PackageForm editData={editData} />
     </div>
   );
-};
-
-export default EditPackage;
+}

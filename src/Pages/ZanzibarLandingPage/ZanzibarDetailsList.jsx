@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import API from "../../api/axios";
 
 const ZanzibarDetailsList = () => {
   const [list, setList] = useState([]);
-  const navigate = useNavigate();
-
+  const router = useRouter();
   const fetchData = async () => {
     try {
       const res = await API.get("/zanzibardetails");
@@ -20,7 +20,8 @@ const ZanzibarDetailsList = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this destination?")) return;
+    if (!window.confirm("Are you sure you want to delete this destination?"))
+      return;
 
     try {
       await API.delete(`/zanzibardetails/${id}`);
@@ -36,7 +37,7 @@ const ZanzibarDetailsList = () => {
       <div className="flex justify-between mb-4">
         <h2 className="text-2xl font-bold">Destination Details</h2>
         <Link
-          to="/dashboard/create-zanzibar"
+          href="/dashboard/zanzibar/create"
           className="bg-green-600 text-white px-4 py-2 rounded"
         >
           + Create
@@ -59,16 +60,25 @@ const ZanzibarDetailsList = () => {
               <td className="border p-2">{item.destination}</td>
               <td className="border p-2 flex gap-2">
                 <button
-                  onClick={() =>
-                    navigate(`/dashboard/edit-zanzibar-details/${item._id}`)
-                  }
+                  onClick={() => router.push(`/dashboard/zanzibar/${item._id}`)}
                   className="bg-blue-600 text-white px-3 py-1 rounded"
                 >
                   Edit
                 </button>
 
+                <button
+                  onClick={() =>
+                    router.push(
+                      `/dashboard/zanzibar/seo/${item._id}`,
+                    )
+                  }
+                  className="bg-purple-600 text-white px-3 py-1 rounded"
+                >
+                  SEO
+                </button>
+
                 <Link
-                  to={`/zanzibar-details/${item._id}`}
+                  href={`/zanzibar/${item._id}`}
                   className="bg-gray-600 text-white px-3 py-1 rounded"
                 >
                   View
@@ -97,5 +107,4 @@ const ZanzibarDetailsList = () => {
   );
 };
 
-
-export default ZanzibarDetailsList
+export default ZanzibarDetailsList;

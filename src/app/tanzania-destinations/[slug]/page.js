@@ -1,5 +1,3 @@
-
-
 import { getTrips } from "@/lib/getTrips";
 import { getDestinationDetails } from "@/lib/getDestinationDetails";
 import { slugify } from "@/utils/slugify";
@@ -43,12 +41,36 @@ export default async function Page({ params }) {
     return <div>Destination not found</div>;
   }
 
+  const seoRes = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${matched._id}&referenceType=destinationdetails`,
+    { next: { revalidate: 300 } },
+  );
+
+  const seo = await seoRes.json();
+
   return (
-    <SerengetiNationalPark
-      data={matched}
-      allDestinations={destinations}
-      trips={trips}
-    />
+    <>
+      {/* ✅ Inject Schema */}
+      {seo?.schemaMarkup && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(seo.schemaMarkup),
+          }}
+        />
+      )}
+
+      <SerengetiNationalPark
+        data={matched}
+        allDestinations={destinations}
+        trips={trips}
+      />
+    </>
+
+    // <SerengetiNationalPark
+    //   data={matched}
+    //   allDestinations={destinations}
+    //   trips={trips}
+    // />
   );
 }
-

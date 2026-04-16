@@ -1,14 +1,18 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const API_BASE =
-  import.meta.env.VITE_API_BASE || "https://imarabackend.imarakilelenisafaris.com";
+  process.env.NEXT_PUBLIC_API_BASE ||
+  "https://imarabackend.imarakilelenisafaris.com";
 
 export default function BlogList() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const fetchBlogs = async () => {
     try {
@@ -42,8 +46,9 @@ export default function BlogList() {
     <div className="max-w-6xl mx-auto p-6">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Blogs</h1>
+
         <button
-          onClick={() => navigate("/blog/create")}
+          onClick={() => router.push("/dashboard/travelguide/create")}
           className="px-4 py-2 bg-blue-600 text-white rounded-lg"
         >
           + Create Blog
@@ -62,24 +67,24 @@ export default function BlogList() {
             </div>
 
             <div className="flex gap-3">
+
               {/* EDIT */}
               <Link
-                to={`/blog/edit/${blog._id}`}
+                href={`/dashboard/travelguide/${blog._id}`}
                 className="px-3 py-1 border rounded-lg"
               >
                 Edit
               </Link>
 
-              {/* SEO Buttom*/}
-
+              {/* SEO */}
               <button
-                  onClick={() =>
-                    navigate(`/admin/seo/blog/${blog._id}`)
-                  }
-                  className="bg-purple-600 text-white px-3 py-1 rounded"
-                >
-                  SEO
-                </button>
+                onClick={() =>
+                  router.push(`/dashboard/travelguide/seo/${blog._id}`)
+                }
+                className="bg-purple-600 text-white px-3 py-1 rounded"
+              >
+                SEO
+              </button>
 
               {/* DELETE */}
               <button
@@ -88,6 +93,7 @@ export default function BlogList() {
               >
                 Delete
               </button>
+
             </div>
           </div>
         ))}

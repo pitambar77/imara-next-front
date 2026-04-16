@@ -1,9 +1,11 @@
+"use client";
+
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +14,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // 🔹 Step 1: Verify username + password & send OTP
+  // Step 1: Verify username + password & send OTP
   const sendOTP = async () => {
     try {
       setLoading(true);
@@ -31,7 +33,7 @@ const Login = () => {
     }
   };
 
-  // 🔹 Step 2: Verify OTP
+  // Step 2: Verify OTP
   const verifyOTP = async () => {
     try {
       setLoading(true);
@@ -44,7 +46,8 @@ const Login = () => {
 
       localStorage.setItem("token", res.data.token);
 
-      navigate("/dashboard");
+      router.push("/dashboard");
+
     } catch (err) {
       setError(err.response?.data?.message || "Invalid OTP");
     } finally {

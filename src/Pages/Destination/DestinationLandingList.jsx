@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import API from "../../api/axios";
 
 const DestinationLandingList = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const router = useRouter();
 
   /* ================= FETCH LIST ================= */
   const fetchList = async () => {
@@ -47,7 +50,7 @@ const DestinationLandingList = () => {
         <h1 className="text-2xl font-bold">Destination Landing List</h1>
 
         <Link
-          to="/dashboard/destination-landing/create"
+          href="/dashboard/destination-landing/create"
           className="bg-green-600 text-white px-4 py-2 rounded"
         >
           + Create Destination
@@ -86,17 +89,13 @@ const DestinationLandingList = () => {
                   </td>
 
                   {/* TITLE */}
-                  <td className="border p-2 font-semibold">
-                    {item.title}
-                  </td>
+                  <td className="border p-2 font-semibold">{item.title}</td>
 
                   {/* SUBTITLE */}
-                  <td className="border p-2 text-gray-600">
-                    {item.subtitle}
-                  </td>
+                  <td className="border p-2 text-gray-600">{item.subtitle}</td>
 
                   {/* ACTIONS */}
-                  <td className="border p-2 text-center space-x-2">
+                  {/* <td className="border p-2 text-center space-x-2">
                     <Link
                       to={`/dashboard/destination-landing/edit/${item._id}`}
                       className="bg-blue-600 text-white px-3 py-1 rounded"
@@ -108,6 +107,44 @@ const DestinationLandingList = () => {
                       to={`/destination-landing/${item._id}`}
                       className="bg-gray-700 text-white px-3 py-1 rounded"
                       target="_blank"
+                    >
+                      View
+                    </Link>
+
+                    <button
+                      onClick={() => handleDelete(item._id)}
+                      className="bg-red-600 text-white px-3 py-1 rounded"
+                    >
+                      Delete
+                    </button>
+                  </td> */}
+                  <td className="border p-2 space-x-2">
+                    <button
+                      onClick={() =>
+                        router.push(
+                          `/dashboard/destination-landing/${item._id}`,
+                        )
+                      }
+                      className="bg-blue-600 text-white px-3 py-1 rounded"
+                    >
+                      Edit
+                    </button>
+
+                    {/* 🔥 NEW SEO BUTTON */}
+
+                    <button
+                      onClick={() =>
+                        router.push(`/dashboard/destination-landing/seo/${item._id}`)
+                      }
+                      className="bg-purple-600 text-white px-3 py-1 rounded"
+                    >
+                      SEO
+                    </button>
+
+                    <Link
+                      href={`/destination-landing/${item._id}`}
+                      target="_blank"
+                      className="bg-gray-700 text-white px-3 py-1 rounded"
                     >
                       View
                     </Link>

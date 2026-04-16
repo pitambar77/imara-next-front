@@ -1,20 +1,13 @@
-import { useParams } from "react-router-dom";
-import SeoForm from "../../components/SeoForm";
+"use client";
 
-const TravelgroupSeo = () => {
-  const { id } = useParams();
+import SeoForm from "@/components/SeoForm";
 
+export default function TravelgroupSeo({ id }) {
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-6">
-        Travel group SEO Settings
-      </h2>
+      <h2 className="text-2xl font-bold mb-6">Travel Group SEO Settings</h2>
 
-      <SeoForm
-        referenceId={id}
-        referenceType="travelgroup"
-      />
+      <SeoForm referenceId={id} referenceType="travelgroup" />
     </div>
   );
-};
-export default TravelgroupSeo
+}

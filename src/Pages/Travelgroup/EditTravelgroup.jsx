@@ -2,21 +2,24 @@
 // import { useEffect, useState } from "react";
 // import API from "../../api/axios.js";
 // import TravelgroupForm from "../../components/Travelgroup/TravelgroupForm.jsx";
-// // import TravelgroupForm from "../../components/Travelgroup/TravelgroupForm";
 
 // const EditTravelgroup = () => {
 //   const { id } = useParams();
 //   const [data, setData] = useState(null);
 
 //   useEffect(() => {
-//     API.get(`/travelgroup/${id}`).then((res) => setData(res.data));
+//     API.get(`/travelgroup/${id}`)
+//       .then((res) => setData(res.data))
+//       .catch(err => console.error(err));
 //   }, [id]);
 
 //   return (
 //     <div className="p-6">
 //       {data ? (
-//         // <TravelgroupForm editData={data} onSuccess={() => window.location.href = "/admin/travelgroup/list"} />
-//         <TravelgroupForm/>
+//         <TravelgroupForm
+//           editData={data}
+//           onSuccess={() => window.location.href = "/"}
+//         />
 //       ) : (
 //         <p>Loading...</p>
 //       )}
@@ -26,35 +29,29 @@
 
 // export default EditTravelgroup;
 
-// above corrected code
+"use client";
 
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import API from "../../api/axios.js";
-import TravelgroupForm from "../../components/Travelgroup/TravelgroupForm.jsx";
+import API from "@/api/axios";
+import TravelgroupForm from "@/components/Travelgroup/TravelgroupForm";
 
-const EditTravelgroup = () => {
-  const { id } = useParams();
+export default function EditTravelgroup({ id }) {
   const [data, setData] = useState(null);
 
   useEffect(() => {
     API.get(`/travelgroup/${id}`)
       .then((res) => setData(res.data))
-      .catch(err => console.error(err));
+      .catch((err) => console.error(err));
   }, [id]);
+
+  if (!data) return <p>Loading...</p>;
 
   return (
     <div className="p-6">
-      {data ? (
-        <TravelgroupForm
-          editData={data}
-          onSuccess={() => window.location.href = "/"}
-        />
-      ) : (
-        <p>Loading...</p>
-      )}
+      <TravelgroupForm
+        editData={data}
+        onSuccess={() => (window.location.href = "/dashboard/travelgroup")}
+      />
     </div>
   );
-};
-
-export default EditTravelgroup;
+}

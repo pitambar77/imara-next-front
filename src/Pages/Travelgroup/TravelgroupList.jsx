@@ -1,52 +1,10 @@
-// import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
-// import API from "../../api/axios";
-
-// const TravelgroupList = () => {
-//   const [data, setData] = useState([]);
-
-//   useEffect(() => {
-//     API.get("/travelgroup")
-//       .then((res) => setData(res.data))
-//       .catch((err) => console.error(err));
-//   }, []);
-
-//   return (
-//     <div className="grid grid-cols-3 gap-6 p-6">
-//       {data.map((item) => (
-//         <div key={item._id} className="border rounded p-4 shadow bg-white">
-//           <img src={item.image} alt={item.title} className="w-full h-40 object-cover rounded" />
-
-//           <h2 className="text-xl font-bold mt-2">{item.title}</h2>
-//           <p className="text-gray-600">{item.subtitle}</p>
-//           <p className="text-sm mt-1 font-semibold">{item.category}</p>
-
-//           {/* <Link
-//             to={`/travelgroup/${item._id}`}
-//             className="inline-block bg-blue-600 text-white px-4 py-2 mt-3 rounded"
-//           >
-//             View Details
-//           </Link> */}
-//           <Link to={`/${item.slug}`} className="bg-blue-600 text-white px-4 py-2 mt-3 inline-block rounded">
-//   View Details
-// </Link>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default TravelgroupList;
-
-
-
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import API from "../../api/axios";
 
 const TravelgroupList = () => {
   const [groups, setGroups] = useState([]);
-  const navigate = useNavigate();
+const router = useRouter();
 
   const fetchGroups = async () => {
     try {
@@ -83,7 +41,7 @@ const TravelgroupList = () => {
       <h2 className="text-2xl font-bold mb-4">Travel Groups</h2>
 
       <button
-        onClick={() => navigate("/create-travel-group")}
+        onClick={() => router.push("/dashboard/travelgroup/create")}
         className="bg-green-600 text-white px-4 py-2 rounded mb-4"
       >
         + Create Travel Group
@@ -106,7 +64,7 @@ const TravelgroupList = () => {
                 <td className="p-3 border space-x-2">
                   <button
                     onClick={() =>
-                      navigate(`/travelgroup/edit/${group._id}`)
+                      router.push(`/dashboard/travelgroup/${group._id}`)
                     }
                     className="bg-blue-600 text-white px-3 py-1 rounded"
                   >
@@ -117,7 +75,7 @@ const TravelgroupList = () => {
 
                 <button
                   onClick={() =>
-                    navigate(`/admin/seo/travelgroup/${group._id}`)
+                    router.push(`/dashboard/travelgroup/seo/${group._id}`)
                   }
                   className="bg-purple-600 text-white px-3 py-1 rounded"
                 >
