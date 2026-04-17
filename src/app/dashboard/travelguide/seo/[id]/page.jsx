@@ -2,6 +2,7 @@
 
 import TravelguideSeo from "@/Pages/Seo/TravelguideSeo";
 
-export default function Page({ params }) {
-  return <TravelguideSeo id={params.id} />;
+export default async function Page({ params }) {
+   const { id } = await params;
+  return <TravelguideSeo id={id} />;
 }

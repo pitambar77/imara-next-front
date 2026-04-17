@@ -41,7 +41,7 @@ import { slugify } from "@/utils/slugify";
 import ItinaryDetails from "@/Pages/Itinenary/ItinaryDetails";
 
 export async function generateMetadata({ params }) {
-  const { slug } =  params;
+  const { slug } = await params;
 
   const trips = await getTrips();
 

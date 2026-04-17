@@ -17,11 +17,12 @@ const Sidebar = () => {
 
   const links = [
     { name: "Travel Guide", icon: <FaMapMarkedAlt />, path: "/dashboard/travelguide" },
-    { name: "Package", icon: <FaUmbrellaBeach />, path: "/dashboard/create-package" },
-    { name: "Destination Details", icon: <FaRoute />, path: "/dashboard/create-destination-details" },
-    { name: "Destination Landing", icon: <FaHotel />, path: "/dashboard/create-destination-landing" },
-    { name: "Kilimanjarolanding", icon: <FaHotel />, path: "/dashboard/create-kilimanjarolanding" },
-    { name: "Travel Group", icon: <FaHotel />, path: "/dashboard/create-travel-group" },
+    { name: "Package", icon: <FaUmbrellaBeach />, path: "/dashboard/package" },
+    { name: "Destination Details", icon: <FaRoute />, path: "/dashboard/destination" },
+    { name: "Destination Landing", icon: <FaHotel />, path: "/dashboard/destination-landing" },
+    { name: "Kilimanjarolanding", icon: <FaHotel />, path: "/dashboard/kilimanjaro" },
+    { name: "Travel Group", icon: <FaHotel />, path: "/dashboard/travelgroup" },
+    { name: "Zanzibar", icon: <FaHotel />, path: "/dashboard/zanzibar" },
     { name: "Sustanbility", icon: <FaHotel />, path: "/dashboard/create-sustanbility" },
     { name: "Team", icon: <FaHotel />, path: "/dashboard/create-team" },
     { name: "List", icon: <FaHotel />, path: "/dashboard/team-list" },
