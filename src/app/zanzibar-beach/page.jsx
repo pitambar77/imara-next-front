@@ -1,19 +1,8 @@
-// import { getTrips } from "@/lib/getTrips";
-// import { getZanzibarLanding } from "@/lib/getZanzibarLanding";
-// import ZanzibarLanding from "@/Pages/ZanzibarLandingPage/ZanzibarLanding";
-
-// export default async function Page() {
-//   const [trips, data] = await Promise.all([
-//     getTrips(),
-//     getZanzibarLanding(),
-//   ]);
-//   return <ZanzibarLanding trips={trips} data={data} />;
-// }
-
-
 import { getTrips } from "@/lib/getTrips";
 import { getZanzibarLanding } from "@/lib/getZanzibarLanding";
 import ZanzibarLanding from "@/Pages/ZanzibarLandingPage/ZanzibarLanding";
+
+/* ================= METADATA ================= */
 
 export async function generateMetadata() {
   const data = await getZanzibarLanding();
@@ -22,40 +11,37 @@ export async function generateMetadata() {
     return { title: "Page Not Found" };
   }
 
-  let seo = null;
+  // Fetch SEO from SEO collection
+  const seoRes = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${data._id}&referenceType=zanzibardetails`,
+    { next: { revalidate: 300 } }
+  );
 
-  try {
-    const seoRes = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${data._id}&referenceType=zanzibarlanding`,
-      { next: { revalidate: 300 } }
-    );
-
-    if (seoRes.ok) {
-      const contentType = seoRes.headers.get("content-type");
-
-      if (contentType?.includes("application/json")) {
-        seo = await seoRes.json();
-      }
-    }
-  } catch (err) {
-    console.error("SEO fetch error:", err);
-  }
+  const seo = await seoRes.json();
 
   return {
     title: seo?.metaTitle || data.title,
     description: seo?.metaDescription || data.subtitle,
     keywords: seo?.keywords || "Zanzibar beach holidays, Zanzibar tours",
+
+    alternates: {
+      canonical:
+        seo?.canonicalUrl ||
+        "https://imarakilelenisafaris.com/zanzibar-holidays",
+    },
+
     openGraph: {
       title: seo?.metaTitle || data.title,
       description: seo?.metaDescription || data.subtitle,
-      images: [data.image],
-      url: `https://imarakilelenisafaris.com/zanzibar-holidays`,
-    },
-    alternates: {
-      canonical: `https://imarakilelenisafaris.com/zanzibar-holidays`,
+      images: [seo?.ogImage || data.image],
+      url:
+        seo?.canonicalUrl ||
+        "https://imarakilelenisafaris.com/zanzibar-holidays",
     },
   };
 }
+
+/* ================= PAGE ================= */
 
 export default async function Page() {
   const [trips, data] = await Promise.all([
@@ -67,28 +53,17 @@ export default async function Page() {
     return <div>Page not found</div>;
   }
 
-  let seo = null;
+  // Fetch SEO again for schema injection
+  const seoRes = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${data._id}&referenceType=zanzibardetails`,
+    { next: { revalidate: 300 } }
+  );
 
-  try {
-    const seoRes = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${data._id}&referenceType=zanzibardetails`,
-      { next: { revalidate: 300 } }
-    );
-
-    if (seoRes.ok) {
-      const contentType = seoRes.headers.get("content-type");
-
-      if (contentType?.includes("application/json")) {
-        seo = await seoRes.json();
-      }
-    }
-  } catch (err) {
-    console.error("SEO fetch error:", err);
-  }
+  const seo = await seoRes.json();
 
   return (
     <>
-      {/* Inject Schema */}
+      {/* Schema from Admin */}
       {seo?.schemaMarkup && (
         <script
           type="application/ld+json"

@@ -23,15 +23,17 @@ const Sidebar = () => {
     { name: "Kilimanjarolanding", icon: <FaHotel />, path: "/dashboard/kilimanjaro" },
     { name: "Travel Group", icon: <FaHotel />, path: "/dashboard/travelgroup" },
     { name: "Zanzibar", icon: <FaHotel />, path: "/dashboard/zanzibar" },
-    { name: "Sustanbility", icon: <FaHotel />, path: "/dashboard/create-sustanbility" },
-    { name: "Team", icon: <FaHotel />, path: "/dashboard/create-team" },
+    { name: "Sustanbility", icon: <FaHotel />, path: "/dashboard/sustainbility/seo" },
+    { name: "Team", icon: <FaHotel />, path: "/dashboard/team/seo" },
     { name: "List", icon: <FaHotel />, path: "/dashboard/team-list" },
-    { name: "About", icon: <FaHotel />, path: "/dashboard/create-about" },
-    { name: "Fleet", icon: <FaHotel />, path: "/dashboard/create-fleet" },
+    { name: "About", icon: <FaHotel />, path: "/dashboard/about-us/seo" },
+    { name: "Fleet", icon: <FaHotel />, path: "/dashboard/safari-fleet/seo" },
+    { name: "Home Page", icon: <FaHotel />, path: "/dashboard/homepage/seo" },
+    { name: "Safari Landing", icon: <FaHotel />, path: "/dashboard/safari-landing/seo" },
   ];
 
   return (
-    <div className="bg-[#fde6d5] w-64 min-h-screen flex flex-col p-5 fixed top-0 left-0">
+    <div className="bg-[#fde6d5] w-64 h-screen flex flex-col p-5 fixed top-0 left-0 overflow-y-auto">
 
       <Image
         src={imaralogo}

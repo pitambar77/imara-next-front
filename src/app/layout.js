@@ -18,9 +18,7 @@ export const metadata = {
   icons: {
     icon: "/imaralogo.png",
   },
-  alternates: {
-    canonical: "https://imarakilelenisafaris.com",
-  },
+  
 };
 
 export default function RootLayout({ children }) {
@@ -33,7 +31,7 @@ export default function RootLayout({ children }) {
           href="/tanzania.webp"
           fetchPriority="high"
         />
-        <link rel="canonical" href="https://imarakilelenisafaris.com/" />
+       
       </head>
 
       <body>

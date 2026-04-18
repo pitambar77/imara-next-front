@@ -8,37 +8,18 @@ import SafariExpertsSection from "./SafariExpertsSection";
 import AdventureTour from "../../components/AdventureTour";
 import BookWithConfidence from "../Home/BookWithConfidence";
 import Featured from "../Home/Featured";
+import TailormadeSection from "../Home/TailormadeSection";
 
-const TeamPage = () => {
-  const [page, setPage] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  /* ================= FETCH DATA ================= */
-  useEffect(() => {
-    const fetchTeam = async () => {
-      try {
-        const res = await API.get("/team"); // 🔁 adjust endpoint if needed
-        setPage(res.data?.[0] || null);
-      } catch (err) {
-        console.error("Team API error:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchTeam();
-  }, []);
-
-  if (loading) return <p className="p-10 text-center">Loading...</p>;
+const TeamPage = ({ page }) => {
   if (!page) return null;
 
-  /* ================= MAP ADVENTURE DATA ================= */
   const teamSections =
     page.adventure?.flatMap((block) =>
       block.adventure.map((item) => ({
         image: item.image,
-        subheading:item.subtitle,
+        subheading: item.subtitle,
         description: item.description,
-      }))
+      })),
     ) || [];
 
   return (
@@ -67,7 +48,11 @@ const TeamPage = () => {
       />
 
       <BookWithConfidence />
-      <Featured />
+      <div className="pt-10">
+        <Featured />
+      </div>
+
+      <TailormadeSection />
     </div>
   );
 };
