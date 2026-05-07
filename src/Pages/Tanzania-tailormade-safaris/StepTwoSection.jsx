@@ -6,7 +6,7 @@ import "react-phone-input-2/lib/style.css";
 import { isValidPhoneNumber } from "libphonenumber-js";
 import { useState, useRef, useEffect } from "react";
 import TravelDatePicker from "./TravelDatePicker";
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 // const options = [
 //   "Best of Tanzania Safari and Beach Escape",
 //   "Great Migration & Big Cats Safaris",
@@ -48,7 +48,7 @@ export default function StepTwoSection({ selectedDestinations }) {
 
   const dropdownRef = useRef(null);
 
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
 
   const fieldRefs = {
     name: useRef(null),
