@@ -12,19 +12,28 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const TripHighlights = ({ title, data }) => {
+const TripHighlights = ({ title, subtitle, data }) => {
   const swiperNavPrevRef = useRef(null);
   const swiperNavNextRef = useRef(null);
   const [expandedCard, setExpandedCard] = useState(null);
+
+    const formatTitle = (text) => {
+  if (!text) return "";
+  return text
+    .toLowerCase()
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+};
 
   return (
     <section id="highlight" className="w-full py-4 md:py-16 bg-white relative">
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
         {/* Title + Navigation */}
-        <div className="relative flex items-center justify-center mb-10">
-          <h2 className="text-2xl md:text-3xl text-center font-bold w-full text-[#1a1a1a] capitalize">
-            {title}
-          </h2>
+
+        <h2 className="text-2xl md:text-3xl mb-3 text-center font-bold w-full text-[#1a1a1a] capitalize">
+          {formatTitle(title)}
+        </h2>
+        <div className="relative flex items-center justify-center mb-8 md:mb-12">
+          {subtitle && <p className="text-[18px] text-[#444] ">{subtitle}</p>}
 
           <div className=" hidden md:block absolute right-0 flex items-center space-x-3">
             <button

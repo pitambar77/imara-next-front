@@ -1,10 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap");
 @import "./fonts.css";
 @import "tailwindcss";
+
+@theme {
+  --font-cormorant: "Cormorant Garamond", serif;
+  --font-avenir: "AvenirRegular", sans-serif;
+}
+
 /* @import "leaflet/dist/leaflet.css"; */
 @import "swiper/css";
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
-
 
 /* Custom Swiper pagination style */
 .custom-swiper .swiper-pagination {
@@ -57,7 +63,6 @@ button,
 span {
   font-family: "Soleil";
 }
-
 
 /* Remove arrows in Chrome, Safari, Edge */
 input[type="number"]::-webkit-outer-spin-button,
@@ -152,4 +157,30 @@ input[type="number"] {
   background: #d86f29;
   border-radius: 50%;
   cursor: pointer;
+}
+
+/* .input {
+  @apply w-full border border-gray-300 rounded-md px-4 py-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#b38b4d];
+} */
+
+.label {
+  @apply block text-xs tracking-[0.2em] uppercase text-[#444] mb-2;
+}
+
+.input {
+  @apply w-full bg-[#f3eee7] border border-[#e5ded6] rounded-md px-4 py-3 text-sm 
+  focus:outline-none focus:ring-1 focus:ring-[#d87029];
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html {
+  scroll-behavior: smooth;
 }

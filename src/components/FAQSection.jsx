@@ -10,13 +10,23 @@ const FAQSection = ({ title,subtitle, faqs }) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const formatTitle = (text) => {
+  if (!text) return "";
+  return text
+    .toLowerCase()
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+};
+
   return (
-    <section id="faq" className="bg-white py-8 md:py-16 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
+    <section id="faq" className=" bg-gray-50 py-8 md:py-16 ">
+      <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
+
+     
 
       {/* Title */}
       {title && (
         <h2 className="text-[24px] md:text-3xl text-center capitalize font-extrabold text-[#1a1a1a] mb-3 ">
-          {title}
+          {formatTitle(title)}
         </h2>
       )}
        {subtitle && (
@@ -96,6 +106,7 @@ const FAQSection = ({ title,subtitle, faqs }) => {
           </div>
         ))}
       </div>
+       </div>
     </section>
   );
 };

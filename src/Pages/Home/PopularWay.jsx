@@ -57,7 +57,7 @@ const PopularWay = () => {
           Ultimate Guide to Tanzania Travel
         </h2>
         <p className="text-center text-[#444] text-[18px] mb-12 ">
-          Lorem Ipsum is simply dummy text of the printing
+          Helpful safari travel tips for visiting dream wildlife destinations with ease.
         </p>
 
         {/* Grid */}

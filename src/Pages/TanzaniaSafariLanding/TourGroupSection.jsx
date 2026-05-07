@@ -43,19 +43,21 @@ const TourGroupSection = () => {
   return (
     <section className="bg-[#fedec8] py-8 md:py-16 ">
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
+
         {/* Header */}
         <h2 className="text-center capitalize text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-3">
           Tours by group type
         </h2>
 
         <p className="text-center text-[#444] text-[18px] mb-12">
-          Lorem Ipsum is simply dummy text of the printing
+          Find safari options designed for families, couples, friends, and groups.
         </p>
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {tourGroups.map((item) => (
             <div key={item._id} className="flex flex-col">
+
               {/* Image */}
               <Link
                 href={`/travelgroup/${item.slug}`}
@@ -82,6 +84,7 @@ const TourGroupSection = () => {
               <p className="text-[#444] text-[16px] mt-3 leading-relaxed">
                 {item.overviewinfo?.[0]?.subtitle}
               </p>
+
             </div>
           ))}
         </div>
@@ -89,26 +92,27 @@ const TourGroupSection = () => {
         {/* BOOK WITH CONFIDENCE */}
         <div className="bg-[#fedec7]">
           <div className="max-w-7xl mx-auto px-6 md:px-10 mt-12 md:mt-24">
+
             <h2 className="text-center text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-8 md:mb-16 capitalize">
-              Book with confidence
+              Plan Your Safari
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-center text-[#444]">
               <Feature
                 icon={<FaWallet />}
-                text="Save your seat instantly with a small deposit"
+                text="Share your travel dates and interests."
               />
               <Feature
                 icon={<FaHourglassHalf />}
-                text="Choose payment timings that match your schedule"
+                text="Choose parks, stays, and activities."
               />
               <Feature
                 icon={<FaCalendarAlt />}
-                text="Make itinerary changes without stress before departure"
+                text="Review your custom safari itinerary."
               />
               <Feature
                 icon={<FaShieldAlt />}
-                text="Your booking funds are always fully safeguarded"
+                text="Confirm booking and prepare to travel."
               />
             </div>
 
@@ -117,8 +121,10 @@ const TourGroupSection = () => {
                 FIND OUT MORE
               </button>
             </div>
+
           </div>
         </div>
+
       </div>
     </section>
   );

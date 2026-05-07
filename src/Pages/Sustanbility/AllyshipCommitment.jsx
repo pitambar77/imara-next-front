@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-const AllyshipCommitment = ({ data = [] }) => {
+const AllyshipCommitment = ({ data = [],subtitle }) => {
   if (!data.length) return null;
 
   // All items share the same heading → take first
@@ -10,9 +10,12 @@ const AllyshipCommitment = ({ data = [] }) => {
     <section className="bg-[#f8d8c3] py-8 md:py-16 ">
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
         {/* TITLE */}
-        <h2 className="text-center text-xl md:text-3xl capitalize font-extrabold text-[#1a1a1a] mb-10">
+        <h2 className="text-center text-xl md:text-3xl capitalize font-extrabold text-[#1a1a1a] mb-3">
           {sectionHeading}
         </h2>
+         {subtitle && (
+            <p className="text-[18px] text-[#444] mb-8 md:mb-12 text-center ">{subtitle}</p>
+          )}
 
         {/* CARD GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

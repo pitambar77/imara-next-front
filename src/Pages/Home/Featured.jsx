@@ -28,7 +28,7 @@ const brands = [
 
 const Featured = () => {
   return (
-    <section className="w-full bg-white py-8">
+    <section className="w-full bg-white py-10">
       <div className="px-4 md:px-10 lg:px-16 xl:px-28 mx-auto text-center">
         {/* Title */}
         <h2 className="text-2xl md:text-3xl font-bold mb-16 capitalize">

@@ -65,46 +65,25 @@ const cards = [
   {
     id: 1,
     image: "/why-visit-local.webp",
-    title: "Go further than you’d go alone",
-    text: "It’s one thing to visit somewhere new. But when you travel with awesome new people, all aged between 18 and 35, you take the adventure to a whole new level - not to mention the fun!",
+    title: "Guided With Patience",
+    text: "The climb is paced with care, giving your body time to adjust as the trail rises through forest, moorland, alpine desert, and colder summit slopes.",
   },
   {
     id: 2,
     image: "/why-visit-last.webp",
-    title: "Seriously special stays",
-    text: "We’ll take care of your stays, local transport, breakfasts and entry to the most sought-after sites – so you’re free to enjoy your adventure travel experience without the stress of planning.",
+    title: "Comfort Where Needed",
+    text: "From camp arrangements to daily trail support, small details are handled properly so you can save energy, rest better, and focus on the climb ahead.",
   },
   {
     id: 3,
     image: "/tailored-safari-journey.webp",
-    title: "Experiences that count",
-    text: "Adventure with Contiki is about more than hiking and scenery. Whether you’re learning to be a safari guide in Kruger or chatting to the Warrior Women of Jasper, you’ll exercise your brain as well as your body!",
+    title: "Safety Comes First",
+    text: "Guides monitor your pace, breathing, hydration, and altitude response each day, helping you move with confidence rather than pushing beyond what your body can manage.",
   },
 ];
 
 const KilimanjaroLanding = ({ trips, page }) => {
-  // const [page, setPage] = useState(null);
-  // const [loading, setLoading] = useState(true);
-
-  // useEffect(() => {
-  //   const fetchPage = async () => {
-  //     try {
-  //       const res = await API.get("/kilimanjarolanding");
-  //       setPage(res.data?.[0] || null);
-  //     } catch (err) {
-  //       console.error(err);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-  //   fetchPage();
-  // }, []);
-
-  // if (loading) return <p className="p-6">Loading...</p>;
-  // if (!page) return <p className="p-6">No data found</p>;
-
-  /* ================= DATA MAPPINGS ================= */
-
+  
   if (!page) {
     return <p className="p-6">No data found</p>;
   }
@@ -203,7 +182,7 @@ const KilimanjaroLanding = ({ trips, page }) => {
       <Highlights
         title="Kilimanjaro Climbing Routes"
         trips={highlightTrips}
-        subtitle="Lorem Ipsum is simply dummy text of the printing"
+        subtitle="Explore Kilimanjaro routes designed for different goals and climbing styles."
       />
 
       <PositionsSection
@@ -224,7 +203,7 @@ const KilimanjaroLanding = ({ trips, page }) => {
 
       <FAQSection
         title="Frequently Asked Questions"
-        subtitle="Lorem Ipsum is simply dummy text of the printing"
+        subtitle="Find clear answers to common questions before planning your trip."
         faqs={faqs}
       />
 
@@ -236,8 +215,8 @@ const KilimanjaroLanding = ({ trips, page }) => {
         formsubheading="Our team is always here to help you plan your climb."
       />
       <WhyVisitSection
-        title="Why visit Tanzania with Imara Kileleni Safaris?"
-        subtitle="Lorem Ipsum is simply dummy text of the printing"
+        title="Climb Kilimanjaro with Trusted Mountain Experts"
+        subtitle="A Kilimanjaro climb planned with care, patience, real mountain support, and summit-focused guidance."
         cards={cards}
       />
 

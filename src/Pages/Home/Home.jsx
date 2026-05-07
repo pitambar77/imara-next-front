@@ -5,15 +5,17 @@ import BookWithConfidence from "./BookWithConfidence";
 import PopularWay from "./PopularWay";
 import TailormadeSection from "./TailormadeSection";
 import TripsSection from "@/components/TripsSection";
+import FAQSection from "@/components/FAQSection";
 
-const Home = ({ trips }) => {
+const Home = ({ trips,home }) => {
+  const faqSection = home?.faq?.[0];
   return (
     <div>
       <HeroSlider />
 
       <TripsSection
         title="Explore Our Signature Tanzania Safari"
-        subtitle="Lorem Ipsum is simply dummy text of the printing"
+        subtitle="Curated safari experiences designed for comfort, wildlife, and discovery."
         trips={trips}
         destination="tanzania"
         layout="slider"
@@ -28,7 +30,7 @@ const Home = ({ trips }) => {
 
       <TripsSection
         title="Kilimanjaro Climbing Packages For Every Climber"
-        subtitle="Lorem Ipsum is simply dummy text of the printing"
+        subtitle="Choose Kilimanjaro routes suited to different goals, fitness levels, climbing styles, and summit plans."
         trips={trips}
         destination="kili"
         layout="slider"
@@ -39,6 +41,11 @@ const Home = ({ trips }) => {
       />
 
       <PopularWay />
+       {/* <FAQSection
+        title={faqSection.title}
+        subtitle={faqSection.subtitle}
+        faqs={faqSection.faqs}
+      /> */}
       <Featured />
       <TailormadeSection />
     </div>

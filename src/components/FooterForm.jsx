@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 // import API from "../api/axios.js"; // your axios instance
 import Link from "next/link";
@@ -40,17 +38,12 @@ const FooterForm = () => {
 
   return (
     <div>
-            <h3 className="font-bold text-lg mb-2">Save up to $2,034*!</h3>
-      <p className="text-gray-700  mb-2">
-        Plus receive latest offers, travel inspiration, and discover how your
-        travels will make a positive impact. Together, WE MAKE TRAVEL MATTER®.
+      <h3 className="font-bold text-lg mb-2">Safari Travel Updates</h3>
+      <p className="text-gray-700  mb-4">
+        Get fresh travel tips, safari ideas, seasonal guides, and package
+        updates delivered straight to your inbox before your next adventure.
       </p>
-      <a
-        href="#"
-        className="text-sm text-[#d87028] font-semibold underline block mb-4"
-      >
-        Offer Terms
-      </a>
+      
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div className="flex gap-2">
           <input
@@ -92,10 +85,10 @@ const FooterForm = () => {
             required
           />
           <p>
-           *By checking this box, you accept the Trafalgar{" "}
-            <Link href='privacy-policy' className="text-[#d87028] underline">
+            *By checking this box, you accept the Trafalgar{" "}
+            <Link href="privacy-policy" className="text-[#d87028] underline">
               privacy policy
-              </Link>
+            </Link>
           </p>
         </div>
 
@@ -111,4 +104,3 @@ const FooterForm = () => {
 };
 
 export default FooterForm;
-

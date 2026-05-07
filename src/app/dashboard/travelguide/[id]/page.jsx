@@ -1,7 +1,6 @@
-"use client";
-
 import BlogForm from "@/components/BlogForm";
 
-export default function Page({ params }) {
-  return <BlogForm id={params.id} />;
+export default async function Page({ params }) {
+  const { id } = await params;
+  return <BlogForm id={id} />;
 }

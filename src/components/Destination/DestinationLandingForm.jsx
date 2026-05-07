@@ -13,16 +13,15 @@ const DestinationLandingForm = ({ editData, onSuccess }) => {
   const [mainImagePreview, setMainImagePreview] = useState(null);
 
   // ================= Dynamic Sections =======================
-const [overviewinfo, setOverviewinfo] = useState([
-  {
-    title: "",
-    subtitle: "",
-    description: [{ type: "paragraph", content: "" }],
-    image: null,
-    imagePreview: null,
-  },
-]);
-
+  const [overviewinfo, setOverviewinfo] = useState([
+    {
+      title: "",
+      subtitle: "",
+      description: [{ type: "paragraph", content: "" }],
+      image: null,
+      imagePreview: null,
+    },
+  ]);
 
   const [highlight, setHighlight] = useState([
     {
@@ -52,122 +51,179 @@ const [overviewinfo, setOverviewinfo] = useState([
     },
   ]);
 
-  // Prefill values on Edit
-
-  // useEffect(() => {
-  //   if (!editData) return;
-
-  //   setFormData({
-  //     title: editData.title || "",
-  //     subtitle: editData.subtitle || "",
-  //   });
-
-  //   setOverviewinfo(
-  //     editData.overviewinfo?.length
-  //       ? editData.overviewinfo
-  //       : [{ title: "", subtitle: "", description: [], image: null }]
-  //   );
-
-  //   setHighlight(
-  //     editData.highlight?.length
-  //       ? editData.highlight
-  //       : [{ heading: "", section: [{ title: "", description: "" }] }]
-  //   );
-
-
-  //   setBesttime(
-  //     editData.besttime?.length
-  //       ? editData.besttime
-  //       : [
-  //           {
-  //             title: "",
-  //             subtitle: "",
-  //             description: [{ type: "paragraph", content: "" }],
-  //             months: [
-  //               { month: "", content: [{ type: "paragraph", content: "" }] },
-  //             ],
-  //           },
-  //         ]
-  //   );
-
-  //   setMainImagePreview(editData.image || null);
-  // }, [editData]);
+  const [faq, setFaq] = useState([
+    {
+      title: "",
+      subtitle: "",
+      faqs: [
+        {
+          question: "",
+          answer: [{ type: "paragraph", content: "" }],
+        },
+      ],
+    },
+  ]);
 
   useEffect(() => {
-  if (!editData) return;
+    if (!editData) return;
 
-  setFormData({
-    title: editData.title || "",
-    subtitle: editData.subtitle || "",
-  });
+    setFormData({
+      title: editData.title || "",
+      subtitle: editData.subtitle || "",
+    });
 
-  setOverviewinfo(
-    editData.overviewinfo?.length
-      ? editData.overviewinfo.map(o => ({
-          ...o,
-          description: o.description?.length
-            ? o.description
-            : [{ type: "paragraph", content: "" }],
-          imagePreview: o.image || null,
-        }))
-      : [
-          {
-            title: "",
-            subtitle: "",
-            description: [{ type: "paragraph", content: "" }],
-            image: null,
-            imagePreview: null,
-          },
-        ]
-  );
+    setOverviewinfo(
+      editData.overviewinfo?.length
+        ? editData.overviewinfo.map((o) => ({
+            ...o,
+            description: o.description?.length
+              ? o.description
+              : [{ type: "paragraph", content: "" }],
+            imagePreview: o.image || null,
+          }))
+        : [
+            {
+              title: "",
+              subtitle: "",
+              description: [{ type: "paragraph", content: "" }],
+              image: null,
+              imagePreview: null,
+            },
+          ],
+    );
 
-  setHighlight(
-    editData.highlight?.length
-      ? editData.highlight.map(h => ({
-          ...h,
-          section: h.section?.length
-            ? h.section.map(s => ({
-                ...s,
-                imagePreview: s.image || null,
-              }))
-            : [{ title: "", description: "", image: null, imagePreview: null }],
-        }))
-      : [
-          {
-            heading: "",
-            section: [
-              {
-                title: "",
-                description: "",
-                image: null,
-                imagePreview: null,
-              },
-            ],
-          },
-        ]
-  );
+    setHighlight(
+      editData.highlight?.length
+        ? editData.highlight.map((h) => ({
+            ...h,
+            section: h.section?.length
+              ? h.section.map((s) => ({
+                  ...s,
+                  imagePreview: s.image || null,
+                }))
+              : [
+                  {
+                    title: "",
+                    description: "",
+                    image: null,
+                    imagePreview: null,
+                  },
+                ],
+          }))
+        : [
+            {
+              heading: "",
+              section: [
+                {
+                  title: "",
+                  description: "",
+                  image: null,
+                  imagePreview: null,
+                },
+              ],
+            },
+          ],
+    );
 
-  setBesttime(
-    editData.besttime?.length
-      ? editData.besttime
-      : [
-          {
-            title: "",
-            subtitle: "",
-            description: [{ type: "paragraph", content: "" }],
-            months: [
-              {
-                month: "",
-                content: [{ type: "paragraph", content: "" }],
-              },
-            ],
-          },
-        ]
-  );
+    setBesttime(
+      editData.besttime?.length
+        ? editData.besttime
+        : [
+            {
+              title: "",
+              subtitle: "",
+              description: [{ type: "paragraph", content: "" }],
+              months: [
+                {
+                  month: "",
+                  content: [{ type: "paragraph", content: "" }],
+                },
+              ],
+            },
+          ],
+    );
 
-  setMainImagePreview(editData.image || null);
-}, [editData]);
+    setFaq(
+      editData?.faq?.length
+        ? editData.faq
+        : [
+            {
+              title: "",
+              subtitle: "",
+              faqs: [
+                {
+                  question: "",
+                  answer: [{ type: "paragraph", content: "" }],
+                },
+              ],
+            },
+          ],
+    );
 
+    setMainImagePreview(editData.image || null);
+  }, [editData]);
+
+  // SECTION
+  const addFaqSection = () => {
+    setFaq([...faq, { title: "", subtitle: "", faqs: [] }]);
+  };
+
+  const removeFaqSection = (i) => {
+    const updated = [...faq];
+    updated.splice(i, 1);
+    setFaq(updated);
+  };
+
+  const handleFaqSection = (i, e) => {
+    const updated = [...faq];
+    updated[i][e.target.name] = e.target.value;
+    setFaq(updated);
+  };
+
+  // QUESTION
+  const addFaq = (sectionIndex) => {
+    const updated = [...faq];
+    updated[sectionIndex].faqs.push({
+      question: "",
+      answer: [{ type: "paragraph", content: "" }],
+    });
+    setFaq(updated);
+  };
+
+  const handleFaq = (sectionIndex, faqIndex, e) => {
+    const updated = [...faq];
+    updated[sectionIndex].faqs[faqIndex].question = e.target.value;
+    setFaq(updated);
+  };
+
+  const removeFaq = (sectionIndex, faqIndex) => {
+    const updated = [...faq];
+    updated[sectionIndex].faqs.splice(faqIndex, 1);
+    setFaq(updated);
+  };
+
+  // ANSWER
+  const addAnswer = (sectionIndex, faqIndex) => {
+    const updated = [...faq];
+    updated[sectionIndex].faqs[faqIndex].answer.push({
+      type: "paragraph",
+      content: "",
+    });
+    setFaq(updated);
+  };
+
+  const handleAnswer = (sectionIndex, faqIndex, ansIndex, e) => {
+    const updated = [...faq];
+    updated[sectionIndex].faqs[faqIndex].answer[ansIndex][e.target.name] =
+      e.target.value;
+    setFaq(updated);
+  };
+
+  const removeAnswer = (sectionIndex, faqIndex, ansIndex) => {
+    const updated = [...faq];
+    updated[sectionIndex].faqs[faqIndex].answer.splice(ansIndex, 1);
+    setFaq(updated);
+  };
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -271,105 +327,99 @@ const [overviewinfo, setOverviewinfo] = useState([
     setHighlight(updated);
   };
 
-const addBesttimeDescription = () => {
-  const updated = [...besttime];
-  updated[0].description.push({ type: "paragraph", content: "" });
-  setBesttime(updated);
-};
-
+  const addBesttimeDescription = () => {
+    const updated = [...besttime];
+    updated[0].description.push({ type: "paragraph", content: "" });
+    setBesttime(updated);
+  };
 
   // const handleBesttimeMainChange = (e) =>
   //   setBesttime({ ...besttime, [e.target.name]: e.target.value });
   const handleBesttimeMainChange = (e) => {
-  const updated = [...besttime];
-  updated[0][e.target.name] = e.target.value;
-  setBesttime(updated);
-};
+    const updated = [...besttime];
+    updated[0][e.target.name] = e.target.value;
+    setBesttime(updated);
+  };
 
+  const addMonth = () => {
+    const updated = [...besttime];
+    updated[0].months.push({
+      month: "",
+      content: [{ type: "paragraph", content: "" }],
+    });
+    setBesttime(updated);
+  };
 
-const addMonth = () => {
-  const updated = [...besttime];
-  updated[0].months.push({
-    month: "",
-    content: [{ type: "paragraph", content: "" }],
-  });
-  setBesttime(updated);
-};
+  const removeMonth = (i) => {
+    const updated = [...besttime];
+    updated[0].months.splice(i, 1);
+    setBesttime(updated);
+  };
 
+  const handleMonthChange = (i, e) => {
+    const updated = [...besttime];
+    updated[0].months[i][e.target.name] = e.target.value;
+    setBesttime(updated);
+  };
 
-const removeMonth = (i) => {
-  const updated = [...besttime];
-  updated[0].months.splice(i, 1);
-  setBesttime(updated);
-};
+  const addMonthContent = (i) => {
+    const updated = [...besttime];
+    updated[0].months[i].content.push({ type: "paragraph", content: "" });
+    setBesttime(updated);
+  };
 
-const handleMonthChange = (i, e) => {
-  const updated = [...besttime];
-  updated[0].months[i][e.target.name] = e.target.value;
-  setBesttime(updated);
-};
+  const handleMonthContentChange = (i, j, e) => {
+    const updated = [...besttime];
+    updated[0].months[i].content[j][e.target.name] = e.target.value;
+    setBesttime(updated);
+  };
 
-const addMonthContent = (i) => {
-  const updated = [...besttime];
-  updated[0].months[i].content.push({ type: "paragraph", content: "" });
-  setBesttime(updated);
-};
-
-const handleMonthContentChange = (i, j, e) => {
-  const updated = [...besttime];
-  updated[0].months[i].content[j][e.target.name] = e.target.value;
-  setBesttime(updated);
-};
-
-const removeMonthContent = (i, j) => {
-  const updated = [...besttime];
-  updated[0].months[i].content.splice(j, 1);
-  setBesttime(updated);
-};
-
+  const removeMonthContent = (i, j) => {
+    const updated = [...besttime];
+    updated[0].months[i].content.splice(j, 1);
+    setBesttime(updated);
+  };
 
   // =======================================================
   // SUBMIT FORM
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const data = new FormData();
+    const data = new FormData();
 
-  data.append("formData", JSON.stringify(formData));
-  data.append("overviewinfo", JSON.stringify(overviewinfo));
-  data.append("highlight", JSON.stringify(highlight));
-  data.append("besttime", JSON.stringify(besttime));
+    data.append("formData", JSON.stringify(formData));
+    data.append("overviewinfo", JSON.stringify(overviewinfo));
+    data.append("highlight", JSON.stringify(highlight));
+    data.append("besttime", JSON.stringify(besttime));
+    data.append("faq", JSON.stringify(faq));
 
-  if (mainImage) data.append("mainImage", mainImage);
+    if (mainImage) data.append("mainImage", mainImage);
 
-  overviewinfo.forEach(o => {
-    if (o.image) data.append("overviewImages", o.image);
-  });
+    overviewinfo.forEach((o) => {
+      if (o.image) data.append("overviewImages", o.image);
+    });
 
+    highlight.forEach((h) => {
+      h.section.forEach((s) => {
+        if (s.image) {
+          data.append("highlightImages", s.image);
+        }
+      });
+    });
 
-  highlight.forEach(h => {
-  h.section.forEach(s => {
-    if (s.image) {
-      data.append("highlightImages", s.image);
+    try {
+      const res = editData
+        ? await API.put(`/destinationlanding/${editData._id}`, data)
+        : await API.post("/destinationlanding", data);
+
+      alert("Saved Successfully");
+      onSuccess?.(res.data);
+    } catch (err) {
+      console.error(err);
+      alert("Error saving data");
     }
-  });
-});
-
-
-  try {
-    const res = editData
-      ? await API.put(`/destinationlanding/${editData._id}`, data)
-      : await API.post("/destinationlanding", data);
-
-    alert("Saved Successfully");
-    onSuccess?.(res.data);
-  } catch (err) {
-    console.error(err);
-    alert("Error saving data");
-  }
-};
-
+  };
 
   // =======================================================
   return (
@@ -509,20 +559,6 @@ const handleSubmit = async (e) => {
             + Add
           </button>
         </div>
-
-        {/* {highlight.map((item, i) => (
-          <div key={i} className="border p-4 bg-gray-50 mt-3 rounded">
-            <input className="border p-2 w-full mb-2" name="heading" placeholder="Heading" value={item.heading} onChange={(e) => handleHighlightChange(i, e)} />
-            <input className="border p-2 w-full mb-2" name="title" placeholder="Title" value={item.title} onChange={(e) => handleHighlightChange(i, e)} />
-            <textarea className="border p-2 w-full mb-2" name="description" placeholder="Description" value={item.description} onChange={(e) => handleHighlightChange(i, e)}></textarea>
-
-            <input type="file" className="border p-2 mb-2" onChange={(e) => handleHighlightImage(i, e)} />
-            {item.imagePreview && <img src={item.imagePreview} className="w-32 rounded" />}
-
-            <button type="button" className="bg-red-600 text-white px-3 py-1 rounded mt-2"
-              onClick={() => removeHighlight(i)}>Remove</button>
-          </div>
-        ))} */}
         {highlight.map((h, i) => (
           <div key={i} className="border p-4 mt-3 bg-gray-50 rounded">
             <input
@@ -593,158 +629,264 @@ const handleSubmit = async (e) => {
       {/* ---------- BEST TIME SECTION --------- */}
 
       {/* ---------- BEST TIME SECTION --------- */}
-<section className="col-span-2 mt-6">
-  <h3 className="text-xl font-semibold mb-4">Best Time</h3>
+      <section className="col-span-2 mt-6">
+        <h3 className="text-xl font-semibold mb-4">Best Time</h3>
 
-  {/* Title */}
-  <input
-    className="border p-2 w-full mb-2"
-    name="title"
-    placeholder="Title"
-    value={besttime[0]?.title || ""}
-    onChange={handleBesttimeMainChange}
-  />
+        {/* Title */}
+        <input
+          className="border p-2 w-full mb-2"
+          name="title"
+          placeholder="Title"
+          value={besttime[0]?.title || ""}
+          onChange={handleBesttimeMainChange}
+        />
 
-  {/* Subtitle */}
-  <input
-    className="border p-2 w-full mb-4"
-    name="subtitle"
-    placeholder="Subtitle"
-    value={besttime[0]?.subtitle || ""}
-    onChange={handleBesttimeMainChange}
-  />
+        {/* Subtitle */}
+        <input
+          className="border p-2 w-full mb-4"
+          name="subtitle"
+          placeholder="Subtitle"
+          value={besttime[0]?.subtitle || ""}
+          onChange={handleBesttimeMainChange}
+        />
 
-  {/* ===== Description Blocks ===== */}
-  <div className="flex justify-between items-center mb-2">
-    <h4 className="font-semibold">Description</h4>
-    <button
-      type="button"
-      className="bg-blue-600 text-white px-3 py-1 rounded"
-      onClick={addBesttimeDescription}
-    >
-      + Add Content
-    </button>
-  </div>
-
-  {besttime[0].description.map((d, i) => (
-    <div key={i} className="border p-3 bg-white mb-3 rounded">
-      <select
-        className="border p-2 w-full mb-2"
-        value={d.type}
-        onChange={(e) => {
-          const updated = [...besttime];
-          updated[0].description[i].type = e.target.value;
-          setBesttime(updated);
-        }}
-      >
-        <option value="header">Header</option>
-        <option value="paragraph">Paragraph</option>
-        <option value="list">List</option>
-      </select>
-
-      <textarea
-        className="border p-2 w-full"
-        placeholder="Description content"
-        value={d.content}
-        onChange={(e) => {
-          const updated = [...besttime];
-          updated[0].description[i].content = e.target.value;
-          setBesttime(updated);
-        }}
-      />
-
-      {besttime[0].description.length > 1 && (
-        <button
-          type="button"
-          className="bg-red-600 text-white px-3 py-1 rounded mt-2"
-          onClick={() => {
-            const updated = [...besttime];
-            updated[0].description.splice(i, 1);
-            setBesttime(updated);
-          }}
-        >
-          Remove
-        </button>
-      )}
-    </div>
-  ))}
-
-  {/* ===== Months Section ===== */}
-  <div className="flex justify-between items-center mt-6 mb-2">
-    <h4 className="text-lg font-semibold">Months</h4>
-    <button
-      type="button"
-      className="bg-green-600 text-white px-4 py-1 rounded"
-      onClick={addMonth}
-    >
-      + Add Month
-    </button>
-  </div>
-
-  {besttime[0].months.map((item, i) => (
-    <div key={i} className="border p-4 bg-gray-50 rounded mt-3">
-      <input
-        className="border p-2 w-full mb-2"
-        placeholder="Month(s)"
-        name="month"
-        value={item.month}
-        onChange={(e) => handleMonthChange(i, e)}
-      />
-
-      <button
-        type="button"
-        className="bg-blue-600 text-white px-3 py-1 rounded mb-2"
-        onClick={() => addMonthContent(i)}
-      >
-        + Add Content
-      </button>
-
-      {item.content.map((c, j) => (
-        <div key={j} className="border p-2 rounded mt-2 bg-white">
-          <select
-            name="type"
-            className="border p-2 w-full mb-2"
-            value={c.type}
-            onChange={(e) => handleMonthContentChange(i, j, e)}
+        {/* ===== Description Blocks ===== */}
+        <div className="flex justify-between items-center mb-2">
+          <h4 className="font-semibold">Description</h4>
+          <button
+            type="button"
+            className="bg-blue-600 text-white px-3 py-1 rounded"
+            onClick={addBesttimeDescription}
           >
-            <option value="header">Header</option>
-            <option value="paragraph">Paragraph</option>
-            <option value="list">List</option>
-          </select>
+            + Add Content
+          </button>
+        </div>
 
-          <textarea
-            className="border p-2 w-full"
-            name="content"
-            placeholder="Month description"
-            value={c.content}
-            onChange={(e) => handleMonthContentChange(i, j, e)}
-          />
+        {besttime[0].description.map((d, i) => (
+          <div key={i} className="border p-3 bg-white mb-3 rounded">
+            <select
+              className="border p-2 w-full mb-2"
+              value={d.type}
+              onChange={(e) => {
+                const updated = [...besttime];
+                updated[0].description[i].type = e.target.value;
+                setBesttime(updated);
+              }}
+            >
+              <option value="header">Header</option>
+              <option value="paragraph">Paragraph</option>
+              <option value="list">List</option>
+            </select>
 
-          {item.content.length > 1 && (
+            <textarea
+              className="border p-2 w-full"
+              placeholder="Description content"
+              value={d.content}
+              onChange={(e) => {
+                const updated = [...besttime];
+                updated[0].description[i].content = e.target.value;
+                setBesttime(updated);
+              }}
+            />
+
+            {besttime[0].description.length > 1 && (
+              <button
+                type="button"
+                className="bg-red-600 text-white px-3 py-1 rounded mt-2"
+                onClick={() => {
+                  const updated = [...besttime];
+                  updated[0].description.splice(i, 1);
+                  setBesttime(updated);
+                }}
+              >
+                Remove
+              </button>
+            )}
+          </div>
+        ))}
+
+        {/* ===== Months Section ===== */}
+        <div className="flex justify-between items-center mt-6 mb-2">
+          <h4 className="text-lg font-semibold">Months</h4>
+          <button
+            type="button"
+            className="bg-green-600 text-white px-4 py-1 rounded"
+            onClick={addMonth}
+          >
+            + Add Month
+          </button>
+        </div>
+
+        {besttime[0].months.map((item, i) => (
+          <div key={i} className="border p-4 bg-gray-50 rounded mt-3">
+            <input
+              className="border p-2 w-full mb-2"
+              placeholder="Month(s)"
+              name="month"
+              value={item.month}
+              onChange={(e) => handleMonthChange(i, e)}
+            />
+
             <button
               type="button"
-              className="bg-red-600 text-white px-3 py-1 rounded mt-2"
-              onClick={() => removeMonthContent(i, j)}
+              className="bg-blue-600 text-white px-3 py-1 rounded mb-2"
+              onClick={() => addMonthContent(i)}
             >
-              Remove Content
+              + Add Content
             </button>
-          )}
+
+            {item.content.map((c, j) => (
+              <div key={j} className="border p-2 rounded mt-2 bg-white">
+                <select
+                  name="type"
+                  className="border p-2 w-full mb-2"
+                  value={c.type}
+                  onChange={(e) => handleMonthContentChange(i, j, e)}
+                >
+                  <option value="header">Header</option>
+                  <option value="paragraph">Paragraph</option>
+                  <option value="list">List</option>
+                </select>
+
+                <textarea
+                  className="border p-2 w-full"
+                  name="content"
+                  placeholder="Month description"
+                  value={c.content}
+                  onChange={(e) => handleMonthContentChange(i, j, e)}
+                />
+
+                {item.content.length > 1 && (
+                  <button
+                    type="button"
+                    className="bg-red-600 text-white px-3 py-1 rounded mt-2"
+                    onClick={() => removeMonthContent(i, j)}
+                  >
+                    Remove Content
+                  </button>
+                )}
+              </div>
+            ))}
+
+            {besttime[0].months.length > 1 && (
+              <button
+                type="button"
+                className="bg-red-600 text-white px-3 py-1 rounded mt-4"
+                onClick={() => removeMonth(i)}
+              >
+                Remove Month
+              </button>
+            )}
+          </div>
+        ))}
+      </section>
+
+      {/* ================= FAQ SECTION ================= */}
+      <section className="col-span-2 mt-6">
+        <div className="flex justify-between">
+          <h3 className="text-xl font-bold">FAQ</h3>
+          <button
+            type="button"
+            onClick={addFaqSection}
+            className="bg-green-600 text-white px-3 py-1 rounded"
+          >
+            + Add Section
+          </button>
         </div>
-      ))}
 
-      {besttime[0].months.length > 1 && (
-        <button
-          type="button"
-          className="bg-red-600 text-white px-3 py-1 rounded mt-4"
-          onClick={() => removeMonth(i)}
-        >
-          Remove Month
-        </button>
-      )}
-    </div>
-  ))}
-</section>
+        {faq.map((section, i) => (
+          <div key={i} className="border p-4 mt-4 bg-gray-50 rounded">
+            <input
+              name="title"
+              placeholder="Section Title"
+              className="border p-2 w-full mb-2"
+              value={section.title}
+              onChange={(e) => handleFaqSection(i, e)}
+            />
 
+            <input
+              name="subtitle"
+              placeholder="Section Subtitle"
+              className="border p-2 w-full mb-2"
+              value={section.subtitle}
+              onChange={(e) => handleFaqSection(i, e)}
+            />
+
+            <button
+              type="button"
+              onClick={() => addFaq(i)}
+              className="bg-blue-600 text-white px-3 py-1 rounded"
+            >
+              + Add Question
+            </button>
+
+            {section.faqs.map((item, j) => (
+              <div key={j} className="border p-3 bg-white mt-3 rounded">
+                <input
+                  className="border p-2 w-full mb-2"
+                  placeholder="Question"
+                  value={item.question}
+                  onChange={(e) => handleFaq(i, j, e)}
+                />
+
+                <button
+                  type="button"
+                  onClick={() => addAnswer(i, j)}
+                  className="bg-purple-600 text-white px-3 py-1 rounded"
+                >
+                  + Add Answer
+                </button>
+
+                {item.answer.map((ans, k) => (
+                  <div key={k} className="border p-2 mt-2 rounded">
+                    <select
+                      name="type"
+                      className="border p-2 w-full mb-2"
+                      value={ans.type}
+                      onChange={(e) => handleAnswer(i, j, k, e)}
+                    >
+                      <option value="header">Header</option>
+                      <option value="paragraph">Paragraph</option>
+                      <option value="list">List</option>
+                    </select>
+
+                    <textarea
+                      name="content"
+                      className="border p-2 w-full"
+                      value={ans.content}
+                      onChange={(e) => handleAnswer(i, j, k, e)}
+                    />
+
+                    <button
+                      type="button"
+                      onClick={() => removeAnswer(i, j, k)}
+                      className="bg-red-600 text-white px-2 py-1 mt-2 rounded"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                ))}
+
+                <button
+                  type="button"
+                  onClick={() => removeFaq(i, j)}
+                  className="bg-red-600 text-white px-3 py-1 mt-3 rounded"
+                >
+                  Remove Question
+                </button>
+              </div>
+            ))}
+
+            <button
+              type="button"
+              onClick={() => removeFaqSection(i)}
+              className="bg-red-700 text-white px-3 py-1 mt-4 rounded"
+            >
+              Remove Section
+            </button>
+          </div>
+        ))}
+      </section>
 
       <button
         type="submit"

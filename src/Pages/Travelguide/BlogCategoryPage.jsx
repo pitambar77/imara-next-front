@@ -9,9 +9,13 @@ import kabanner from "../../assets/kabanner.webp";
 import TailormadeSection from "../Home/TailormadeSection";
 import Banner from "../../components/Banner";
 
+// const API_BASE =
+//   process.env.NEXT_PUBLIC_API_BASE ||
+//   "https://imarabackend.imarakilelenisafaris.com";
+
 const API_BASE =
-  process.env.NEXT_PUBLIC_API_BASE ||
-  "https://imarabackend.imarakilelenisafaris.com";
+  process.env.NEXT_PUBLIC_API_URL
+
 
 const BlogCategoryPage = ({ category }) => {
   const [asSeenItems, setAsSeenItems] = useState([]);
@@ -22,7 +26,7 @@ const BlogCategoryPage = ({ category }) => {
     if (!category) return;
 
     axios
-      .get(`${API_BASE}/api/blog/category/${encodeURIComponent(category)}`)
+      .get(`${API_BASE}/blog/category/${encodeURIComponent(category)}`)
       .then((res) => {
         const blogs = Array.isArray(res.data) ? res.data : [];
 

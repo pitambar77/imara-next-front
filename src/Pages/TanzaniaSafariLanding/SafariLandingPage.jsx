@@ -10,31 +10,18 @@ import TourGroupSection from "./TourGroupSection";
 import WhentoGo from "./WhentoGo";
 import TripHighlights from "./TripHighlights";
 import Featured from "../Home/Featured";
-// import { useState, useEffect } from "react";
-
-// import API from "../../api/axios";
 
 import TailormadeSection from "../Home/TailormadeSection";
 import TripsSection from "../../components/TripsSection";
+import FAQSection from "@/components/FAQSection";
 
 const SafariLandingPage = ({ trips, destination }) => {
+
+  const faqSection = destination?.faq?.[0];
+
+  console.log(destination);
+
   if (!destination) return null;
-  // const [data, setData] = useState(null);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const res = await API.get("/destinationlanding");
-  //       setData(res.data?.[0]); // 👈 IMPORTANT (array → first object)
-  //     } catch (err) {
-  //       console.error("Landing fetch error:", err);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
-  // if (!data) return null; // or loader
 
   return (
     <div>
@@ -62,9 +49,14 @@ const SafariLandingPage = ({ trips, destination }) => {
       <WhentoGo />
 
       <TripHighlights
-        subtitle={"Lorem Ipsum is simply dummy text of the printing"}
+        subtitle={"Explore memorable safari moments, wildlife scenes, and landscapes across Tanzania."}
       />
 
+  {/* <FAQSection
+        title={faqSection.title }
+        subtitle={faqSection.subtitle}
+        faqs={faqSection.faqs}
+      /> */}
       <Featured />
       <TailormadeSection />
     </div>

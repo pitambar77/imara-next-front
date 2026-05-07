@@ -28,3 +28,4 @@ export const soleil = localFont({
   variable: "--font-soleil",
   display: "swap",
 });
+

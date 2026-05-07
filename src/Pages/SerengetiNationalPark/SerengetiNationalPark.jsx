@@ -77,6 +77,9 @@ const SerengetiNationalPark = ({ data, allDestinations, trips }) => {
     })),
   );
 
+  const highlightTitle = highlight?.[0]?.heading || "";
+const highlightSubtitle = highlight?.[0]?.subtitle || "";
+
   /* ================= ADVENTURE ================= */
   const adventureSections = adventure.map((item) => ({
     image: item.image,
@@ -124,7 +127,8 @@ const SerengetiNationalPark = ({ data, allDestinations, trips }) => {
       {/* ================= HIGHLIGHTS ================= */}
       {hightlightTrips.length > 0 && (
         <TripHighlights
-          title={`${destination} Trip Highlights`}
+          title={highlightTitle}
+          subtitle={highlightSubtitle}
           data={hightlightTrips}
         />
       )}
@@ -132,7 +136,8 @@ const SerengetiNationalPark = ({ data, allDestinations, trips }) => {
       {/* ================= BEST TIME ================= */}
       {monthData.length > 0 && (
         <BestTimeToVisitSection
-          title={`Best time to visit ${title}`}
+          title={besttime?.[0]?.title}
+          subtitle={besttime?.[0]?.subtitle}
           staticMonths={monthData}
         />
       )}
@@ -145,7 +150,8 @@ const SerengetiNationalPark = ({ data, allDestinations, trips }) => {
       {/* ================= FAQ ================= */}
       {faqs.length > 0 && (
         <FAQSection
-          title="What travellers ask about our safari tours?"
+          title={`Questions About ${title} `}
+          subtitle={"Helpful answers to help you plan your visit with more confidence."}
           faqs={faqs}
         />
       )}
@@ -153,7 +159,8 @@ const SerengetiNationalPark = ({ data, allDestinations, trips }) => {
       {/* ================= RELATED DESTINATIONS ================= */}
       {relatedDestinations.length > 0 && (
         <TripHighlights
-          title={`More ${destination} Destinations`}
+          title={`More Safari Places to Visit`}
+          subtitle={"Explore nearby safari destinations featuring wildlife, scenery, and a variety of trips."}
           data={relatedDestinations}
         />
       )}

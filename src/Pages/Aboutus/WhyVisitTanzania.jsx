@@ -32,7 +32,7 @@ const WhyVisitTanzania = () => {
       </h2>
 
       <p className="text-center text-[#444] text-[18px] mb-12">
-        Lorem Ipsum is simply dummy text of the printing
+        Safari planning made easier with local care, trusted support, and smooth guidance throughout.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

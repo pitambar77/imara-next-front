@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
-import { FiChevronDown, FiMenu, FiX } from "react-icons/fi";
+import { FiChevronDown, FiMenu, FiSearch, FiX } from "react-icons/fi";
 import { FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -17,8 +17,126 @@ const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+
   const pathname = usePathname();
   const router = useRouter();
+
+  const searchRef = useRef(null);
+
+  const getLink = (item) => {
+    switch (item.type) {
+      case "package":
+        return `/package/${item.slug}`;
+      case "safari":
+        return `/tanzania-safaris/${item.slug}`;
+      case "destination":
+        // ✅ MANUAL ROUTES
+
+        if (item.title === "EXPLORE TANZANIA") {
+          return `/tanzania-destinations`;
+        }
+        return `/`;
+      case "destinationdetails":
+        return `/tanzania-destinations/${item.slug}`;
+      case "travelguide":
+        return `/travel-guide/${item.slug}`;
+      case "travelgroup":
+        return `/travelgroup/${item.slug}`;
+      case "kilimanjaro":
+        if (item.title === "MOUNT KILIMANJARO CLIMBING") {
+          return `/mount-kilimanjaro`;
+        }
+      case "zanzibar":
+        if (item.title === "ZANZIBAR BEACH HOLIDAYS") {
+          return `/zanzibar-beach`;
+        }
+
+      default:
+        return "/";
+    }
+  };
+
+  // const handleSearch = async (value) => {
+  //   setQuery(value);
+
+  //   if (value.length < 2) return;
+
+  //   const res = await fetch(
+  //     `${process.env.NEXT_PUBLIC_API_URL}/search?q=${value}`,
+  //   );
+  //   const data = await res.json();
+
+  //   setResults(data);
+  //   setShowDropdown(true);
+  // };
+
+  //   useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (searchRef.current && !searchRef.current.contains(event.target)) {
+  //       setShowDropdown(false); // ✅ ONLY hide dropdown
+  //     }
+  //   };
+
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (query.length < 2) return;
+
+    router.push(`/search?q=${query}`);
+    setShowDropdown(false);
+  };
+
+  const handleSearch = async (value) => {
+    setQuery(value);
+
+    // ✅ FIX: clear everything when input is empty
+    if (value.length < 2) {
+      setResults([]); // clear old data
+      setShowDropdown(false); // close dropdown
+      return;
+    }
+
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/search?q=${value}`,
+    );
+    const data = await res.json();
+
+    setResults(data);
+    setShowDropdown(true);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // small delay to avoid React event conflict
+      setTimeout(() => {
+        if (searchRef.current && !searchRef.current.contains(event.target)) {
+          setShowDropdown(false);
+        }
+      }, 0);
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (query.length < 2) {
+      setResults([]);
+      setShowDropdown(false);
+    }
+  }, [query]);
 
   const isActive = (path) => pathname === path;
 
@@ -194,14 +312,90 @@ const Navbar = () => {
 
           {/* Right Section */}
           <div className="hidden xl:flex items-center space-x-4">
-            <a
+            <div ref={searchRef} className="relative">
+              {/* <input
+                type="text"
+                placeholder="Find and book your adventure"
+                value={query}
+                // onFocus={() => results.length > 0 && setShowDropdown(true)}
+                onFocus={() => {
+                  if (query.length >= 2 && results.length > 0) {
+                    setShowDropdown(true);
+                  }
+                }}
+                onChange={(e) => handleSearch(e.target.value)}
+                className="border border-[#d97129] px-4 py-2 rounded-full w-full
+             focus:outline-none focus:ring-1 focus:ring-[#d97129] focus:border-[#d97129]"
+              /> */}
+
+              <form onSubmit={handleSubmit} className="relative w-full">
+  <input
+    type="text"
+    placeholder="Find and book your ...."
+    value={query}
+    onFocus={() => {
+      if (query.length >= 2 && results.length > 0) {
+        setShowDropdown(true);
+      }
+    }}
+    onChange={(e) => handleSearch(e.target.value)}
+    className="border border-[#d97129] px-4 pr-10 py-2 rounded-full w-full
+    focus:outline-none focus:ring-1 focus:ring-[#d97129] focus:border-[#d97129]"
+  />
+
+  {/* 🔍 Search Icon Button */}
+  <button
+  type="submit"
+  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#e08442] rounded-full  "
+>
+  <FiSearch size={22} />
+</button>
+</form>
+
+              {/* <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  placeholder="Find and book your adventure"
+                  value={query}
+                  onFocus={() => {
+                    if (query.length >= 2 && results.length > 0) {
+                      setShowDropdown(true);
+                    }
+                  }}
+                  onChange={(e) => handleSearch(e.target.value)}
+                  className="border border-[#d97129] px-4 py-2 rounded-full w-full
+      focus:outline-none focus:ring-1 focus:ring-[#d97129] focus:border-[#d97129]"
+                />
+              </form> */}
+
+              {showDropdown && results.length > 0 && (
+                <div className=" absolute right-0 mt-3 w-[600px] max-h-[400px] overflow-y-auto border border-[#d97129]  bg-white shadow-xl rounded-md p-6 z-50">
+                  {results.map((item, i) => (
+                    // <div key={i} className="p-2 hover:bg-gray-100">
+                    //   {item.title} ({item.type})
+                    // </div>
+                    <Link
+                      key={i}
+                      href={getLink(item)}
+                      onClick={() => setShowDropdown(false)}
+                    >
+                      <div className="p-2 hover:bg-gray-100 cursor-pointer">
+                        {item.title} ({item.type})
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* <a
               href="https://wa.me/255748002696"
               target="_blank"
               rel="noopener noreferrer"
               className="border border-[#d97129] rounded-full p-2"
             >
               <FaWhatsapp className="text-[#d97129]" size={22} />
-            </a>
+            </a> */}
 
             <PrimaryButton href="/tailor-made-form">Plan A Trip</PrimaryButton>
           </div>

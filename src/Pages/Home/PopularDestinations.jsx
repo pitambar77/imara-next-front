@@ -82,19 +82,18 @@ const PopularDestinations = () => {
   return (
     <section className="w-full py-8 md:py-16 bg-white">
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
-
         {/* Title */}
         <h2 className="text-3xl text-center mb-3 capitalize">
           Tanzania’s Most Popular Destinations
         </h2>
 
         <p className="text-center text-[#444] text-[18px] mb-12">
-          Lorem Ipsum is simply dummy text of the printing
+          Explore iconic safari places chosen by travelers planning memorable
+          wildlife holidays.
         </p>
 
         {/* Destination Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-
           {destinations.map((dest) => (
             <Link
               key={dest.id}
@@ -102,7 +101,6 @@ const PopularDestinations = () => {
               title={dest.name}
               className="relative w-full h-56 md:h-64 rounded-md overflow-hidden group cursor-pointer"
             >
-
               <Image
                 src={dest.image}
                 alt={dest.name}
@@ -118,10 +116,8 @@ const PopularDestinations = () => {
                   {dest.name}
                 </span>
               </div>
-
             </Link>
           ))}
-
         </div>
 
         {/* Button */}
@@ -130,7 +126,6 @@ const PopularDestinations = () => {
             View All Destinations
           </PrimaryButton>
         </div>
-
       </div>
     </section>
   );

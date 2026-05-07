@@ -8,32 +8,33 @@ const SafariExtrasSection = () => {
       id: 1,
       icon: <FaHandHolding className="text-[#d87028] text-4xl" />,
       number: "60",
-      title: "Designed for Viewing",
+      title: "Pop-Up Roofs",
       description:
-        "Built so travellers get wide visibility, stable movement, and uninterrupted time to observe animals across open plains and woodland areas.",
+        "Enjoy clearer wildlife views from raised roof space, giving travelers better angles for photography, game viewing, and quiet moments across open plains and park tracks.",
     },
     {
       id: 2,
       icon: <FaHandHoldingHeart className="text-[#d87028] text-4xl" />,
-      title: "Comfort for Long Drives",
+      title: "Strong Road Performance",
       description:
-        "Seats, spacing, and ventilation systems help reduce fatigue during full-day drives. You stay comfortable even as the terrain shifts from smooth stretches to rugged tracks across famous parks and hidden pockets of wilderness.",
+        "Safari vehicles handle rough tracks, muddy sections, and long park drives with better stability, helping guests travel safely through changing terrain and remote wildlife areas.",
     },
     {
       id: 3,
       icon: <FaHandHoldingHeart className="text-[#d87028] text-4xl" />,
-      title: "Reliable on Tough Roads",
+      title: "Spacious Travel Comfort",
       description:
-        "Vehicles maintain grip, balance, and control on uneven surfaces that are common in national parks. This reliability allows travellers to enjoy the scenery without worrying about the challenges of unpredictable road conditions.",
+        "Wide seats, luggage space, charging points, and good window access make longer safari days easier, especially during early starts, full-day drives, and multi-park trips.",
     },
   ];
 
   return (
     <section className="bg-[#fedec7] py-16 px-6 md:px-12 lg:px-20 text-center">
       {/* Heading */}
-      <h2 className="text-[22px] md:text-3xl capitalize font-extrabold text-[#1a1a1a] mb-12">
+      <h2 className="text-[22px] md:text-3xl capitalize font-extrabold text-[#1a1a1a] mb-3">
         Tanzania Safari Vehicle Features
       </h2>
+      <p className='mb-12 text-[18px] text-[#444]'>Built for Comfortable and Reliable Safari Travel</p>
 
       {/* Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">

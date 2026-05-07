@@ -10,6 +10,7 @@ export default {
       fontFamily: {
         soleil: ["Soleil", "sans-serif"],
         acumin: ["AcuminPro", "sans-serif"],
+        cormorant: ["var(--font-cormorant)"],
       },
     },
   },

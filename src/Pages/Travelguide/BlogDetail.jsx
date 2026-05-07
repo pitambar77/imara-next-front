@@ -11,6 +11,7 @@ import BookWithConfidence from "../Home/BookWithConfidence";
 import Featured from "../Home/Featured";
 
 import TailormadeSection from "../Home/TailormadeSection";
+import FAQSection from "@/components/FAQSection";
 
 const BlogDetail = ({ slug }) => {
   const [blog, setBlog] = useState(null);
@@ -88,6 +89,9 @@ const BlogDetail = ({ slug }) => {
 
   /* ================= DYNAMIC SEO ================= */
 
+  const faqSection = blog?.faq?.[0];
+
+ 
 
   if (loading) return <p className="p-6">Loading...</p>;
   if (!blog) return <p className="p-6">No blog found</p>;
@@ -95,6 +99,14 @@ const BlogDetail = ({ slug }) => {
   return (
     <div>
       <TravelGuideDetails blog={blog} />
+
+      {faqSection && (
+        <FAQSection
+          title={faqSection.title}
+          subtitle={faqSection.subtitle}
+          faqs={faqSection.faqs}
+        />
+      )}
 
       {relatedBlogs.length > 0 && (
         <TripHighlights

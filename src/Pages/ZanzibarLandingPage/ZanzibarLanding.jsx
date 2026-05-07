@@ -19,8 +19,6 @@ import TripsSection from "../../components/TripsSection";
 import Banner from "../../components/Banner";
 
 const ZanzibarLanding = ({ trips, data }) => {
-
-
   if (!data) {
     return <p className="p-10 text-center">No data found</p>;
   }
@@ -113,14 +111,15 @@ const ZanzibarLanding = ({ trips, data }) => {
       {highlightTrips.length > 0 && (
         <TripHighlights
           title={`${destination} Trip Highlights`}
+          subtitle="Explore beach moments, island culture, spice tours, and ocean adventures."
           data={highlightTrips}
-          subtitle="Lorem Ipsum is simply dummy text of the printing"
         />
       )}
 
       {monthData.length > 0 && (
         <BestTimeToVisitSection
           title={`Best time to visit ${title}`}
+          subtitle="Plan your beach escape with clear seasonal tips, travel insight, and relaxed island guidance."
           staticMonths={monthData}
         />
       )}
@@ -134,6 +133,7 @@ const ZanzibarLanding = ({ trips, data }) => {
       {faqs.length > 0 && (
         <FAQSection
           title="What travellers ask about our safari tours?"
+          subtitle={"Helpful answers for planning relaxed beach stays and island experiences."}
           faqs={faqs}
         />
       )}

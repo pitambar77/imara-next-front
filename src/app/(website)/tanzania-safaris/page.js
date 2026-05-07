@@ -135,7 +135,7 @@ export default async function Page() {
   ]);
 
   const landingData = await landingRes.json();
-  const landing = landingData?.[0];
+  const landing = landingData;
 
   let seo = null;
 
@@ -160,7 +160,7 @@ export default async function Page() {
         />
       )}
 
-      <SafariDestiLanding trips={trips} />
+      <SafariDestiLanding trips={trips} data={landing} />
     </>
   );
 }

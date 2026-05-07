@@ -16,8 +16,12 @@ import TailormadeSection from "../Home/TailormadeSection";
 // import TripsSection from "../../components/TripsSection";
 import TripsWithFilters from "../KilimanjaroLanding/TripsWithFilters";
 import Banner from "../../components/Banner";
+import FAQSection from "@/components/FAQSection";
 
-const SafariDestiLanding = ({ trips }) => {
+const SafariDestiLanding = ({ trips,data }) => {
+
+  const faqSection = data?.faq?.[0];
+
   return (
     <div>
       <Banner image={banner} title={"TANZANIA SAFARI"} />
@@ -55,6 +59,13 @@ const SafariDestiLanding = ({ trips }) => {
       <TripHighlights
         subtitle={"Lorem Ipsum is simply dummy text of the printing"}
       />
+
+{/* <FAQSection
+        title={faqSection.title}
+        subtitle={faqSection.subtitle}
+        faqs={faqSection.faqs}
+      /> */}
+
       <Featured />
       <TailormadeSection />
     </div>

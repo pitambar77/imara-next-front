@@ -209,12 +209,14 @@ const AboutUs = ({ aboutData }) => {
       {/* <WhyVisitTanzania/> */}
       <WhyVisitSection
         title={" Why visit Tanzania with Imara Kileleni Safaris?"}
+        subtitle={"Discover why local planning makes every Tanzania Safari feel smoother."}
         cards={data}
       />
       <ReviewsSection />
 
       <FAQSection
-        title=" What do travellers ask about our Tanzania safari tours?"
+        title=" Questions People Ask About Us"
+        subtitle={"Helpful answers about our values, planning style, and travel support."}
         faqs={safariFaqs}
       />
       <Featured />

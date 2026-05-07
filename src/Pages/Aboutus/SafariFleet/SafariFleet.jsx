@@ -98,7 +98,7 @@ const SafariFleet = () => {
       <SafariExtrasSection />
 
       {/* ================= FAQ ================= */}
-      <FAQSection title="Wanna know how we crunched the number?" faqs={faqs} />
+      <FAQSection title="Questions About Our Safari Fleet" subtitle={"Clear answers about safari vehicles, comfort, safety, and travel features."} faqs={faqs} />
 
       <BookWithConfidence />
       <Featured />

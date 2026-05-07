@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AdventureTour from "../../components/AdventureTour";
 import AllyshipCommitment from "./AllyshipCommitment";
-// import WhyVisitSection from "../../components/WhyVisitSection";
 import BookWithConfidence from "../Home/BookWithConfidence";
 import Featured from "../Home/Featured";
 import WhyVisitTanzania from "../Aboutus/WhyVisitTanzania";
@@ -81,7 +80,7 @@ const Sustanbility = () => {
       />
 
       {/* ================= ALLYSHIP ================= */}
-      <AllyshipCommitment data={effective} />
+      <AllyshipCommitment data={effective} subtitle="Responsible tourism practices that support nature, communities, and future travel." />
 
       {/* ================= WHY VISIT ================= */}
       {/* <WhyVisitSection

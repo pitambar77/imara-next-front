@@ -30,6 +30,10 @@ const Sidebar = () => {
     { name: "Fleet", icon: <FaHotel />, path: "/dashboard/safari-fleet/seo" },
     { name: "Home Page", icon: <FaHotel />, path: "/dashboard/homepage/seo" },
     { name: "Safari Landing", icon: <FaHotel />, path: "/dashboard/safari-landing/seo" },
+    { name: "Contact us page", icon: <FaHotel />, path: "/dashboard/contactus-page/seo" },
+    
+
+
   ];
 
   return (

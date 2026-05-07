@@ -1,0 +1,230 @@
+"use client";
+import { useInView } from "react-intersection-observer";
+import React, { useEffect, useMemo, useState, useRef } from "react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import { FaArrowLeftLong, FaArrowRight } from "react-icons/fa6";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import TripCard from "@/components/TripCard";
+import PrimaryButton from "@/components/PrimaryButton";
+import TripQuickViewModal from "@/components/TripQuickViewModal";
+
+const PackageSection = ({
+  title,
+  subtitle,
+  trips = [],
+  destination,
+  layout = "grid",
+  bg = "bg-white",
+  btnlink = "",
+  btnname = "",
+  showArrows = true,
+  currentTripId = null,
+}) => {
+  // const [trips, setTrips] = useState([]);
+  const [selectedTrip, setSelectedTrip] = useState(null);
+  const [isClosing, setIsClosing] = useState(false);
+  // const [loading, setLoading] = useState(true);
+
+  const swiperNavPrevRef = useRef(null);
+  const swiperNavNextRef = useRef(null);
+
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    rootMargin: "200px",
+  });
+
+  // const filteredTrips = useMemo(() => {
+  //   return trips.filter(
+  //     (trip) =>
+  //       trip.destination &&
+  //       trip.destination.trim().toLowerCase() === destination.toLowerCase() &&
+  //       trip._id !== currentTripId,
+  //   );
+  // }, [trips, destination, currentTripId]);
+
+  const normalize = (str = "") => str.trim().toLowerCase();
+
+  const filteredTrips = useMemo(() => {
+    if (!destination) return [];
+
+    return trips.filter((trip) => {
+      const tripDest = normalize(trip.destination);
+      const sectionDest = normalize(destination);
+
+      return tripDest.includes(sectionDest) && trip._id !== currentTripId;
+    });
+  }, [trips, destination, currentTripId]);
+
+  /* ================= MODAL ================= */
+
+  const handleCloseModal = () => {
+    setIsClosing(true);
+
+    setTimeout(() => {
+      setSelectedTrip(null);
+      setIsClosing(false);
+    }, 300);
+  };
+
+  useEffect(() => {
+    document.body.style.overflow = selectedTrip ? "hidden" : "auto";
+    return () => (document.body.style.overflow = "auto");
+  }, [selectedTrip]);
+
+  return (
+    <section className={`w-full py-4 ${bg}`}>
+      <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0  ">
+        {/* ================= HEADER ================= */}
+
+        {title && (
+          <h2 className="text-2xl md:text-3xl text-center font-bold w-full text-[#1a1a1a] capitalize mb-3">
+            {title}
+          </h2>
+        )}
+
+        {(subtitle || layout === "slider") && (
+          <div className="relative flex items-center justify-center mb-10">
+            {subtitle && (
+              <p className="text-center text-[#444] text-[18px] ">{subtitle}</p>
+            )}
+
+            {layout === "slider" && showArrows && (
+              <div className="hidden md:flex absolute right-0 gap-3">
+                <button
+                  ref={swiperNavPrevRef}
+                  className="bg-white border border-gray-300 hover:border-[#d97129c4] hover:text-[#d97129c4] duration-300 rounded-full p-3 shadow-sm cursor-pointer"
+                >
+                  <FaArrowLeftLong />
+                </button>
+
+                <button
+                  ref={swiperNavNextRef}
+                  className="bg-white border border-gray-300 hover:border-[#d97129c4] hover:text-[#d97129c4] duration-300 rounded-full p-3 shadow-sm cursor-pointer"
+                >
+                  <FaArrowRight />
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* ================= GRID ================= */}
+        <div ref={ref}>
+          {layout === "grid" && inView && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {filteredTrips.map((trip) => (
+                <TripCard
+                  key={trip._id}
+                  trip={{
+                    id: trip._id,
+                    image: trip.landingImage || trip.image,
+                    title: trip.title,
+                    days: trip.accomoDay,
+                    country: "Tanzania",
+                    discountedPrice: trip.price,
+                    description: trip.description,
+                  }}
+                  onQuickView={() => setSelectedTrip(trip)}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* ================= SLIDER ================= */}
+
+        {layout === "slider" && (
+          <>
+            <Swiper
+              modules={[Navigation, Pagination]}
+              spaceBetween={16}
+              slidesPerView={1.1}
+              pagination={{ clickable: true, el: ".custom-pagination" }}
+              breakpoints={{
+                640: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+                1280: { slidesPerView: 3 },
+              }}
+              onBeforeInit={(swiper) => {
+                swiper.params.navigation.prevEl = swiperNavPrevRef.current;
+                swiper.params.navigation.nextEl = swiperNavNextRef.current;
+                swiper.params.pagination.el = ".custom-pagination";
+              }}
+              navigation={
+                showArrows
+                  ? {
+                      prevEl: swiperNavPrevRef.current,
+                      nextEl: swiperNavNextRef.current,
+                    }
+                  : false
+              }
+              className="pb-12"
+            >
+              {filteredTrips.map((trip) => (
+                <SwiperSlide key={trip._id}>
+                  <TripCard
+                    trip={{
+                      id: trip._id,
+                      image: trip.landingImage || trip.image,
+                      title: trip.title,
+                      days: trip.accomoDay,
+                      country: "Tanzania",
+                      discountedPrice: trip.price,
+                      description: trip.description,
+                    }}
+                    onQuickView={() => setSelectedTrip(trip)}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            {/* PAGINATION */}
+            <div
+              className="custom-pagination flex justify-center my-4"
+              style={{
+                position: "relative",
+                bottom: "0px",
+                textAlign: "center",
+              }}
+            ></div>
+
+            {/* PAGINATION STYLE */}
+            <style>
+              {`
+              .custom-pagination .swiper-pagination-bullet-active {
+                background-color: #d97129 !important;
+                width: 8px !important;
+                height: 8px !important;
+                transform: scale(1.3);
+                transition: all 0.35s ease;
+              }
+            `}
+            </style>
+          </>
+        )}
+
+        {/* {btnname && btnlink && (
+          <div className="flex justify-center mt-4">
+            <PrimaryButton href={btnlink}>{btnname}</PrimaryButton>
+          </div>
+        )} */}
+      </div>
+
+      {/* ================= MODAL ================= */}
+
+      <TripQuickViewModal
+        trip={selectedTrip}
+        isClosing={isClosing}
+        onClose={handleCloseModal}
+      />
+    </section>
+  );
+};
+
+export default PackageSection;

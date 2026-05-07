@@ -1,12 +1,11 @@
+"use client";
 import React, { useMemo, useState } from "react";
 import axios from "axios";
-import { useRouter, useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const API_BASE =
-  process.env.NEXT_PUBLIC_API_BASE ||
-  "https://imarabackend.imarakilelenisafaris.com";
+const API_BASE ="http://localhost:8000";
 
 const SECTION_TYPES = [
   { type: "h1", label: "Heading (H1)" },
@@ -72,7 +71,7 @@ function ListEditor({ items, onChange }) {
     list.map((item) =>
       item.id === id
         ? { ...item, ...patch }
-        : { ...item, children: updateTree(item.children, id, patch) }
+        : { ...item, children: updateTree(item.children, id, patch) },
     );
 
   const removeFromTree = (list, id) =>
@@ -94,7 +93,7 @@ function ListEditor({ items, onChange }) {
           ...findItem(items, id).children,
           { id: uuidv4(), text: "", children: [] },
         ],
-      })
+      }),
     );
   };
 
@@ -164,10 +163,8 @@ function findItem(items, id) {
   }
 }
 
-export default function BlogForm() {
-  const { id } = useParams(); // check if editing
-
- const router = useRouter();
+export default function BlogForm({ id }) {
+  const router = useRouter();
 
   const [title, setTitle] = useState("");
   const [subtitle, setSubTitle] = useState("");
@@ -184,12 +181,30 @@ export default function BlogForm() {
   const [thumbnail, setThumbnail] = useState(null);
   // const [thumbnailPreview, setThumbnailPreview] = useState("");
 
+  const [faq, setFaq] = useState([
+    {
+      title: "",
+      subtitle: "",
+      faqs: [
+        {
+          question: "",
+          answer: [{ type: "paragraph", content: "" }],
+        },
+      ],
+    },
+  ]);
+
   // Auto-generate slug from title if slug is empty or matches previous pattern
   const autoSlug = useMemo(() => slugify(title), [title]);
 
   // 🔹 load blog when editing
   useEffect(() => {
-    if (!id) return;
+    if (!id) {
+      console.log("❌ No ID");
+      return;
+    }
+
+    console.log("✅ Fetching ID:", id);
     axios
       .get(`${API_BASE}/api/blog/${id}`)
       .then((res) => {
@@ -205,7 +220,46 @@ export default function BlogForm() {
             id: uuidv4(), // 🔥 critical fix
             ...section,
             items: section.items || [],
-          }))
+          })),
+        );
+        setFaq(
+          b.faq?.length
+            ? b.faq.map((section) => ({
+                title: section.title || "",
+                subtitle: section.subtitle || "",
+                faqs: (section.faqs || []).map((faq) => ({
+                  question: faq.question || "",
+
+                  // 🔥 FIX HERE
+                  answer: (faq.answer || faq.answerBlocks || []).map(
+                    (block) => {
+                      if (block.type === "list") {
+                        return {
+                          type: "list",
+                          content: block.items || [],
+                        };
+                      }
+
+                      return {
+                        type: block.type === "heading" ? "header" : block.type,
+                        content: block.content || block.text || "",
+                      };
+                    },
+                  ),
+                })),
+              }))
+            : [
+                {
+                  title: "",
+                  subtitle: "",
+                  faqs: [
+                    {
+                      question: "",
+                      answer: [{ type: "paragraph", content: "" }],
+                    },
+                  ],
+                },
+              ],
         );
 
         // if (b.thumbnail) setThumbnailPreview(`${API_BASE}${b.thumbnail}`);
@@ -219,7 +273,7 @@ export default function BlogForm() {
 
   function updateSection(id, patch) {
     setSections((prev) =>
-      prev.map((s) => (s.id === id ? { ...s, ...patch } : s))
+      prev.map((s) => (s.id === id ? { ...s, ...patch } : s)),
     );
   }
 
@@ -253,34 +307,67 @@ export default function BlogForm() {
     }
   }
 
-  // async function handleSave(e) {
-  //   e.preventDefault();
-  //   setSaving(true);
-  //   setError("");
-  //   setSuccess("");
+  // SECTION
+  const addFaqSection = () => {
+    setFaq([...faq, { title: "", subtitle: "", faqs: [] }]);
+  };
 
-  //   const body = {
-  //     title: title.trim(),
-  //     slug: (slug || autoSlug).trim(),
-  //     sections: sections.map(({ id, ...rest }) => rest),
-  //   };
+  const removeFaqSection = (i) => {
+    const updated = [...faq];
+    updated.splice(i, 1);
+    setFaq(updated);
+  };
 
-  //   try {
-  //     const { data } = await axios.post(`${API_BASE}/api/blog`, body);
-  //     setSuccess(`Saved ✓ Post ID: ${data._id}`);
-  //     setSections([]);
-  //     setTitle("");
-  //     setSlug("");
+  const handleFaqSection = (i, e) => {
+    const updated = [...faq];
+    updated[i][e.target.name] = e.target.value;
+    setFaq(updated);
+  };
 
-  //     navigate("/blogs");
+  // QUESTION
+  const addFaq = (sectionIndex) => {
+    const updated = [...faq];
+    updated[sectionIndex].faqs.push({
+      question: "",
+      answer: [{ type: "paragraph", content: "" }],
+    });
+    setFaq(updated);
+  };
 
-  //   } catch (e) {
-  //     console.error(e);
-  //     setError(e?.response?.data?.error || "Save failed");
-  //   } finally {
-  //     setSaving(false);
-  //   }
-  // }
+  const handleFaq = (sectionIndex, faqIndex, e) => {
+    const updated = [...faq];
+    updated[sectionIndex].faqs[faqIndex].question = e.target.value;
+    setFaq(updated);
+  };
+
+  const removeFaq = (sectionIndex, faqIndex) => {
+    const updated = [...faq];
+    updated[sectionIndex].faqs.splice(faqIndex, 1);
+    setFaq(updated);
+  };
+
+  // ANSWER
+  const addAnswer = (sectionIndex, faqIndex) => {
+    const updated = [...faq];
+    updated[sectionIndex].faqs[faqIndex].answer.push({
+      type: "paragraph",
+      content: "",
+    });
+    setFaq(updated);
+  };
+
+  const handleAnswer = (sectionIndex, faqIndex, ansIndex, e) => {
+    const updated = [...faq];
+    updated[sectionIndex].faqs[faqIndex].answer[ansIndex][e.target.name] =
+      e.target.value;
+    setFaq(updated);
+  };
+
+  const removeAnswer = (sectionIndex, faqIndex, ansIndex) => {
+    const updated = [...faq];
+    updated[sectionIndex].faqs[faqIndex].answer.splice(ansIndex, 1);
+    setFaq(updated);
+  };
 
   async function handleSave(e) {
     e.preventDefault();
@@ -298,13 +385,10 @@ export default function BlogForm() {
       form.append("keywords", keywords);
       form.append(
         "sections",
-        JSON.stringify(sections.map(({ id, ...rest }) => rest))
+        JSON.stringify(sections.map(({ id, ...rest }) => rest)),
       );
+      form.append("faq", JSON.stringify(faq));
       if (thumbnail) form.append("thumbnail", thumbnail);
-
-      // const { data } = await axios.post(`${API_BASE}/api/blog`, form, {
-      //   headers: { "Content-Type": "multipart/form-data" },
-      // });
 
       if (id) {
         await axios.put(`${API_BASE}/api/blog/${id}`, form, {
@@ -323,7 +407,7 @@ export default function BlogForm() {
       setTitle("");
       setSubTitle("");
       setSlug("");
-     router.push("/dashboard/travelguide");
+      router.push("/dashboard/travelguide");
     } catch (e) {
       console.error(e);
       setError(e?.response?.data?.error || "Save failed");
@@ -382,16 +466,6 @@ export default function BlogForm() {
               className="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
-          {/* <div>
-            <label className="block text-sm font-medium text-gray-700">Slug</label>
-            <input
-              value={slug}
-              onChange={(e) => setSlug(slugify(e.target.value))}
-              placeholder={autoSlug}
-              className="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <p className="text-xs text-gray-500 mt-1">Leave empty to auto-generate from title → <span className="font-mono">{autoSlug}</span></p>
-          </div> */}
         </div>
 
         {error && (
@@ -425,8 +499,6 @@ export default function BlogForm() {
         </div>
 
         {/* Add section toolbar (STICKY) */}
-
-
 
         {/* Category */}
         {/* <div className=" mt-8">
@@ -539,8 +611,8 @@ export default function BlogForm() {
                         s.type === "paragraph"
                           ? "Write paragraph text..."
                           : s.type === "quote"
-                          ? "Write the quote..."
-                          : `Write ${s.type.toUpperCase()} text...`
+                            ? "Write the quote..."
+                            : `Write ${s.type.toUpperCase()} text...`
                       }
                       className="w-full rounded-xl border px-3 py-2"
                     />
@@ -595,53 +667,6 @@ export default function BlogForm() {
                       </div>
                     </div>
                   )}
-
-                  {/* {s.type === "list" && (
-                    <div>
-                      <label className="block text-sm text-gray-700">
-                        List Items
-                      </label>
-                      <div className="space-y-2 mt-2">
-                        {(s.items || []).map((item, i) => (
-                          <div key={i} className="flex gap-2">
-                            <input
-                              value={item}
-                              onChange={(e) => {
-                                const items = [...(s.items || [])];
-                                items[i] = e.target.value;
-                                updateSection(s.id, { items });
-                              }}
-                              placeholder={`Item ${i + 1}`}
-                              className="flex-1 rounded-xl border px-3 py-2"
-                            />
-                            <button
-                              type="button"
-                              onClick={() => {
-                                const items = (s.items || []).filter(
-                                  (_, x) => x !== i
-                                );
-                                updateSection(s.id, { items });
-                              }}
-                              className="px-3 py-2 rounded-xl border text-red-600"
-                            >
-                              Remove
-                            </button>
-                          </div>
-                        ))}
-                        <button
-                          type="button"
-                          onClick={() =>
-                            updateSection(s.id, {
-                              items: [...(s.items || []), ""],
-                            })
-                          }
-                          className="px-3 py-2 rounded-xl border"
-                        >
-                          + Add item
-                        </button>
-                      </div>
-                    </div>
-                  )} */}
 
                   {s.type === "list" && (
                     <div>
@@ -721,6 +746,113 @@ export default function BlogForm() {
         ) : (
           <Preview title={title} slug={slug || autoSlug} sections={sections} />
         )}
+
+        {/* ================= FAQ SECTION ================= */}
+        <div className="mt-10">
+          <div className="flex justify-between">
+            <h3 className="text-xl font-bold">FAQ</h3>
+            <button
+              type="button"
+              onClick={addFaqSection}
+              className="bg-green-600 text-white px-3 py-1 rounded"
+            >
+              + Add Section
+            </button>
+          </div>
+
+          {faq.map((section, i) => (
+            <div key={i} className="border p-4 mt-4 bg-gray-50 rounded">
+              <input
+                name="title"
+                placeholder="Section Title"
+                className="border p-2 w-full mb-2"
+                value={section.title}
+                onChange={(e) => handleFaqSection(i, e)}
+              />
+
+              <input
+                name="subtitle"
+                placeholder="Section Subtitle"
+                className="border p-2 w-full mb-2"
+                value={section.subtitle}
+                onChange={(e) => handleFaqSection(i, e)}
+              />
+
+              <button
+                type="button"
+                onClick={() => addFaq(i)}
+                className="bg-blue-600 text-white px-3 py-1 rounded"
+              >
+                + Add Question
+              </button>
+
+              {section.faqs.map((item, j) => (
+                <div key={j} className="border p-3 bg-white mt-3 rounded">
+                  <input
+                    className="border p-2 w-full mb-2"
+                    placeholder="Question"
+                    value={item.question}
+                    onChange={(e) => handleFaq(i, j, e)}
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => addAnswer(i, j)}
+                    className="bg-purple-600 text-white px-3 py-1 rounded"
+                  >
+                    + Add Answer
+                  </button>
+
+                  {item.answer.map((ans, k) => (
+                    <div key={k} className="border p-2 mt-2 rounded">
+                      <select
+                        name="type"
+                        className="border p-2 w-full mb-2"
+                        value={ans.type}
+                        onChange={(e) => handleAnswer(i, j, k, e)}
+                      >
+                        <option value="header">Header</option>
+                        <option value="paragraph">Paragraph</option>
+                        <option value="list">List</option>
+                      </select>
+
+                      <textarea
+                        name="content"
+                        className="border p-2 w-full"
+                        value={ans.content}
+                        onChange={(e) => handleAnswer(i, j, k, e)}
+                      />
+
+                      <button
+                        type="button"
+                        onClick={() => removeAnswer(i, j, k)}
+                        className="bg-red-600 text-white px-2 py-1 mt-2 rounded"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  ))}
+
+                  <button
+                    type="button"
+                    onClick={() => removeFaq(i, j)}
+                    className="bg-red-600 text-white px-3 py-1 mt-3 rounded"
+                  >
+                    Remove Question
+                  </button>
+                </div>
+              ))}
+
+              <button
+                type="button"
+                onClick={() => removeFaqSection(i)}
+                className="bg-red-700 text-white px-3 py-1 mt-4 rounded"
+              >
+                Remove Section
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
