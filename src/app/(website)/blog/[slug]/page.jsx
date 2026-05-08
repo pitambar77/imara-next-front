@@ -53,6 +53,7 @@
 //   return <BlogDetails blog={blog} trips={trips} />;
 // }
 
+export const dynamic = "force-dynamic";
 import BlogDetails from "@/Pages/Blog/BlogDetails/BlogDetails";
 import { getTrips } from "@/lib/getTrips";
 
@@ -110,7 +111,7 @@ export default async function Page({ params }) {
     return (
       <BlogDetails blog={formattedBlog} trips={trips} relatedBlogs={relatedBlogs} />
     );
-  } catch (err) {x
+  } catch (err) {
     console.error("Page error:", err);
     return <div>Something went wrong</div>;x
   }
