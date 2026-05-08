@@ -53,7 +53,7 @@ const SerengetiMigrationTabs = ({ data = [] }) => {
                 ${
                   activeTab === index
                     ? "bg-black text-white"
-                    : "bg-[#d87028] text-[#222] hover:bg-orange-300"
+                    : "bg-[#d87028] text-white hover:bg-orange-300"
                 }`}
             >
               <span className="flex items-center gap-3">

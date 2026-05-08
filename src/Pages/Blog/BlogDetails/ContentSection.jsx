@@ -250,16 +250,30 @@ const ContentSection = ({ blog, trips }) => {
             //   );
 
             case "image":
+              if (!s.image?.url) return null;
+
               return (
                 <Image
                   key={i}
-                  src={`${s.image?.url}`}
-                  alt={s.image?.alt || ""}
+                  src={s.image.url}
+                  alt={s.image?.alt || "Blog Image"}
                   width={1200}
                   height={480}
                   className="w-full h-56 md:h-[480px] rounded-md shadow-md object-cover mb-8"
                 />
               );
+
+            // case "image":
+            //   return (
+            //     <Image
+            //       key={i}
+            //       src={`${s.image?.url}`}
+            //       alt={s.image?.alt }
+            //       width={1200}
+            //       height={480}
+            //       className="w-full h-56 md:h-[480px] rounded-md shadow-md object-cover mb-8"
+            //     />
+            //   );
 
             case "imageGrid":
               return (
