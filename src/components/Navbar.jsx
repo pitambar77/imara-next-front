@@ -362,13 +362,13 @@ const Navbar = () => {
         {
           title: "Kilimanjaro Climbing",
           desc: "Explore Tanzania in style",
-          image: "/megamenu-kili.webp",
+          image: "/mount-mega.webp",
           path: "/mount-kilimanjaro",
         },
         {
           title: "Klimanjaro Guide",
           desc: "Witness the Big Five",
-          image: "/travelguide-megamenu.webp",
+          image: "/guide-megamenu.webp",
           path: "/kilimanjaro-travel-guide",
         },
       ],
@@ -655,8 +655,8 @@ const Navbar = () => {
                               <Image
                                 src={
                                   item.title === "DESTINATIONS"
-                                    ? "/destination-megamenu.webp"
-                                    : "/safari-megamenu.jpg"
+                                    ? "/dest-megamenu.webp"
+                                    : "/safa-megamenu.webp"
                                 }
                                 alt={
                                   item.title === "DESTINATIONS"
