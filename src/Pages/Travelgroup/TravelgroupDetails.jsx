@@ -12,6 +12,7 @@ import Featured from "../Home/Featured";
 import TripsSection from "../../components/TripsSection";
 import TailormadeSection from "../Home/TailormadeSection";
 import Banner from "../../components/Banner";
+import ReviewsSection from "../Aboutus/ReviewsSection";
 
 const TravelgroupDetails = ({ slug,trips,item }) => {
   // const [item, setItem] = useState(null);
@@ -116,6 +117,7 @@ if (!item) return <p className="p-6">Not found</p>;
       <FAQSection title="Top Frequently ask questions" faqs={safariFaqs} />
 
       <BookWithConfidence />
+      <ReviewsSection/>
       <Featured />
       <TailormadeSection />
     </div>

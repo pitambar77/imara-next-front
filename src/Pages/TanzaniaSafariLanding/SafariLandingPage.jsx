@@ -14,6 +14,7 @@ import Featured from "../Home/Featured";
 import TailormadeSection from "../Home/TailormadeSection";
 import TripsSection from "../../components/TripsSection";
 import FAQSection from "@/components/FAQSection";
+import ReviewsSection from "../Aboutus/ReviewsSection";
 
 const SafariLandingPage = ({ trips, destination }) => {
 
@@ -57,6 +58,7 @@ const SafariLandingPage = ({ trips, destination }) => {
         subtitle={faqSection.subtitle}
         faqs={faqSection.faqs}
       /> */}
+      <ReviewsSection/>
       <Featured />
       <TailormadeSection />
     </div>

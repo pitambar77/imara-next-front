@@ -6,6 +6,7 @@ import PopularWay from "./PopularWay";
 import TailormadeSection from "./TailormadeSection";
 import TripsSection from "@/components/TripsSection";
 import FAQSection from "@/components/FAQSection";
+import ReviewsSection from "../Aboutus/ReviewsSection";
 
 const Home = ({ trips,home }) => {
   const faqSection = home?.faq?.[0];
@@ -46,6 +47,7 @@ const Home = ({ trips,home }) => {
         subtitle={faqSection.subtitle}
         faqs={faqSection.faqs}
       /> */}
+      <ReviewsSection/>
       <Featured />
       <TailormadeSection />
     </div>

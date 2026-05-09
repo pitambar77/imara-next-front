@@ -17,6 +17,7 @@ import { slugify } from "../../utils/slugify";
 import TailormadeSection from "../Home/TailormadeSection";
 import TripsSection from "../../components/TripsSection";
 import Banner from "../../components/Banner";
+import ReviewsSection from "../Aboutus/ReviewsSection";
 
 const SerengetiNationalPark = ({ data, allDestinations, trips }) => {
   
@@ -167,6 +168,7 @@ const highlightSubtitle = highlight?.[0]?.subtitle || "";
 
       {/* <ActiveTravelDestinations /> */}
       <BookWithConfidence />
+      <ReviewsSection/>
       <Featured />
       <TailormadeSection />
     </div>

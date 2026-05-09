@@ -80,7 +80,10 @@ export default function ExperienceTabsSection() {
   const [activeTab, setActiveTab] = useState("Experiences");
 
   return (
-    <section id="experience" className="bg-[#f6f3ee] py-12 md:py-20 px-4 md:px-6">
+    <section
+      id="experience"
+      className="bg-[#f6f3ee] py-12 md:py-20 px-4 md:px-6"
+    >
       <div className="max-w-7xl mx-auto text-center">
         {/* Top Label */}
         <p className=" !font-avenir text-xs md:text-sm tracking-[0.2em] text-[#d87029] uppercase mb-3">
@@ -93,23 +96,6 @@ export default function ExperienceTabsSection() {
         <h2 className=" !font-cormorant text-3xl md:text-4xl lg:text-5xl  text-center capitalize mb-8">
           Inside the Experience
         </h2>
-
-        {/* Tabs */}
-        {/* <div className="flex justify-center gap-8 mb-12">
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`uppercase text-sm !font-avenir tracking-widest pb-2 cursor-pointer transition ${
-                activeTab === tab
-                  ? "text-[#d87029] border-b-2 border-[#d87029]"
-                  : "text-[#444] hover:text-black"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div> */}
 
         {/* Tabs */}
         <div className="w-full overflow-x-auto scrollbar-hide">

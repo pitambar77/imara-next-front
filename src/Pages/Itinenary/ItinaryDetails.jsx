@@ -15,6 +15,7 @@ import Featured from "../Home/Featured";
 import ItineraryForm from "../../components/ItineraryForm";
 import TripsSection from "../../components/TripsSection";
 import TailormadeSection from "../Home/TailormadeSection";
+import ReviewsSection from "../Aboutus/ReviewsSection";
 
 const ItinaryDetails = ({ trip, trips }) => {
   // const [trip, setTrip] = useState(null);
@@ -88,6 +89,7 @@ const ItinaryDetails = ({ trip, trips }) => {
         days={days}
         formheading={`Planning Your ${trip.title} `}
       />
+      <ReviewsSection/>
       <Featured />
       <TailormadeSection />
     </>

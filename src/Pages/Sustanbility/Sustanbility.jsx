@@ -8,6 +8,7 @@ import BookWithConfidence from "../Home/BookWithConfidence";
 import Featured from "../Home/Featured";
 import WhyVisitTanzania from "../Aboutus/WhyVisitTanzania";
 import TailormadeSection from "../Home/TailormadeSection";
+import ReviewsSection from "../Aboutus/ReviewsSection";
 
 const API_URL =
   "https://imarabackend.imarakilelenisafaris.com/api/sustanbility";
@@ -59,10 +60,7 @@ const Sustanbility = () => {
           <div className="max-w-4xl mx-auto text-center">
             <h3 className="text-3xl mb-4">{item.title}</h3>
             {item.description?.map((desc) => (
-              <p
-                key={desc._id}
-                className="text-[#444] leading-relaxed mb-4"
-              >
+              <p key={desc._id} className="text-[#444] leading-relaxed mb-4">
                 {desc.content}
               </p>
             ))}
@@ -80,7 +78,10 @@ const Sustanbility = () => {
       />
 
       {/* ================= ALLYSHIP ================= */}
-      <AllyshipCommitment data={effective} subtitle="Responsible tourism practices that support nature, communities, and future travel." />
+      <AllyshipCommitment
+        data={effective}
+        subtitle="Responsible tourism practices that support nature, communities, and future travel."
+      />
 
       {/* ================= WHY VISIT ================= */}
       {/* <WhyVisitSection
@@ -94,11 +95,11 @@ const Sustanbility = () => {
         cards={cards}
       /> */}
 
-      <WhyVisitTanzania/>
-
+      <WhyVisitTanzania />
       <BookWithConfidence />
+      <ReviewsSection />
       <Featured />
-      <TailormadeSection/>
+      <TailormadeSection />
     </>
   );
 };

@@ -9,6 +9,7 @@ import AdventureTour from "../../components/AdventureTour";
 import BookWithConfidence from "../Home/BookWithConfidence";
 import Featured from "../Home/Featured";
 import TailormadeSection from "../Home/TailormadeSection";
+import ReviewsSection from "../Aboutus/ReviewsSection";
 
 const TeamPage = ({ page }) => {
   if (!page) return null;
@@ -48,6 +49,7 @@ const TeamPage = ({ page }) => {
       />
 
       <BookWithConfidence />
+      <ReviewsSection/>
       <div className="pt-10">
         <Featured />
       </div>

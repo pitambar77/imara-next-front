@@ -18,8 +18,7 @@ import TripsWithFilters from "../KilimanjaroLanding/TripsWithFilters";
 import Banner from "../../components/Banner";
 import FAQSection from "@/components/FAQSection";
 
-const SafariDestiLanding = ({ trips,data }) => {
-
+const SafariDestiLanding = ({ trips, data }) => {
   const faqSection = data?.faq?.[0];
 
   return (
@@ -52,20 +51,18 @@ const SafariDestiLanding = ({ trips,data }) => {
       /> */}
       <WhyVisitTanzania />
 
-      <ReviewsSection />
-
       <TourGroupSection />
 
       <TripHighlights
         subtitle={"Lorem Ipsum is simply dummy text of the printing"}
       />
 
-{/* <FAQSection
+      {/* <FAQSection
         title={faqSection.title}
         subtitle={faqSection.subtitle}
         faqs={faqSection.faqs}
       /> */}
-
+      <ReviewsSection />
       <Featured />
       <TailormadeSection />
     </div>

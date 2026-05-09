@@ -53,12 +53,15 @@ const Navbar = () => {
 
   const searchRef = useRef(null);
 
+  const navRef = useRef(null);
+  const [menuTop, setMenuTop] = useState(0);
+
   const getLink = (item) => {
     switch (item.type) {
       case "package":
         return `/package/${item.slug}`;
       case "safari":
-        return `/tanzania-safaris/${item.slug}`;
+        return `/tanzania-safaris`;
       case "destination":
         // ✅ MANUAL ROUTES
 
@@ -80,6 +83,10 @@ const Navbar = () => {
         if (item.title === "ZANZIBAR BEACH HOLIDAYS") {
           return `/zanzibar-beach`;
         }
+      case "fleet":
+        return `/safari-fleet`;
+      case "about":
+        return `/about-us`;
 
       default:
         return "/";
@@ -89,7 +96,7 @@ const Navbar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (query.length < 2) return;
+    // if (query.length < 2) return;
 
     router.push(`/search?q=${query}`);
     setShowDropdown(false);
@@ -137,6 +144,32 @@ const Navbar = () => {
       setShowDropdown(false);
     }
   }, [query]);
+
+  useEffect(() => {
+    setQuery("");
+    setResults([]);
+    setShowDropdown(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    const updateTop = () => {
+      if (navRef.current) {
+        const rect = navRef.current.getBoundingClientRect();
+
+        setMenuTop(rect.bottom);
+      }
+    };
+
+    updateTop();
+
+    window.addEventListener("scroll", updateTop);
+    window.addEventListener("resize", updateTop);
+
+    return () => {
+      window.removeEventListener("scroll", updateTop);
+      window.removeEventListener("resize", updateTop);
+    };
+  }, []);
 
   const groupedResults = results.reduce((acc, item) => {
     if (!acc[item.type]) {
@@ -327,52 +360,20 @@ const Navbar = () => {
       ],
       cards: [
         {
-          title: "Luxury Safari",
+          title: "Kilimanjaro Climbing",
           desc: "Explore Tanzania in style",
-          image:
-            "https://media.istockphoto.com/id/2265445661/photo/view-of-mount-kilimanjaro-from-a-climbing-route-in-tanzania.jpg?s=612x612&w=0&k=20&c=O5WORw8h_GR_OIvbhPWDDzcTXnb-hHV6i51nqbyK9Ng=",
-          path: "/travelgroup/tanzania-luxury-safari",
+          image: "/megamenu-kili.webp",
+          path: "/mount-kilimanjaro",
         },
         {
-          title: "Wildlife Safari",
+          title: "Klimanjaro Guide",
           desc: "Witness the Big Five",
-          image:
-            "https://media.istockphoto.com/id/2156989466/photo/details-of-the-forest-during-the-climb-to-the-top-of-mount-kilimanjaro-tanzania.jpg?s=612x612&w=0&k=20&c=ArjOr0X8XukRKvGdyKV0-V2dRZfb5j-ggNO3vHmYYuk=",
-          path: "/travelgroup/tanzania-wildlife-safari",
+          image: "/travelguide-megamenu.webp",
+          path: "/kilimanjaro-travel-guide",
         },
       ],
     },
     { title: "ZANZIBAR", path: "/zanzibar-beach" },
-
-    // {
-    //   title: "TRAVEL STYLES",
-    //   links: [
-    //     {
-    //       label: "Tanzania Family Safari",
-    //       path: "/travelgroup/tanzania-family-safari",
-    //     },
-    //     {
-    //       label: "Tanzania Luxury Safari",
-    //       path: "/travelgroup/tanzania-luxury-safari",
-    //     },
-    //     {
-    //       label: "Tanzania Private Safari",
-    //       path: "/travelgroup/tanzania-private-safari",
-    //     },
-    //     {
-    //       label: "Tanzania Wildlife Safari",
-    //       path: "/travelgroup/tanzania-wildlife-safari",
-    //     },
-    //     {
-    //       label: "Tanzania Midrange Safari",
-    //       path: "/travelgroup/tanzania-midrange-safari",
-    //     },
-    //     {
-    //       label: "Tanzania Honeymoon Safari",
-    //       path: "/travelgroup/tanzania-honeymoon-safari",
-    //     },
-    //   ],
-    // },
 
     {
       title: "TRAVEL STYLES",
@@ -440,6 +441,10 @@ const Navbar = () => {
       megaMenu: true,
       leftLinks: [
         {
+          label: "About Us",
+          path: "/about-us",
+        },
+        {
           label: "Safari Fleet",
           path: "/safari-fleet",
         },
@@ -454,24 +459,30 @@ const Navbar = () => {
       ],
       cards: [
         {
-          title: "Luxury Safari",
-          desc: "Explore Tanzania in style",
+          title: "Our Team",
+          desc: "People Behind Safaris",
           image:
             "https://media.istockphoto.com/id/514632058/photo/lions-on-african-safari-in-tanzania.jpg?s=612x612&w=0&k=20&c=tZ2hwpz8Uub6p2dPcUk02qf1qLFEmcCvg4S4cU0fgt4=",
+          path: "/team",
+        },
+        {
+          title: "Safari Fleet",
+          desc: "Built for Rugged Roads",
+          image:
+            "https://res.cloudinary.com/dq0ug85oe/image/upload/v1766502250/imarakileleni_uploads/up869so8a9lzobojlsxf.webp",
           path: "/safari-fleet",
         },
         {
-          title: "Family Safari",
-          desc: "Perfect trips for families",
+          title: "Sustainability",
+          desc: "Travel With Care",
           image:
-            "https://media.istockphoto.com/id/147920037/photo/giraffes.jpg?s=612x612&w=0&k=20&c=zA_pswyNDFSOYPlZ5GJTjTIydPRau0xpJ7l_Gf9uNLY=",
+            "https://res.cloudinary.com/dq0ug85oe/image/upload/v1766153262/imarakileleni_uploads/b9knsdoni8grrxcznqx2.webp",
           path: "/sustainability",
         },
         {
-          title: "Wildlife Safari",
-          desc: "Witness the Big Five",
-          image:
-            "https://media.istockphoto.com/id/2257184585/photo/young-lion-standing-in-a-trunk.jpg?s=612x612&w=0&k=20&c=GJqFnCK1cs7FMe8qJ_Xh5246ycIL1cphwaR5GUbW3kY=",
+          title: "Core Values",
+          desc: "Guided by Purpose",
+          image: "/corevalue-megamenu.webp",
           path: "/core-values",
         },
       ],
@@ -484,6 +495,16 @@ const Navbar = () => {
       <header className="w-full bg-white shadow-sm">
         <div className="hidden xl:flex justify-end items-center text-[12px] text-[#444] py-2 pt-4 max-w-[1300px] mx-auto px-4 space-x-4 border-b border-gray-100">
           <Link
+            href="/blog"
+            className={`hover:underline ${
+              isActive("/blog")
+                ? "text-[#d87028] font-semibold"
+                : "text-gray-600"
+            }`}
+          >
+            Blog
+          </Link>
+          <Link
             href="/contact-us"
             className={`hover:underline ${
               isActive("/contact-us")
@@ -491,7 +512,7 @@ const Navbar = () => {
                 : "text-gray-600"
             }`}
           >
-            Contact us
+            Contact Us
           </Link>
 
           <Link
@@ -519,7 +540,7 @@ const Navbar = () => {
       </header>
 
       {/* Navbar */}
-      <nav className="sticky top-0 z-50 w-full bg-white">
+      <nav ref={navRef} className="sticky top-0 z-50 w-full bg-white ">
         <div className="flex items-center justify-between max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0 py-4">
           {/* Logo */}
           <Link href="/" className="flex items-center">
@@ -584,20 +605,35 @@ const Navbar = () => {
                     item.title === "SAFARI" ? (
                       <div
                         onMouseEnter={() => setOpenMenu(index)}
-                        className="fixed left-0 top-[110px] w-full bg-white shadow-2xl border-t border-gray-100 z-50"
+                        style={{ top: `${menuTop}px` }}
+                        className="fixed left-0  w-full bg-white shadow-2xl border-t border-gray-100 z-50"
                       >
                         <div className="max-w-[1300px] mx-auto px-6 py-10">
                           <div className="grid grid-cols-12 gap-10 h-[300px]">
                             {/* LEFT CONTENT */}
                             <div className="col-span-8">
                               <div className="flex items-center gap-3 mb-8">
-                                <h3 className="text-lg text-black">
+                                {/* <h3 className="text-lg text-[#111]">
                                   {item.title === "DESTINATIONS"
                                     ? "Tanzania Destinations"
                                     : "Tanzania Safari"}
-                                </h3>
-
-                                <span className="text-3xl">›</span>
+                                </h3> */}
+                                <Link
+                                  href={
+                                    item.title === "DESTINATIONS"
+                                      ? "/tanzania-destinations"
+                                      : "/tanzania-safaris"
+                                  }
+                                  onClick={() => setOpenMenu(null)}
+                                  className=" flex gap-x-3 items-center text-lg text-[#111]  hover:text-[#d87029] transition"
+                                >
+                                  <h3 className=" uppercase">
+                                    {item.title === "DESTINATIONS"
+                                      ? "Tanzania Destinations"
+                                      : "Tanzania Safari"}
+                                  </h3>
+                                  <span className="text-2xl">›</span>
+                                </Link>
                               </div>
 
                               <div className="grid grid-cols-3 gap-x-16 gap-y-5">
@@ -605,7 +641,8 @@ const Navbar = () => {
                                   <Link
                                     key={idx}
                                     href={link.path}
-                                    className="text-sm text-[#444] hover:text-[#d87029] transition"
+                                    onClick={() => setOpenMenu(null)}
+                                    className=" text-[15px] text-[#444] hover:text-[#d87029] transition"
                                   >
                                     {link.label}
                                   </Link>
@@ -616,8 +653,16 @@ const Navbar = () => {
                             {/* RIGHT IMAGE */}
                             <div className="col-span-4 relative rounded-md overflow-hidden">
                               <Image
-                                src="https://media.istockphoto.com/id/2203462170/photo/hunting-lioness.jpg?s=612x612&w=0&k=20&c=neY4pfWVj9ACjN2DE9l1OrEWklz6R8ry0obcW6pB9zU="
-                                alt="Destinations"
+                                src={
+                                  item.title === "DESTINATIONS"
+                                    ? "/destination-megamenu.webp"
+                                    : "/safari-megamenu.jpg"
+                                }
+                                alt={
+                                  item.title === "DESTINATIONS"
+                                    ? "Tanzania Destinations"
+                                    : "Tanzania Safari"
+                                }
                                 fill
                                 className="object-cover"
                               />
@@ -625,10 +670,10 @@ const Navbar = () => {
                               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
                               <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
-                                <h2 className="text-4xl uppercase mb-5">
+                                <h2 className="text-4xl capitalize mb-5">
                                   {item.title === "DESTINATIONS"
-                                    ? "Tanzania"
-                                    : "Safari"}
+                                    ? "Tanzania "
+                                    : " Safari"}
                                 </h2>
 
                                 <Link
@@ -637,6 +682,7 @@ const Navbar = () => {
                                       ? "/tanzania-destinations"
                                       : "/tanzania-safaris"
                                   }
+                                  onClick={() => setOpenMenu(null)}
                                   className="bg-[#d87028] text-white px-[21px] font-semibold py-3 rounded-full font-semibold hover:bg-[#eb8034de] transition cursor-pointer "
                                 >
                                   Find Out More
@@ -649,18 +695,22 @@ const Navbar = () => {
                     ) : item.title === "KILIMANJARO" ? (
                       <div
                         onMouseEnter={() => setOpenMenu(index)}
-                        className="fixed left-0 top-[110px] w-full bg-white shadow-2xl border-t border-gray-100 z-50"
+                        style={{ top: `${menuTop}px` }}
+                        className="fixed left-0  w-full bg-white shadow-2xl border-t border-gray-100 z-50"
                       >
                         <div className="max-w-[1300px] mx-auto px-6 py-10">
-                          <div className="grid grid-cols-2 gap-6 h-[300px]">
+                          <div className="grid grid-cols-12 gap-6 h-[300px]">
                             {/* LEFT CONTENT */}
-                            <div className="">
+                            <div className=" col-span-5">
                               <div className="flex items-center gap-3 mb-8">
-                                <h3 className="text-lg text-black">
-                                  Mount Kilimanjaro
-                                </h3>
-
-                                <span className="text-3xl">›</span>
+                                <Link
+                                  href={"/mount-kilimanjaro"}
+                                  onClick={() => setOpenMenu(null)}
+                                  className=" flex gap-x-3 items-center text-lg text-[#111]  hover:text-[#d87029] transition"
+                                >
+                                  <h3 className=" uppercase">Mount Kilimanjaro</h3>
+                                  <span className="text-2xl">›</span>
+                                </Link>
                               </div>
 
                               {/* 2 COLUMN LINKS */}
@@ -669,7 +719,8 @@ const Navbar = () => {
                                   <Link
                                     key={idx}
                                     href={link.path}
-                                    className="text-sm text-[#444] hover:text-[#d87029] transition"
+                                    onClick={() => setOpenMenu(null)}
+                                    className="text-[15px] text-[#444] hover:text-[#d87029] transition"
                                   >
                                     {link.label}
                                   </Link>
@@ -678,33 +729,36 @@ const Navbar = () => {
                             </div>
 
                             {/* RIGHT IMAGES */}
-                            <div className=" grid grid-cols-2 gap-6">
-                              {item.cards.map((card, idx) => (
-                                <Link
-                                  key={idx}
-                                  href={card.path}
-                                  className="relative rounded-md overflow-hidden group"
-                                >
-                                  <Image
-                                    src={card.image}
-                                    alt={card.title}
-                                    fill
-                                    className="object-cover group-hover:scale-105 transition duration-500"
-                                  />
+                            <div className=" col-span-7">
+                              <div className=" grid grid-cols-2 gap-6">
+                                {item.cards.map((card, idx) => (
+                                  <Link
+                                    key={idx}
+                                    href={card.path}
+                                    onClick={() => setOpenMenu(null)}
+                                    className="relative min-h-[300px] rounded-md overflow-hidden group"
+                                  >
+                                    <Image
+                                      src={card.image}
+                                      alt={card.title}
+                                      fill
+                                      className="object-cover group-hover:scale-105 transition duration-500"
+                                    />
 
-                                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
-                                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
-                                    <h2 className="text-2xl uppercase mb-3">
-                                      {card.title}
-                                    </h2>
+                                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
+                                      <h3 className="text-2xl capitalize mb-3">
+                                        {card.title}
+                                      </h3>
 
-                                    <span className="bg-[#d87028] text-white px-5 py-2 rounded-full text-sm font-semibold">
-                                      Explore
-                                    </span>
-                                  </div>
-                                </Link>
-                              ))}
+                                      <span className="bg-[#d87028] text-white px-5 py-2 rounded-full text-sm font-semibold">
+                                        Find Out More
+                                      </span>
+                                    </div>
+                                  </Link>
+                                ))}
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -712,7 +766,8 @@ const Navbar = () => {
                     ) : item.title === "TRAVEL STYLES" ? (
                       <div
                         onMouseEnter={() => setOpenMenu(index)}
-                        className="fixed left-0 top-[110px] w-full bg-white shadow-2xl border-t border-gray-100 z-50"
+                        style={{ top: `${menuTop}px` }}
+                        className="fixed left-0  w-full bg-white shadow-2xl border-t border-gray-100 z-50"
                       >
                         <div className="max-w-[1300px] mx-auto px-6 py-10 ">
                           {/* TITLE */}
@@ -723,6 +778,7 @@ const Navbar = () => {
                               <Link
                                 key={idx}
                                 href={card.path}
+                                onClick={() => setOpenMenu(null)}
                                 className="group overflow-hidden rounded-md"
                               >
                                 <div className="relative h-[140px] rounded-md overflow-hidden">
@@ -735,10 +791,10 @@ const Navbar = () => {
 
                                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
-                                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
-                                    <h2 className="text-2xl uppercase mb-4">
+                                  <div className="absolute inset-0 flex items-end justify-center text-center text-white p-4">
+                                    <h4 className="text-2xl capitalize ">
                                       {card.title}
-                                    </h2>
+                                    </h4>
                                   </div>
                                 </div>
                               </Link>
@@ -749,67 +805,67 @@ const Navbar = () => {
                     ) : (
                       <div
                         onMouseEnter={() => setOpenMenu(index)}
-                        className="fixed left-0 top-[110px] w-full bg-white shadow-2xl border-t border-gray-100 z-50"
+                        style={{ top: `${menuTop}px` }}
+                        className="fixed left-0  w-full bg-white shadow-2xl border-t border-gray-100 z-50"
                       >
                         <div className="max-w-[1300px] mx-auto px-6 py-10">
-                          <div className="grid grid-cols-12 gap-10">
-                            {/* LEFT LINKS */}
+                          <div className="grid grid-cols-4 gap-6">
+                            {item.cards.map((card, idx) => (
+                              <Link
+                                key={idx}
+                                href={card.path}
+                                onClick={() => setOpenMenu(null)}
+                                className="group rounded-md overflow-hidden bg-black"
+                              >
+                                {/* IMAGE */}
+                                <div className="relative h-[220px] overflow-hidden">
+                                  <Image
+                                    src={card.image}
+                                    alt={card.title}
+                                    fill
+                                    className="object-cover group-hover:scale-105 transition duration-500"
+                                  />
+                                </div>
+
+                                {/* BOTTOM CONTENT */}
+                                <div className="bg-[#d87029] px-5 py-3 ">
+                                  <h3 className="text-white text-lg uppercase tracking-wide ">
+                                    {card.title}
+                                  </h3>
+
+                                  <p className="text-white text-sm leading-relaxed">
+                                    {card.desc}
+                                  </p>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                          {/* <div className="grid grid-cols-12 gap-10">
+                           
                             <div className="col-span-3 border-r border-gray-200 pr-8">
                               <div className="space-y-5">
                                 {item.leftLinks.map((link, idx) => (
                                   <Link
                                     key={idx}
                                     href={link.path}
-                                    className="block text-[17px] font-medium text-gray-800 hover:text-[#d87028] transition"
+                                    onClick={() => setOpenMenu(null)}
+                                    className="block text-[16px] font-medium text-[#444] hover:text-[#d87028] transition"
                                   >
                                     {link.label}
                                   </Link>
                                 ))}
                               </div>
                             </div>
-
-                            {/* RIGHT CARDS */}
-                            {/* <div className="col-span-9">
-                              <div className="grid grid-cols-3 gap-6">
-                                {item.cards.map((card, idx) => (
-                                  <Link
-                                    key={idx}
-                                    href={card.path}
-                                    className="group overflow-hidden rounded-xl"
-                                  >
-                                    <div className="relative h-[300px] rounded-xl overflow-hidden">
-                                      <Image
-                                        src={card.image}
-                                        alt={card.title}
-                                        fill
-                                        className="object-cover group-hover:scale-105 transition duration-500"
-                                      />
-
-                                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-
-                                      <div className="absolute bottom-0 left-0 p-5 text-white">
-                                        <h3 className="text-2xl font-bold mb-2">
-                                          {card.title}
-                                        </h3>
-
-                                        <p className="text-sm text-gray-200">
-                                          {card.desc}
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </Link>
-                                ))}
-                              </div>
-                            </div> */}
                             <div className="col-span-9">
                               <div className="grid grid-cols-3 gap-6">
                                 {item.cards.map((card, idx) => (
                                   <Link
                                     key={idx}
                                     href={card.path}
+                                    onClick={() => setOpenMenu(null)}
                                     className="group rounded-md overflow-hidden bg-black"
                                   >
-                                    {/* IMAGE */}
+                               
                                     <div className="relative h-[220px] overflow-hidden">
                                       <Image
                                         src={card.image}
@@ -819,7 +875,7 @@ const Navbar = () => {
                                       />
                                     </div>
 
-                                    {/* BOTTOM CONTENT */}
+                                  
                                     <div className="bg-[#d87029] px-5 py-3">
                                       <h3 className="text-white text-lg  ">
                                         {card.title}
@@ -833,7 +889,7 @@ const Navbar = () => {
                                 ))}
                               </div>
                             </div>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     )}
@@ -870,20 +926,15 @@ const Navbar = () => {
                   placeholder="Find and book your ...."
                   value={query}
                   onFocus={() => setShowDropdown(true)}
-                  // onFocus={() => {
-                  //   if (query.length >= 2 && results.length > 0) {
-                  //     setShowDropdown(true);
-                  //   }
-                  // }}
                   onChange={(e) => handleSearch(e.target.value)}
-                  className="border border-[#d97129] px-4 pr-10 py-2 rounded-full w-full
+                  className="border border-[#d87029] px-4 pr-10 py-2 rounded-full w-full
     focus:outline-none focus:ring-1 focus:ring-[#d97129] focus:border-[#d97129]"
                 />
 
                 {/* 🔍 Search Icon Button */}
                 <button
                   type="submit"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#e08442] rounded-full  "
+                  className="absolute cursor-pointer right-0 top-1/2 -translate-y-1/2 bg-[#d87029] text-white p-2.5  rounded-full  "
                 >
                   <FiSearch size={22} />
                 </button>
@@ -894,93 +945,117 @@ const Navbar = () => {
                   {/* ===== DEFAULT CONTENT ===== */}
                   {query.length < 2 ? (
                     <>
-                      <h2 className="text-xl font-bold mb-8">Regions</h2>
-
+                      <h3 className="text-xl  mb-8">Start Tanzania Travel</h3>
                       <div className="grid grid-cols-3 gap-2 mb-12">
-                        <div className=" flex items-center border gap-2 rounded-md border-[#d87029]/10 hover:bg-[#f9f6f4] p-4 font-semibold">
-                          <Image
-                            src="/destinat.png"
-                            alt="Imara Kileleni Safaris"
-                            width={180}
-                            height={60}
-                            priority
-                            className="h-8 w-auto"
-                          />
-                          <Link href="/tanzania-destinations" className="">
-                            Destinations
-                          </Link>
-                        </div>
-
-                        <div className=" flex items-center border gap-2 rounded-md border-[#d87029]/10 hover:bg-[#f9f6f4] p-4 font-semibold">
-                          <Image
-                            src="/safaril.png"
-                            alt="Imara Kileleni Safaris"
-                            width={180}
-                            height={60}
-                            priority
-                            className="h-10 w-auto"
-                          />
-                          <Link href="/tanzania-safaris">Safari</Link>
-                        </div>
-
-                        <div className=" flex items-center border gap-2 rounded-md border-[#d87029]/10 hover:bg-[#f9f6f4] p-4 font-semibold">
-                          <Image
-                            src="/kilimanj.png"
-                            alt="Imara Kileleni Safaris"
-                            width={180}
-                            height={60}
-                            priority
-                            className="h-10 w-auto"
-                          />
-                          <Link href="/mount-kilimanjaro">Kilimanjaro</Link>
-                        </div>
-
-                        <div className=" flex items-center border gap-2 rounded-md border-[#d87029]/10 hover:bg-[#f9f6f4] p-4 font-semibold">
-                          <Image
-                            src="/zanzibarb.png"
-                            alt="Imara Kileleni Safaris"
-                            width={180}
-                            height={80}
-                            priority
-                            className="h-10 w-auto"
-                          />
-                          <Link href="/zanzibar-beach">Zanzibar</Link>
-                        </div>
-
-                        <div className=" flex items-center border gap-2 rounded-md border-[#d87029]/10 hover:bg-[#f9f6f4] p-4 font-semibold">
-                          <Image
-                            src="/aboutu.png"
-                            alt="Imara Kileleni Safaris"
-                            width={180}
-                            height={60}
-                            priority
-                            className="h-10 w-auto"
-                          />
-                          <Link href="/about-us">About us</Link>
-                        </div>
-
-                        <div className=" flex items-center border gap-2 rounded-md border-[#d87029]/10 hover:bg-[#f9f6f4] p-4 font-semibold">
-                          <Image
-                            src="/blogl.png"
-                            alt="Imara Kileleni Safaris"
-                            width={180}
-                            height={60}
-                            priority
-                            className="h-10 w-auto"
-                          />
-                          <Link href="/blog">Blog</Link>
-                        </div>
+                        <Link
+                          onClick={() => setShowDropdown(false)}
+                          href="/tanzania-destinations"
+                          className=""
+                        >
+                          <div className=" flex items-center border gap-2 rounded-md border-[#d87029]/10 hover:bg-[#f9f6f4] p-4 font-semibold">
+                            <Image
+                              src="/destinat.png"
+                              alt="Imara Kileleni Safaris"
+                              width={180}
+                              height={60}
+                              priority
+                              className="h-8 w-auto"
+                            />
+                            <h4>Destinations</h4>
+                          </div>
+                        </Link>
+                        <Link
+                          onClick={() => setShowDropdown(false)}
+                          href="/tanzania-safaris"
+                        >
+                          <div className=" flex items-center border gap-2 rounded-md border-[#d87029]/10 hover:bg-[#f9f6f4] p-4 font-semibold">
+                            <Image
+                              src="/safaril.png"
+                              alt="Imara Kileleni Safaris"
+                              width={180}
+                              height={60}
+                              priority
+                              className="h-10 w-auto"
+                            />
+                            <h4>Safari</h4>
+                          </div>
+                        </Link>
+                        <Link
+                          onClick={() => setShowDropdown(false)}
+                          href="/mount-kilimanjaro"
+                        >
+                          <div className=" flex items-center border gap-2 rounded-md border-[#d87029]/10 hover:bg-[#f9f6f4] p-4 font-semibold">
+                            <Image
+                              src="/kilimanj.png"
+                              alt="Imara Kileleni Safaris"
+                              width={180}
+                              height={60}
+                              priority
+                              className="h-10 w-auto"
+                            />
+                            <h4>Kilimanjaro</h4>
+                          </div>
+                        </Link>
+                        <Link
+                          onClick={() => setShowDropdown(false)}
+                          href="/zanzibar-beach"
+                        >
+                          <div className=" flex items-center border gap-2 rounded-md border-[#d87029]/10 hover:bg-[#f9f6f4] p-4 font-semibold">
+                            <Image
+                              src="/zanzibarb.png"
+                              alt="Imara Kileleni Safaris"
+                              width={180}
+                              height={80}
+                              priority
+                              className="h-10 w-auto"
+                            />
+                            <h4>Zanzibar</h4>
+                          </div>
+                        </Link>
+                        <Link
+                          onClick={() => setShowDropdown(false)}
+                          href="/about-us"
+                        >
+                          <div className=" flex items-center border gap-2 rounded-md border-[#d87029]/10 hover:bg-[#f9f6f4] p-4 font-semibold">
+                            <Image
+                              src="/aboutu.png"
+                              alt="Imara Kileleni Safaris"
+                              width={180}
+                              height={60}
+                              priority
+                              className="h-10 w-auto"
+                            />
+                            About us
+                          </div>
+                        </Link>
+                        <Link
+                          onClick={() => setShowDropdown(false)}
+                          href="/blog"
+                        >
+                          <div className=" flex items-center border gap-2 rounded-md border-[#d87029]/10 hover:bg-[#f9f6f4] p-4 font-semibold">
+                            <Image
+                              src="/blogl.png"
+                              alt="Imara Kileleni Safaris"
+                              width={180}
+                              height={60}
+                              priority
+                              className="h-10 w-auto"
+                            />
+                            <h4>Blog</h4>
+                          </div>
+                        </Link>
                       </div>
 
                       {/* Popular Trips */}
-                      <h2 className="text-xl font-bold mb-5">
+                      <h3 className="text-xl mb-5">
                         Popular Tanzania Safari
-                      </h2>
+                      </h3>
 
                       <div className=" grid grid-cols-2 space-y-4 ">
                         {popularTrips.map((trip, index) => (
                           <div key={index} className="flex items-center  gap-4">
                             <Link
+                              onClick={() => setShowDropdown(false)}
                               href={trip.link}
                               className=" hover:text-[#d87029] transition text-sm text-[#444]"
                             >
@@ -1007,9 +1082,9 @@ const Navbar = () => {
                             ([type, items]) => (
                               <div key={type}>
                                 {/* Group Heading */}
-                                <h2 className="text-xl font-bold capitalize mb-4">
-                                  {type}
-                                </h2>
+                                <h3 className="text-xl capitalize mb-4">
+                                  {items[0]?.label || type}
+                                </h3>
 
                                 {/* Group Items */}
                                 <div className="space-y-1">
@@ -1020,7 +1095,13 @@ const Navbar = () => {
                                       onClick={() => setShowDropdown(false)}
                                     >
                                       <div className="px-4 py-2 rounded-xl hover:bg-gray-100 hover:text-[#d87029] cursor-pointer transition">
-                                        <p className="">{item.title}</p>
+                                        <p className="">
+                                          {item.title
+                                            .toLowerCase()
+                                            .replace(/\b\w/g, (char) =>
+                                              char.toUpperCase(),
+                                            )}
+                                        </p>
                                       </div>
                                     </Link>
                                   ))}

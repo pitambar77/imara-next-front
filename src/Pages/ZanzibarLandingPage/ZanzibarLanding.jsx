@@ -17,6 +17,7 @@ import TabLink from "./TabLink";
 import TailormadeSection from "../Home/TailormadeSection";
 import TripsSection from "../../components/TripsSection";
 import Banner from "../../components/Banner";
+import ReviewsSection from "../Aboutus/ReviewsSection";
 
 const ZanzibarLanding = ({ trips, data }) => {
   if (!data) {
@@ -140,6 +141,7 @@ const ZanzibarLanding = ({ trips, data }) => {
 
       {/* <ActiveTravelDestinations /> */}
       <BookWithConfidence />
+      <ReviewsSection/>
       <Featured />
       <TailormadeSection />
     </div>

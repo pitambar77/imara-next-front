@@ -11,6 +11,7 @@ import Featured from "../../Home/Featured";
 import FAQSection from "../../../components/FAQSection";
 import OverviewSections from "../../../components/OverviewSections";
 import TailormadeSection from "../../Home/TailormadeSection";
+import ReviewsSection from "../ReviewsSection";
 
 // const API_URL =
 //   "https://imarabackend.imarakilelenisafaris.com/api/fleet";
@@ -101,6 +102,7 @@ const SafariFleet = () => {
       <FAQSection title="Questions About Our Safari Fleet" subtitle={"Clear answers about safari vehicles, comfort, safety, and travel features."} faqs={faqs} />
 
       <BookWithConfidence />
+      <ReviewsSection/>
       <Featured />
       <TailormadeSection />
     </div>
