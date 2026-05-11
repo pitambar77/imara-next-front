@@ -38,7 +38,7 @@ const router = useRouter();
       <div className="flex justify-between mb-4">
         <h2 className="text-2xl font-bold">Destination Details</h2>
         <Link
-          href="/dashboard/destination-details/create"
+          href="/dashboard/destination/create"
           className="bg-green-600 text-white px-4 py-2 rounded"
         >
           + Create

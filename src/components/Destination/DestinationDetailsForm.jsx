@@ -2,10 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import API from "../../api/axios.js";
+import CustomRichEditor from "@/components/CustomRichEditor";
 
-const API_BASE =
-  process.env.NEXT_PUBLIC_API_BASE ||
-  "https://imarabackend.imarakilelenisafaris.com";
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://imarabackend.imarakilelenisafaris.com";
 
 const getImageUrl = (url) => {
   if (!url) return null;
@@ -32,7 +31,7 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
     {
       title: "",
       subtitle: "",
-      description: [{ type: "paragraph", content: "" }],
+      description: "",
       image: null,
       imagePreview: null,
     },
@@ -55,11 +54,11 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
     {
       title: "",
       subtitle: "",
-      description: [{ type: "paragraph", content: "" }],
+      description: "",
       section: [
         {
           nationalpark: "",
-          details: [{ type: "paragraph", content: "" }],
+          details: "",
           image: null,
           imagePreview: null,
         },
@@ -119,30 +118,23 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
     setMigration(
       (editData.migration || []).map((m) => ({
         ...m,
+
+        description: m.description || "",
+
         section: m.section.map((s) => ({
           ...s,
+
+          details: s.details || "",
+
           imagePreview: s.image || null,
         })),
       })),
     );
 
-    // setOverviewinfo(
-    //   (editData.overviewinfo || []).map(o => ({
-    //     ...o,
-    //     description:
-    //       o.description && o.description.length
-    //         ? o.description
-    //         : [{ type: "paragraph", content: "" }],
-    //     imagePreview: o.image || null,
-    //   }))
-    // );
     setOverviewinfo(
       (editData.overviewinfo || []).map((item) => ({
         ...item,
-        description:
-          item.description && item.description.length
-            ? item.description
-            : [{ type: "paragraph", content: "" }],
+        description: item.description || "",
         imagePreview: getImageUrl(item.image),
         existingImage: item.image,
         image: null,
@@ -186,7 +178,7 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
       {
         title: "",
         subtitle: "",
-        description: [{ type: "paragraph", content: "" }],
+        description: "",
         image: null,
         imagePreview: null,
       },
@@ -229,7 +221,12 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
       ...updated[i],
       description: [
         ...updated[i].description,
-        { type: "paragraph", content: "" },
+        [
+          {
+            type: "text",
+            value: "",
+          },
+        ],
       ],
     };
     setOverviewinfo(updated);
@@ -244,18 +241,32 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
     setOverviewinfo(updated);
   };
 
-  const handleOverviewDescriptionChange = (i, j, e) => {
-    const updated = [...overviewinfo];
-    updated[i].description[j] = {
-      ...updated[i].description[j],
-      [e.target.name]: e.target.value,
-    };
-    setOverviewinfo(updated);
-  };
+  // const handleOverviewDescriptionChange = (i, j, e) => {
+  //   const updated = [...overviewinfo];
+  //   updated[i].description[j][0] = {
+  //     ...updated[i].description[j][0],
+  //     [e.target.name]: e.target.value,
+  //   };
+  //   setOverviewinfo(updated);
+  // };
 
   // =================================================================
   // ------------------ HIGHLIGHT SECTION ----------------------------
   // =================================================================
+
+  const handleOverviewDescriptionChange = (i, j, k, e) => {
+    const updated = [...overviewinfo];
+
+    updated[i].description[j][k] = {
+      ...updated[i].description[j][k],
+      [e.target.name]: e.target.value,
+    };
+
+    setOverviewinfo(updated);
+  };
+
+  //Things to Do
+
   const addHighlight = () => {
     setHighlight([
       ...highlight,
@@ -328,11 +339,11 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
       {
         title: "",
         subtitle: "",
-        description: [{ type: "paragraph", content: "" }],
+        description: "",
         section: [
           {
             nationalpark: "",
-            details: [{ type: "paragraph", content: "" }],
+            details: "",
             image: null,
             imagePreview: null,
           },
@@ -353,15 +364,40 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
     setMigration(updated);
   };
 
+  // const addMigrationDescription = (i) => {
+  //   const updated = [...migration];
+  //   updated[i].description.push({ type: "paragraph", content: "" });
+  //   setMigration(updated);
+  // };
+
   const addMigrationDescription = (i) => {
     const updated = [...migration];
-    updated[i].description.push({ type: "paragraph", content: "" });
+
+    updated[i].description.push([
+      {
+        type: "text",
+        value: "",
+        url: "",
+      },
+    ]);
+
     setMigration(updated);
   };
 
-  const handleMigrationDescriptionChange = (i, j, e) => {
+  // const handleMigrationDescriptionChange = (i, j, e) => {
+  //   const updated = [...migration];
+  //   updated[i].description[j][e.target.name] = e.target.value;
+  //   setMigration(updated);
+  // };
+
+  const handleMigrationDescriptionChange = (i, j, k, e) => {
     const updated = [...migration];
-    updated[i].description[j][e.target.name] = e.target.value;
+
+    updated[i].description[j][k] = {
+      ...updated[i].description[j][k],
+      [e.target.name]: e.target.value,
+    };
+
     setMigration(updated);
   };
 
@@ -375,7 +411,15 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
     const updated = [...migration];
     updated[i].section.push({
       nationalpark: "",
-      details: [{ type: "paragraph", content: "" }],
+      details: [
+        [
+          {
+            type: "text",
+            value: "",
+            url: "",
+          },
+        ],
+      ],
       image: null,
       imagePreview: null,
     });
@@ -401,15 +445,40 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
     setMigration(updated);
   };
 
+  // const addMigrationDetail = (i, j) => {
+  //   const updated = [...migration];
+  //   updated[i].section[j].details.push({ type: "paragraph", content: "" });
+  //   setMigration(updated);
+  // };
+
   const addMigrationDetail = (i, j) => {
     const updated = [...migration];
-    updated[i].section[j].details.push({ type: "paragraph", content: "" });
+
+    updated[i].section[j].details.push([
+      {
+        type: "text",
+        value: "",
+        url: "",
+      },
+    ]);
+
     setMigration(updated);
   };
 
-  const handleMigrationDetailChange = (i, j, k, e) => {
+  // const handleMigrationDetailChange = (i, j, k, e) => {
+  //   const updated = [...migration];
+  //   updated[i].section[j].details[k][e.target.name] = e.target.value;
+  //   setMigration(updated);
+  // };
+
+  const handleMigrationDetailChange = (i, j, k, l, e) => {
     const updated = [...migration];
-    updated[i].section[j].details[k][e.target.name] = e.target.value;
+
+    updated[i].section[j].details[k][l] = {
+      ...updated[i].section[j].details[k][l],
+      [e.target.name]: e.target.value,
+    };
+
     setMigration(updated);
   };
 
@@ -739,7 +808,7 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
               </button>
             </div>
 
-            {(item.description || []).map((desc, j) => (
+            {/* {(item.description || []).map((desc, j) => (
               <div key={j} className="border p-3 bg-white rounded mb-2">
                 <select
                   name="type"
@@ -768,8 +837,94 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
                   Remove Block
                 </button>
               </div>
-            ))}
+            ))} */}
 
+            {/* {(item.description || []).map((paragraph, j) => (
+              <div key={j} className="border p-3 bg-white rounded mb-4">
+                <div className="flex justify-between mb-3">
+                  <h5 className="font-semibold">Paragraph {j + 1}</h5>
+
+                  <button
+                    type="button"
+                    onClick={() => addInlineItem(i, j)}
+                    className="bg-green-600 text-white px-3 py-1 rounded"
+                  >
+                    + Add Inline
+                  </button>
+                </div>
+
+                {paragraph.map((desc, k) => (
+                  <div key={k} className="border p-3 rounded mb-3 bg-gray-50">
+                    <select
+                      name="type"
+                      className="border p-2 w-full mb-2"
+                      value={desc.type}
+                      onChange={(e) =>
+                        handleOverviewDescriptionChange(i, j, k, e)
+                      }
+                    >
+                      <option value="text">Text</option>
+                      <option value="bold">Bold</option>
+                      <option value="highlight">Highlight</option>
+                      <option value="link">Link</option>
+                    </select>
+
+                    <textarea
+                      name="value"
+                      className="border p-2 w-full mb-2"
+                      placeholder="Content"
+                      value={desc.value}
+                      onChange={(e) =>
+                        handleOverviewDescriptionChange(i, j, k, e)
+                      }
+                    />
+
+                    {desc.type === "link" && (
+                      <input
+                        type="text"
+                        name="url"
+                        className="border p-2 w-full"
+                        placeholder="https://example.com"
+                        value={desc.url || ""}
+                        onChange={(e) =>
+                          handleOverviewDescriptionChange(i, j, k, e)
+                        }
+                      />
+                    )}
+
+                    <button
+                      type="button"
+                      onClick={() => removeInlineItem(i, j, k)}
+                      className="bg-red-500 text-white px-3 py-1 rounded mt-2"
+                    >
+                      Remove Inline
+                    </button>
+                  </div>
+                ))}
+
+                <button
+                  type="button"
+                  onClick={() => removeOverviewDescription(i, j)}
+                  className="bg-red-600 text-white px-3 py-1 rounded"
+                >
+                  Remove Paragraph
+                </button>
+              </div>
+            ))} */}
+            <div className="mb-4">
+              <label className="font-semibold block mb-2">Description</label>
+
+              <CustomRichEditor
+                value={item.description}
+                onChange={(html) => {
+                  const updated = [...overviewinfo];
+
+                  updated[i].description = html;
+
+                  setOverviewinfo(updated);
+                }}
+              />
+            </div>
             {/* Image */}
             <input
               type="file"
@@ -843,7 +998,7 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
                 </button>
               </div>
 
-              {m.description.map((d, j) => (
+              {/* {m.description.map((d, j) => (
                 <div key={j} className="border p-2 rounded mb-2 bg-white">
                   <select
                     name="type"
@@ -871,7 +1026,22 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
                     Remove
                   </button>
                 </div>
-              ))}
+              ))} */}
+
+              <div className="mb-4">
+                <label className="font-semibold block mb-2">Description</label>
+
+                <CustomRichEditor
+                  value={m.description}
+                  onChange={(html) => {
+                    const updated = [...migration];
+
+                    updated[i].description = html;
+
+                    setMigration(updated);
+                  }}
+                />
+              </div>
             </div>
 
             {/* NATIONAL PARK SECTIONS */}
@@ -918,7 +1088,7 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
                       </button>
                     </div>
 
-                    {s.details.map((d, k) => (
+                    {/* {s.details.map((d, k) => (
                       <div key={k} className="border p-2 rounded mb-2">
                         <select
                           name="type"
@@ -950,7 +1120,24 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
                           Remove
                         </button>
                       </div>
-                    ))}
+                    ))} */}
+
+                    <div className="mt-4">
+                      <label className="font-semibold block mb-2">
+                        Details
+                      </label>
+
+                      <CustomRichEditor
+                        value={s.details}
+                        onChange={(html) => {
+                          const updated = [...migration];
+
+                          updated[i].section[j].details = html;
+
+                          setMigration(updated);
+                        }}
+                      />
+                    </div>
                   </div>
 
                   <button
@@ -1019,12 +1206,23 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
                   onChange={(e) => handleHighlightSectionChange(i, j, e)}
                 />
 
-                <textarea
+                {/* <textarea
                   className="border p-2 w-full mb-2"
                   name="description"
                   placeholder="Description"
                   value={s.description}
                   onChange={(e) => handleHighlightSectionChange(i, j, e)}
+                /> */}
+
+                <CustomRichEditor
+                  value={s.description}
+                  onChange={(html) => {
+                    const updated = [...highlight];
+
+                    updated[i].section[j].description = html;
+
+                    setHighlight(updated);
+                  }}
                 />
 
                 <input

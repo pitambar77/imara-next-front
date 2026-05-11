@@ -1,69 +1,3 @@
-// import React from "react";
-
-// const OverviewSections = ({
-//   label,
-//   title,
-//   paragraphs,
-//   image,
-//   imagePosition = "right", // "left" or "right"
-//   bg = "#fcfcfc",
-// }) => {
-//   return (
-//     <section id="overview" style={{ backgroundColor: bg }} className="py-16">
-//       <div
-//         className={`grid grid-cols-1 lg:grid-cols-[62%_38%] px-4 md:px-10 lg:px-16 xl:px-18 2xl:px-28 mx-auto ${
-//           imagePosition === "left" ? "lg:grid-cols-[38%_62%]" : ""
-//         }
-//         }`}
-//       >
-//         {/* TEXT COLUMN */}
-//         <div
-//           className={`text-[#222] leading-relaxed ${
-//             imagePosition === "left" ? "order-2 lg:order-1" : ""
-//           }`}
-//         >
-//           {label && (
-//             <p className="uppercase text-sm font-semibold tracking-wider text-[#7a7a7a] mb-4">
-//               {label}
-//             </p>
-//           )}
-
-//           <h3 className="text-[30px] md:text-[36px] leading-snug font-bold text-[#111] mb-8">
-//             {title}
-//           </h3>
-
-//           <div className="text-[16px] text-[#333] space-y-4 leading-[1.8] [column-count:2] [column-gap:3rem]">
-//             {paragraphs.map((text, index) => (
-//               <p
-//                 key={index}
-//                 className={text.italic ? "italic text-[#444]" : ""}
-//               >
-//                 {text.content}
-//               </p>
-//             ))}
-//           </div>
-//         </div>
-
-//         {/* IMAGE COLUMN */}
-//         <div
-//           className={`flex justify-end  ${
-//             imagePosition === "left" ? "order-1 lg:order-2" : ""
-//           }`}
-//         >
-//           <img
-//             src={image}
-//             alt={title}
-//             className="rounded-md w-full max-w-[420px] h-[520px] object-cover shadow-sm"
-//           />
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default OverviewSections;
-
-
 // responsive
 
 import React from "react";
@@ -77,7 +11,11 @@ const OverviewSections = ({
   bg = "#fcfcfc",
 }) => {
   return (
-    <section id="overview" style={{ backgroundColor: bg }} className=" py-8 md:py-16">
+    <section
+      id="overview"
+      style={{ backgroundColor: bg }}
+      className=" py-8 md:py-16"
+    >
       <div
         className={`
           grid grid-cols-1 lg:grid-cols-[62%_38%] 
@@ -104,18 +42,64 @@ const OverviewSections = ({
           </h3>
 
           {/* Responsive Text Columns */}
+          {/* <div
+            className="
+    text-[15px]
+    text-[#444]
+    leading-[1.6]
+    md:columns-2
+    md:gap-12
+  "
+          >
+            {paragraphs.map((paragraph, index) => (
+              <div key={index} className="mb-5">
+                {paragraph.map((item, idx) => {
+                  switch (item.type) {
+                    case "bold":
+                      return <strong key={idx}>{item.value} </strong>;
+
+                    case "highlight":
+                      return (
+                        <span key={idx} className="bg-yellow-200 px-1">
+                          {item.value}{" "}
+                        </span>
+                      );
+
+                    case "link":
+                      return (
+                        <a
+                          key={idx}
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#d87029] underline"
+                        >
+                          {item.value}{" "}
+                        </a>
+                      );
+
+                    default:
+                      return <span key={idx}>{item.value} </span>;
+                  }
+                })}
+              </div>
+            ))}
+          </div> */}
+
+          {/* Responsive Text Columns */}
           <div
             className="
-              text-[15px] text-[#444] space-y-4 leading-[1.8]
-              md:[column-count:2] md:[column-gap:3rem]
-            "
-          >
-            {paragraphs.map((text, index) => (
-              <p key={index} className={text.italic ? "italic text-[#444]" : ""}>
-                {text.content}
-              </p>
-            ))}
-          </div>
+    overview-description
+    max-w-none
+    text-[15px]
+    text-[#444]
+    md:columns-2
+    md:gap-12
+  "
+            dangerouslySetInnerHTML={{
+              __html: paragraphs || "",
+            }}
+          />
         </div>
 
         {/* IMAGE COLUMN */}
@@ -135,6 +119,48 @@ const OverviewSections = ({
           />
         </div>
       </div>
+
+      <style>
+        {`
+     .overview-description,
+    .overview-description p,
+    .overview-description span,
+    .overview-description li,
+    .overview-description a,
+    .overview-description strong,
+    .overview-description em {
+      font-family: "Soleil", sans-serif !important;
+      color: #444 !important;
+      line-height: 1.8
+    }
+
+    .overview-description a {
+      color: #d87029 !important;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+
+    .overview-description a:hover {
+      opacity: 0.8;
+    }
+
+    .overview-description p {
+      margin-bottom: 1rem;
+      break-inside: avoid;
+      font-size: 15px;
+    }
+
+    .overview-description strong {
+      font-weight: 700;
+      color: #111 !important;
+    }
+
+    .overview-description mark {
+      background: #fef08a;
+      padding: 0 4px;
+    }
+  `}
+      </style>
     </section>
   );
 };

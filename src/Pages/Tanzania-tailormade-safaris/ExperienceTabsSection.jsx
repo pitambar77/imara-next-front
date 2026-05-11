@@ -123,7 +123,6 @@ export default function ExperienceTabsSection() {
               key={i}
               className="bg-white rounded-md overflow-hidden shadow-sm hover:shadow-md transition"
             >
-              {/* Image */}
               <div className="relative h-[220px]">
                 <Image
                   src={item.img}
@@ -132,6 +131,7 @@ export default function ExperienceTabsSection() {
                   className="object-cover"
                 />
               </div>
+              
 
               {/* Content */}
               <div className="p-5">

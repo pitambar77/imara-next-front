@@ -38,7 +38,7 @@ export default function DashboardLayout({ children }) {
     <div className="flex min-h-screen bg-gray-100">
       <Sidebar />
 
-      <div className="flex-1 p-6 overflow-y-auto">
+      <div className="flex-1 p-6 ">
         <div className="flex justify-end mb-4">
           <button
             onClick={handleLogout}
@@ -48,7 +48,7 @@ export default function DashboardLayout({ children }) {
           </button>
         </div>
 
-        <div className="flex-1 pl-64 w-full overflow-y-auto">
+        <div className="flex-1 pl-64 w-full ">
           {children}
         </div>
       </div>

@@ -1624,7 +1624,11 @@ export default function BlogCreateForm({ id }) {
 
   return (
     <div className="min-h-screen bg-gray-50">
+    
+
       <div className="max-w-6xl mx-auto px-4 py-8">
+        {/* Add section toolbar */}
+
         <div className="flex items-center justify-between">
           <h1 className="text-2xl md:text-3xl font-bold text-blue-700">
             {id ? "Edit Blog" : "Create New Blog"}
@@ -1844,7 +1848,7 @@ export default function BlogCreateForm({ id }) {
         </div>
 
         {/* Add section toolbar */}
-        <div className="mt-8 sticky top-20 z-30 bg-gray-50">
+        <div className="sticky top-0 z-50 bg-gray-50 py-4 border-b border-gray-200">
           <h2 className="text-lg font-semibold text-gray-800 mb-3">
             Add Section
           </h2>
@@ -1864,7 +1868,7 @@ export default function BlogCreateForm({ id }) {
 
         {/* Editor or Preview */}
         {!preview ? (
-          <div className="mt-6 space-y-4">
+          <div className="mt-6 ">
             {sections.length === 0 && (
               <div className="text-gray-500 italic">
                 No sections yet. Use the buttons above to add content blocks.
@@ -1874,7 +1878,7 @@ export default function BlogCreateForm({ id }) {
             {sections.map((s, idx) => (
               <div
                 key={s.id}
-                className="bg-white rounded-2xl border shadow-sm p-4"
+                className="  bg-white rounded-2xl border shadow-sm p-4 mb-4"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-gray-700">

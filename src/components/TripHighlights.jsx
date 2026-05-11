@@ -17,12 +17,10 @@ const TripHighlights = ({ title, subtitle, data }) => {
   const swiperNavNextRef = useRef(null);
   const [expandedCard, setExpandedCard] = useState(null);
 
-    const formatTitle = (text) => {
-  if (!text) return "";
-  return text
-    .toLowerCase()
-    .replace(/\b\w/g, (char) => char.toUpperCase());
-};
+  const formatTitle = (text) => {
+    if (!text) return "";
+    return text.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase());
+  };
 
   return (
     <section id="highlight" className="w-full py-4 md:py-16 bg-white relative">
@@ -114,13 +112,29 @@ const TripHighlights = ({ title, subtitle, data }) => {
                         {trip.title}
                       </h3>
 
-                      <p
+                      {/* <p
                         className={`text-[15px] text-[#444] leading-relaxed ${
                           expandedCard === trip.id ? "" : "line-clamp-6"
                         }`}
                       >
                         {trip.description}
-                      </p>
+                      </p> */}
+                      <div
+                        className={` ctf trip-description prose prose-sm max-w-none leading-relaxed text-[15px] text-[#444]
+    ${expandedCard === trip.id ? "" : "line-clamp-6"}
+  `}
+                        dangerouslySetInnerHTML={{
+                          __html: trip.description || "",
+                        }}
+                      />
+                      {/* <div
+                        className={`text-[15px] text-[#444] leading-relaxed ${
+                          expandedCard === trip.id ? "" : "line-clamp-6"
+                        }`}
+                        dangerouslySetInnerHTML={{
+                          __html: trip.description || "",
+                        }}
+                      /> */}
                     </div>
                   </div>
                 </div>
@@ -135,6 +149,39 @@ const TripHighlights = ({ title, subtitle, data }) => {
         {/* Inline CSS */}
         <style>
           {`
+
+.custom-pagination .swiper-pagination-bullet-active {
+      background-color: #4a5464 !important;
+      width: 12px !important;
+      height: 12px !important;
+      transform: scale(1.3);
+      transition: all 0.35s ease;
+    }
+
+    .trip-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .trip-image {
+      height: 160px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    /* ✅ Rich Text Link Style */
+    .trip-description a {
+      color: #d87029 !important;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+
+    .trip-description a:hover {
+      opacity: 0.8;
+    }
+
             .custom-pagination .swiper-pagination-bullet-active {
               background-color: #4a5464 !important;
               width: 12px !important;

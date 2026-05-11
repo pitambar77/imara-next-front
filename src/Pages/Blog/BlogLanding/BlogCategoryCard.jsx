@@ -52,8 +52,8 @@ const blogCategories = [
 const BlogCategoryCard = ({
   blogs = [],
   bgColor = "",
-  title = "Tanzania Blog And Guides",
-  subtitle = "Lorem Ipsum is simply dummy text of the printing",
+  title = "Tanzania Blog & Categories",
+  subtitle = "Explore Adventures, Wildlife & Local Experiences",
 }) => {
   // 🔥 Extract UNIQUE categories from blogs
   const categories = useMemo(() => {

@@ -235,7 +235,7 @@ const Navbar = () => {
         },
         {
           label: "Udzungwa Mountains National Park",
-          path: "/udzungwa-mountains-national-park",
+          path: "/tanzania-destinations/udzungwa-mountains-national-park",
         },
       ],
     },

@@ -33,14 +33,61 @@ const SerengetiMigrationTabs = ({ data = [] }) => {
             .replace(/\b\w/g, (c) => c.toUpperCase())}
         </h2>
 
-        {migration.description?.map((d, i) => (
+        {/* {migration.description?.map((d, i) => (
           <p
             key={i}
             className=" text-[15px] text-[#444] space-y-5 leading-[1.8] mb-4"
           >
             {d.content}
           </p>
-        ))}
+        ))} */}
+
+        <div
+          className="
+    migration-description
+    max-w-none
+    text-[15px]
+    text-[#444]
+    leading-[1.8]
+  "
+          dangerouslySetInnerHTML={{
+            __html: migration.description || "",
+          }}
+        />
+
+        {/* {migration.description?.map((paragraph, i) => (
+          <p key={i} className="text-[15px] text-[#444] leading-[1.8] mb-4">
+            {paragraph.map((item, idx) => {
+              switch (item.type) {
+                case "bold":
+                  return <strong className="" key={idx}>{item.value} </strong>;
+
+                case "highlight":
+                  return (
+                    <span key={idx} className="bg-yellow-200 px-1">
+                      {item.value}{" "}
+                    </span>
+                  );
+
+                case "link":
+                  return (
+                    <a
+                      key={idx}
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#d87029] underline"
+                    >
+                      {item.value}{" "}
+                    </a>
+                  );
+
+                default:
+                  return <span key={idx}>{item.value} </span>;
+              }
+            })}
+          </p>
+        ))} */}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-9 gap-10">
@@ -69,11 +116,59 @@ const SerengetiMigrationTabs = ({ data = [] }) => {
           <h3 className="text-2xl font-bold mb-6 text-[#111]">
             {sections[activeTab]?.nationalpark}
           </h3>
-          {sections[activeTab]?.details?.map((d, i) => (
+          {/* {sections[activeTab]?.details?.map((d, i) => (
             <p key={i} className="text-[15px] text-[#444] leading-relaxed mb-6">
               {d.content}
             </p>
-          ))}
+          ))} */}
+
+          <div
+            className="
+    migration-details
+    max-w-none
+    text-[15px]
+    text-[#444]
+    leading-[1.8]
+    mb-6
+  "
+            dangerouslySetInnerHTML={{
+              __html: sections[activeTab]?.details || "",
+            }}
+          />
+
+          {/* {sections[activeTab]?.details?.map((paragraph, i) => (
+            <p key={i} className="text-[15px] text-[#444] leading-relaxed mb-6">
+              {paragraph.map((item, idx) => {
+                switch (item.type) {
+                  case "bold":
+                    return <strong key={idx}>{item.value} </strong>;
+
+                  case "highlight":
+                    return (
+                      <span key={idx} className="bg-yellow-200 px-1">
+                        {item.value}{" "}
+                      </span>
+                    );
+
+                  case "link":
+                    return (
+                      <a
+                        key={idx}
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#d87029] underline"
+                      >
+                        {item.value}{" "}
+                      </a>
+                    );
+
+                  default:
+                    return <span key={idx}>{item.value} </span>;
+                }
+              })}
+            </p>
+          ))} */}
 
           {sections[activeTab]?.image && (
             <Image
@@ -86,6 +181,68 @@ const SerengetiMigrationTabs = ({ data = [] }) => {
           )}
         </div>
       </div>
+      <style>
+        {`
+    .migration-description,
+    .migration-description p,
+    .migration-description span,
+    .migration-description li,
+    .migration-description a,
+    .migration-description strong,
+    .migration-description em,
+    .migration-details,
+    .migration-details p,
+    .migration-details span,
+    .migration-details li,
+    .migration-details strong,
+    .migration-details em {
+      font-family: "Soleil", sans-serif !important;
+      color: #444 !important;
+      line-height: 1.8;
+
+    }
+
+    .migration-description a,
+    .migration-details a {
+      color: #d87029 !important;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+
+    .migration-description a:hover,
+    .migration-details a:hover {
+      opacity: 0.8;
+    }
+
+    .migration-description p,
+    .migration-details p {
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    .migration-description strong,
+    .migration-details strong {
+      font-weight: 700;
+      color: #111 !important;
+    }
+
+    .migration-description mark,
+    .migration-details mark {
+      background: #fef08a;
+      padding: 0 4px;
+    }
+
+    .migration-description h1,
+    .migration-description h2,
+    .migration-description h3,
+    .migration-details h1,
+    .migration-details h2,
+    .migration-details h3 {
+      font-family: "fonnts.com-AcuminPro-Bold" !important;
+      color: #111 !important;
+    }
+  `}
+      </style>
     </section>
   );
 };
