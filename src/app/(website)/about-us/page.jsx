@@ -28,7 +28,7 @@ import AboutUs from "@/Pages/Aboutus/AboutUs";
 
 export async function getAboutData() {
   const res = await fetch(
-    "https://imarabackend.imarakilelenisafaris.com/api/about",
+     `${process.env.NEXT_PUBLIC_API_URL}/about`,
     {
       next: { revalidate: 300 },
     },
@@ -65,14 +65,14 @@ export async function generateMetadata() {
 
     alternates: {
       canonical:
-        seo?.canonicalUrl || "https://imarakilelenisafaris.com/about-us",
+        seo?.canonicalUrl || `${process.env.NEXT_PUBLIC_API_BASE}/about-us`,
     },
 
     openGraph: {
       title: seo?.metaTitle || aboutData.title,
       description: seo?.metaDescription || aboutData.subtitle,
       images: [seo?.ogImage || aboutData.image],
-      url: seo?.canonicalUrl || "https://imarakilelenisafaris.com/about-us",
+      url: seo?.canonicalUrl || `${process.env.NEXT_PUBLIC_API_BASE}/about-us`,
     },
   };
 }

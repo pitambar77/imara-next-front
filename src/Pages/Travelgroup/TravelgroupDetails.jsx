@@ -14,7 +14,7 @@ import TailormadeSection from "../Home/TailormadeSection";
 import Banner from "../../components/Banner";
 import ReviewsSection from "../Aboutus/ReviewsSection";
 
-const TravelgroupDetails = ({ slug,trips,item }) => {
+const TravelgroupDetails = ({ slug, trips, item }) => {
   // const [item, setItem] = useState(null);
   // const [loading, setLoading] = useState(true);
 
@@ -53,8 +53,7 @@ const TravelgroupDetails = ({ slug,trips,item }) => {
 
   /* ================= DYNAMIC SEO ================= */
 
-
-if (!item) return <p className="p-6">Not found</p>;
+  if (!item) return <p className="p-6">Not found</p>;
 
   /* ================= MAP ADVENTURE ================= */
   const adventureSections = item.adventure.map((a) => ({
@@ -65,13 +64,18 @@ if (!item) return <p className="p-6">Not found</p>;
   }));
 
   /* ================= MAP FAQ ================= */
+  // const safariFaqs = item.aboutBooking.map((q) => ({
+  //   question: q.question,
+  //   answerBlocks: q.answer.map((ans) => ({
+  //     type: ans.type,
+  //     text: ans.content,
+  //     items: ans.type === "list" ? [ans.content] : undefined,
+  //   })),
+  // }));
+
   const safariFaqs = item.aboutBooking.map((q) => ({
     question: q.question,
-    answerBlocks: q.answer.map((ans) => ({
-      type: ans.type,
-      text: ans.content,
-      items: ans.type === "list" ? [ans.content] : undefined,
-    })),
+    answer: q.answer || "",
   }));
 
   return (
@@ -93,9 +97,7 @@ if (!item) return <p className="p-6">Not found</p>;
           image={o.image}
           imagePosition="right"
           bg="#fcfcfc"
-          paragraphs={o.description.map((d) => ({
-            content: d.content,
-          }))}
+          paragraphs={o.description}
         />
       ))}
 
@@ -117,7 +119,7 @@ if (!item) return <p className="p-6">Not found</p>;
       <FAQSection title="Top Frequently ask questions" faqs={safariFaqs} />
 
       <BookWithConfidence />
-      <ReviewsSection/>
+      <ReviewsSection />
       <Featured />
       <TailormadeSection />
     </div>

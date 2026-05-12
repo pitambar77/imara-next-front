@@ -1,10 +1,13 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import API from "../../api/axios.js";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const AboutList = () => {
   const [list, setList] = useState([]);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const fetchData = async () => {
     try {
@@ -20,7 +23,8 @@ const AboutList = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this About page?")) return;
+    if (!window.confirm("Are you sure you want to delete this About page?"))
+      return;
 
     try {
       await API.delete(`/about/${id}`);
@@ -37,7 +41,7 @@ const AboutList = () => {
       <div className="flex justify-between mb-6">
         <h2 className="text-2xl font-bold">About Pages</h2>
         <button
-          onClick={() => navigate("/dashboard/about/create")}
+          onClick={() => router.push("/dashboard/about/create")}
           className="bg-green-600 text-white px-4 py-2 rounded"
         >
           + Create About
@@ -48,11 +52,14 @@ const AboutList = () => {
         {list.map((item) => (
           <div key={item._id} className="border p-4 rounded shadow-sm bg-white">
             {item.image && (
-              <img
-                src={item.image}
-                alt="banner"
-                className="w-full h-40 object-cover rounded mb-3"
-              />
+              <div className="relative w-full h-48">
+                <Image
+                  src={item.image}
+                  alt={item.title || "About Image"}
+                  fill
+                  className="object-cover"
+                />
+              </div>
             )}
 
             <h3 className="text-xl font-semibold">{item.title}</h3>
@@ -60,7 +67,7 @@ const AboutList = () => {
 
             <div className="flex gap-3">
               <button
-                onClick={() => navigate(`/admin/about/edit/${item._id}`)}
+                onClick={() => router.push(`/dashboard/about-us/${item._id}`)}
                 className="bg-blue-600 text-white px-4 py-1 rounded"
               >
                 Edit

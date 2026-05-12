@@ -1,5 +1,8 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import API from "../../api/axios.js";
+import CustomRichEditor from "../CustomRichEditor.jsx";
 
 const AboutForm = ({ editData, onSuccess }) => {
   const [formData, setFormData] = useState({
@@ -18,26 +21,14 @@ const AboutForm = ({ editData, onSuccess }) => {
     {
       title: "",
       subtitle: "",
-      description: [],
+      description: "",
       image: null,
       imagePreview: null,
     },
   ]);
 
   const [adventure, setAdventure] = useState([{ heading: "", team: [] }]);
-  const [faq, setFaq] = useState([{ question: "", answer: [] }]);
-
-  // ================= Prefill for Edit =================
-  // useEffect(() => {
-  //   if (editData) {
-  //     setFormData(editData);
-  //     setOverview(editData.overview ?? []);
-  //     setOverviewinfo(editData.overviewinfo ?? []);
-  //     setAdventure(editData.adventure ?? []);
-  //     setFaq(editData.faq ?? []);
-  //     setMainImagePreview(editData.image);
-  //   }
-  // }, [editData]);
+  const [faq, setFaq] = useState([{ question: "", answer: "" }]);
 
   useEffect(() => {
     if (editData) {
@@ -52,8 +43,9 @@ const AboutForm = ({ editData, onSuccess }) => {
         (editData.overviewinfo || []).map((item) => ({
           ...item,
           image: null,
+          existingImage: item.image || "",
           imagePreview: item.image || null,
-        }))
+        })),
       );
 
       setAdventure(editData.adventure ?? []);
@@ -98,8 +90,9 @@ const AboutForm = ({ editData, onSuccess }) => {
       {
         title: "",
         subtitle: "",
-        description: [],
+        description: "",
         image: null,
+        existingImage: "",
         imagePreview: null,
       },
     ]);
@@ -113,24 +106,6 @@ const AboutForm = ({ editData, onSuccess }) => {
   const handleOverviewinfoBase = (i, e) => {
     const updated = [...overviewinfo];
     updated[i][e.target.name] = e.target.value;
-    setOverviewinfo(updated);
-  };
-
-  const addOverviewInfoBlock = (index) => {
-    const updated = [...overviewinfo];
-    updated[index].description.push({ type: "paragraph", content: "" });
-    setOverviewinfo(updated);
-  };
-
-  const handleOverviewinfoBlock = (i, j, e) => {
-    const updated = [...overviewinfo];
-    updated[i].description[j][e.target.name] = e.target.value;
-    setOverviewinfo(updated);
-  };
-
-  const removeOverviewinfoBlock = (i, j) => {
-    const updated = [...overviewinfo];
-    updated[i].description.splice(j, 1);
     setOverviewinfo(updated);
   };
 
@@ -195,7 +170,7 @@ const AboutForm = ({ editData, onSuccess }) => {
   // ===================================================================
   // ========================== FAQ ===================================
   // ===================================================================
-  const addFaq = () => setFaq([...faq, { question: "", answer: [] }]);
+  const addFaq = () => setFaq([...faq, { question: "", answer: "" }]);
   const removeFaq = (i) => {
     const updated = [...faq];
     updated.splice(i, 1);
@@ -204,104 +179,53 @@ const AboutForm = ({ editData, onSuccess }) => {
 
   const handleFaqChange = (i, e) => {
     const updated = [...faq];
-    updated[i].question = e.target.value;
+    updated[i][e.target.name] = e.target.value;
     setFaq(updated);
   };
-
-  const addFaqAnswer = (i) => {
-    const updated = [...faq];
-    updated[i].answer.push({ type: "paragraph", content: "" });
-    setFaq(updated);
-  };
-
-  const handleFaqAnswer = (i, j, e) => {
-    const updated = [...faq];
-    updated[i].answer[j][e.target.name] = e.target.value;
-    setFaq(updated);
-  };
-
-  const removeFaqAnswer = (i, j) => {
-    const updated = [...faq];
-    updated[i].answer.splice(j, 1);
-    setFaq(updated);
-  };
-
-  // ===================================================================
-  // ============================ SUBMIT ===============================
-  // ===================================================================
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   const data = new FormData();
-  //   data.append("formData", JSON.stringify(formData));
-
-  //   if (mainImage) data.append("mainImage", mainImage);
-
-  //   data.append("overview", JSON.stringify(overview));
-  //   data.append("overviewinfo", JSON.stringify(overviewinfo));
-  //   data.append("adventure", JSON.stringify(adventure));
-  //   data.append("faq", JSON.stringify(faq));
-
-  //   adventure.forEach((section) =>
-  //     section.team.forEach(
-  //       (item) => item.image && data.append("adventureImages", item.image)
-  //     )
-  //   );
-
-  //   try {
-  //     let res;
-  //     if (editData) {
-  //       res = await API.put(`/about/${editData._id}`, data);
-  //     } else {
-  //       res = await API.post("/about", data);
-  //     }
-
-  //     alert("Saved Successfully!");
-  //     onSuccess && onSuccess(res.data);
-  //   } catch (err) {
-  //     console.error(err);
-  //     alert("Error saving About page");
-  //   }
-  // };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const data = new FormData();
-  data.append("formData", JSON.stringify(formData));
+    const data = new FormData();
+    data.append("formData", JSON.stringify(formData));
 
-  if (mainImage) data.append("mainImage", mainImage);
+    if (mainImage) data.append("mainImage", mainImage);
 
-  data.append("overview", JSON.stringify(overview));
-  data.append("overviewinfo", JSON.stringify(overviewinfo));
-  data.append("adventure", JSON.stringify(adventure));
-  data.append("faq", JSON.stringify(faq));
+    data.append("overview", JSON.stringify(overview));
+    // data.append("overviewinfo", JSON.stringify(overviewinfo));
+    const cleanedOverviewInfo = overviewinfo.map((item) => ({
+      ...item,
+      image: item.image ? item.image.name : item.existingImage,
+    }));
 
-  // ✅ OverviewInfo images
-  overviewinfo.forEach((item) => {
-    if (item.image) data.append("overviewInfoImages", item.image);
-  });
+    data.append("overviewinfo", JSON.stringify(cleanedOverviewInfo));
+    data.append("adventure", JSON.stringify(adventure));
+    data.append("faq", JSON.stringify(faq));
 
-  // ✅ Adventure images
-  adventure.forEach((section) =>
-    section.team.forEach((item) => {
-      if (item.image) data.append("adventureImages", item.image);
-    })
-  );
+    // ✅ OverviewInfo images
+    overviewinfo.forEach((item) => {
+      if (item.image) data.append("overviewInfoImages", item.image);
+    });
 
-  try {
-    const res = editData
-      ? await API.put(`/about/${editData._id}`, data)
-      : await API.post("/about", data);
+    // ✅ Adventure images
+    adventure.forEach((section) =>
+      section.team.forEach((item) => {
+        if (item.image) data.append("adventureImages", item.image);
+      }),
+    );
 
-    alert("Saved Successfully!");
-    onSuccess && onSuccess(res.data);
-  } catch (err) {
-    console.error(err);
-    alert("Error saving About page");
-  }
-};
+    try {
+      const res = editData
+        ? await API.put(`/about/${editData._id}`, data)
+        : await API.post("/about", data);
 
+      alert("Saved Successfully!");
+      onSuccess && onSuccess(res.data);
+    } catch (err) {
+      console.error(err);
+      alert("Error saving About page");
+    }
+  };
 
   // ===================================================================
   // ============================ UI ==================================
@@ -369,12 +293,21 @@ const AboutForm = ({ editData, onSuccess }) => {
               value={item.subtitle}
               onChange={(e) => handleOverviewChange(i, e)}
             />
-            <textarea
+            {/* <textarea
               className="border p-2 w-full mb-2"
               name="description"
               placeholder="Description"
               value={item.description}
               onChange={(e) => handleOverviewChange(i, e)}
+            /> */}
+
+            <CustomRichEditor
+              value={item.description}
+              onChange={(value) => {
+                const updated = [...overview];
+                updated[i].description = value;
+                setOverview(updated);
+              }}
             />
 
             <button
@@ -429,44 +362,14 @@ const AboutForm = ({ editData, onSuccess }) => {
               <img src={item.imagePreview} className="w-32 rounded mb-2" />
             )}
 
-            <button
-              type="button"
-              className="bg-blue-600 text-white px-3 py-1 rounded"
-              onClick={() => addOverviewInfoBlock(i)}
-            >
-              + Add Info Block
-            </button>
-
-            {item.description.map((inner, j) => (
-              <div key={j} className="border p-3 mt-2 bg-white rounded">
-                <select
-                  name="type"
-                  className="border p-2 w-full mb-2"
-                  value={inner.type}
-                  onChange={(e) => handleOverviewinfoBlock(i, j, e)}
-                >
-                  <option value="header">Header</option>
-                  <option value="paragraph">Paragraph</option>
-                  <option value="list">List</option>
-                </select>
-
-                <textarea
-                  name="content"
-                  className="border p-2 w-full"
-                  placeholder="Content"
-                  value={inner.content}
-                  onChange={(e) => handleOverviewinfoBlock(i, j, e)}
-                ></textarea>
-
-                <button
-                  type="button"
-                  className="bg-red-600 text-white px-3 py-1 rounded mt-2"
-                  onClick={() => removeOverviewinfoBlock(i, j)}
-                >
-                  Remove Block
-                </button>
-              </div>
-            ))}
+            <CustomRichEditor
+              value={item.description}
+              onChange={(value) => {
+                const updated = [...overviewinfo];
+                updated[i].description = value;
+                setOverviewinfo(updated);
+              }}
+            />
 
             <button
               type="button"
@@ -525,12 +428,15 @@ const AboutForm = ({ editData, onSuccess }) => {
                   value={person.subtitle}
                   onChange={(e) => handleTeamChange(i, j, e)}
                 />
-                <textarea
-                  className="border p-2 w-full mb-2"
-                  name="description"
-                  placeholder="Description"
+                <CustomRichEditor
                   value={person.description}
-                  onChange={(e) => handleTeamChange(i, j, e)}
+                  onChange={(value) => {
+                    const updated = [...adventure];
+
+                    updated[i].team[j].description = value;
+
+                    setAdventure(updated);
+                  }}
                 />
 
                 <input
@@ -583,47 +489,20 @@ const AboutForm = ({ editData, onSuccess }) => {
           <div key={i} className="border bg-gray-50 p-4 mt-3 rounded">
             <input
               className="border p-2 w-full mb-2"
+              name="question"
               placeholder="Question"
               value={item.question}
               onChange={(e) => handleFaqChange(i, e)}
             />
 
-            <button
-              type="button"
-              className="bg-blue-600 text-white px-3 py-1 rounded mb-2"
-              onClick={() => addFaqAnswer(i)}
-            >
-              + Add Answer
-            </button>
-
-            {item.answer.map((a, j) => (
-              <div key={j} className="border p-2 mt-2 rounded">
-                <select
-                  name="type"
-                  className="border p-2 w-full mb-2"
-                  value={a.type}
-                  onChange={(e) => handleFaqAnswer(i, j, e)}
-                >
-                  <option value="header">Header</option>
-                  <option value="paragraph">Paragraph</option>
-                  <option value="list">List</option>
-                </select>
-                <textarea
-                  className="border p-2 w-full mb-2"
-                  name="content"
-                  placeholder="Answer"
-                  value={a.content}
-                  onChange={(e) => handleFaqAnswer(i, j, e)}
-                ></textarea>
-                <button
-                  type="button"
-                  className="bg-red-600 text-white px-3 py-1 rounded"
-                  onClick={() => removeFaqAnswer(i, j)}
-                >
-                  Remove Answer
-                </button>
-              </div>
-            ))}
+            <CustomRichEditor
+              value={item.answer}
+              onChange={(value) => {
+                const updated = [...faq];
+                updated[i].answer = value;
+                setFaq(updated);
+              }}
+            />
 
             <button
               type="button"

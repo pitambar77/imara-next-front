@@ -151,9 +151,21 @@ const TanzaniaTabsSection = () => {
               </h3>
 
               {/* Description (CLAMP WORKS) */}
-              <p className="text-[14px] md:text-[15px] text-[#444] line-clamp-3">
+              {/* <p className="text-[14px] md:text-[15px] text-[#444] line-clamp-3">
                 {trip.overviewinfo?.[0]?.description?.[0]?.content}
-              </p>
+              </p> */}
+
+              <div
+                className="
+    rich-text
+    text-[14px]
+    md:text-[15px]
+    line-clamp-3
+  "
+                dangerouslySetInnerHTML={{
+                  __html: trip.overviewinfo?.[0]?.description || "",
+                }}
+              />
 
               {/* SPACER → pushes button down */}
               <div className="flex-grow" />

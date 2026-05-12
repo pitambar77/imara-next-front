@@ -62,12 +62,17 @@ const AboutUs = ({ aboutData }) => {
     faq = [],
   } = aboutData;
 
+  // const safariFaqs = faq.map((item) => ({
+  //   question: item.question,
+  //   answerBlocks: item.answer.map((a) => ({
+  //     type: a.type,
+  //     text: a.content,
+  //   })),
+  // }));
+
   const safariFaqs = faq.map((item) => ({
     question: item.question,
-    answerBlocks: item.answer.map((a) => ({
-      type: a.type,
-      text: a.content,
-    })),
+    answer: item.answer,
   }));
 
   return (
@@ -124,9 +129,7 @@ const AboutUs = ({ aboutData }) => {
           image={item.image}
           imagePosition="right"
           bg="#fcfcfc"
-          paragraphs={item.description.map((d) => ({
-            content: d.content,
-          }))}
+          paragraphs={item.description}
         />
       ))}
 
@@ -209,14 +212,18 @@ const AboutUs = ({ aboutData }) => {
       {/* <WhyVisitTanzania/> */}
       <WhyVisitSection
         title={" Why visit Tanzania with Imara Kileleni Safaris?"}
-        subtitle={"Discover why local planning makes every Tanzania Safari feel smoother."}
+        subtitle={
+          "Discover why local planning makes every Tanzania Safari feel smoother."
+        }
         cards={data}
       />
       <ReviewsSection />
 
       <FAQSection
         title=" Questions People Ask About Us"
-        subtitle={"Helpful answers about our values, planning style, and travel support."}
+        subtitle={
+          "Helpful answers about our values, planning style, and travel support."
+        }
         faqs={safariFaqs}
       />
       <Featured />

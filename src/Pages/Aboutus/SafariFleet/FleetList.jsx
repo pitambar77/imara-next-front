@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from "react";
 import API from "../../../api/axios.js";
 import FleetForm from "../../../components/Fleet/FleetForm";

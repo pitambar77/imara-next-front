@@ -35,10 +35,9 @@ const getSeasonType = (monthName) => {
   return "high";
 };
 
-
 const BestTimeToVisitSection = ({
   title = "Best time to visit",
-  subtitle="",
+  subtitle = "",
   staticMonths = [],
 }) => {
   const [hoveredMonth, setHoveredMonth] = useState(null);
@@ -57,8 +56,7 @@ const BestTimeToVisitSection = ({
     >
       {/* TITLE */}
       <h2 className="text-xl md:text-3xl mb-3 capitalize text-center font-bold text-[#1a1a1a] ">
-        {title?.toLowerCase()
-                  .replace(/\b\w/g, (c) => c.toUpperCase())}
+        {title?.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase())}
       </h2>
 
       <p className="text-[18px] text-[#444] text-center mb-6">{subtitle}</p>
@@ -106,9 +104,16 @@ const BestTimeToVisitSection = ({
               transition={{ duration: 0.4 }}
               className="space-y-4"
             >
-              {hoveredMonth.description?.map((text, i) => (
+              {/* {hoveredMonth.description?.map((text, i) => (
                 <p key={i} className=" text-[#444]" >{text}</p>
-              ))}
+              ))} */}
+
+              <div
+                className="rich-text"
+                dangerouslySetInnerHTML={{
+                  __html: hoveredMonth.description || "",
+                }}
+              />
             </motion.div>
           )}
         </AnimatePresence>

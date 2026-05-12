@@ -120,21 +120,13 @@ const TripHighlights = ({ title, subtitle, data }) => {
                         {trip.description}
                       </p> */}
                       <div
-                        className={` ctf trip-description prose prose-sm max-w-none leading-relaxed text-[15px] text-[#444]
-    ${expandedCard === trip.id ? "" : "line-clamp-6"}
-  `}
+                        className={`rich-text trip-description max-w-none leading-relaxed text-[15px] text-[#444]
+  ${expandedCard === trip.id ? "" : "line-clamp-6"}
+`}
                         dangerouslySetInnerHTML={{
                           __html: trip.description || "",
                         }}
                       />
-                      {/* <div
-                        className={`text-[15px] text-[#444] leading-relaxed ${
-                          expandedCard === trip.id ? "" : "line-clamp-6"
-                        }`}
-                        dangerouslySetInnerHTML={{
-                          __html: trip.description || "",
-                        }}
-                      /> */}
                     </div>
                   </div>
                 </div>

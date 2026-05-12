@@ -45,9 +45,22 @@ const AdventureTour = ({ title, sections }) => {
                 {item.subheading}
               </h3>
 
-              <p className="text-[#444] text-[15px] md:text-[16px] mb-4 leading-relaxed">
+              {/* <p className="text-[#444] text-[15px] md:text-[16px] mb-4 leading-relaxed">
                 {item.description}
-              </p>
+              </p> */}
+              <div
+                className="
+    rich-text
+    text-[#444]
+    text-[15px]
+    md:text-[16px]
+    mb-4
+    leading-relaxed
+  "
+                dangerouslySetInnerHTML={{
+                  __html: item.description || "",
+                }}
+              />
             </div>
           </div>
         </div>

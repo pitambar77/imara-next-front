@@ -17,7 +17,7 @@ import ReviewsSection from "../ReviewsSection";
 //   "https://imarabackend.imarakilelenisafaris.com/api/fleet";
 // // ⬆️ replace if your endpoint is different
 
-const API_URL = `${process.env.NEXT_PUBLIC_API_BASE}/api/fleet`;
+const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/fleet`;
 
 const SafariFleet = () => {
   const [page, setPage] = useState(null);
@@ -51,10 +51,7 @@ const SafariFleet = () => {
   const faqs =
     page.faq?.map((f) => ({
       question: f.question,
-      answerBlocks: f.answer.map((a) => ({
-        type: a.type,
-        text: a.content,
-      })),
+      answer: f.answer,
     })) || [];
 
   return (
@@ -88,9 +85,7 @@ const SafariFleet = () => {
           image="/safari-fleet-1.webp"
           imagePosition="right"
           bg="#fcfcfc"
-          paragraphs={overview.description.map((d) => ({
-            content: d.content,
-          }))}
+          paragraphs={overview.description}
         />
       )}
 
@@ -99,10 +94,16 @@ const SafariFleet = () => {
       <SafariExtrasSection />
 
       {/* ================= FAQ ================= */}
-      <FAQSection title="Questions About Our Safari Fleet" subtitle={"Clear answers about safari vehicles, comfort, safety, and travel features."} faqs={faqs} />
+      <FAQSection
+        title="Questions About Our Safari Fleet"
+        subtitle={
+          "Clear answers about safari vehicles, comfort, safety, and travel features."
+        }
+        faqs={faqs}
+      />
 
       <BookWithConfidence />
-      <ReviewsSection/>
+      <ReviewsSection />
       <Featured />
       <TailormadeSection />
     </div>

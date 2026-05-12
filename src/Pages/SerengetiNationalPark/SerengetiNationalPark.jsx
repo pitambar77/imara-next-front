@@ -20,8 +20,6 @@ import Banner from "../../components/Banner";
 import ReviewsSection from "../Aboutus/ReviewsSection";
 
 const SerengetiNationalPark = ({ data, allDestinations, trips }) => {
-  
-
   if (!data) return <p className="p-10 text-center">No data found</p>;
 
   const {
@@ -44,17 +42,16 @@ const SerengetiNationalPark = ({ data, allDestinations, trips }) => {
       id: item._id,
       image: item.landingImage || item.image,
       title: item.title,
-      description: item.overviewinfo?.[0]?.description?.[0]?.content || "",
+      // description: item.overviewinfo?.[0]?.description?.[0]?.content || "",
+      description: item.overviewinfo?.[0]?.description || "",
       link: `/tanzania-destinations/${slugify(item.title)}`,
     }));
 
   /* ================= FAQ ================= */
+  /* ================= FAQ ================= */
   const faqs = aboutBooking.map((item) => ({
     question: item.question,
-    answerBlocks: item.answer.map((a) => ({
-      type: a.type,
-      text: a.content,
-    })),
+    answer: item.answer || "",
   }));
 
   /* ================= BEST TIME ================= */
@@ -63,7 +60,7 @@ const SerengetiNationalPark = ({ data, allDestinations, trips }) => {
       name: m.month,
       season: bt.title,
       rating: "Excellent",
-      description: [m.content],
+      description: m.content,
     })),
   );
 
@@ -79,7 +76,7 @@ const SerengetiNationalPark = ({ data, allDestinations, trips }) => {
   );
 
   const highlightTitle = highlight?.[0]?.heading || "";
-const highlightSubtitle = highlight?.[0]?.subtitle || "";
+  const highlightSubtitle = highlight?.[0]?.subtitle || "";
 
   /* ================= ADVENTURE ================= */
   const adventureSections = adventure.map((item) => ({
@@ -152,7 +149,9 @@ const highlightSubtitle = highlight?.[0]?.subtitle || "";
       {faqs.length > 0 && (
         <FAQSection
           title={`Questions About ${title} `}
-          subtitle={"Helpful answers to help you plan your visit with more confidence."}
+          subtitle={
+            "Helpful answers to help you plan your visit with more confidence."
+          }
           faqs={faqs}
         />
       )}
@@ -161,14 +160,16 @@ const highlightSubtitle = highlight?.[0]?.subtitle || "";
       {relatedDestinations.length > 0 && (
         <TripHighlights
           title={`More Safari Places to Visit`}
-          subtitle={"Explore nearby safari destinations featuring wildlife, scenery, and a variety of trips."}
+          subtitle={
+            "Explore nearby safari destinations featuring wildlife, scenery, and a variety of trips."
+          }
           data={relatedDestinations}
         />
       )}
 
       {/* <ActiveTravelDestinations /> */}
       <BookWithConfidence />
-      <ReviewsSection/>
+      <ReviewsSection />
       <Featured />
       <TailormadeSection />
     </div>

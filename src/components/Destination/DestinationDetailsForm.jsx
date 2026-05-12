@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import API from "../../api/axios.js";
 import CustomRichEditor from "@/components/CustomRichEditor";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://imarabackend.imarakilelenisafaris.com";
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
 
 const getImageUrl = (url) => {
   if (!url) return null;
@@ -26,7 +26,7 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
   const [landingImagePreview, setLandingImagePreview] = useState(null);
 
   // =============== Dynamic sections ===================
-  // // const [overviewinfo, setOverviewinfo] = useState([{ title: "", subtitle: "", description:[], image: null, imagePreview: null }]);
+
   const [overviewinfo, setOverviewinfo] = useState([
     {
       title: "",
@@ -37,7 +37,6 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
     },
   ]);
 
-  // const [highlight, setHighlight] = useState([{ heading:"", title:"", description:"", image:null, imagePreview:null }]);
   const [highlight, setHighlight] = useState([
     {
       heading: "",
@@ -47,8 +46,6 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
       ],
     },
   ]);
-
-  // const [migration, setMigration] = useState([{ title:"", subtitle:"", description:"", nationalpark:"", details:[], image:null, imagePreview:null }]);
 
   const [migration, setMigration] = useState([
     {
@@ -75,7 +72,7 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
       imagePreview: null,
     },
   ]);
-  // const [besttime, setBesttime] = useState([{ title:"", month:"", content:"" }]);
+
   const [besttime, setBesttime] = useState([
     {
       title: "",
@@ -84,7 +81,7 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
     },
   ]);
 
-  const [qa, setQa] = useState([{ question: "", answer: [] }]);
+  const [qa, setQa] = useState([{ question: "", answer: "" }]);
 
   // ============= Prefill for edit =====================
   // useEffect(() => {
@@ -364,12 +361,6 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
     setMigration(updated);
   };
 
-  // const addMigrationDescription = (i) => {
-  //   const updated = [...migration];
-  //   updated[i].description.push({ type: "paragraph", content: "" });
-  //   setMigration(updated);
-  // };
-
   const addMigrationDescription = (i) => {
     const updated = [...migration];
 
@@ -383,12 +374,6 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
 
     setMigration(updated);
   };
-
-  // const handleMigrationDescriptionChange = (i, j, e) => {
-  //   const updated = [...migration];
-  //   updated[i].description[j][e.target.name] = e.target.value;
-  //   setMigration(updated);
-  // };
 
   const handleMigrationDescriptionChange = (i, j, k, e) => {
     const updated = [...migration];
@@ -445,12 +430,6 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
     setMigration(updated);
   };
 
-  // const addMigrationDetail = (i, j) => {
-  //   const updated = [...migration];
-  //   updated[i].section[j].details.push({ type: "paragraph", content: "" });
-  //   setMigration(updated);
-  // };
-
   const addMigrationDetail = (i, j) => {
     const updated = [...migration];
 
@@ -464,12 +443,6 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
 
     setMigration(updated);
   };
-
-  // const handleMigrationDetailChange = (i, j, k, e) => {
-  //   const updated = [...migration];
-  //   updated[i].section[j].details[k][e.target.name] = e.target.value;
-  //   setMigration(updated);
-  // };
 
   const handleMigrationDetailChange = (i, j, k, l, e) => {
     const updated = [...migration];
@@ -565,7 +538,7 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
   // =================================================================
   // ------------------ Q&A SECTION ----------------------------------
   // =================================================================
-  const addQa = () => setQa([...qa, { question: "", answer: [] }]);
+  const addQa = () => setQa([...qa, { question: "", answer: "" }]);
   const removeQa = (i) => {
     const list = [...qa];
     list.splice(i, 1);
@@ -574,22 +547,6 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
   const handleQaChange = (i, e) => {
     const list = [...qa];
     list[i].question = e.target.value;
-    setQa(list);
-  };
-
-  const addQaAnswer = (i) => {
-    const list = [...qa];
-    list[i].answer.push({ type: "paragraph", content: "" });
-    setQa(list);
-  };
-  const removeQaAnswer = (i, j) => {
-    const list = [...qa];
-    list[i].answer.splice(j, 1);
-    setQa(list);
-  };
-  const handleQaAnswerChange = (i, j, e) => {
-    const list = [...qa];
-    list[i].answer[j][e.target.name] = e.target.value;
     setQa(list);
   };
 
@@ -654,32 +611,6 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
     adventure.forEach(
       (a) => a.image && data.append("adventureImages", a.image),
     );
-
-    //     data.append("highlight", JSON.stringify(highlight));
-    //     data.append("migration", JSON.stringify(migration));
-    //     data.append("adventure", JSON.stringify(adventure));
-    //     data.append("besttime", JSON.stringify(besttime));
-    //     data.append("qa", JSON.stringify(qa));
-
-    //     overviewinfo.forEach(
-    //   (x) => x.image && data.append("overviewImages", x.image)
-    // );
-
-    // highlight.forEach((h) =>
-    //   h.section.forEach(
-    //     (s) => s.image && data.append("highlightImages", s.image)
-    //   )
-    // );
-
-    // migration.forEach((m) =>
-    //   m.section.forEach(
-    //     (s) => s.image && data.append("migrationImages", s.image)
-    //   )
-    // );
-
-    // adventure.forEach(
-    //   (a) => a.image && data.append("adventureImages", a.image)
-    // );
 
     try {
       let res;
@@ -1312,12 +1243,23 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
                   onChange={(e) => handleBesttimeSectionChange(i, j, e)}
                 />
 
-                <textarea
+                {/* <textarea
                   className="border p-2 w-full"
                   name="content"
                   placeholder="Description"
                   value={s.content}
                   onChange={(e) => handleBesttimeSectionChange(i, j, e)}
+                /> */}
+
+                <CustomRichEditor
+                  value={s.content}
+                  onChange={(html) => {
+                    const updated = [...besttime];
+
+                    updated[i].section[j].content = html;
+
+                    setBesttime(updated);
+                  }}
                 />
 
                 <button
@@ -1382,13 +1324,24 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
               value={item.subtitle}
               onChange={(e) => handleAdventureChange(i, e)}
             />
-            <textarea
+            {/* <textarea
               className="border p-2 w-full mb-2"
               name="description"
               placeholder="Description"
               value={item.description}
               onChange={(e) => handleAdventureChange(i, e)}
-            ></textarea>
+            ></textarea> */}
+
+            <CustomRichEditor
+              value={item.description}
+              onChange={(html) => {
+                const updated = [...adventure];
+
+                updated[i].description = html;
+
+                setAdventure(updated);
+              }}
+            />
 
             <input
               type="file"
@@ -1434,44 +1387,20 @@ const DestinationDetailsForm = ({ editData, onSuccess }) => {
               onChange={(e) => handleQaChange(i, e)}
             />
 
-            <button
-              type="button"
-              onClick={() => addQaAnswer(i)}
-              className="bg-blue-600 text-white px-3 py-1 rounded mb-2"
-            >
-              + Add Answer Part
-            </button>
+            <div className="mt-4">
+              <label className="font-semibold block mb-2">Answer</label>
 
-            {item.answer.map((ans, j) => (
-              <div key={j} className="border p-2 rounded mt-2">
-                <select
-                  name="type"
-                  className="border p-2 w-full mb-2"
-                  value={ans.type}
-                  onChange={(e) => handleQaAnswerChange(i, j, e)}
-                >
-                  <option value="header">Header</option>
-                  <option value="paragraph">Paragraph</option>
-                  <option value="list">List</option>
-                </select>
+              <CustomRichEditor
+                value={item.answer}
+                onChange={(html) => {
+                  const updated = [...qa];
 
-                <textarea
-                  className="border p-2 w-full"
-                  placeholder="Content"
-                  name="content"
-                  value={ans.content}
-                  onChange={(e) => handleQaAnswerChange(i, j, e)}
-                ></textarea>
+                  updated[i].answer = html;
 
-                <button
-                  type="button"
-                  onClick={() => removeQaAnswer(i, j)}
-                  className="bg-red-600 text-white px-3 py-1 rounded mt-2"
-                >
-                  Remove
-                </button>
-              </div>
-            ))}
+                  setQa(updated);
+                }}
+              />
+            </div>
 
             <button
               type="button"

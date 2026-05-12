@@ -10,7 +10,7 @@ import SafariFleet from "@/Pages/Aboutus/SafariFleet/SafariFleet";
 
 export async function getFleetData() {
   const res = await fetch(
-    "https://imarabackend.imarakilelenisafaris.com/api/fleet",
+    `${process.env.NEXT_PUBLIC_API_URL}/fleet`,
     {
       next: { revalidate: 300 },
     },
@@ -46,14 +46,14 @@ export async function generateMetadata() {
     keywords: seo?.keywords,
 
     alternates: {
-      canonical: seo?.canonicalUrl || "https://imarakilelenisafaris.com/fleet",
+      canonical: seo?.canonicalUrl || `${process.env.NEXT_PUBLIC_API_BASE}/fleet`,
     },
 
     openGraph: {
       title: seo?.metaTitle || fleetData.title,
       description: seo?.metaDescription || fleetData.subtitle,
       images: [seo?.ogImage || fleetData.image],
-      url: seo?.canonicalUrl || "https://imarakilelenisafaris.com/fleet",
+      url: seo?.canonicalUrl || `${process.env.NEXT_PUBLIC_API_BASE}/fleet`,
     },
   };
 }

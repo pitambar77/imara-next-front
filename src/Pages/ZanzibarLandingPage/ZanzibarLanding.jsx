@@ -38,12 +38,17 @@ const ZanzibarLanding = ({ trips, data }) => {
   } = data;
 
   /* ================= FAQ ================= */
+  // const faqs = aboutBooking.map((item) => ({
+  //   question: item.question,
+  //   answerBlocks: item.answer.map((a) => ({
+  //     type: a.type,
+  //     text: a.content,
+  //   })),
+  // }));
+
   const faqs = aboutBooking.map((item) => ({
     question: item.question,
-    answerBlocks: item.answer.map((a) => ({
-      type: a.type,
-      text: a.content,
-    })),
+    answer: item.answer,
   }));
 
   const monthData = besttime.flatMap((bt) =>
@@ -134,14 +139,16 @@ const ZanzibarLanding = ({ trips, data }) => {
       {faqs.length > 0 && (
         <FAQSection
           title="What travellers ask about our safari tours?"
-          subtitle={"Helpful answers for planning relaxed beach stays and island experiences."}
+          subtitle={
+            "Helpful answers for planning relaxed beach stays and island experiences."
+          }
           faqs={faqs}
         />
       )}
 
       {/* <ActiveTravelDestinations /> */}
       <BookWithConfidence />
-      <ReviewsSection/>
+      <ReviewsSection />
       <Featured />
       <TailormadeSection />
     </div>
