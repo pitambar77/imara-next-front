@@ -616,6 +616,7 @@
 // url chnage of backend
 
 import React from "react";
+import { useEffect, useState } from "react";
 
 import {
   FaFacebookF,
@@ -628,46 +629,6 @@ import Image from "next/image";
 import FAQSection from "./FAQSection";
 import ImageContentSection from "./ImageContentSection";
 import PackageSection from "./PackageSection";
-
-/* 🔹 Recursive list renderer */
-
-const data = {
-  title: "Why Choose Tanzania for Your Next Adventure",
-  sections: [
-    {
-      image:
-        "https://media.istockphoto.com/id/2205226025/photo/large-elephant-at-sunset-shaking-off-dirt.jpg?s=612x612&w=0&k=20&c=Fkncv-Kfn686WTz31thh83mUAmMqZsjRmK779D04aGg=",
-      heading: "Serengeti National Park",
-      subheading: "Experience the Great Migration",
-      description:
-        "The Serengeti is one of the most iconic safari destinations in the world.  The Serengeti is one of the most iconic safari destinations in the world. The Serengeti is one of the most iconic safari destinations in the world. The Serengeti is one of the most iconic safari destinations in the world. The Serengeti is one of the most iconic safari destinations in the world.   ",
-    },
-    {
-      image:
-        "https://media.istockphoto.com/id/1031027106/photo/wildebeest-leaps-from-the-bank-of-the-mara-river.jpg?s=612x612&w=0&k=20&c=9ST1djnL_r7XN-ZhhyztGXrFvKF3vqInKy7bFVen1I4=",
-      heading: "Mount Kilimanjaro",
-      subheading: "Africa’s Highest Peak",
-      description:
-        "Climbing Mount Kilimanjaro is a once-in-a-lifetime experience. With proper preparation, trekkers can enjoy breathtaking landscapes and reach the summit of Africa’s tallest mountain. The Serengeti is one of the most iconic safari destinations in the world. ",
-    },
-    {
-      image:
-        "https://media.istockphoto.com/id/2205226025/photo/large-elephant-at-sunset-shaking-off-dirt.jpg?s=612x612&w=0&k=20&c=Fkncv-Kfn686WTz31thh83mUAmMqZsjRmK779D04aGg=",
-      heading: "Zanzibar Beaches",
-      subheading: "Relax in Paradise",
-      description:
-        "Zanzibar offers pristine white sand beaches, crystal-clear waters, and a rich cultural heritage. It’s the perfect destination to relax after an adventurous safari. The Serengeti is one of the most iconic safari destinations in the world. ",
-    },
-    {
-      image:
-        "https://media.istockphoto.com/id/1031027106/photo/wildebeest-leaps-from-the-bank-of-the-mara-river.jpg?s=612x612&w=0&k=20&c=9ST1djnL_r7XN-ZhhyztGXrFvKF3vqInKy7bFVen1I4=",
-      heading: "Ngorongoro Crater",
-      subheading: "A Natural Wonder",
-      description:
-        "The Ngorongoro Crater is a UNESCO World Heritage Site and home to a dense population of wildlife. Visitors can enjoy incredible game drives in this unique ecosystem. The Serengeti is one of the most iconic safari destinations in the world. ",
-    },
-  ],
-};
 
 const RenderList = ({ items, level = 0 }) => {
   if (!Array.isArray(items) || !items.length) return null;
@@ -702,11 +663,20 @@ const ContentSection = ({ blog, trips }) => {
   const blogData = blog?.data || blog;
   const sections = blogData.sections || [];
 
+  const [currentUrl, setCurrentUrl] = useState("");
+
+  useEffect(() => {
+    setCurrentUrl(window.location.href);
+  }, []);
+
+  const encodedUrl = encodeURIComponent(currentUrl);
+  const encodedTitle = encodeURIComponent(blog?.title || "");
+
   return (
     <section className="bg-[#F8E6D5] py-16">
       <div className="px-4 max-w-4xl mx-auto">
         {/* ===== MAIN HEADING ===== */}
-        <h1 className="text-[24px] md:text-4xl lg:text-[42px] capitalize text-center font-bold text-[#111] mb-4">
+        <h1 className=" font-acumin-bold text-[24px] md:text-4xl lg:text-[42px]  capitalize text-center text-[#111] mb-4">
           {blogData.title}
         </h1>
 
@@ -763,13 +733,33 @@ const ContentSection = ({ blog, trips }) => {
                 1: "text-[28px] md:text-[42px]",
                 2: "text-[24px] md:text-[36px]",
                 3: "text-[20px] md:text-[28px]",
-                4: "text-[18px] md:text-[22px]",
+                4: "text-[18px] md:text-[24px]",
+                5: "text-[16px] md:text-[20px]",
+                6: "text-[14px] md:text-[18px]",
+              };
+
+              // Different top spacing
+              const spacingMap = {
+                1: "mt-0",
+                2: "mt-12",
+                3: "mt-8",
+                4: "mt-6",
+                5: "mt-4",
+                6: "mt-3",
               };
 
               return (
                 <Tag
                   key={i}
-                  className={`${sizeMap[level]} font-bold text-[#111] mb-4 capitalize`}
+                  className={`
+            ${sizeMap[level]}
+            ${spacingMap[level]}
+            text-[#111]
+            mb-4
+            leading-[1.3]
+            font-acumin-bold
+            capitalize
+          `}
                 >
                   {s.text}
                 </Tag>
@@ -836,14 +826,15 @@ const ContentSection = ({ blog, trips }) => {
               if (!s.image?.url) return null;
 
               return (
-                <Image
-                  key={i}
-                  src={s.image.url}
-                  alt={s.image?.alt || "Blog Image"}
-                  width={1200}
-                  height={480}
-                  className="w-full h-56 md:h-[480px] rounded-md shadow-md object-cover mb-8"
-                />
+                <div key={i} className="py-4 md:py-5">
+                  <Image
+                    src={s.image.url}
+                    alt={s.image?.alt || "Blog Image"}
+                    width={1200}
+                    height={480}
+                    className="w-full h-56 md:h-[480px] rounded-md shadow-md object-cover mb-8"
+                  />
+                </div>
               );
 
             case "imageGrid":
@@ -885,23 +876,23 @@ const ContentSection = ({ blog, trips }) => {
 
             case "imageContent":
               return (
-                <ImageContentSection
-                  key={i}
-                  title={s.title}
-                  sections={s.sections}
-                />
+                <div key={i} className=" py-4 md:py-8">
+                  <ImageContentSection title={s.title} sections={s.sections} />
+                </div>
               );
 
             case "cta":
               return (
                 <div
                   key={i}
-                  className="bg-[#d76e28] py-10 rounded-md text-center mb-10"
+                  className="bg-[#d76e28] py-10 rounded-md text-center my-8"
                 >
                   <h3 className="text-3xl text-white/95 mb-4 capitalize">
                     {s.cta?.title}
                   </h3>
-                  <p className="text-white/90 mb-4">{s.cta?.description}</p>
+                  <p className="text-white/90 mb-4 px-10">
+                    {s.cta?.description}
+                  </p>
                   <a
                     href={s.cta?.buttonLink}
                     className="inline-block hover:text-black duration-300 text-white/95 py-2 px-5 border rounded-full font-bold uppercase cursor-pointer"
@@ -982,14 +973,14 @@ const ContentSection = ({ blog, trips }) => {
                       <FaStarHalfAlt />
                     </span>{" "}
                     <span className="text-white/90 font-normal">
-                      4.7/5 (100 REVIEWS)
+                      5/5 (100 REVIEWS)
                     </span>
                   </div>
 
                   {/* Title */}
-                  <h2 className="text-[24px] md:text-3xl capitalize font-extrabold text-[#111] text-left mb-10">
+                  {/* <h2 className="text-[24px] md:text-3xl capitalize font-extrabold text-[#111] text-left mb-10">
                     Real Stories From Our Travellers
-                  </h2>
+                  </h2> */}
 
                   {/* Grid */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
@@ -1059,16 +1050,16 @@ const ContentSection = ({ blog, trips }) => {
         {/* ===== Cards Grid ===== */}
         <div className=" flex items-center justify-between my-16">
           {/* 🔹 Share Title */}
-          <h2 className="text-[24px] md:text-4xl capitalize font-bold text-[#111] text-center ">
+          <h3 className="text-[24px] md:text-3xl capitalize text-[#111] text-center ">
             Share Article
-          </h2>
+          </h3>
 
           {/* 🔹 Social Icons */}
           <div className="text-sm text-gray-700 space-y-3 text-center ">
             <div className="flex justify-center gap-4 text-xl">
               {/* Facebook */}
               <a
-                href="https://www.facebook.com/imarakileleni/?_rdc=1&_rdr#"
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-[#d87028] hover:bg-[#c35f22] transition"
@@ -1088,13 +1079,13 @@ const ContentSection = ({ blog, trips }) => {
                 <FaInstagram className="text-white" />
               </a>
 
-              {/* Pinterest */}
+              {/* Twitter / X */}
               <a
-                href="https://x.com/imarakileleni/"
+                href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-[#d87028] hover:bg-[#c35f22] transition"
-                aria-label="Pinterest"
+                aria-label="Twitter"
               >
                 <FaXTwitter className="text-white" />
               </a>

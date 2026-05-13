@@ -37,9 +37,9 @@ const RelatedBlogCard = ({ title, subtitle, data }) => {
     >
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
         <div className="mb-10">
-          <h2 className="text-2xl md:text-3xl text-center font-bold text-[#1a1a1a] capitalize mb-3">
+          <h3 className="text-2xl md:text-4xl text-center text-[#1a1a1a] capitalize mb-3">
             {title}
-          </h2>
+          </h3>
 
           <div className="relative flex items-center justify-center">
             <p className="text-[16px] md:text-[18px] text-[#444] text-center">

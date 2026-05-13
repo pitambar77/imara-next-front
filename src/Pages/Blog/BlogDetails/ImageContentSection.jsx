@@ -4,18 +4,18 @@ const ImageContentSection = ({ title = "Heading", sections }) => {
   if (!sections?.length) return null;
 
   return (
-    <section className="text-[#111] py-10 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
-      {title && (
+    <section className="text-[#111] max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
+      {/* {title && (
         <h2 className="text-left capitalize text-2xl md:text-[36px] mb-12">
           {title}
         </h2>
-      )}
+      )} */}
 
       {sections.map((item, index) => {
         const isRight = item.layout === "right";
 
         return (
-          <div key={index} className="mb-6 md:mb-12">
+          <div key={index} className=" mb-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 items-center">
               
               {/* IMAGE */}
@@ -44,7 +44,7 @@ const ImageContentSection = ({ title = "Heading", sections }) => {
                   {item.heading}
                 </h3>
 
-                <h4 className="text-[16px] md:text-[22px] font-semibold text-[#1a1a1a] mb-3">
+                <h4 className="text-[16px] md:text-[22px] font-normal text-[#1a1a1a] mb-3">
                   {item.subheading}
                 </h4>
 

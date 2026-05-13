@@ -268,12 +268,12 @@ function SectionEditor({
     case "imageContent":
       return (
         <>
-          <input
+          {/* <input
             placeholder="Section Title"
             value={s.title}
             onChange={(e) => updateSection(s.id, { title: e.target.value })}
             className="w-full border p-2 mb-3"
-          />
+          /> */}
 
           {s.sections.map((item, i) => (
             <div key={i} className="border p-4 mt-3 rounded space-y-3">

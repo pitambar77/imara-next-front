@@ -13,7 +13,7 @@ const FAQSection = ({ title, subtitle, faqs }) => {
   return (
     <section
       id="faq"
-      className=" py-8 md:py-16 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0"
+      className=" py-8 md:py-10 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0"
     >
       {/* Title */}
       {title && (
@@ -39,7 +39,7 @@ const FAQSection = ({ title, subtitle, faqs }) => {
               className={`w-full flex justify-between cursor-pointer items-center text-left text-[16px] md:text-[18px] font-semibold py-3 md:py-5 px-4 transition-all duration-300 ${
                 openIndex === index
                   ? " bg-[#d971291f] text-[#444]"
-                  : "hover:bg-[#f7f7f7] text-[#444]"
+                  : " text-[#444]"
               }`}
             >
               {faq.question}

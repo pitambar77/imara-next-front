@@ -68,6 +68,10 @@ span {
   font-family: "Soleil";
 }
 
+.font-acumin-bold {
+  font-family: "fonnts.com-AcuminPro-Bold", sans-serif;
+}
+
 /* Remove arrows in Chrome, Safari, Edge */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
@@ -272,14 +276,17 @@ html {
 
 .rich-text h2 {
   font-size: 36px !important;
+  margin-top: 3rem;
 }
 
 .rich-text h3 {
   font-size: 28px !important;
+  margin-top: 2rem;
 }
 
 .rich-text h4 {
   font-size: 24px !important;
+  margin-top: 1.5rem;
 }
 
 .rich-text h5 {
