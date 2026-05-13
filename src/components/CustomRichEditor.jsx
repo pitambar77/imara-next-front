@@ -13,8 +13,101 @@ const CustomRichEditor = ({ value, onChange }) => {
   }, [value]);
 
   // Save content
+  // const handleInput = () => {
+  //   onChange(editorRef.current.innerHTML);
+  // };
+
+  // const handleInput = () => {
+  //   let html = editorRef.current.innerHTML;
+
+  //   // Remove Google Docs ids
+  //   html = html.replace(/id="docs-internal-guid-[^"]*"/g, "");
+
+  //   // Remove inline styles
+  //   html = html.replace(/style="[^"]*"/g, "");
+
+  //   // Remove span tags but keep content
+  //   html = html.replace(/<\/?span[^>]*>/g, "");
+
+  //   // Remove empty tags
+  //   html = html.replace(/<p><br><\/p>/g, "");
+
+  //   onChange(html);
+  // };
+
+  const cleanHTML = (html) => {
+    // Create temp container
+    const temp = document.createElement("div");
+    temp.innerHTML = html;
+
+    // Remove unwanted attributes
+    temp.querySelectorAll("*").forEach((el) => {
+      // Remove MS Word / Google Docs junk
+      el.removeAttribute("style");
+      el.removeAttribute("class");
+      el.removeAttribute("id");
+      el.removeAttribute("dir");
+
+      // Keep only safe link attrs
+      if (el.tagName !== "A") {
+        el.removeAttribute("target");
+        el.removeAttribute("rel");
+      }
+    });
+
+    // Remove empty spans
+    temp.querySelectorAll("span").forEach((span) => {
+      span.replaceWith(...span.childNodes);
+    });
+
+    // Remove empty paragraphs
+    temp.querySelectorAll("p").forEach((p) => {
+      if (p.innerHTML.trim() === "<br>" || p.innerHTML.trim() === "") {
+        p.remove();
+      }
+    });
+
+    return temp.innerHTML;
+  };
+
+  const handlePaste = (e) => {
+    e.preventDefault();
+
+    // Get HTML or plain text
+    const html =
+      e.clipboardData.getData("text/html") ||
+      e.clipboardData.getData("text/plain");
+
+    if (!html) return;
+
+    // Create temp container
+    const temp = document.createElement("div");
+    temp.innerHTML = html;
+
+    // CLEAN WORD / GOOGLE DOCS JUNK
+    temp.querySelectorAll("*").forEach((el) => {
+      el.removeAttribute("style");
+      el.removeAttribute("class");
+      el.removeAttribute("id");
+      el.removeAttribute("dir");
+
+      // Remove empty spans
+      if (el.tagName === "SPAN") {
+        el.replaceWith(...el.childNodes);
+      }
+    });
+
+    // Insert cleaned HTML
+    document.execCommand("insertHTML", false, temp.innerHTML);
+
+    // Save updated content
+    handleInput();
+  };
+
   const handleInput = () => {
-    onChange(editorRef.current.innerHTML);
+    const cleaned = cleanHTML(editorRef.current.innerHTML);
+
+    onChange(cleaned);
   };
 
   // Bold
@@ -30,6 +123,21 @@ const CustomRichEditor = ({ value, onChange }) => {
   // Underline
   const handleUnderline = () => {
     document.execCommand("underline");
+  };
+
+  // Heading
+  const handleHeading = (tag) => {
+    document.execCommand("formatBlock", false, tag);
+  };
+
+  // Bullet List
+  const handleBulletList = () => {
+    document.execCommand("insertUnorderedList");
+  };
+
+  // Number List
+  const handleNumberList = () => {
+    document.execCommand("insertOrderedList");
   };
 
   // Highlight
@@ -98,6 +206,67 @@ const CustomRichEditor = ({ value, onChange }) => {
         >
           Link
         </button>
+
+        <button
+          type="button"
+          onClick={() => handleHeading("H1")}
+          className="border px-3 py-1 rounded font-bold"
+        >
+          H1
+        </button>
+
+        <button
+          type="button"
+          onClick={() => handleHeading("H2")}
+          className="border px-3 py-1 rounded font-bold"
+        >
+          H2
+        </button>
+
+        <button
+          type="button"
+          onClick={() => handleHeading("H3")}
+          className="border px-3 py-1 rounded font-bold"
+        >
+          H3
+        </button>
+        <button
+          type="button"
+          onClick={() => handleHeading("H4")}
+          className="border px-3 py-1 rounded font-bold"
+        >
+          H4
+        </button>
+        <button
+          type="button"
+          onClick={() => handleHeading("H5")}
+          className="border px-3 py-1 rounded font-bold"
+        >
+          H5
+        </button>
+        <button
+          type="button"
+          onClick={() => handleHeading("H6")}
+          className="border px-3 py-1 rounded font-bold"
+        >
+          H6
+        </button>
+
+        <button
+          type="button"
+          onClick={handleBulletList}
+          className="border px-3 py-1 rounded"
+        >
+          • List
+        </button>
+
+        <button
+          type="button"
+          onClick={handleNumberList}
+          className="border px-3 py-1 rounded"
+        >
+          1. List
+        </button>
       </div>
 
       {/* Editor */}
@@ -105,11 +274,15 @@ const CustomRichEditor = ({ value, onChange }) => {
         ref={editorRef}
         contentEditable
         onInput={handleInput}
+        onPaste={handlePaste}
         className="
-          min-h-[200px]
+        min-h-[200px]
+           max-h-[400px]
+  overflow-y-auto
+  overflow-x-hidden
           p-4
+          rich-text
           outline-none
-          prose
           max-w-none
         "
       />

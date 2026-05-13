@@ -100,7 +100,7 @@ const BlogDetails = ({ blog, trips, relatedBlogs }) => {
             image: item.thumbnail,
             title: item.title,
             description: item.subtitle || "Read our detailed travel guide.",
-            link: `/blog/${item.slug}`,
+            link: `/blogimara/${item.slug}`,
             category: item.category ,
             author: item.author?.name || "Admin",
             date: item.createdAt,

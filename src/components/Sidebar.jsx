@@ -17,6 +17,7 @@ const Sidebar = () => {
 
   const links = [
     { name: "Travel Guide", icon: <FaMapMarkedAlt />, path: "/dashboard/travelguide" },
+     { name: "Blog", icon: <FaMapMarkedAlt />, path: "/dashboard/blogimara" },
     { name: "Package", icon: <FaUmbrellaBeach />, path: "/dashboard/package" },
     { name: "Destination Details", icon: <FaRoute />, path: "/dashboard/destination" },
     { name: "Destination Landing", icon: <FaHotel />, path: "/dashboard/destination-landing" },

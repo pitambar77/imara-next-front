@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import API from "../../api/axios.js";
 import CustomRichEditor from "@/components/CustomRichEditor";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://imarabackend.imarakilelenisafaris.com";
 
 const getImageUrl = (url) => {
   if (!url) return null;

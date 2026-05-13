@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
-const FAQSection = ({ title,subtitle, faqs }) => {
+const FAQSection = ({ title, subtitle, faqs }) => {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -11,17 +11,21 @@ const FAQSection = ({ title,subtitle, faqs }) => {
   };
 
   return (
-    <section id="faq" className=" py-8 md:py-16 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
-
+    <section
+      id="faq"
+      className=" py-8 md:py-16 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0"
+    >
       {/* Title */}
       {title && (
         <h2 className="text-[24px] md:text-3xl lg:text-4xl text-left capitalize font-extrabold text-[#1a1a1a] mb-3 ">
           {title}
         </h2>
       )}
-       {subtitle && (
-            <p className="text-[18px] text-[#444] mb-8 md:mb-12 text-left ">{subtitle}</p>
-          )}
+      {subtitle && (
+        <p className="text-[18px] text-[#444] mb-8 md:mb-12 text-left ">
+          {subtitle}
+        </p>
+      )}
 
       <div className="border-t border-[#111]/30">
         {faqs?.map((faq, index) => (
@@ -47,6 +51,24 @@ const FAQSection = ({ title,subtitle, faqs }) => {
 
             {/* ANSWER */}
             <div
+              className={`transition-all duration-500 ease-in-out overflow-hidden ${
+                openIndex === index
+                  ? "max-h-[2000px] opacity-100"
+                  : "max-h-0 opacity-0"
+              }`}
+            >
+              <div className="px-6 pb-5 pt-4 text-[#444] text-[16px] leading-relaxed space-y-4">
+                <div
+                  className="rich-text"
+                  dangerouslySetInnerHTML={{
+                    __html: faq.answer || "",
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* ANSWER */}
+            {/* <div
               className={`transition-all  duration-500 ease-in-out overflow-hidden ${
                 openIndex === index
                   ? "max-h-[2000px] opacity-100"
@@ -92,7 +114,7 @@ const FAQSection = ({ title,subtitle, faqs }) => {
                 })}
                 
               </div>
-            </div>
+            </div> */}
           </div>
         ))}
       </div>
