@@ -4,16 +4,15 @@ import React, { useEffect, useState } from "react";
 
 import API from "../../api/axios";
 
-import TravelGuideDetails from "../TravelGuideDetails/TravelGuideDetails";
 import TripHighlights from "../../components/TripHighlights";
-import ActiveTravelDestinations from "../TravelGuideDetails/ActiveTravelDestinations";
 import BookWithConfidence from "../Home/BookWithConfidence";
 import Featured from "../Home/Featured";
 
 import TailormadeSection from "../Home/TailormadeSection";
-import FAQSection from "@/components/FAQSection";
+import TravelguideDataDetails from "../TravelGuideDetails/TravelguideDataDetails";
+import Faqs from "./Faqs";
 
-const BlogDetail = ({ slug }) => {
+const TravelguidenewDetails = ({ slug }) => {
   const [blog, setBlog] = useState(null);
   const [relatedBlogs, setRelatedBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,7 +22,7 @@ const BlogDetail = ({ slug }) => {
     const fetchBlog = async () => {
       try {
         // 1️⃣ Get blog by slug
-        const res = await API.get(`/blog/slug/${slug}`);
+        const res = await API.get(`/travelguide/slug/${slug}`);
 
         if (!res.data) {
           setBlog(null);
@@ -60,7 +59,7 @@ const BlogDetail = ({ slug }) => {
     const fetchRelated = async () => {
       try {
         const res = await API.get(
-          `/blog/category/${encodeURIComponent(blog.category)}`,
+          `/travelguide/category/${encodeURIComponent(blog.category)}`,
         );
 
         const blogs = Array.isArray(res.data) ? res.data : [];
@@ -75,7 +74,7 @@ const BlogDetail = ({ slug }) => {
           description:
             item.sections?.find((s) => s.type === "paragraph")?.text ||
             "Read our detailed travel guide.",
-          link: `/travel-guide/${item.slug}`,
+          link: `/travelguide/${item.slug}`,
         }));
 
         setRelatedBlogs(mapped);
@@ -96,15 +95,8 @@ const BlogDetail = ({ slug }) => {
 
   return (
     <div>
-      <TravelGuideDetails blog={blog} />
+      <TravelguideDataDetails blog={blog} faqSection={faqSection} />
 
-      {faqSection && (
-        <FAQSection
-          title={faqSection.title}
-          subtitle={faqSection.subtitle}
-          faqs={faqSection.faqs}
-        />
-      )}
 
       {relatedBlogs.length > 0 && (
         <TripHighlights
@@ -121,4 +113,5 @@ const BlogDetail = ({ slug }) => {
   );
 };
 
-export default BlogDetail;
+
+export default TravelguidenewDetails

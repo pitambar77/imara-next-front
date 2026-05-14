@@ -73,6 +73,74 @@ import { getTrips } from "@/lib/getTrips";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
+/* ================= METADATA ================= */
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+
+  try {
+    const blogRes = await fetch(`${API_BASE}/blogimara/slug/${slug}`, {
+      cache: "no-store",
+    });
+
+    if (!blogRes.ok) {
+      return {
+        title: "Blog Not Found",
+      };
+    }
+
+    const blogJson = await blogRes.json();
+    const blog = blogJson?.data;
+
+    if (!blog) {
+      return {
+        title: "Blog Not Found",
+      };
+    }
+
+    /* ================= SEO FETCH ================= */
+
+    const seoRes = await fetch(
+      `${API_BASE}/seo?referenceId=${blog._id}&referenceType=blogimara`,
+      {
+        next: { revalidate: 300 },
+      },
+    );
+
+    const seo = await seoRes.json();
+
+    return {
+      title: seo?.metaTitle || blog.title,
+
+      description: seo?.metaDescription || blog.subtitle || blog.excerpt,
+
+      keywords: seo?.keywords || `Tanzania safari blog, ${blog.title}`,
+
+      alternates: {
+        canonical:
+          seo?.canonicalUrl ||
+          `https://imarakilelenisafaris.com/blog/${slug}`,
+      },
+
+      openGraph: {
+        title: seo?.metaTitle || blog.title,
+
+        description: seo?.metaDescription || blog.subtitle || blog.excerpt,
+
+        images: [seo?.ogImage || blog.thumbnail || "/default-og.jpg"],
+
+        url:
+          seo?.canonicalUrl ||
+          `https://imarakilelenisafaris.com/blog/${slug}`,
+      },
+    };
+  } catch (err) {
+    return {
+      title: "Blog",
+    };
+  }
+}
+
 export default async function Page({ params }) {
   const { slug } = await params;
 
@@ -119,15 +187,35 @@ export default async function Page({ params }) {
           b.category?.toLowerCase() === blog.category?.toLowerCase() &&
           b.slug !== blog.slug,
       ) || [];
-    console.log("URL:", `${API_BASE}/blogimara/category/${blog.category}`);
 
-    // 🔥 3. Pass everything to client
+    /* ================= SEO FOR SCHEMA ================= */
+
+    const seoRes = await fetch(
+      `${API_BASE}/seo?referenceId=${blog._id}&referenceType=blogimara`,
+      {
+        next: { revalidate: 300 },
+      },
+    );
+
+    const seo = await seoRes.json();
+
     return (
-      <BlogDetails
-        blog={formattedBlog}
-        trips={trips}
-        relatedBlogs={relatedBlogs}
-      />
+      <>
+        {/* Schema Markup */}
+        {seo?.schemaMarkup && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(seo.schemaMarkup),
+            }}
+          />
+        )}
+        <BlogDetails
+          blog={formattedBlog}
+          trips={trips}
+          relatedBlogs={relatedBlogs}
+        />
+      </>
     );
   } catch (err) {
     console.error("Page error:", err);

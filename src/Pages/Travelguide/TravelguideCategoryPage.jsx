@@ -15,7 +15,7 @@ import Banner from "../../components/Banner";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
-const BlogCategoryPage = ({ category }) => {
+const TravelguideCategoryPage = ({ category }) => {
   const [asSeenItems, setAsSeenItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -24,7 +24,7 @@ const BlogCategoryPage = ({ category }) => {
     if (!category) return;
 
     axios
-      .get(`${API_BASE}/blog/category/${encodeURIComponent(category)}`)
+      .get(`${API_BASE}/travelguide/category/${encodeURIComponent(category)}`)
       .then((res) => {
         const blogs = Array.isArray(res.data) ? res.data : [];
 
@@ -42,7 +42,7 @@ const BlogCategoryPage = ({ category }) => {
             blog.sections?.[0]?.content ||
             "Read our detailed travel guide.",
 
-          link: `/travel-guide/${blog.slug}`,
+          link: `/travelguide/${blog.slug}`,
         }));
 
         setAsSeenItems(mappedItems);
@@ -80,4 +80,5 @@ const BlogCategoryPage = ({ category }) => {
   );
 };
 
-export default BlogCategoryPage;
+
+export default TravelguideCategoryPage;

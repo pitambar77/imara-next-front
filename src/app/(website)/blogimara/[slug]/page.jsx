@@ -4,6 +4,7 @@ import { getTrips } from "@/lib/getTrips";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
+
 export default async function Page({ params }) {
   const { slug } = await params;
 
@@ -28,13 +29,13 @@ export default async function Page({ params }) {
     }
 
     const formattedBlog = {
-  ...blog,
-  authorName: blog.author?.name || "Admin",
-  authorImage: blog.author?.image || "/author-blog.webp",
-  authorRole: blog.author?.role || "",
-  authorDescription: blog.author?.description || "",
-  authorSocial: blog.author?.social || {},
-};
+      ...blog,
+      authorName: blog.author?.name || "Admin",
+      authorImage: blog.author?.image || "/author-blog.webp",
+      authorRole: blog.author?.role || "",
+      authorDescription: blog.author?.description || "",
+      authorSocial: blog.author?.social || {},
+    };
 
     // 🔥 2. Fetch related blogs (SERVER SIDE)
 
@@ -50,14 +51,43 @@ export default async function Page({ params }) {
           b.category?.toLowerCase() === blog.category?.toLowerCase() &&
           b.slug !== blog.slug,
       ) || [];
-    console.log("URL:", `${API_BASE}/blogimara/category/${blog.category}`);
+  
 
     // 🔥 3. Pass everything to client
+
+    /* ================= SEO FOR SCHEMA ================= */
+
+    const seoRes = await fetch(
+      `${API_BASE}/seo?referenceId=${blog._id}&referenceType=blog`,
+      {
+        next: { revalidate: 300 },
+      },
+    );
+
+    const seo = await seoRes.json();
+
     return (
-      <BlogDetails blog={formattedBlog} trips={trips} relatedBlogs={relatedBlogs} />
+      <>
+        {/* Schema Markup */}
+        {seo?.schemaMarkup && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(seo.schemaMarkup),
+            }}
+          />
+        )}
+
+        <BlogDetails
+          blog={formattedBlog}
+          trips={trips}
+          relatedBlogs={relatedBlogs}
+        />
+      </>
     );
   } catch (err) {
     console.error("Page error:", err);
-    return <div>Something went wrong</div>;x
+    return <div>Something went wrong</div>;
+    x;
   }
 }

@@ -1,7 +1,7 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
@@ -498,18 +498,7 @@ export default function BlogForm({ id }) {
           </div>
         </div>
 
-        {/* Add section toolbar (STICKY) */}
-
-        {/* Category */}
-        {/* <div className=" mt-8">
-  <label className="block text-sm font-medium text-gray-700">Category</label>
-  <input
-    value={category}
-    onChange={(e) => setCategory(e.target.value)}
-    placeholder="e.g. Technology, Marketing"
-    className="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-  />
-</div> */}
+     
 
         <select
           value={category}
@@ -891,14 +880,6 @@ export function Preview({ title, slug, sections }) {
                 <p>{s.text}</p>
               </blockquote>
             );
-          // if (s.type === "list")
-          //   return (
-          //     <ul key={s.id}>
-          //       {(s.items || []).filter(Boolean).map((it, i) => (
-          //         <li key={i}>{it}</li>
-          //       ))}
-          //     </ul>
-          //   );
           if (s.type === "list") {
             return <RenderList key={s.id} items={s.items} />;
           }

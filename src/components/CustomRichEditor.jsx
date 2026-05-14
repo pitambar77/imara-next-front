@@ -6,34 +6,22 @@ const CustomRichEditor = ({ value, onChange }) => {
   const editorRef = useRef(null);
 
   // Load existing HTML
+  // useEffect(() => {
+  //   if (editorRef.current && value !== editorRef.current.innerHTML) {
+  //     editorRef.current.innerHTML = value || "";
+  //   }
+  // }, [value]);
+
   useEffect(() => {
-    if (editorRef.current && value !== editorRef.current.innerHTML) {
+    if (!editorRef.current) return;
+
+    const isFocused = document.activeElement === editorRef.current;
+
+    // Prevent DOM replacement while typing
+    if (!isFocused) {
       editorRef.current.innerHTML = value || "";
     }
   }, [value]);
-
-  // Save content
-  // const handleInput = () => {
-  //   onChange(editorRef.current.innerHTML);
-  // };
-
-  // const handleInput = () => {
-  //   let html = editorRef.current.innerHTML;
-
-  //   // Remove Google Docs ids
-  //   html = html.replace(/id="docs-internal-guid-[^"]*"/g, "");
-
-  //   // Remove inline styles
-  //   html = html.replace(/style="[^"]*"/g, "");
-
-  //   // Remove span tags but keep content
-  //   html = html.replace(/<\/?span[^>]*>/g, "");
-
-  //   // Remove empty tags
-  //   html = html.replace(/<p><br><\/p>/g, "");
-
-  //   onChange(html);
-  // };
 
   const cleanHTML = (html) => {
     // Create temp container

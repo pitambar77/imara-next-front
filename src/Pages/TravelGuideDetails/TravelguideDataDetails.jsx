@@ -1,6 +1,7 @@
 import React from "react";
 import { GoDotFill } from "react-icons/go";
 import Image from "next/image";
+import Faqs from "../Travelguide/Faqs";
 /* 🔹 Recursive list renderer */
 const RenderList = ({ items }) => {
   if (!Array.isArray(items) || !items.length) return null;
@@ -24,7 +25,7 @@ const RenderList = ({ items }) => {
   );
 };
 
-const TravelGuideDetails = ({ blog }) => {
+const TravelguideDataDetails = ({ blog, faqSection }) => {
   if (!blog) return null;
 
   const sections = blog.sections || [];
@@ -56,20 +57,39 @@ const TravelGuideDetails = ({ blog }) => {
         {sections.map((s) => (
           <div key={s.id || Math.random()} className="mb-6">
             {s.type === "h1" && (
-              <h3 className="text-[24px] md:text-4xl capitalize font-bold text-[#111] mb-4">
-                {s.text}
-              </h3>
+              <div
+                className=" rich-text max-w-none "
+                dangerouslySetInnerHTML={{
+                  __html: s.text || "",
+                }}
+              />
             )}
             {s.type === "h2" && (
-              <h3 className="text-[20px] md:text-3xl font-bold text-[#1a1a1a] mb-4">
-                {s.text}
-              </h3>
+              <div
+                className="rich-text max-w-none "
+                dangerouslySetInnerHTML={{
+                  __html: s.text || "",
+                }}
+              />
             )}
 
             {s.type === "paragraph" && (
-              <p className="text-[16px] text-[#444] leading-relaxed mb-4">
-                {s.text}
-              </p>
+              <div
+                className="rich-text max-w-none text-[#444] "
+                dangerouslySetInnerHTML={{
+                  __html: s.text || "",
+                }}
+              />
+            )}
+            {s.type === "quote" && (
+              <blockquote className="border-l-4 border-[#d76e28] pl-4 italic my-6">
+                <div
+                  className="rich-text max-w-none"
+                  dangerouslySetInnerHTML={{
+                    __html: s.text || "",
+                  }}
+                />
+              </blockquote>
             )}
 
             {s.type === "image" && s.imageUrl && (
@@ -102,9 +122,17 @@ const TravelGuideDetails = ({ blog }) => {
           </div>
         ))}
 
+        {/* ===== FAQ SECTION ===== */}
+        {faqSection && (
+          <Faqs
+            title={faqSection.title}
+            subtitle={faqSection.subtitle}
+            faqs={faqSection.faqs}
+          />
+        )}
       </div>
     </section>
   );
 };
 
-export default TravelGuideDetails;
+export default TravelguideDataDetails;

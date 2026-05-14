@@ -95,10 +95,10 @@ const RelatedBlogCard = ({ title, subtitle, data }) => {
             swiper.params.navigation.nextEl = swiperNavNextRef.current;
             swiper.params.pagination.el = ".custom-pagination";
           }}
-          navigation={{
-            prevEl: swiperNavPrevRef.current,
-            nextEl: swiperNavNextRef.current,
-          }}
+          // navigation={{
+          //   prevEl: swiperNavPrevRef.current,
+          //   nextEl: swiperNavNextRef.current,
+          // }}
           className="pb-12 custom-swiper"
         >
           {data.map((trip) => (
@@ -118,7 +118,7 @@ const RelatedBlogCard = ({ title, subtitle, data }) => {
                   </Link>
 
                   {/* 🔥 Category Badge (Bottom Left) */}
-                  {trip.category &&(
+                  {trip.category && (
                     <div className="absolute bottom-4 left-4">
                       <span className="text-[#d87028] bg-white text-sm md:text-base font-semibold px-5 py-2 rounded-md shadow-md">
                         {trip.category}
@@ -195,7 +195,6 @@ const RelatedBlogCard = ({ title, subtitle, data }) => {
         {/* Pagination Dots */}
         <div className="custom-pagination flex justify-center mt-6"></div>
 
-        {/* Inline CSS */}
         <style>
           {`
             .custom-pagination .swiper-pagination-bullet-active {
