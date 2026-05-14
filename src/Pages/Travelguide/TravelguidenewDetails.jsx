@@ -10,7 +10,7 @@ import Featured from "../Home/Featured";
 
 import TailormadeSection from "../Home/TailormadeSection";
 import TravelguideDataDetails from "../TravelGuideDetails/TravelguideDataDetails";
-import Faqs from "./Faqs";
+import RelatedTravelguideCard from "./RelatedTravelguideCard";
 
 const TravelguidenewDetails = ({ slug }) => {
   const [blog, setBlog] = useState(null);
@@ -97,9 +97,8 @@ const TravelguidenewDetails = ({ slug }) => {
     <div>
       <TravelguideDataDetails blog={blog} faqSection={faqSection} />
 
-
       {relatedBlogs.length > 0 && (
-        <TripHighlights
+        <RelatedTravelguideCard
           title={`Related ${blog.category}`}
           data={relatedBlogs}
         />
@@ -113,5 +112,4 @@ const TravelguidenewDetails = ({ slug }) => {
   );
 };
 
-
-export default TravelguidenewDetails
+export default TravelguidenewDetails;

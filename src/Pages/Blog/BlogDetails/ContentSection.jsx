@@ -822,6 +822,34 @@ const ContentSection = ({ blog, trips }) => {
                 />
               );
 
+            case "quote":
+              return (
+                <div
+                  key={i}
+                  className="relative bg-[#d87029] rounded-2xl px-6 py-12 md:px-10 md:py-16 my-10 overflow-hidden"
+                >
+                  {/* Opening Quote */}
+                  <span className="absolute top-2 left-4 text-white/20 text-[80px] md:text-[120px] leading-none">
+                    “
+                  </span>
+
+                  {/* Content */}
+                  <div className="relative z-10 max-w-3xl mx-auto text-center">
+                    <div
+                      className="quote-box rich-text text-white italic text-xl md:text-2xl leading-relaxed"
+                      dangerouslySetInnerHTML={{
+                        __html: s.text || "",
+                      }}
+                    />
+                  </div>
+
+                  {/* Closing Quote */}
+                  <span className="absolute bottom-0 right-4 text-white/20 text-[80px] md:text-[120px] leading-none">
+                    ”
+                  </span>
+                </div>
+              );
+
             case "image":
               if (!s.image?.url) return null;
 

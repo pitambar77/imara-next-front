@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 const CustomRichEditor = ({ value, onChange }) => {
   const editorRef = useRef(null);
 
-  // Load existing HTML
+
   // useEffect(() => {
   //   if (editorRef.current && value !== editorRef.current.innerHTML) {
   //     editorRef.current.innerHTML = value || "";

@@ -359,3 +359,65 @@ html {
 .rich-text li {
   margin-bottom: 0.5rem;
 } */
+
+/* ===========================
+   QUOTE BOX
+=========================== */
+
+.quote-box,
+.quote-box p,
+.quote-box span,
+.quote-box li,
+.quote-box strong,
+.quote-box em,
+.quote-box a {
+  color: white !important;
+}
+
+.quote-box p {
+  font-size: 22px;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+.quote-box strong {
+  color: white !important;
+  font-weight: 700;
+}
+
+.quote-box a {
+  color: white !important;
+  text-decoration: underline;
+}
+
+.quote-box h1,
+.quote-box h2,
+.quote-box h3,
+.quote-box h4,
+.quote-box h5,
+.quote-box h6 {
+  color: white !important;
+}
+
+.fancy-quote p {
+  position: relative;
+  display: inline;
+  color: white !important;
+  font-size: 22px;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+.fancy-quote p::before {
+  content: "“";
+  font-size: 42px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-right: 6px;
+}
+
+.fancy-quote p::after {
+  content: "”";
+  font-size: 42px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: 6px;
+}

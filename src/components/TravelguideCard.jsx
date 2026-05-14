@@ -63,17 +63,9 @@ const TravelguideCard = ({
                   {item.title}
                 </h3>
               </Link>
-              <div
-                className="text-[#444] text-[16px] leading-relaxed mb-4 prose prose-sm max-w-none overflow-hidden"
-                style={{
-                  display: "-webkit-box",
-                  WebkitLineClamp: 4,
-                  WebkitBoxOrient: "vertical",
-                }}
-                dangerouslySetInnerHTML={{
-                  __html: item.description || "",
-                }}
-              />
+              <p className="text-[#444] text-[16px] leading-relaxed mb-4 line-clamp-4">
+                {item.subtitle}
+              </p>
 
               {/* ✅ REAL NAVIGATION */}
               {item.link && (

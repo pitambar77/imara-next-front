@@ -46,7 +46,7 @@ const Faqs = ({ title, subtitle, faqs }) => {
         </h2>
       )}
       {subtitle && (
-        <p className="text-[18px] text-[#444] mb-8 md:mb-12 text-left ">
+        <p className="text-[18px] text-[#444] font-semibold mb-8 md:mb-12 text-left ">
           {subtitle}
         </p>
       )}

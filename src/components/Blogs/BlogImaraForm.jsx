@@ -21,6 +21,7 @@ const SECTION_TYPES = [
   { type: "cta", label: "CTA" },
   { type: "review", label: "Review" },
   { type: "package", label: "Package Section" },
+  { type: "quote", label: "Quote Box" },
 ];
 
 function slugify(str = "") {
@@ -137,6 +138,12 @@ function newSection(type) {
         btnname: "See All Trips",
         btnlink: "",
         showArrows: true,
+      };
+
+    case "quote":
+      return {
+        ...base,
+        text: "",
       };
 
     default:
@@ -846,6 +853,42 @@ function SectionEditor({
         </div>
       );
 
+  
+    case "quote":
+      return (
+        <div className="space-y-3">
+          <label className="text-sm font-medium text-gray-600">
+            Quote Content
+          </label>
+
+          <CustomRichEditor
+            value={s.text || ""}
+            onChange={(value) => updateSection(s.id, { text: value })}
+          />
+
+          {/* Preview */}
+          <div className="relative bg-[#d87029] rounded-2xl px-6 py-12 md:px-10 md:py-16 mt-4 overflow-hidden">
+            {/* Opening Quote */}
+            <span className="absolute top-4 left-6 text-white/20 text-[90px] md:text-[120px] leading-none font-serif">
+              “
+            </span>
+
+            {/* Quote Content */}
+            <div
+              className="quote-box rich-text text-center relative z-10 max-w-3xl mx-auto"
+              dangerouslySetInnerHTML={{
+                __html: s.text || "",
+              }}
+            />
+
+            {/* Closing Quote */}
+            <span className="absolute bottom-0 right-6 text-white/20 text-[90px] md:text-[120px] leading-none font-serif">
+              ”
+            </span>
+          </div>
+        </div>
+      );
+
     default:
       return <p>Coming soon...</p>;
   }
@@ -1314,6 +1357,12 @@ export default function BlogImaraForm({ id }) {
             showArrows: s.showArrows,
           };
 
+        case "quote":
+          return {
+            type: "quote",
+            text: s.text,
+          };
+
         default:
           return s;
       }
@@ -1721,11 +1770,20 @@ export function Preview({ title, slug, sections }) {
           }
           if (s.type === "quote")
             return (
-              <blockquote key={s.id}>
-                <p>{s.text}</p>
-              </blockquote>
+              <div
+                key={s.id}
+                className="relative bg-[#d87029] rounded-2xl px-6 py-12 md:px-10 md:py-16 my-10 overflow-hidden"
+              >
+                <div className="relative z-10 max-w-3xl mx-auto text-center">
+                  <div
+                    className="quote-box rich-text fancy-quote"
+                    dangerouslySetInnerHTML={{
+                      __html: s.text || "",
+                    }}
+                  />
+                </div>
+              </div>
             );
-
           if (s.type === "list") {
             return <RenderList key={s.id} items={s.items} />;
           }

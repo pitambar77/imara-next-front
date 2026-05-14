@@ -38,7 +38,7 @@ const TravelguideDataDetails = ({ blog, faqSection }) => {
           {blog.title}
         </h2>
 
-        <p className="mb-6 text-center capitalize">
+        <p className="mb-10 leading-7 text-center capitalize text-[#444]">
           {blog.subtitle || "Travel Trips"}
         </p>
 
@@ -109,11 +109,11 @@ const TravelguideDataDetails = ({ blog, faqSection }) => {
             )}
             {s.type === "cta" && (
               <div className="bg-[#d76e28] py-10 rounded-md text-center mb-10">
-                <h3 className="text-3xl capitalize mb-4">{s.text}</h3>
-                <p className="mb-4">{s.ctaTitle}</p>
+                <h3 className="text-3xl capitalize mb-4 text-white">{s.text}</h3>
+                <p className="mb-4 text-white">{s.ctaTitle}</p>
                 <a
                   href={s.ctaHref || "#"}
-                  className="inline-block   py-2 px-5 border rounded-full font-bold uppercase"
+                  className="inline-block text-white py-2 px-5 border rounded-full font-bold uppercase"
                 >
                   {s.ctaText || "Learn More"}
                 </a>
