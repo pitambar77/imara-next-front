@@ -74,7 +74,7 @@ const TravelguidenewDetails = ({ slug }) => {
           description:
             item.sections?.find((s) => s.type === "paragraph")?.text ||
             "Read our detailed travel guide.",
-          link: `/travelguide/${item.slug}`,
+          link: `/travel-guide/${item.slug}`,
         }));
 
         setRelatedBlogs(mapped);
@@ -91,7 +91,7 @@ const TravelguidenewDetails = ({ slug }) => {
   const faqSection = blog?.faq?.[0];
 
   if (loading) return <p className="p-6">Loading...</p>;
-  if (!blog) return <p className="p-6">No blog found</p>;
+  if (!blog) return <p className="p-6">No Travelguide found</p>;
 
   return (
     <div>

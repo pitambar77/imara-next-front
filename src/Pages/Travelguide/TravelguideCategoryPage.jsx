@@ -9,9 +9,7 @@ import kabanner from "../../assets/kabanner.webp";
 import TailormadeSection from "../Home/TailormadeSection";
 import Banner from "../../components/Banner";
 
-// const API_BASE =
-//   process.env.NEXT_PUBLIC_API_BASE ||
-//   "https://imarabackend.imarakilelenisafaris.com";
+
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
@@ -42,7 +40,7 @@ const TravelguideCategoryPage = ({ category }) => {
             blog.sections?.[0]?.content ||
             "Read our detailed travel guide.",
 
-          link: `/travelguide/${blog.slug}`,
+          link: `/travel-guide/${blog.slug}`,
         }));
 
         setAsSeenItems(mappedItems);
@@ -70,7 +68,7 @@ const TravelguideCategoryPage = ({ category }) => {
       ) : asSeenItems.length ? (
         <TravelguideCard items={asSeenItems} />
       ) : (
-        <p className="p-6 text-center">No blogs found</p>
+        <p className="p-6 text-center">No Travelguide found</p>
       )}
 
       <BookWithConfidence />
