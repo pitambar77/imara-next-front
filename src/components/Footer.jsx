@@ -1,6 +1,5 @@
 "use client";
 
-
 import React, { useState } from "react";
 import {
   FaFacebookF,
@@ -18,7 +17,7 @@ import { FiChevronDown } from "react-icons/fi";
 import { IoLocationSharp } from "react-icons/io5";
 import Link from "next/link";
 import FooterForm from "./FooterForm";
-
+import Image from "next/image";
 
 const Footer = () => {
   const [open, setOpen] = useState({
@@ -277,29 +276,30 @@ const Footer = () => {
           <div className=" flex md:justify-end justify-center mt-4 md:mt-0">
             {/* Column 4 - Newsletter */}
             <div className=" w-full md:w-2/3 ">
-      
-             
-             <FooterForm/>
+              <FooterForm />
             </div>
           </div>
         </div>
 
         {/* Disclaimer */}
-        <div className=" my-8 text-sm text-gray-700">
+        <div className=" my-8 space-y-2 text-sm text-gray-700">
           <p>
-            Imara Kileleni Safaris is a proud member of{" "}
-            <a href="#" className="underline text-[#d87028]">
-              The Travel Corporation
+            Imara Kileleni Safaris proudly operates in partnership with
+            Tanzania’s leading conservation <br /> and tourism authorities,
+            including{" "}
+            <a
+              href="https://www.tanzaniaparks.go.tz/"
+              className="underline text-[#d87028]"
+            >
+              TANAPA – Tanzania National Parks
             </a>{" "}
-            portfolio of brands.
-            <br /># Imara Kileleni Safaris
+            Authority.
             <br />
-           Kiusa Line Street, Moshi, Kilimanjaro, P.O. Box 623
           </p>
+          <p>Kiusa Line Street, Moshi, Kilimanjaro, P.O. Box 623</p>
         </div>
       </div>
 
-      
       <div className="bg-[#f9e1d7] py-4">
         <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0 grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Region Selector */}
@@ -312,7 +312,7 @@ const Footer = () => {
           </div>
 
           {/* Payment Icons */}
-          <div className="text-center text-[10px] font-semibold flex flex-col items-center">
+          <div className="text-center text-[10px]  flex flex-col items-center">
             <div className="flex items-center justify-center gap-4 text-3xl text-gray-600 mb-6">
               <FaCcVisa />
               <FaCcMastercard />
@@ -320,10 +320,15 @@ const Footer = () => {
               <FaCcDiscover />
               <FaCcMastercard />
             </div>
-            <p className="text-[12px] leading-5 px-2">
+            <p className="text-[14px] leading-7 px-2">
               Copyright 2026 Imara Kileleni Safaris. All rights reserved.
               <br />
-             <a href="https://safarimarketingpro.com/">SAFARI MARKETING PRO® </a> 
+              <a
+                href="https://safarimarketingpro.com/"
+                className="font-semibold"
+              >
+                SAFARI MARKETING PRO®{" "}
+              </a>
             </p>
             {/* <p>is a trademark of The TreadRight Foundation,
               registered in the U.S. and other countries and regions, and is
@@ -378,18 +383,29 @@ const Footer = () => {
               </a>
             </div>
 
-          
-
-            <div className="flex flex-wrap justify-center md:justify-end gap-2 text-sm mt-4 font-semibold">
-              <Link href="sustainability" className=" hover:text-[#d87028]">Sustanbility</Link>
-              <Link href="core-values" className=" hover:text-[#d87028]">Core Values</Link>
-              <Link href="#" className=" hover:text-[#d87028]">Sitemap</Link>
+            <div className="flex flex-wrap justify-center md:justify-end gap-2 text-sm mt-4 ">
+              <Link href="sustainability" className=" hover:text-[#d87028]">
+                Sustanability
+              </Link>
+              <Link href="core-values" className=" hover:text-[#d87028]">
+                Core Values
+              </Link>
+              <Link href="#" className=" hover:text-[#d87028]">
+                Sitemap
+              </Link>
             </div>
 
-            <div className="flex flex-wrap justify-center md:justify-end gap-2 text-sm mt-4 font-semibold ">
-              <Link href="terms-and-conditions" className=" hover:text-[#d87028]">Terms and Conditions</Link>
+            <div className="flex flex-wrap justify-center md:justify-end gap-2 text-sm mt-4  ">
+              <Link
+                href="terms-and-conditions"
+                className=" hover:text-[#d87028]"
+              >
+                Terms and Conditions
+              </Link>
               {/* <a href="#" className=" hover:text-[#d87028]">Booking Conditions</a> */}
-               <Link href="privacy-policy" className=" hover:text-[#d87028]">Privacy Policy</Link>
+              <Link href="privacy-policy" className=" hover:text-[#d87028]">
+                Privacy Policy
+              </Link>
             </div>
           </div>
         </div>
@@ -397,31 +413,37 @@ const Footer = () => {
 
       {/* Bottom orange strip */}
       <div className="bg-[#d87028] py-3 w-full ">
-        <div className=" flex items-center gap-4 justify-center">
-          <img
-            src="https://www.contiki.com/media/xcal1m5i/iata.svg?center=0.5%2C0.5&format=webp&mode=crop&width=600&height=200&quality=80"
-            alt=""
-            className=" h-8"
+        <div className="flex items-center justify-center gap-4">
+          <Image
+            src="/kpap-logo.webp"
+            alt="KPAP"
+            width={120}
+            height={32}
+            className="h-8 w-auto object-contain"
           />
-          <img
-            src="https://www.contiki.com/media/fjzpw34c/treadright-1.svg?center=0.5%2C0.5&format=webp&mode=crop&width=600&height=200&quality=80"
-            alt=""
-            className=" h-10"
+
+          <Image
+            src="/travelife.webp"
+            alt="Travelife"
+            width={140}
+            height={40}
+            className="h-10 w-auto object-contain"
           />
-          <img
-            src="https://www.contiki.com/media/bj1odtrx/logo_cato_white_export_01-1.svg?center=0.5%2C0.5&format=webp&mode=crop&width=600&height=200&quality=80"
-            alt=""
-            className="h-6"
+
+          <Image
+            src="/logo-tato.webp"
+            alt="TATO"
+            width={120}
+            height={24}
+            className=" h-10 w-auto object-contain"
           />
-          <img
-            src="https://www.contiki.com/media/xcal1m5i/iata.svg?center=0.5%2C0.5&format=webp&mode=crop&width=600&height=200&quality=80"
-            alt=""
-            className=" h-8"
-          />
-          <img
-            src="https://www.contiki.com/media/bj1odtrx/logo_cato_white_export_01-1.svg?center=0.5%2C0.5&format=webp&mode=crop&width=600&height=200&quality=80"
-            alt=""
-            className="h-6"
+
+          <Image
+            src="/logo-atta-n.png"
+            alt="ATTA"
+            width={140}
+            height={32}
+            className="h-10 w-auto object-contain"
           />
         </div>
       </div>

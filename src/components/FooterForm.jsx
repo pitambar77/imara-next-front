@@ -38,7 +38,7 @@ const FooterForm = () => {
 
   return (
     <div>
-      <h3 className="font-bold text-lg mb-2">Safari Travel Updates</h3>
+      <h3 className="font-bold text-lg mb-2">Tanzania Travel Updates</h3>
       <p className="text-gray-700  mb-4">
         Get fresh travel tips, safari ideas, seasonal guides, and package
         updates delivered straight to your inbox before your next adventure.
@@ -85,9 +85,9 @@ const FooterForm = () => {
             required
           />
           <p>
-            *By checking this box, you accept the Trafalgar{" "}
+            *By checking this box, you accept the Imara{" "}
             <Link href="privacy-policy" className="text-[#d87028] underline">
-              privacy policy
+              Privacy Policy
             </Link>
           </p>
         </div>

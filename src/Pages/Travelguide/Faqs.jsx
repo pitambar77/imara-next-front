@@ -62,7 +62,7 @@ const Faqs = ({ title, subtitle, faqs }) => {
               onClick={() => toggleFAQ(index)}
               className={`w-full flex justify-between cursor-pointer items-center text-left text-[16px] md:text-[18px] font-semibold py-3 md:py-5 px-4 transition-all duration-300 ${
                 openIndex === index
-                  ? "bg-[#fde6d5] text-[#444]"
+                  ? "bg-[#f5d8c1] text-[#444]"
                   : " text-[#444]"
               }`}
             >
