@@ -1,6 +1,6 @@
 export async function getDestinationLanding() {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/destinationlanding`,
+    `${process.env.NEXT_PUBLIC_API_URL}/tanzaniadestinationlanding`,
     {
       next: { revalidate: 300 },
     },

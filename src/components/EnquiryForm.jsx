@@ -165,7 +165,6 @@ export default function EnquiryForm({
     }
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -356,9 +355,9 @@ export default function EnquiryForm({
                   onChange={handleChange}
                   className="w-full border border-[#e5e7eb] text-sm text-gray-600 bg-white outline-0 p-3 rounded appearance-none pr-10"
                 >
-                  {[...Array(50)].map((_, i) => (
-                    <option key={i + 1} value={i + 1}>
-                      {i + 1}
+                  {[...Array(51)].map((_, i) => (
+                    <option key={i} value={i}>
+                      {i}
                     </option>
                   ))}
                 </select>

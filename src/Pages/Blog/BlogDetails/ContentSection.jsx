@@ -822,33 +822,74 @@ const ContentSection = ({ blog, trips }) => {
                 />
               );
 
+            // case "quote":
+            //   return (
+            //     <div
+            //       key={i}
+            //       className="relative bg-[#d87029] rounded-2xl px-6 py-12 md:px-10 md:py-16 my-10 overflow-hidden"
+            //     >
+            //       {/* Opening Quote */}
+            //       <span className="absolute top-2 left-4 text-white/20 text-[80px] md:text-[120px] leading-none">
+            //         “
+            //       </span>
+
+            //       {/* Content */}
+            //       <div className="relative z-10 max-w-3xl mx-auto text-center">
+            //         <div
+            //           className="quote-box rich-text text-white italic text-xl md:text-2xl leading-relaxed"
+            //           dangerouslySetInnerHTML={{
+            //             __html: s.text || "",
+            //           }}
+            //         />
+            //       </div>
+
+            //       {/* Closing Quote */}
+            //       <span className="absolute bottom-0 right-4 text-white/20 text-[80px] md:text-[120px] leading-none">
+            //         ”
+            //       </span>
+            //     </div>
+            //   );
+
             case "quote":
               return (
                 <div
                   key={i}
-                  className="relative bg-[#d87029] rounded-2xl px-6 py-12 md:px-10 md:py-16 my-10 overflow-hidden"
+                  className="relative bg-[#d87029] rounded-md overflow-hidden my-8"
                 >
-                  {/* Opening Quote */}
-                  <span className="absolute top-2 left-4 text-white/20 text-[80px] md:text-[120px] leading-none">
-                    “
-                  </span>
-
                   {/* Content */}
-                  <div className="relative z-10 max-w-3xl mx-auto text-center">
+                  <div className="px-8 py-8 md:px-16 md:py-12 md:pr-20 relative z-10">
                     <div
-                      className="quote-box rich-text text-white italic text-xl md:text-2xl leading-relaxed"
+                      className="
+            quote-box
+            rich-text
+            text-white
+            leading-[1.7]
+            text-center
+          "
                       dangerouslySetInnerHTML={{
                         __html: s.text || "",
                       }}
                     />
                   </div>
 
-                  {/* Closing Quote */}
-                  <span className="absolute bottom-0 right-4 text-white/20 text-[80px] md:text-[120px] leading-none">
+                  {/* Quote Icon */}
+                  <div
+                    className="
+          absolute
+          -bottom-6
+          right-8
+          text-white
+          text-[90px]
+          leading-none
+          font-serif
+          opacity-90
+        "
+                  >
                     ”
-                  </span>
+                  </div>
                 </div>
               );
+
 
             case "image":
               if (!s.image?.url) return null;

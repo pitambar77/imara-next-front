@@ -15,7 +15,7 @@ const BookWithConfidence = () => {
       <div className="w-full bg-[#d76e28]">
         <div className="max-w-7xl mx-auto px-4 py-4 text-center text-white text-xs md:text-sm font-semibold">
           <span className="inline-flex items-center gap-2">
-            RATED 4.7 / 5
+            RATED 5 / 5
             <FaStar className="text-yellow-300" />
             <FaStar className="text-yellow-300" />
             <FaStar className="text-yellow-300" />
@@ -44,7 +44,7 @@ const BookWithConfidence = () => {
               </div>
               <div>
                 <p className="font-semibold text-[#444]">
-                  Share your travel dates and interests
+                 Share your travel dates and interests
                 </p>
               </div>
             </div>

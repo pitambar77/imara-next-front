@@ -381,6 +381,15 @@ const Footer = () => {
               >
                 <FaYoutube className="text-white" />
               </a>
+              <a
+                href="https://www.pinterest.com/imarakilelenisafaris/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-[#d87028] hover:bg-[#c35f22] transition"
+                aria-label="YouTube"
+              >
+                <FaPinterestP className="text-white" />
+              </a>
             </div>
 
             <div className="flex flex-wrap justify-center md:justify-end gap-2 text-sm mt-4 ">
@@ -429,15 +438,19 @@ const Footer = () => {
             height={40}
             className="h-10 w-auto object-contain"
           />
-
-          <Image
-            src="/logo-tato.webp"
-            alt="TATO"
-            width={120}
-            height={24}
-            className=" h-10 w-auto object-contain"
-          />
-
+          <a
+            href="https://tatotz.org/portfolio/imara-kilele-safaris/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/logo-tato.webp"
+              alt="TATO"
+              width={120}
+              height={24}
+              className=" h-10 w-auto object-contain"
+            />
+          </a>
           <Image
             src="/logo-atta-n.png"
             alt="ATTA"

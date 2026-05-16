@@ -46,21 +46,12 @@ const SafariInfoSection = ({
               md:[column-count:2] md:[column-gap:3rem]
             "
           >
-            {overview.description?.map((block, index) => {
-              if (block.type === "list") {
-                return (
-                  <ul key={index} className="list-disc pl-5 space-y-2">
-                    <li>{block.content}</li>
-                  </ul>
-                );
-              }
-
-              return (
-                <p key={index} className="text-[#444]">
-                  {block.content}
-                </p>
-              );
-            })}
+            <div
+              className="rich-text text-[#444]"
+              dangerouslySetInnerHTML={{
+                __html: overview.description || "",
+              }}
+            />
           </div>
         </div>
 

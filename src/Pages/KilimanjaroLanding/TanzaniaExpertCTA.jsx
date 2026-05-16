@@ -18,7 +18,7 @@ const TanzaniaExpertCTA = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-5 text-center sm:text-left">
               <p className="text-[18px] sm:text-[22px] font-semibold text-[#444]">
                 Call{" "}
-                <span className="text-[#0b4fff] hover:underline cursor-pointer block sm:inline">
+                <span className="text-[#d87029] hover:underline cursor-pointer block sm:inline">
                   +255 748 002 696
                 </span>
               </p>
@@ -46,21 +46,21 @@ const TanzaniaExpertCTA = () => {
               {/* Expert 1 */}
               <div>
                 <img
-                  src="https://static.vecteezy.com/system/resources/thumbnails/027/815/166/small/woman-african-safari-generate-ai-photo.jpg"
-                  alt="Alistair"
+                  src="/author-blog.webp"
+                  alt="Gervas Ngikari"
                   className="w-20 h-20 rounded-full object-cover mx-auto"
                 />
-                <p className="mt-2 font-semibold text-[#444]">Alistair</p>
+                <p className="mt-2  text-[#444]">Gervas</p>
               </div>
 
               {/* Expert 2 */}
               <div>
                 <img
-                  src="https://static.vecteezy.com/system/resources/thumbnails/027/815/166/small/woman-african-safari-generate-ai-photo.jpg"
-                  alt="Ottilie"
+                  src="/opati-blanca.jpg"
+                  alt="Opati Blanca"
                   className="w-20 h-20 rounded-full object-cover mx-auto"
                 />
-                <p className="mt-2 font-semibold text-[#444]">Ottilie</p>
+                <p className="mt-2  text-[#444]"> Blanca</p>
               </div>
             </div>
           </div>

@@ -63,9 +63,19 @@ const TravelguideCard = ({
                   {item.title}
                 </h3>
               </Link>
-              <p className="text-[#444] text-[16px] leading-relaxed mb-4 line-clamp-4">
-                {item.subtitle}
-              </p>
+              <div
+                className="
+    rich-text
+    text-[#444]
+    text-[16px]
+    leading-relaxed
+    mb-4
+    line-clamp-4
+  "
+                dangerouslySetInnerHTML={{
+                  __html: item.subtitle || "",
+                }}
+              />
 
               {/* ✅ REAL NAVIGATION */}
               {item.link && (

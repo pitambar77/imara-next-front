@@ -12,7 +12,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-
 const TripHighlights = ({ subtitle }) => {
   const swiperNavPrevRef = useRef(null);
   const swiperNavNextRef = useRef(null);
@@ -129,9 +128,15 @@ const TripHighlights = ({ subtitle }) => {
                   <div>
                     <h3 className="text-xl mb-4 leading-tight">{trip.title}</h3>
 
-                    <p className="text-[15px] text-[#444] mb-4">
+                    {/* <p className="text-[15px] text-[#444] mb-4">
                       {trip.description}
-                    </p>
+                    </p> */}
+                    <div
+                      className="rich-text text-[15px] text-[#444] mb-4"
+                      dangerouslySetInnerHTML={{
+                        __html: trip.description || "",
+                      }}
+                    />
                   </div>
                 </div>
               </div>

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import { FiChevronDown, FiMenu, FiSearch, FiX } from "react-icons/fi";
-import { FaStar, FaWhatsapp, FaYoutube } from "react-icons/fa";
+import { FaPinterestP, FaStar, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoCaretForwardOutline } from "react-icons/io5";
@@ -708,7 +708,9 @@ const Navbar = () => {
                                   onClick={() => setOpenMenu(null)}
                                   className=" flex gap-x-3 items-center text-lg text-[#111]  hover:text-[#d87029] transition"
                                 >
-                                  <h3 className=" uppercase">Mount Kilimanjaro</h3>
+                                  <h3 className=" uppercase">
+                                    Mount Kilimanjaro
+                                  </h3>
                                   <span className="text-2xl">›</span>
                                 </Link>
                               </div>
@@ -1047,9 +1049,7 @@ const Navbar = () => {
                       </div>
 
                       {/* Popular Trips */}
-                      <h3 className="text-xl mb-5">
-                        Popular Tanzania Safari
-                      </h3>
+                      <h3 className="text-xl mb-5">Popular Tanzania Safari</h3>
 
                       <div className=" grid grid-cols-2 space-y-4 ">
                         {popularTrips.map((trip, index) => (
@@ -1256,7 +1256,7 @@ const Navbar = () => {
             }}
             className="w-full bg-[#d87028] text-white py-3 rounded-full mt-4 font-semibold cursor-pointer"
           >
-            VIEW TRIPS
+            Plan A Trip
           </button>
           {/* ===== Mobile Social Icons ===== */}
 
@@ -1304,6 +1304,15 @@ const Navbar = () => {
                 aria-label="YouTube"
               >
                 <FaYoutube className="text-white" />
+              </a>
+              <a
+                href="https://www.pinterest.com/imarakilelenisafaris/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-[#d87028] hover:bg-[#c35f22] transition"
+                aria-label="YouTube"
+              >
+                <FaPinterestP className="text-white" />
               </a>
             </div>
           </div>

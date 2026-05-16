@@ -61,35 +61,13 @@ const weatherData = [
   { month: "DEC", temp: "24°C", rain: "53mm" },
 ];
 
-const cards = [
-  {
-    id: 1,
-    image: "/why-visit-local.webp",
-    title: "Guided With Patience",
-    text: "The climb is paced with care, giving your body time to adjust as the trail rises through forest, moorland, alpine desert, and colder summit slopes.",
-  },
-  {
-    id: 2,
-    image: "/why-visit-last.webp",
-    title: "Comfort Where Needed",
-    text: "From camp arrangements to daily trail support, small details are handled properly so you can save energy, rest better, and focus on the climb ahead.",
-  },
-  {
-    id: 3,
-    image: "/tailored-safari-journey.webp",
-    title: "Safety Comes First",
-    text: "Guides monitor your pace, breathing, hydration, and altitude response each day, helping you move with confidence rather than pushing beyond what your body can manage.",
-  },
-];
-
 const KilimanjaroLanding = ({ trips, page }) => {
-  
   if (!page) {
     return <p className="p-6">No data found</p>;
   }
 
   /* HERO */
-  const heroImage = "/mount-kilimanjaro.webp" || page.image;
+  const heroImage = page.image;
   const heroTitle = page.title;
 
   /* ROUTE */
@@ -115,16 +93,10 @@ const KilimanjaroLanding = ({ trips, page }) => {
       description: r.description,
     })) || [];
 
-  /* FAQ */
   const faqs =
     page.faq?.map((f) => ({
       question: f.question,
-      answerBlocks: f.answer.map((a) => {
-        if (a.type === "list") {
-          return { type: "list", items: a.content };
-        }
-        return { type: a.type, text: a.content };
-      }),
+      answer: f.answer,
     })) || [];
 
   /* MONTH GUIDE */
@@ -140,13 +112,19 @@ const KilimanjaroLanding = ({ trips, page }) => {
       })),
     ) || [];
 
-  /* WHY VISIT */
-  const whyVisitCards =
-    page.overviewinfo?.map((o, i) => ({
-      id: i,
-      image: o.image,
-      title: o.title,
-      text: o.description?.[0]?.content || "",
+  const relatedSection = page.relatedsection?.[0];
+
+  const relatedCards =
+    relatedSection?.section?.map((item, index) => ({
+      id: index,
+
+      image: item.image,
+
+      title: item.title,
+
+      subtitle: item.subtitle,
+
+      text: item.description,
     })) || [];
 
   return (
@@ -199,7 +177,7 @@ const KilimanjaroLanding = ({ trips, page }) => {
 
       <MonthWeatherGrid data={weatherData} />
 
-      <AsSeenIn />
+      <AsSeenIn travelguide={page.travelguide} />
 
       <FAQSection
         title="Frequently Asked Questions"
@@ -215,9 +193,9 @@ const KilimanjaroLanding = ({ trips, page }) => {
         formsubheading="Our team is always here to help you plan your climb."
       />
       <WhyVisitSection
-        title="Climb Kilimanjaro with Trusted Mountain Experts"
-        subtitle="A Kilimanjaro climb planned with care, patience, real mountain support, and summit-focused guidance."
-        cards={cards}
+        title={relatedSection?.heading}
+        subtitle={relatedSection?.subtitle}
+        cards={relatedCards}
       />
 
       <ReviewsSection />

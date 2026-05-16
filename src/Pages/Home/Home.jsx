@@ -42,11 +42,11 @@ const Home = ({ trips,home }) => {
       />
 
       <PopularWay />
-       {/* <FAQSection
+       <FAQSection
         title={faqSection.title}
         subtitle={faqSection.subtitle}
         faqs={faqSection.faqs}
-      /> */}
+      />
       <ReviewsSection/>
       <Featured />
       <TailormadeSection />

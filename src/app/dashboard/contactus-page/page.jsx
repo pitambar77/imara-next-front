@@ -1,102 +1,109 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import API from "@/api/axios";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import API from "../../../api/axios.js";
 
-export default function ContactusPage() {
-  const [form, setForm] = useState({
-    title: "",
-    subtitle: "",
-    bannerImage: ""
-  });
+const Page = () => {
+  const [data, setData] = useState([]);
+  const router = useRouter();
 
-  const [loading, setLoading] = useState(true);
-
-  /* ================= FETCH HOMEPAGE ================= */
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await API.get("/contactuspage");
-
-        if (res.data.length > 0) {
-          setForm(res.data[0]);
-        }
-      } catch (error) {
-        console.error("Fetch homepage error:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  /* ================= HANDLE CHANGE ================= */
-
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  /* ================= SAVE ================= */
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const fetchData = async () => {
     try {
-      await API.post("/contactuspage", form);
-
-      alert("contact us page saved successfully");
-    } catch (error) {
-      console.error("Save error:", error);
-      alert("Error saving contact us page");
+      const res = await API.get("/contactuspage");
+      setData(res.data);
+    } catch (err) {
+      console.error(err);
     }
   };
 
-  if (loading) return <p className="p-6">Loading...</p>;
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this page?")) return;
+
+    try {
+      await API.delete(`/contactuspage/${id}`);
+      fetchData();
+    } catch (err) {
+      console.error(err);
+      alert("Delete failed");
+    }
+  };
 
   return (
-    <div className="p-6 max-w-xl">
-
-      <h1 className="text-2xl font-bold mb-6">Homepage Settings</h1>
-
-      <form onSubmit={handleSubmit} className="space-y-4">
-
-        <input
-          name="title"
-          placeholder="Title"
-          className="border p-2 w-full"
-          value={form.title || ""}
-          onChange={handleChange}
-        />
-
-        <textarea
-          name="subtitle"
-          placeholder="Subtitle"
-          className="border p-2 w-full"
-          value={form.subtitle || ""}
-          onChange={handleChange}
-        />
-
-        <input
-          name="bannerImage"
-          placeholder="Banner Image URL"
-          className="border p-2 w-full"
-          value={form.bannerImage || ""}
-          onChange={handleChange}
-        />
-
+    <div className="p-6">
+      <div className="flex justify-between mb-6">
+        <h2 className="text-2xl font-bold">Contact us Pages</h2>
         <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded"
+          onClick={() => router.push("/dashboard/contactus-page/create")}
+          className="bg-green-600 text-white px-4 py-2 rounded"
         >
-          Save
+          + Create New
         </button>
+      </div>
 
-      </form>
+      <table className="w-full border">
+        <thead className="bg-gray-100">
+          <tr>
+            <th className="border p-2">Title</th>
+            <th className="border p-2">Subtitle</th>
+            <th className="border p-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item) => (
+            <tr key={item._id}>
+              <td className="border p-2">{item.title}</td>
+              <td className="border p-2">{item.subtitle}</td>
+              <td className="border p-2 space-x-2">
+                <Link
+                  href={`/dashboard/contactus-page/${item._id}`}
+                  className="bg-blue-600 text-white px-3 py-1 rounded"
+                >
+                  View
+                </Link>
+
+                <button
+                  onClick={() =>
+                    router.push(`/dashboard/contactus-page/${item._id}`)
+                  }
+                  className="bg-yellow-500 text-white px-3 py-1 rounded"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() =>
+                    router.push(`/dashboard/contactus-page/seo/${item._id}`)
+                  }
+                  className="bg-purple-600 text-white px-3 py-1 rounded"
+                >
+                  SEO
+                </button>
+
+                <button
+                  onClick={() => handleDelete(item._id)}
+                  className="bg-red-600 text-white px-3 py-1 rounded"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+          {!data.length && (
+            <tr>
+              <td colSpan="3" className="text-center p-4">
+                No records found
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
     </div>
   );
-}
+};
+
+export default Page;

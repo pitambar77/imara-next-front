@@ -43,7 +43,7 @@ const ReviewsSection = () => {
           <FaStar />
           <FaStarHalfAlt />
         </span>{" "}
-        <span className="text-white/90 font-normal">4.7/5 (100 REVIEWS)</span>
+        <span className="text-white/90 font-normal">5.0/5 (100 REVIEWS)</span>
       </div>
 
       {/* Section Title */}

@@ -16,7 +16,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   const links = [
-    { name: "Travel Guide", icon: <FaMapMarkedAlt />, path: "/dashboard/travelguide" },
+    { name: "Travel Guide", icon: <FaMapMarkedAlt />, path: "/dashboard/travelguidenew" },
      { name: "Blog", icon: <FaMapMarkedAlt />, path: "/dashboard/blogimara" },
     { name: "Package", icon: <FaUmbrellaBeach />, path: "/dashboard/package" },
     { name: "Destination Details", icon: <FaRoute />, path: "/dashboard/destination" },

@@ -5,7 +5,6 @@ import { useEffect, useRef } from "react";
 const CustomRichEditor = ({ value, onChange }) => {
   const editorRef = useRef(null);
 
-
   // useEffect(() => {
   //   if (editorRef.current && value !== editorRef.current.innerHTML) {
   //     editorRef.current.innerHTML = value || "";
@@ -28,6 +27,18 @@ const CustomRichEditor = ({ value, onChange }) => {
     const temp = document.createElement("div");
     temp.innerHTML = html;
 
+    // Remove MS Word comments
+    temp.innerHTML = temp.innerHTML.replace(/<!--[\s\S]*?-->/g, "");
+
+    // Remove style tags
+    temp.querySelectorAll("style").forEach((el) => el.remove());
+
+    // Remove meta tags
+    temp.querySelectorAll("meta").forEach((el) => el.remove());
+
+    // Remove xml tags
+    temp.querySelectorAll("xml").forEach((el) => el.remove());
+
     // Remove unwanted attributes
     temp.querySelectorAll("*").forEach((el) => {
       // Remove MS Word / Google Docs junk
@@ -35,6 +46,7 @@ const CustomRichEditor = ({ value, onChange }) => {
       el.removeAttribute("class");
       el.removeAttribute("id");
       el.removeAttribute("dir");
+      el.removeAttribute("role");
 
       // Keep only safe link attrs
       if (el.tagName !== "A") {
@@ -72,12 +84,28 @@ const CustomRichEditor = ({ value, onChange }) => {
     const temp = document.createElement("div");
     temp.innerHTML = html;
 
+    temp.innerHTML = temp.innerHTML.replace(/<!--[\s\S]*?-->/g, "");
+
     // CLEAN WORD / GOOGLE DOCS JUNK
     temp.querySelectorAll("*").forEach((el) => {
       el.removeAttribute("style");
       el.removeAttribute("class");
       el.removeAttribute("id");
       el.removeAttribute("dir");
+      el.removeAttribute("role");
+
+      // Remove aria attributes
+      [...el.attributes].forEach((attr) => {
+        if (attr.name.startsWith("aria-")) {
+          el.removeAttribute(attr.name);
+        }
+      });
+
+      // Keep only safe link attrs
+      if (el.tagName !== "A") {
+        el.removeAttribute("target");
+        el.removeAttribute("rel");
+      }
 
       // Remove empty spans
       if (el.tagName === "SPAN") {

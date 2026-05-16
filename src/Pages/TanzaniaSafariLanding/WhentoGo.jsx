@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from "react";
 import API from "../../api/axios";
 
@@ -13,7 +11,7 @@ const WhentoGo = () => {
 
   /* ================= FETCH DATA ================= */
   useEffect(() => {
-    API.get("/destinationlanding") // ✅ confirm endpoint
+    API.get("/tanzaniadestinationlanding") // ✅ confirm endpoint
       .then((res) => {
         const data = res.data?.[0]?.besttime?.[0];
         setBestTime(data);
@@ -24,25 +22,50 @@ const WhentoGo = () => {
 
   if (!bestTime) return null;
 
+  const extractHighlights = (html = "") => {
+    if (typeof window === "undefined") return [];
+
+    const temp = document.createElement("div");
+
+    temp.innerHTML = html;
+
+    return Array.from(temp.querySelectorAll("li")).map((li) => li.textContent);
+  };
+
   /* ================= MAP MONTH DATA ================= */
-  const monthsData = bestTime.months.map((m) => {
-    const paragraphs = m.content.filter((c) => c.type === "paragraph");
-    const highlights = m.content
-      .filter((c) => c.type === "list")
-      .map((c) => c.content);
+  // const monthsData = bestTime.months.map((m) => {
+  //   const paragraphs = m.content.filter((c) => c.type === "paragraph");
+  //   const highlights = m.content
+  //     .filter((c) => c.type === "list")
+  //     .map((c) => c.content);
 
-    return {
-      month: m.month,
-      icon: <WiCloudy />, // 🔁 can be dynamic later
-      rating: highlights.length >= 4 ? 5 : 3,
-      weatherIcon: <WiCloudy />,
-      view: "Good time to visit",
-      description1: paragraphs[0]?.content || "",
-      description2: paragraphs[1]?.content || "",
-      highlights,
-    };
-  });
+  //   return {
+  //     month: m.month,
+  //     icon: <WiCloudy />, // 🔁 can be dynamic later
+  //     rating: highlights.length >= 4 ? 5 : 3,
+  //     weatherIcon: <WiCloudy />,
+  //     view: "Good time to visit",
+  //     description1: paragraphs[0]?.content || "",
+  //     description2: paragraphs[1]?.content || "",
+  //     highlights,
+  //   };
+  // });
 
+  const monthsData = bestTime.months.map((m) => ({
+    month: m.month,
+
+    icon: <WiCloudy />,
+
+    rating: 5,
+
+    weatherIcon: <WiCloudy />,
+
+    view: "Good time to visit",
+
+    content: m.content || "",
+
+    highlights: extractHighlights(m.content || ""),
+  }));
   const monthData = monthsData.find((m) => m.month === activeMonth);
 
   if (!monthData) return null;
@@ -60,9 +83,12 @@ const WhentoGo = () => {
         </p>
 
         <div className="text-[17px] leading-[1.9] space-y-6 text-[#444]">
-          {bestTime.description.map((d) => (
-            <p key={d._id}>{d.content}</p>
-          ))}
+          <div
+            className="rich-text"
+            dangerouslySetInnerHTML={{
+              __html: bestTime.description || "",
+            }}
+          />
         </div>
       </div>
 
@@ -81,8 +107,11 @@ const WhentoGo = () => {
               }`}
             >
               <div className="text-2xl cursor-pointer">{m.icon}</div>
-              <span className="text-[13px] font-semibold mt-1 cursor-pointer">{m.month ?.toLowerCase()
-                  .replace(/\b\w/g, (c) => c.toUpperCase())}</span>
+              <span className="text-[13px] font-semibold mt-1 cursor-pointer">
+                {m.month
+                  ?.toLowerCase()
+                  .replace(/\b\w/g, (c) => c.toUpperCase())}
+              </span>
               <div className="flex justify-center mt-1">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <FaStar
@@ -102,15 +131,25 @@ const WhentoGo = () => {
         <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <h3 className="text-xl font-semibold text-[#222] mb-4">
-              Tanzania in {monthData.month ?.toLowerCase()
-                  .replace(/\b\w/g, (c) => c.toUpperCase())}
+              Tanzania in{" "}
+              {monthData.month
+                ?.toLowerCase()
+                .replace(/\b\w/g, (c) => c.toUpperCase())}
             </h3>
-            <p className="text-[#444] mb-4 leading-relaxed">
+            {/* <p className="text-[#444] mb-4 leading-relaxed">
               {monthData.description1}
             </p>
             <p className="text-[#444] leading-relaxed">
               {monthData.description2}
-            </p>
+            </p> */}
+            <div
+              className="rich-text text-[#444]"
+              dangerouslySetInnerHTML={{
+                __html: monthData.content
+                  ?.replace(/<ul[\s\S]*?<\/ul>/gi, "")
+                  ?.replace(/<ol[\s\S]*?<\/ol>/gi, ""),
+              }}
+            />
           </div>
 
           <div className="flex flex-col justify-center">
@@ -137,10 +176,7 @@ const WhentoGo = () => {
                 {Array(monthData.rating)
                   .fill()
                   .map((_, i) => (
-                    <div
-                      key={i}
-                      className="bg-[#d87028] p-1 rounded-sm"
-                    >
+                    <div key={i} className="bg-[#d87028] p-1 rounded-sm">
                       <IoMdStar className="text-white text-xl" />
                     </div>
                   ))}
@@ -166,5 +202,3 @@ const WhentoGo = () => {
 };
 
 export default WhentoGo;
-
-

@@ -17,24 +17,21 @@ import FAQSection from "@/components/FAQSection";
 import ReviewsSection from "../Aboutus/ReviewsSection";
 
 const SafariLandingPage = ({ trips, destination }) => {
-
   const faqSection = destination?.faq?.[0];
-
-  console.log(destination);
 
   if (!destination) return null;
 
   return (
     <div>
       <Banner
-        image={'/tanzania destination.webp'}
+        image={"/tanzania destination.webp"}
         title={destination.title}
         buttonText="Plan A Trip"
         onButtonClick={"/tailor-made-form"}
       />
       <SafariInfoSection overview={destination.overviewinfo?.[0]} />
 
-      <TanzaniaTabsSection />
+      <TanzaniaTabsSection taboverview={destination.taboverview} />
 
       <GuestReviewSection />
 
@@ -50,15 +47,19 @@ const SafariLandingPage = ({ trips, destination }) => {
       <WhentoGo />
 
       <TripHighlights
-        subtitle={"Explore memorable safari moments, wildlife scenes, and landscapes across Tanzania."}
+        subtitle={
+          "Explore memorable safari moments, wildlife scenes, and landscapes across Tanzania."
+        }
       />
 
-  {/* <FAQSection
-        title={faqSection.title }
-        subtitle={faqSection.subtitle}
-        faqs={faqSection.faqs}
-      /> */}
-      <ReviewsSection/>
+      {faqSection && (
+        <FAQSection
+          title={faqSection.title}
+          subtitle={faqSection.subtitle}
+          faqs={faqSection.faqs}
+        />
+      )}
+      <ReviewsSection />
       <Featured />
       <TailormadeSection />
     </div>

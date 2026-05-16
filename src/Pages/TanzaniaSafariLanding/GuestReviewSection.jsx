@@ -12,7 +12,7 @@ const GuestReviewSection = () => {
         <div className="relative z-10">
           {/* Header */}
           <h2 className="text-center text-2xl md:text-3xl font-bold text-white py-10 capitalize">
-            5 million happy guests and counting
+            100 happy guests and counting
           </h2>
 
           {/* Rating Section */}
@@ -22,7 +22,7 @@ const GuestReviewSection = () => {
               <h3 className="font-bold text-xl mb-4 text-[#222]">
                 Overall Rating
               </h3>
-              <div className="text-5xl font-bold text-[#222] mb-1">4.6</div>
+              <div className="text-5xl font-bold text-[#222] mb-1">5.0</div>
               <p className="text-gray-600 font-semibold mb-4">out of 5</p>
 
               <div className="flex items-center space-x-1 text-[#f5b400] text-xl mb-4">
@@ -32,18 +32,18 @@ const GuestReviewSection = () => {
                 <FaStar />
                 <FaStarHalfAlt />
                 <span className="text-black text-[16px] font-semibold ml-2">
-                  4.6
+                  5.0
                 </span>
               </div>
 
               <div className="mt-4 flex items-center space-x-2">
                 <p className="text-gray-700 font-medium text-sm">
-                  Based on 148,803 independent reviews
+                  Based on 100 independent reviews
                 </p>
 
                 <img
-                  src="https://www.cover4caravans.co.uk/wp-content/uploads/2015/05/feefo-logo.png"
-                  alt="Feefo"
+                  src="https://imarakilelenisafaris.com/_next/static/media/trip.13_m9n68.~wka.webp"
+                  alt="tripadviser"
                   className="h-10"
                 />
               </div>
@@ -62,7 +62,7 @@ const GuestReviewSection = () => {
                 {/* Left Box */}
                 <div className="flex  mb-4">
                   <div className="bg-gray-50 px-6 py-8 rounded-md text-center">
-                    <div className="text-4xl font-bold text-[#222]">4.6</div>
+                    <div className="text-4xl font-bold text-[#222]">5.0</div>
                     <p className="text-gray-600 font-semibold text-sm">
                       out of 5
                     </p>
@@ -79,11 +79,11 @@ const GuestReviewSection = () => {
                 {/* Rating Bars */}
                 <div>
                   {[
-                    { stars: 5, percent: 80, count: "103,378" },
-                    { stars: 4, percent: 25, count: "38,020" },
-                    { stars: 3, percent: 8, count: "8,388" },
-                    { stars: 2, percent: 4, count: "2,771" },
-                    { stars: 1, percent: 2, count: "1,225" },
+                    { stars: 5, percent: 80, count: "100" },
+                    { stars: 4, percent: 0, count: "0" },
+                    { stars: 3, percent: 0, count: "0" },
+                    { stars: 2, percent: 0, count: "0" },
+                    { stars: 1, percent: 0, count: "0" },
                   ].map((r, i) => (
                     <div
                       key={i}
@@ -121,7 +121,7 @@ const GuestReviewSection = () => {
                 {/* Left Box */}
                 <div className="flex items-center">
                   <div className="bg-gray-50 px-6 py-8 rounded-md text-center">
-                    <div className="text-4xl font-bold text-[#222]">4.6</div>
+                    <div className="text-4xl font-bold text-[#222]">5.0</div>
                     <p className="text-gray-600 font-semibold text-sm">
                       out of 5
                     </p>
@@ -138,11 +138,11 @@ const GuestReviewSection = () => {
                 {/* Rating Bars */}
                 <div>
                   {[
-                    { stars: 5, percent: 80, count: "110,161" },
-                    { stars: 4, percent: 25, count: "27,807" },
-                    { stars: 3, percent: 8, count: "6,875" },
-                    { stars: 2, percent: 4, count: "2,656" },
-                    { stars: 1, percent: 2, count: "1,282" },
+                    { stars: 5, percent: 80, count: "100" },
+                    { stars: 4, percent: 0, count: "0" },
+                    { stars: 3, percent: 0, count: "0" },
+                    { stars: 2, percent: 0, count: "0" },
+                    { stars: 1, percent: 0, count: "0" },
                   ].map((r, i) => (
                     <div
                       key={i}

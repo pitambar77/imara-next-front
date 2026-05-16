@@ -8,10 +8,12 @@ import { slugify } from "../../utils/slugify.js";
 import PrimaryButton from "../../components/PrimaryButton.jsx";
 import CardButton from "../../components/CardButton.jsx";
 
-const TanzaniaTabsSection = () => {
+const TanzaniaTabsSection = ({ taboverview }) => {
   const [destinations, setDestinations] = useState([]);
   const [activeTab, setActiveTab] = useState("Northern");
   const [loading, setLoading] = useState(true);
+
+  const overview = taboverview?.[0];
 
   useEffect(() => {
     const fetchDestinations = async () => {
@@ -45,57 +47,31 @@ const TanzaniaTabsSection = () => {
       {/* Title + Description */}
       <div className="text-center mb-8 md:mb-16 max-w-5xl mx-auto">
         <h2 className="text-2xl md:text-[32px] lg:text-[36px] font-bold text-[#1a1a1a] mb-3 capitalize">
-          Place to vist in tanzania
+          {overview?.title
+            ?.toLowerCase()
+            .replace(/\b\w/g, (c) => c.toUpperCase())}
         </h2>
 
         <p className="text-[16px] md:text-[18px] text-[#444] mb-6 md:mb-10">
-          Wide plains, misty highlands, quiet lakes, and warm beaches define
-          Tanzania’s charm.
+          {overview?.subtitle}
         </p>
 
-        {/* Main paragraph block */}
-        <div className="text-[15px] md:text-[17px] text-[#444] leading-[1.8] space-y-6  px-2 md:px-10">
-          <p>
-            The{" "}
-            <span className=" font-bold">Tanzania Northern Safari Circuit</span>{" "}
-            is the route most people picture first, and honestly, it deserves
-            that attention.{" "}
-            <span className="font-semibold">Arusha National Park </span> offers
-            peaceful forests and clear mountain views, while{" "}
-            <span className="font-semibold"> Lake Manyara </span> surprises with
-            its bright birdlife and calm stretches of water sitting beneath
-            towering, uneven rift cliffs.
-          </p>
-
-          <p>
-            <span className="font-semibold">Tarangire</span> brings a different
-            mood altogether with its wide spaces and slow-moving elephants
-            weaving between giant baobabs. Not far away, the{" "}
-            <span className="font-semibold"> Ngorongoro Crater </span> feels
-            almost unreal—animals scattered across a volcanic bowl that looks
-            carved on purpose, though nature clearly never worked with straight
-            lines.
-          </p>
-
-          <p>
-            Then there’s{" "}
-            <span className="font-semibold">Serengeti National Park </span> ,
-            where the horizon keeps shifting and the days stretch long and open.
-            Kilimanjaro National Park stands apart, its slopes rising from
-            farmland to moorland and finally into alpine cold, offering a
-            mountain journey that tests patience, rhythm, and sometimes your own
-            certainty.
-          </p>
-
-          <p>
-            For travelers drawn to quieter places, Mkomazi offers dry-country
-            wildlife and a rhythm that feels untouched.{" "}
-            <span className="font-semibold">Lake Natron</span> glows with
-            minerals and flamingos. Further south, Nyerere, Ruaha, Mikumi, and
-            Udzungwa create a different Tanzania—wide rivers, deep wilderness,
-            and parks where human presence feels wonderfully small.
-          </p>
-        </div>
+        <div
+          className="
+          
+    rich-text
+    text-[15px]
+    md:text-[17px]
+    text-[#444]
+    leading-[1.8]
+    space-y-6
+    px-2
+    md:px-10
+  "
+          dangerouslySetInnerHTML={{
+            __html: overview?.description || "",
+          }}
+        />
       </div>
 
       <div className="flex justify-center mb-10 space-x-1.5 md:space-x-3 ">

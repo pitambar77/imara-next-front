@@ -61,6 +61,7 @@
 //   );
 // }
 
+import { getTanzaniaSafari } from "@/lib/getTanzaniaSafari";
 import { getTrips } from "@/lib/getTrips";
 import SafariDestiLanding from "@/Pages/SafariDestination/SafariDestiLanding";
 
@@ -74,6 +75,7 @@ export async function generateMetadata() {
   );
 
   const landingData = await landingRes.json();
+
   const landing = landingData?.[0];
 
   if (!landing) {

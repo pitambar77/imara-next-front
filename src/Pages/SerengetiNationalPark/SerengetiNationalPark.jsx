@@ -47,7 +47,7 @@ const SerengetiNationalPark = ({ data, allDestinations, trips }) => {
       link: `/tanzania-destinations/${slugify(item.title)}`,
     }));
 
-  /* ================= FAQ ================= */
+
   /* ================= FAQ ================= */
   const faqs = aboutBooking.map((item) => ({
     question: item.question,

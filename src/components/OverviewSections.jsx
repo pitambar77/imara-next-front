@@ -42,64 +42,20 @@ const OverviewSections = ({
           </h3>
 
           {/* Responsive Text Columns */}
-          {/* <div
+
+  <div
             className="
-    text-[15px]
-    text-[#444]
-    leading-[1.6]
-    md:columns-2
-    md:gap-12
-  "
+              text-[15px] md:text-[16px] text-[#333] space-y-4 leading-[1.8]
+              md:[column-count:2] md:[column-gap:3rem]
+            "
           >
-            {paragraphs.map((paragraph, index) => (
-              <div key={index} className="mb-5">
-                {paragraph.map((item, idx) => {
-                  switch (item.type) {
-                    case "bold":
-                      return <strong key={idx}>{item.value} </strong>;
-
-                    case "highlight":
-                      return (
-                        <span key={idx} className="bg-yellow-200 px-1">
-                          {item.value}{" "}
-                        </span>
-                      );
-
-                    case "link":
-                      return (
-                        <a
-                          key={idx}
-                          href={item.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[#d87029] underline"
-                        >
-                          {item.value}{" "}
-                        </a>
-                      );
-
-                    default:
-                      return <span key={idx}>{item.value} </span>;
-                  }
-                })}
-              </div>
-            ))}
-          </div> */}
-
-          {/* Responsive Text Columns */}
-          <div
-            className="
-    overview-description
-    max-w-none
-    text-[15px]
-    text-[#444]
-    md:columns-2
-    md:gap-12
-  "
-            dangerouslySetInnerHTML={{
-              __html: paragraphs || "",
-            }}
-          />
+            <div
+              className="rich-text text-[#444]"
+              dangerouslySetInnerHTML={{
+                __html: paragraphs|| "",
+              }}
+            />
+          </div>
         </div>
 
         {/* IMAGE COLUMN */}

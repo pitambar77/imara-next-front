@@ -5,7 +5,7 @@ const WhyVisitTanzania = () => {
     {
       id: 1,
       image:
-        "/why-visit-local.webp",
+        "/safari-guide.webp",
       title: "Locally Led Adventures",
       text: "Our roots here run deep, and that changes the way you experience each place. You’re not just following a route—you’re discovering quiet corners, real stories, and moments only locals know how to reveal.",
     },

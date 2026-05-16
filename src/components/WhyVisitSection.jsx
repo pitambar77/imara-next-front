@@ -37,9 +37,18 @@ const WhyVisitSection = ({ title, subtitle, cards }) => {
               <h3 className="text-[20px] md:text-[24px] text-[#1a1a1a] mb-3">
                 {card.title}
               </h3>
-              <p className="text-[16px] text-[#444] leading-relaxed">
-                {card.text}
-              </p>
+
+              <p
+                className="
+    rich-text
+    text-[16px]
+    text-[#444]
+    leading-relaxed
+  "
+                dangerouslySetInnerHTML={{
+                  __html: card.text || "",
+                }}
+              />
             </div>
           </div>
         ))}

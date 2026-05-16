@@ -2,10 +2,8 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import { GoDotFill } from "react-icons/go";
 
 const MonthGuide = ({ title, tabs }) => {
-  // const [activeTab, setActiveTab] = useState(tabs[0].id);
   const [activeTab, setActiveTab] = useState(tabs?.[0]?.id || null);
 
   if (!tabs || tabs.length === 0) {
@@ -13,11 +11,6 @@ const MonthGuide = ({ title, tabs }) => {
   }
 
   const activeContent = tabs.find((t) => t.id === activeTab);
-
-  // 👉 Normalize description to always be an array
-  const descriptionArray = Array.isArray(activeContent.description)
-    ? activeContent.description
-    : [activeContent.description];
 
   return (
     <section className=" py-8 md:py-16 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
@@ -56,73 +49,18 @@ const MonthGuide = ({ title, tabs }) => {
           </h3>
 
           {/* Dynamic Paragraphs */}
-          <div className="space-y-3 mb-4">
-            {descriptionArray.map((block, index) => {
-              if (block.type === "header") {
-                return (
-                  <h4
-                    key={index}
-                    className="font-semibold text-xl text-[#222] mt-6"
-                  >
-                    {block.content}
-                  </h4>
-                );
-              }
-
-              if (block.type === "list") {
-                return (
-                  <div
-                    key={index}
-                    className="flex items-start gap-2 ml-2 md:ml-4"
-                  >
-                    <span className="text-[#d87028] text-lg mt-0.5">
-                      <GoDotFill />
-                    </span>
-                    <p className="text-[#444] text-[16px] leading-relaxed">
-                      {block.content}
-                    </p>
-                  </div>
-                );
-              }
-
-              return (
-                <p
-                  key={index}
-                  className="text-[#444] text-[16px] leading-relaxed"
-                >
-                  {block.content}
-                </p>
-              );
-            })}
-          </div>
-
-          {/* Bullet List */}
-          <div className="mt-4">
-            <ul className="space-y-2">
-              {activeContent.events?.length > 0 && (
-                <div className="mt-4">
-                  <h3 className="font-semibold text-xl mb-4">
-                    Events & Festivals
-                  </h3>
-                  <ul className="space-y-2">
-                    {activeContent.events.map((item, index) => (
-                      <li
-                        key={index}
-                        className="flex items-start gap-2 ml-2 md:ml-4"
-                      >
-                        <span className="text-[#d87028] text-lg mt-0.5">
-                          <GoDotFill />
-                        </span>
-                        <p className="text-[#444] text-[16px] leading-relaxed">
-                          {item}
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </ul>
-          </div>
+          <div
+            className="
+    rich-text
+    text-[#444]
+    text-[16px]
+    leading-relaxed
+    mb-4
+  "
+            dangerouslySetInnerHTML={{
+              __html: activeContent.description || "",
+            }}
+          />
         </div>
 
         {/* RIGHT IMAGE */}

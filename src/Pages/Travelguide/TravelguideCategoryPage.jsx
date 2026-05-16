@@ -8,12 +8,12 @@ import tabanner from "../../assets/imara-home-banner-2.webp";
 import kabanner from "../../assets/kabanner.webp";
 import TailormadeSection from "../Home/TailormadeSection";
 import Banner from "../../components/Banner";
-
-
+import OverviewInfo from "./OverviewInfo";
+import FAQSection from "@/components/FAQSection";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
-const TravelguideCategoryPage = ({ category }) => {
+const TravelguideCategoryPage = ({ category, landing,title,subtitle }) => {
   const [asSeenItems, setAsSeenItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -53,6 +53,8 @@ const TravelguideCategoryPage = ({ category }) => {
 
   const bannerImage = isKilimanjaroCategory ? kabanner : tabanner;
 
+  const faqSection = landing?.faq?.[0];
+
   return (
     <div>
       {/* ================= HERO ================= */}
@@ -62,21 +64,33 @@ const TravelguideCategoryPage = ({ category }) => {
         title={category || "All about travel guide"}
       />
 
+      <OverviewInfo landing={landing} />
+
+   
+
       {/* ================= CONTENT ================= */}
       {loading ? (
         <p className="p-6 text-center">Loading...</p>
       ) : asSeenItems.length ? (
-        <TravelguideCard items={asSeenItems} />
+        <TravelguideCard items={asSeenItems} title={title}  subtitle2={subtitle} />
       ) : (
         <p className="p-6 text-center">No Travelguide found</p>
       )}
 
       <BookWithConfidence />
+
+      {faqSection && (
+        <FAQSection
+          title={faqSection.title}
+          subtitle={faqSection.subtitle}
+          faqs={faqSection.faqs}
+        />
+      )}
+
       <Featured />
       <TailormadeSection />
     </div>
   );
 };
-
 
 export default TravelguideCategoryPage;

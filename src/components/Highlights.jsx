@@ -23,9 +23,7 @@ const Highlights = ({ title, trips, subtitle }) => {
         )}
 
         <div className="relative flex items-center justify-center mb-8 md:mb-12">
-          {subtitle && (
-            <p className="text-[18px] text-[#444] ">{subtitle}</p>
-          )}
+          {subtitle && <p className="text-[18px] text-[#444] ">{subtitle}</p>}
 
           {/* Navigation Arrows */}
           <div className=" hidden md:block absolute right-0 flex items-center space-x-3">
@@ -96,9 +94,21 @@ const Highlights = ({ title, trips, subtitle }) => {
                     {trip.title}
                   </h3>
 
-                  <p className="text-[16px] text-center text-[#444] mb-4">
+                  {/* <p className="text-[16px] text-center text-[#444] mb-4">
                     {trip.description}
-                  </p>
+                  </p> */}
+                  <div
+                    className="
+    rich-text
+    text-[16px]
+    text-center
+    text-[#444]
+    mb-4
+  "
+                    dangerouslySetInnerHTML={{
+                      __html: trip.description || "",
+                    }}
+                  />
                 </div>
               </div>
             </SwiperSlide>

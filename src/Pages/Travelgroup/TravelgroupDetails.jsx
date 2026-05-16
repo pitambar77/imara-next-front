@@ -15,43 +15,7 @@ import Banner from "../../components/Banner";
 import ReviewsSection from "../Aboutus/ReviewsSection";
 
 const TravelgroupDetails = ({ slug, trips, item }) => {
-  // const [item, setItem] = useState(null);
-  // const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   const fetchTravelGroup = async () => {
-  //     try {
-  //       // 1️⃣ Get travelgroup by slug
-  //       const res = await API.get(`/travelgroup/slug/${slug}`);
-
-  //       if (!res.data) {
-  //         setItem(null);
-  //         return;
-  //       }
-
-  //       const group = res.data;
-
-  //       // 2️⃣ Fetch SEO by ID
-  //       const seoRes = await API.get(
-  //         `/seo?referenceId=${group._id}&referenceType=travelgroup`,
-  //       );
-
-  //       // 3️⃣ Attach SEO
-  //       setItem({
-  //         ...group,
-  //         seo: seoRes.data || null,
-  //       });
-  //     } catch (err) {
-  //       console.error(err);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchTravelGroup();
-  // }, [slug]);
-
-  /* ================= DYNAMIC SEO ================= */
 
   if (!item) return <p className="p-6">Not found</p>;
 
@@ -63,15 +27,7 @@ const TravelgroupDetails = ({ slug, trips, item }) => {
     description: a.description,
   }));
 
-  /* ================= MAP FAQ ================= */
-  // const safariFaqs = item.aboutBooking.map((q) => ({
-  //   question: q.question,
-  //   answerBlocks: q.answer.map((ans) => ({
-  //     type: ans.type,
-  //     text: ans.content,
-  //     items: ans.type === "list" ? [ans.content] : undefined,
-  //   })),
-  // }));
+
 
   const safariFaqs = item.aboutBooking.map((q) => ({
     question: q.question,
@@ -80,11 +36,7 @@ const TravelgroupDetails = ({ slug, trips, item }) => {
 
   return (
     <div>
-      {/* ================= BANNER ================= */}
-      {/* <LandingBanner
-        bannerImg={item.image}
-        title={item.title}
-      /> */}
+
 
       <Banner image={item.image} title={item.title} />
 

@@ -54,7 +54,7 @@ const SafariDestiLanding = ({ trips, data }) => {
       <TourGroupSection />
 
       <TripHighlights
-        subtitle={"Lorem Ipsum is simply dummy text of the printing"}
+        subtitle={"Explore memorable safari moments, wildlife scenes, and landscapes across Tanzania."}
       />
 
       {/* <FAQSection

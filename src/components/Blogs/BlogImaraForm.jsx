@@ -853,7 +853,6 @@ function SectionEditor({
         </div>
       );
 
-  
     case "quote":
       return (
         <div className="space-y-3">
@@ -866,29 +865,32 @@ function SectionEditor({
             onChange={(value) => updateSection(s.id, { text: value })}
           />
 
-          {/* Preview */}
-          <div className="relative bg-[#d87029] rounded-2xl px-6 py-12 md:px-10 md:py-16 mt-4 overflow-hidden">
-            {/* Opening Quote */}
-            <span className="absolute top-4 left-6 text-white/20 text-[90px] md:text-[120px] leading-none font-serif">
-              “
-            </span>
+          <div
+            key={s.id}
+            className="relative bg-[#d87029] border border-[#d87029] rounded-md overflow-hidden my-10"
+          >
+            {/* Left Accent Border */}
+            {/* <div className="absolute left-0 top-0 h-full w-4 bg-[#3c2313]" /> */}
 
-            {/* Quote Content */}
-            <div
-              className="quote-box rich-text text-center relative z-10 max-w-3xl mx-auto"
-              dangerouslySetInnerHTML={{
-                __html: s.text || "",
-              }}
-            />
+            {/* Content */}
+            <div className="px-10 py-12 md:px-20 md:py-16 relative z-10">
+              <div
+                className="quote-box rich-text text-white leading-[1.8]"
+                dangerouslySetInnerHTML={{
+                  __html: s.text || "",
+                }}
+              />
+            </div>
 
-            {/* Closing Quote */}
-            <span className="absolute bottom-0 right-6 text-white/20 text-[90px] md:text-[120px] leading-none font-serif">
+            {/* Quote Icon */}
+            <div className="absolute -bottom-6 right-6 text-white text-[90px] leading-none font-serif opacity-95">
               ”
-            </span>
+            </div>
           </div>
         </div>
       );
 
+  
     default:
       return <p>Coming soon...</p>;
   }
@@ -1772,15 +1774,24 @@ export function Preview({ title, slug, sections }) {
             return (
               <div
                 key={s.id}
-                className="relative bg-[#d87029] rounded-2xl px-6 py-12 md:px-10 md:py-16 my-10 overflow-hidden"
+                className="relative bg-[#2b0800] border border-[#d8d3c3] overflow-hidden my-10"
               >
-                <div className="relative z-10 max-w-3xl mx-auto text-center">
+                {/* Left Accent Border */}
+                <div className="absolute left-0 top-0 h-full w-4 bg-[#d87029]" />
+
+                {/* Content */}
+                <div className="px-10 py-12 md:px-20 md:py-16 relative z-10">
                   <div
-                    className="quote-box rich-text fancy-quote"
+                    className="quote-box rich-text text-white leading-[1.7]"
                     dangerouslySetInnerHTML={{
                       __html: s.text || "",
                     }}
                   />
+                </div>
+
+                {/* Quote Icon */}
+                <div className="absolute -bottom-6 right-6 text-white text-[90px] leading-none font-serif opacity-95">
+                  ”
                 </div>
               </div>
             );

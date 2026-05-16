@@ -2,13 +2,25 @@
 
 import { useEffect, useState } from "react";
 import API from "@/api/axios";
+import CustomRichEditor from "@/components/CustomRichEditor";
 
 export default function HomepagePage() {
   const [form, setForm] = useState({
     title: "",
     subtitle: "",
     bannerImage: "",
-    faq: [],
+    faq: [
+      {
+        title: "",
+        subtitle: "",
+        faqs: [
+          {
+            question: "",
+            answer: "",
+          },
+        ],
+      },
+    ],
   });
 
   const [isEdit, setIsEdit] = useState(false);
@@ -40,7 +52,7 @@ export default function HomepagePage() {
                     faqs: [
                       {
                         question: "",
-                        answer: [{ type: "paragraph", content: "" }],
+                        answer: "",
                       },
                     ],
                   },
@@ -97,7 +109,7 @@ export default function HomepagePage() {
     const updated = [...form.faq];
     updated[sectionIndex].faqs.push({
       question: "",
-      answer: [{ type: "paragraph", content: "" }],
+      answer: "",
     });
     setForm({ ...form, faq: updated });
   };
@@ -114,44 +126,39 @@ export default function HomepagePage() {
     setForm({ ...form, faq: updated });
   };
 
-  /* ================= ANSWERS ================= */
-
-  const addAnswer = (sectionIndex, faqIndex) => {
-    const updated = [...form.faq];
-    updated[sectionIndex].faqs[faqIndex].answer.push({
-      type: "paragraph",
-      content: "",
-    });
-    setForm({ ...form, faq: updated });
-  };
-
-  const handleAnswer = (sectionIndex, faqIndex, ansIndex, e) => {
-    const updated = [...form.faq];
-    updated[sectionIndex].faqs[faqIndex].answer[ansIndex][e.target.name] =
-      e.target.value;
-    setForm({ ...form, faq: updated });
-  };
-
-  const removeAnswer = (sectionIndex, faqIndex, ansIndex) => {
-    const updated = [...form.faq];
-    updated[sectionIndex].faqs[faqIndex].answer.splice(ansIndex, 1);
-    setForm({ ...form, faq: updated });
-  };
-
   /* ================= SAVE ================= */
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      await API.post("/homepage", {
-        ...form,
-        faq: JSON.stringify(form.faq),
+      const data = new FormData();
+
+      /* ================= FORM DATA ================= */
+
+      data.append(
+        "formData",
+        JSON.stringify({
+          title: form.title,
+          subtitle: form.subtitle,
+          bannerImage: form.bannerImage,
+        }),
+      );
+
+      /* ================= FAQ ================= */
+
+      data.append("faq", JSON.stringify(form.faq));
+
+      await API.post("/homepage", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
 
       alert(isEdit ? "Updated successfully" : "Created successfully");
     } catch (error) {
       console.error("Save error:", error);
+
       alert("Error saving homepage");
     }
   };
@@ -194,13 +201,13 @@ export default function HomepagePage() {
         <section>
           <div className="flex justify-between">
             <h3 className="text-xl font-bold">FAQ Sections</h3>
-            {/* <button
+            <button
               type="button"
               onClick={addFaqSection}
               className="bg-green-600 text-white px-3 py-1 rounded"
             >
               + Add Section
-            </button> */}
+            </button>
           </div>
 
           {form.faq.map((section, i) => (
@@ -238,43 +245,19 @@ export default function HomepagePage() {
                     onChange={(e) => handleFaq(i, j, e)}
                   />
 
-                  <button
-                    type="button"
-                    onClick={() => addAnswer(i, j)}
-                    className="bg-purple-600 text-white px-3 py-1 rounded"
-                  >
-                    + Add Answer
-                  </button>
+                  <CustomRichEditor
+                    value={faq.answer || ""}
+                    onChange={(value) => {
+                      const updated = [...form.faq];
 
-                  {faq.answer.map((ans, k) => (
-                    <div key={k} className="border p-2 mt-2 rounded">
-                      <select
-                        name="type"
-                        className="border p-2 w-full mb-2"
-                        value={ans.type}
-                        onChange={(e) => handleAnswer(i, j, k, e)}
-                      >
-                        <option value="header">Header</option>
-                        <option value="paragraph">Paragraph</option>
-                        <option value="list">List</option>
-                      </select>
+                      updated[i].faqs[j].answer = value;
 
-                      <textarea
-                        name="content"
-                        className="border p-2 w-full"
-                        value={ans.content}
-                        onChange={(e) => handleAnswer(i, j, k, e)}
-                      />
-
-                      <button
-                        type="button"
-                        onClick={() => removeAnswer(i, j, k)}
-                        className="bg-red-600 text-white px-2 py-1 mt-2 rounded"
-                      >
-                        Remove
-                      </button>
-                    </div>
-                  ))}
+                      setForm({
+                        ...form,
+                        faq: updated,
+                      });
+                    }}
+                  />
 
                   <button
                     type="button"

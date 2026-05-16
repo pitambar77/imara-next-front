@@ -375,6 +375,15 @@ html {
 }
 
 .quote-box p {
+  margin: 0;
+}
+
+.quote-box a {
+  color: #d4a017;
+  text-decoration: underline;
+}
+
+.quote-box p {
   font-size: 22px;
   line-height: 1.8;
   font-style: italic;

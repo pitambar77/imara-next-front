@@ -23,7 +23,7 @@ const Banner = ({ image, title, buttonText, onButtonClick }) => {
 
       {/* Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
-        <h1 className="text-2xl md:text-5xl font-extrabold mb-6 tracking-wide drop-shadow-lg">
+        <h1 className="text-2xl md:text-5xl font-extrabold mb-6 tracking-wide drop-shadow-lg uppercase">
           {title}
         </h1>
 

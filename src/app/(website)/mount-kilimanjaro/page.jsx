@@ -13,7 +13,7 @@ export async function generateMetadata() {
 
   // Fetch SEO from SEO collection
   const seoRes = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${page._id}&referenceType=kilimanjarolanding`,
+    `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${page._id}&referenceType=mountkilimanjaro`,
     { next: { revalidate: 300 } },
   );
 
@@ -55,7 +55,7 @@ export default async function Page() {
 
   // Fetch SEO again for schema injection
   const seoRes = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${page._id}&referenceType=kilimanjarolanding`,
+    `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${page._id}&referenceType=mountkilimanjaro`,
     { next: { revalidate: 300 } },
   );
 
