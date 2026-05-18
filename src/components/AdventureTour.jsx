@@ -38,7 +38,7 @@ const AdventureTour = ({ title, sections }) => {
               }`}
             >
               <h2 className="text-2xl md:text-3xl text-[#1a1a1a] leading-snug mb-4 md:mb-6 capitalize">
-                {item.heading}
+                {item.heading?.toLowerCase()}
               </h2>
 
               <h3 className="text-[17px] md:text-[18px] text-[#1a1a1a] leading-snug mb-3">

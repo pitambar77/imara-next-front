@@ -68,10 +68,7 @@ const HeroSlider = () => {
 
               {/* Text Content */}
               <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white ">
-                {/* <h1 className="text-2xl md:text-5xl mb-4 font-bold uppercase">
-                  {slide.title}
-                </h1> */}
-
+              
                 {index === 0 ? (
                   <h1 className="text-2xl md:text-5xl mb-4 font-bold uppercase">
                     {slide.title}
@@ -81,11 +78,11 @@ const HeroSlider = () => {
                     {slide.title}
                   </h2>
                 )}
-                <p className="text-lg md:text-xl mb-4 md:mb-6 max-w-2xl">
+                <p className="text-sm md:text-xl mb-4 md:mb-6 max-w-2xl px-4 md:px-0">
                   {slide.description}
                 </p>
 
-                <PrimaryButton href="/tailor-made-form">
+                <PrimaryButton href="/tailor-made-tours">
                   Plan A Trip
                 </PrimaryButton>
               </div>

@@ -57,17 +57,20 @@ const PopularWay = () => {
           Ultimate Guide to Tanzania Travel
         </h2>
         <p className="text-center text-[#444] text-[18px] mb-12 ">
-          Helpful safari travel tips for visiting dream wildlife destinations with ease.
+          Helpful safari travel tips for visiting dream wildlife destinations
+          with ease.
         </p>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4 md:gap-6">
           {destinations.map((dest) => (
             <Link
               key={dest.id}
               href={dest.link}
               // onClick={() => navigate(dest.link)}
-              className="relative w-full h-56 rounded-md overflow-hidden group cursor-pointer"
+              className="relative w-full aspect-[4/3]
+    sm:aspect-[16/10]
+    md:aspect-[16/9] rounded-md overflow-hidden group cursor-pointer"
             >
               {/* Image */}
               <Image
@@ -75,6 +78,7 @@ const PopularWay = () => {
                 alt={dest.name}
                 fill
                 sizes="(max-width:768px) 100vw, 33vw"
+                className="object-cover group-hover:scale-105 transition duration-500"
               />
               {/* 🔥 SHADOW OVERLAY */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/10 pointer-events-none" />

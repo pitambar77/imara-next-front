@@ -171,6 +171,20 @@ const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [mobileOpen]);
+
+
+
   const groupedResults = results.reduce((acc, item) => {
     if (!acc[item.type]) {
       acc[item.type] = [];
@@ -463,7 +477,7 @@ const Navbar = () => {
           desc: "People Behind Safaris",
           image:
             "https://media.istockphoto.com/id/514632058/photo/lions-on-african-safari-in-tanzania.jpg?s=612x612&w=0&k=20&c=tZ2hwpz8Uub6p2dPcUk02qf1qLFEmcCvg4S4cU0fgt4=",
-          path: "/team",
+          path: "#",
         },
         {
           title: "Safari Fleet",
@@ -540,7 +554,7 @@ const Navbar = () => {
       </header>
 
       {/* Navbar */}
-      <nav ref={navRef} className="sticky top-0 z-50 w-full bg-white ">
+      <nav ref={navRef} className="sticky top-0 z-[50] w-full bg-white ">
         <div className="flex items-center justify-between max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0 py-4">
           {/* Logo */}
           <Link href="/" className="flex items-center">
@@ -556,14 +570,6 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <ul className="hidden xl:flex space-x-6 font-semibold text-sm text-gray-800 relative">
             {menuItems.map((item, index) => (
-              // <li
-              //   key={index}
-              //   className={`relative cursor-pointer hover:text-orange-600 ${
-              //     item.links ? "group" : ""
-              //   }`}
-              //   onMouseEnter={() => item.links && setOpenMenu(index)}
-              //   onMouseLeave={() => setOpenMenu(null)}
-              // >
               <li
                 key={index}
                 className="relative"
@@ -577,14 +583,6 @@ const Navbar = () => {
                       : "hover:text-orange-600"
                   }`}
                 >
-                  {/* {item.path ? (
-                    <Link href={item.path} className=" uppercase">
-                      {item.title}
-                    </Link>
-                  ) : (
-                    item.title
-                  )} */}
-
                   <Link href={item.path || "#"} className="uppercase">
                     {item.title}
                   </Link>
@@ -613,11 +611,6 @@ const Navbar = () => {
                             {/* LEFT CONTENT */}
                             <div className="col-span-8">
                               <div className="flex items-center gap-3 mb-8">
-                                {/* <h3 className="text-lg text-[#111]">
-                                  {item.title === "DESTINATIONS"
-                                    ? "Tanzania Destinations"
-                                    : "Tanzania Safari"}
-                                </h3> */}
                                 <Link
                                   href={
                                     item.title === "DESTINATIONS"
@@ -842,56 +835,6 @@ const Navbar = () => {
                               </Link>
                             ))}
                           </div>
-                          {/* <div className="grid grid-cols-12 gap-10">
-                           
-                            <div className="col-span-3 border-r border-gray-200 pr-8">
-                              <div className="space-y-5">
-                                {item.leftLinks.map((link, idx) => (
-                                  <Link
-                                    key={idx}
-                                    href={link.path}
-                                    onClick={() => setOpenMenu(null)}
-                                    className="block text-[16px] font-medium text-[#444] hover:text-[#d87028] transition"
-                                  >
-                                    {link.label}
-                                  </Link>
-                                ))}
-                              </div>
-                            </div>
-                            <div className="col-span-9">
-                              <div className="grid grid-cols-3 gap-6">
-                                {item.cards.map((card, idx) => (
-                                  <Link
-                                    key={idx}
-                                    href={card.path}
-                                    onClick={() => setOpenMenu(null)}
-                                    className="group rounded-md overflow-hidden bg-black"
-                                  >
-                               
-                                    <div className="relative h-[220px] overflow-hidden">
-                                      <Image
-                                        src={card.image}
-                                        alt={card.title}
-                                        fill
-                                        className="object-cover group-hover:scale-105 transition duration-500"
-                                      />
-                                    </div>
-
-                                  
-                                    <div className="bg-[#d87029] px-5 py-3">
-                                      <h3 className="text-white text-lg  ">
-                                        {card.title}
-                                      </h3>
-
-                                      <p className="text-white text-sm leading-relaxed">
-                                        {card.desc}
-                                      </p>
-                                    </div>
-                                  </Link>
-                                ))}
-                              </div>
-                            </div>
-                          </div> */}
                         </div>
                       </div>
                     )}
@@ -1128,12 +1071,12 @@ const Navbar = () => {
               <FaWhatsapp className="text-[#d97129]" size={22} />
             </a> */}
 
-            <PrimaryButton href="/tailor-made-form">Plan A Trip</PrimaryButton>
+            <PrimaryButton href="/tailor-made-tours">Plan A Trip</PrimaryButton>
           </div>
 
           {/* Mobile Toggle */}
           <button
-            className="xl:hidden text-2xl"
+            className="xl:hidden text-2xl "
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <FiX /> : <FiMenu />}
@@ -1144,16 +1087,35 @@ const Navbar = () => {
       {/* Mobile Menu */}
 
       {mobileOpen && (
-        <div className="xl:hidden bg-white w-full uppercase font-semibold px-4 py-4 shadow-lg animate-slide-down">
+        // <div className="xl:hidden bg-white w-full uppercase font-semibold px-4 py-4 shadow-lg animate-slide-down">
+        <div
+          className="
+      xl:hidden
+      fixed
+      top-[72px]
+      left-0
+      w-full
+      h-[calc(100vh-72px)]
+      overflow-y-auto
+      bg-white
+      uppercase
+      font-semibold
+      px-4
+      py-4
+      shadow-lg
+      z-[999]
+      animate-slide-down
+    "
+        >
           {menuItems.map((item, index) => (
-            <div key={index} className="border-b border-gray-200 py-3">
-              <div className="flex justify-between items-center uppercase font-semibold">
-                {item.links ? (
+            <div key={index} className="border-b border-gray-200 py-2">
+              <div className="flex justify-between items-center uppercase ">
+                {item.leftLinks || item.cards ? (
                   <button
                     onClick={() =>
                       setOpenMenu(openMenu === index ? null : index)
                     }
-                    className="w-full text-left font-semibold flex justify-between items-center"
+                    className="w-full text-left flex justify-between items-center"
                   >
                     {item.title}
                     <FiChevronDown
@@ -1178,9 +1140,9 @@ const Navbar = () => {
                 )}
               </div>
 
-              {item.links && openMenu === index && (
-                <ul className="pl-4 pb-2 space-y-3 mt-3  uppercase font-semibold">
-                  {item.links.map((link, idx) => (
+              {(item.leftLinks || item.cards) && openMenu === index && (
+                <ul className="pl-4 pb-2 space-y-2 mt-3 text-sm uppercase font-semibold">
+                  {/* {item.leftLinks?.map((link, idx) => (
                     <li key={idx} className="hover:text-orange-600 transition">
                       <Link
                         href={link.path}
@@ -1193,27 +1155,91 @@ const Navbar = () => {
                             ? "text-[#d87028]"
                             : "text-gray-800"
                         }`}
-                        // className="flex items-center gap-3"
                       >
-                        {/* Common Icon */}
                         <IoCaretForwardOutline className="text-[#d87028] text-sm shrink-0" />
 
-                        {/* Label */}
-                        <span className=" font-semibold">{link.label}</span>
+                  
+                        <span className=" text-sm font-semibold">
+                          {link.label}
+                        </span>
                       </Link>
                     </li>
                   ))}
+
+                  {item.cards?.map((card, idx) => (
+                    <li key={idx}>
+                      <Link
+                        href={card.path}
+                        onClick={() => {
+                          setMobileOpen(false);
+                          setOpenMenu(null);
+                        }}
+                        className="flex items-center gap-3 text-gray-800 hover:text-[#d87028]"
+                      >
+                        <IoCaretForwardOutline className="text-[#d87028] text-sm shrink-0" />
+
+                        <span className="text-sm font-semibold">
+                          {card.title}
+                        </span>
+                      </Link>
+                    </li>
+                  ))} */}
+
+                  {item.leftLinks?.length > 0
+                    ? item.leftLinks.map((link, idx) => (
+                        <li
+                          key={idx}
+                          className="hover:text-orange-600 transition"
+                        >
+                          <Link
+                            href={link.path}
+                            onClick={() => {
+                              setMobileOpen(false);
+                              setOpenMenu(null);
+                            }}
+                            className={`flex items-center gap-3 ${
+                              isActive(link.path)
+                                ? "text-[#d87028]"
+                                : "text-gray-800"
+                            }`}
+                          >
+                            <IoCaretForwardOutline className="text-[#d87028] text-sm shrink-0" />
+
+                            <span className="text-[12px] font-semibold">
+                              {link.label}
+                            </span>
+                          </Link>
+                        </li>
+                      ))
+                    : item.cards?.map((card, idx) => (
+                        <li key={idx}>
+                          <Link
+                            href={card.path}
+                            onClick={() => {
+                              setMobileOpen(false);
+                              setOpenMenu(null);
+                            }}
+                            className="flex items-center gap-3 text-gray-800 hover:text-[#d87028]"
+                          >
+                            <IoCaretForwardOutline className="text-[#d87028] text-sm shrink-0" />
+
+                            <span className="text-[12px] font-medium">
+                              {card.title}
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
                 </ul>
               )}
             </div>
           ))}
 
           {/* ===== Mobile Extra Links ===== */}
-          <div className=" mb-3 space-y-2">
+          <div className=" mb-3 space-y-2 ">
             <Link
               href="/tanzania-travel-guide"
               onClick={() => setMobileOpen(false)}
-              className={`block font-semibold border-b border-gray-200 py-3 ${
+              className={`block font-semibold border-b border-gray-200 py-2 ${
                 isActive("/tanzania-travel-guide")
                   ? "text-[#d87028]"
                   : "text-gray-800"
@@ -1227,7 +1253,7 @@ const Navbar = () => {
             <Link
               href="/kilimanjaro-travel-guide"
               onClick={() => setMobileOpen(false)}
-              className={`block font-semibold border-b border-gray-200 py-3  ${
+              className={`block font-semibold border-b border-gray-200 py-2  ${
                 isActive("/kilimanjaro-travel-guide")
                   ? "text-[#d87028]"
                   : "text-gray-800"
@@ -1241,7 +1267,7 @@ const Navbar = () => {
             <Link
               href="/contact-us"
               onClick={() => setMobileOpen(false)}
-              className={`block font-semibold border-b border-gray-200 py-3 ${
+              className={`block font-semibold border-b border-gray-200 py-2 ${
                 isActive("/contact-us") ? "text-[#d87028]" : "text-gray-800"
               }`}
             >
@@ -1250,11 +1276,11 @@ const Navbar = () => {
           </div>
           <button
             onClick={() => {
-              navigate("/tanzania-safaris");
+              router.push("/tailor-made-tours");
               setMobileOpen(false); // ✅ CLOSE MENU
               setOpenMenu(null);
             }}
-            className="w-full bg-[#d87028] text-white py-3 rounded-full mt-4 font-semibold cursor-pointer"
+            className="w-full bg-[#d87028] text-white py-2 rounded-full mt-4 font-semibold cursor-pointer"
           >
             Plan A Trip
           </button>

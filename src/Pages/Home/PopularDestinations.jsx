@@ -93,13 +93,15 @@ const PopularDestinations = () => {
         </p>
 
         {/* Destination Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-4 md:gap-6">
           {destinations.map((dest) => (
             <Link
               key={dest.id}
               href={dest.link}
               title={dest.name}
-              className="relative w-full h-56 md:h-64 rounded-md overflow-hidden group cursor-pointer"
+              className="relative w-full aspect-[4/3]
+    sm:aspect-[16/10]
+    md:aspect-[16/16] rounded-md overflow-hidden group cursor-pointer"
             >
               <Image
                 src={dest.image}

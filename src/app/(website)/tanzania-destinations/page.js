@@ -90,7 +90,7 @@ export async function generateMetadata() {
   }
 
   const seoRes = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${destination._id}&referenceType=destinationlanding`,
+    `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${destination._id}&referenceType=tanzaniadestinationlanding`,
     { next: { revalidate: 300 } },
   );
 
@@ -129,7 +129,7 @@ export default async function Page() {
   ]);
 
   const seoRes = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${destination._id}&referenceType=destinationlanding`,
+    `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${destination._id}&referenceType=tanzaniadestinationlanding`,
     { next: { revalidate: 300 } },
   );
 

@@ -61,67 +61,154 @@
 //   );
 // }
 
-import { getTanzaniaSafari } from "@/lib/getTanzaniaSafari";
+///////////////new
+
+// import { getTanzaniaSafari } from "@/lib/getTanzaniaSafari";
+// import { getTrips } from "@/lib/getTrips";
+// import SafariDestiLanding from "@/Pages/SafariDestination/SafariDestiLanding";
+
+// /* ================= METADATA ================= */
+
+// export async function generateMetadata() {
+//   // fetch safarilanding data
+//   const landingRes = await fetch(
+//     `${process.env.NEXT_PUBLIC_API_URL}/safarilanding`,
+//     { next: { revalidate: 300 } },
+//   );
+
+//   const landingData = await landingRes.json();
+
+//   const landing = landingData?.[0];
+
+//   if (!landing) {
+//     return { title: "Safari Landing Page" };
+//   }
+
+//   // fetch seo
+//   const seoRes = await fetch(
+//     `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${landing._id}&referenceType=safarilanding`,
+//     { next: { revalidate: 300 } },
+//   );
+
+//   const seo = await seoRes.json();
+
+//   return {
+//     title: seo?.metaTitle || landing.title || "Tanzania Safaris",
+
+//     description:
+//       seo?.metaDescription ||
+//       landing.subtitle ||
+//       "Explore Tanzania safari packages and wildlife adventures.",
+
+//     keywords:
+//       seo?.keywords || "Tanzania safari, Serengeti safari, Ngorongoro safari",
+
+//     alternates: {
+//       canonical:
+//         seo?.canonicalUrl ||
+//         "https://imarakilelenisafaris.com/tanzania-safaris",
+//     },
+
+//     openGraph: {
+//       title: seo?.metaTitle || landing.title,
+//       description: seo?.metaDescription || landing.subtitle,
+//       url:
+//         seo?.canonicalUrl ||
+//         "https://imarakilelenisafaris.com/tanzania-safaris",
+//       images: [
+//         {
+//           url: seo?.ogImage || landing.image,
+//           width: 1200,
+//           height: 630,
+//         },
+//       ],
+//       locale: "en_US",
+//       type: "website",
+//     },
+//   };
+// }
+
+// /* ================= PAGE ================= */
+
+// export default async function Page() {
+//   const [trips, landingRes] = await Promise.all([
+//     getTrips(),
+//     fetch(`${process.env.NEXT_PUBLIC_API_URL}/safarilanding`, {
+//       next: { revalidate: 300 },
+//     }),
+//   ]);
+
+//   const landingData = await landingRes.json();
+//   const landing = landingData;
+
+//   let seo = null;
+
+//   if (landing) {
+//     const seoRes = await fetch(
+//       `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${landing._id}&referenceType=safarilanding`,
+//       { next: { revalidate: 300 } },
+//     );
+
+//     seo = await seoRes.json();
+//   }
+
+//   return (
+//     <>
+//       {/* Schema */}
+//       {seo?.schemaMarkup && (
+//         <script
+//           type="application/ld+json"
+//           dangerouslySetInnerHTML={{
+//             __html: JSON.stringify(seo.schemaMarkup),
+//           }}
+//         />
+//       )}
+
+//       <SafariDestiLanding trips={trips} data={landing} />
+//     </>
+//   );
+// }
+
+
 import { getTrips } from "@/lib/getTrips";
 import SafariDestiLanding from "@/Pages/SafariDestination/SafariDestiLanding";
+import { getTanzaniaSafari } from "@/lib/getTanzaniaSafari";
 
 /* ================= METADATA ================= */
 
 export async function generateMetadata() {
-  // fetch safarilanding data
-  const landingRes = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/safarilanding`,
-    { next: { revalidate: 300 } },
-  );
+  const page = await getTanzaniaSafari();
 
-  const landingData = await landingRes.json();
-
-  const landing = landingData?.[0];
-
-  if (!landing) {
-    return { title: "Safari Landing Page" };
+  if (!page) {
+    return { title: "Page Not Found" };
   }
 
-  // fetch seo
+  // Fetch SEO from SEO collection
   const seoRes = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${landing._id}&referenceType=safarilanding`,
+    `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${page._id}&referenceType=safarilanding`,
     { next: { revalidate: 300 } },
   );
 
   const seo = await seoRes.json();
 
   return {
-    title: seo?.metaTitle || landing.title || "Tanzania Safaris",
-
-    description:
-      seo?.metaDescription ||
-      landing.subtitle ||
-      "Explore Tanzania safari packages and wildlife adventures.",
-
-    keywords:
-      seo?.keywords || "Tanzania safari, Serengeti safari, Ngorongoro safari",
+    title: seo?.metaTitle || page.title,
+    description: seo?.metaDescription || page.subtitle,
+    keywords: seo?.keywords || "Safari ",
 
     alternates: {
       canonical:
         seo?.canonicalUrl ||
-        "https://imarakilelenisafaris.com/tanzania-safaris",
+        "",
     },
 
     openGraph: {
-      title: seo?.metaTitle || landing.title,
-      description: seo?.metaDescription || landing.subtitle,
+      title: seo?.metaTitle || page.title,
+      description: seo?.metaDescription || page.subtitle,
+      images: [seo?.ogImage || page.image],
       url:
         seo?.canonicalUrl ||
-        "https://imarakilelenisafaris.com/tanzania-safaris",
-      images: [
-        {
-          url: seo?.ogImage || landing.image,
-          width: 1200,
-          height: 630,
-        },
-      ],
-      locale: "en_US",
-      type: "website",
+        "",
     },
   };
 }
@@ -129,30 +216,26 @@ export async function generateMetadata() {
 /* ================= PAGE ================= */
 
 export default async function Page() {
-  const [trips, landingRes] = await Promise.all([
+  const [trips, page] = await Promise.all([
     getTrips(),
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/safarilanding`, {
-      next: { revalidate: 300 },
-    }),
+    getTanzaniaSafari(),
   ]);
 
-  const landingData = await landingRes.json();
-  const landing = landingData;
-
-  let seo = null;
-
-  if (landing) {
-    const seoRes = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${landing._id}&referenceType=safarilanding`,
-      { next: { revalidate: 300 } },
-    );
-
-    seo = await seoRes.json();
+  if (!page) {
+    return <div>Page not found</div>;
   }
+
+  // Fetch SEO again for schema injection
+  const seoRes = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/seo?referenceId=${page._id}&referenceType=safarilanding`,
+    { next: { revalidate: 300 } },
+  );
+
+  const seo = await seoRes.json();
 
   return (
     <>
-      {/* Schema */}
+      {/* Schema from Admin */}
       {seo?.schemaMarkup && (
         <script
           type="application/ld+json"
@@ -162,7 +245,7 @@ export default async function Page() {
         />
       )}
 
-      <SafariDestiLanding trips={trips} data={landing} />
+      <SafariDestiLanding trips={trips} page={page} />
     </>
   );
 }

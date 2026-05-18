@@ -846,10 +846,6 @@ const KilimanjarolandingForm = ({ editData, onSuccess }) => {
 
   const [faq, setFaq] = useState([{ question: "", answer: "" }]);
 
-  // const [whenvisit, setWhenvisit] = useState([
-  //   { heading: "", months: [{ monthname: "", title: "", description: [] }] },
-  // ]);
-
   const [whenvisit, setWhenvisit] = useState([
     {
       heading: "",
@@ -1209,7 +1205,8 @@ const KilimanjarolandingForm = ({ editData, onSuccess }) => {
 
     const updated = [...travelguide];
 
-    updated[i].section[j].image = file;
+    updated[i].section[j].newImage = file;
+    updated[i].section[j].hasNewImage = true;
 
     updated[i].section[j].imagePreview = URL.createObjectURL(file);
 
@@ -1281,7 +1278,8 @@ const KilimanjarolandingForm = ({ editData, onSuccess }) => {
 
     const updated = [...relatedsection];
 
-    updated[i].section[j].image = file;
+    updated[i].section[j].newImage = file;
+    updated[i].section[j].hasNewImage = true;
 
     updated[i].section[j].imagePreview = URL.createObjectURL(file);
 
@@ -1324,15 +1322,29 @@ const KilimanjarolandingForm = ({ editData, onSuccess }) => {
       ),
     );
 
+    // travelguide.forEach((x) =>
+    //   x.section.forEach(
+    //     (y) => y.image && data.append("travelguideImages", y.image),
+    //   ),
+    // );
     travelguide.forEach((x) =>
-      x.section.forEach(
-        (y) => y.image && data.append("travelguideImages", y.image),
-      ),
+      x.section.forEach((y) => {
+        if (y.hasNewImage && y.newImage instanceof File) {
+          data.append("travelguideImages", y.newImage);
+        }
+      }),
     );
+    // relatedsection.forEach((x) =>
+    //   x.section.forEach(
+    //     (y) => y.image && data.append("relatedsectionImages", y.image),
+    //   ),
+    // );
     relatedsection.forEach((x) =>
-      x.section.forEach(
-        (y) => y.image && data.append("relatedsectionImages", y.image),
-      ),
+      x.section.forEach((y) => {
+        if (y.hasNewImage && y.newImage instanceof File) {
+          data.append("relatedsectionImages", y.newImage);
+        }
+      }),
     );
 
     try {
@@ -1801,130 +1813,104 @@ const KilimanjarolandingForm = ({ editData, onSuccess }) => {
 
       {/* =============== Related Section =============== */}
 
-<section className="col-span-2 mt-6">
-  <div className="flex justify-between items-center">
-    <h3 className="text-xl font-semibold">
-      Related Section
-    </h3>
-
-    <button
-      type="button"
-      onClick={addRelatedsection}
-      className="bg-green-600 text-white px-3 py-1 rounded"
-    >
-      + Add Related Section
-    </button>
-  </div>
-
-  {relatedsection.map((item, i) => (
-    <div
-      key={i}
-      className="border p-4 bg-gray-50 rounded mt-4"
-    >
-      <input
-        className="border p-2 w-full mb-3"
-        placeholder="Heading"
-        name="heading"
-        value={item.heading}
-        onChange={(e) =>
-          handleRelatedsection(i, e)
-        }
-      />
-
-      <input
-        className="border p-2 w-full mb-3"
-        placeholder="Subtitle"
-        name="subtitle"
-        value={item.subtitle}
-        onChange={(e) =>
-          handleRelatedsection(i, e)
-        }
-      />
-
-      <button
-        type="button"
-        onClick={() => addRelatedCard(i)}
-        className="bg-blue-600 text-white px-3 py-1 rounded"
-      >
-        + Add Card
-      </button>
-
-      {item.section.map((sec, j) => (
-        <div
-          key={j}
-          className="border p-4 bg-white rounded mt-4"
-        >
-          <input
-            className="border p-2 w-full mb-3"
-            placeholder="Title"
-            name="title"
-            value={sec.title}
-            onChange={(e) =>
-              handleRelatedCard(i, j, e)
-            }
-          />
-
-          <input
-            className="border p-2 w-full mb-3"
-            placeholder="Subtitle"
-            name="subtitle"
-            value={sec.subtitle}
-            onChange={(e) =>
-              handleRelatedCard(i, j, e)
-            }
-          />
-
-          <CustomRichEditor
-            value={sec.description || ""}
-            onChange={(html) => {
-              const updated = [...relatedsection];
-
-              updated[i].section[j].description =
-                html;
-
-              setRelatedsection(updated);
-            }}
-          />
-
-          <input
-            type="file"
-            className="border p-2 w-full mt-3"
-            onChange={(e) =>
-              handleRelatedImage(i, j, e)
-            }
-          />
-
-          {sec.imagePreview && (
-            <img
-              src={sec.imagePreview}
-              className="w-40 rounded mt-3"
-            />
-          )}
+      <section className="col-span-2 mt-6">
+        <div className="flex justify-between items-center">
+          <h3 className="text-xl font-semibold">Related Section</h3>
 
           <button
             type="button"
-            onClick={() =>
-              removeRelatedCard(i, j)
-            }
-            className="bg-red-600 text-white px-3 py-1 rounded mt-4"
+            onClick={addRelatedsection}
+            className="bg-green-600 text-white px-3 py-1 rounded"
           >
-            Remove Card
+            + Add Related Section
           </button>
         </div>
-      ))}
 
-      <button
-        type="button"
-        onClick={() =>
-          removeRelatedsection(i)
-        }
-        className="bg-red-700 text-white px-3 py-1 rounded mt-5"
-      >
-        Remove Related Section
-      </button>
-    </div>
-  ))}
-</section>
+        {relatedsection.map((item, i) => (
+          <div key={i} className="border p-4 bg-gray-50 rounded mt-4">
+            <input
+              className="border p-2 w-full mb-3"
+              placeholder="Heading"
+              name="heading"
+              value={item.heading}
+              onChange={(e) => handleRelatedsection(i, e)}
+            />
+
+            <input
+              className="border p-2 w-full mb-3"
+              placeholder="Subtitle"
+              name="subtitle"
+              value={item.subtitle}
+              onChange={(e) => handleRelatedsection(i, e)}
+            />
+
+            <button
+              type="button"
+              onClick={() => addRelatedCard(i)}
+              className="bg-blue-600 text-white px-3 py-1 rounded"
+            >
+              + Add Card
+            </button>
+
+            {item.section.map((sec, j) => (
+              <div key={j} className="border p-4 bg-white rounded mt-4">
+                <input
+                  className="border p-2 w-full mb-3"
+                  placeholder="Title"
+                  name="title"
+                  value={sec.title}
+                  onChange={(e) => handleRelatedCard(i, j, e)}
+                />
+
+                <input
+                  className="border p-2 w-full mb-3"
+                  placeholder="Subtitle"
+                  name="subtitle"
+                  value={sec.subtitle}
+                  onChange={(e) => handleRelatedCard(i, j, e)}
+                />
+
+                <CustomRichEditor
+                  value={sec.description || ""}
+                  onChange={(html) => {
+                    const updated = [...relatedsection];
+
+                    updated[i].section[j].description = html;
+
+                    setRelatedsection(updated);
+                  }}
+                />
+
+                <input
+                  type="file"
+                  className="border p-2 w-full mt-3"
+                  onChange={(e) => handleRelatedImage(i, j, e)}
+                />
+
+                {sec.imagePreview && (
+                  <img src={sec.imagePreview} className="w-40 rounded mt-3" />
+                )}
+
+                <button
+                  type="button"
+                  onClick={() => removeRelatedCard(i, j)}
+                  className="bg-red-600 text-white px-3 py-1 rounded mt-4"
+                >
+                  Remove Card
+                </button>
+              </div>
+            ))}
+
+            <button
+              type="button"
+              onClick={() => removeRelatedsection(i)}
+              className="bg-red-700 text-white px-3 py-1 rounded mt-5"
+            >
+              Remove Related Section
+            </button>
+          </div>
+        ))}
+      </section>
 
       {/* =============== FAQ Section =============== */}
       <section className="col-span-2 mt-6">

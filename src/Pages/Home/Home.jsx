@@ -8,7 +8,7 @@ import TripsSection from "@/components/TripsSection";
 import FAQSection from "@/components/FAQSection";
 import ReviewsSection from "../Aboutus/ReviewsSection";
 
-const Home = ({ trips,home }) => {
+const Home = ({ trips, home }) => {
   const faqSection = home?.faq?.[0];
   return (
     <div>
@@ -42,12 +42,12 @@ const Home = ({ trips,home }) => {
       />
 
       <PopularWay />
-       <FAQSection
-        title={faqSection.title}
-        subtitle={faqSection.subtitle}
-        faqs={faqSection.faqs}
+      <FAQSection
+        title={faqSection?.title}
+        subtitle={faqSection?.subtitle}
+        faqs={faqSection?.faqs || []}
       />
-      <ReviewsSection/>
+      <ReviewsSection />
       <Featured />
       <TailormadeSection />
     </div>

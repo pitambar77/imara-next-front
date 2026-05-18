@@ -17,7 +17,10 @@ const Sidebar = () => {
 
   const links = [
     { name: "Travel Guide", icon: <FaMapMarkedAlt />, path: "/dashboard/travelguidenew" },
-     { name: "Blog", icon: <FaMapMarkedAlt />, path: "/dashboard/blogimara" },
+    { name: "Tanzania Travel Guide", icon: <FaMapMarkedAlt />, path: "/dashboard/tanzania-travelguide-landing" },
+    { name: "Kilimanjaro Travel Guide", icon: <FaMapMarkedAlt />, path: "/dashboard/kilimanjaro-travelguide-landing" },
+    { name: "Blog landing", icon: <FaMapMarkedAlt />, path: "/dashboard/blog-landing" },
+     { name: "Blog Details", icon: <FaMapMarkedAlt />, path: "/dashboard/blogimara" },
     { name: "Package", icon: <FaUmbrellaBeach />, path: "/dashboard/package" },
     { name: "Destination Details", icon: <FaRoute />, path: "/dashboard/destination" },
     { name: "Destination Landing", icon: <FaHotel />, path: "/dashboard/destination-landing" },
@@ -26,12 +29,15 @@ const Sidebar = () => {
     { name: "Zanzibar", icon: <FaHotel />, path: "/dashboard/zanzibar" },
     { name: "Sustanbility", icon: <FaHotel />, path: "/dashboard/sustainbility/seo" },
     { name: "Team", icon: <FaHotel />, path: "/dashboard/team/seo" },
-    { name: "List", icon: <FaHotel />, path: "/dashboard/team-list" },
     { name: "About", icon: <FaHotel />, path: "/dashboard/about-us/seo" },
     { name: "Fleet", icon: <FaHotel />, path: "/dashboard/safari-fleet/seo" },
     { name: "Home Page", icon: <FaHotel />, path: "/dashboard/homepage/seo" },
-    { name: "Safari Landing", icon: <FaHotel />, path: "/dashboard/safari-landing/seo" },
-    { name: "Contact us page", icon: <FaHotel />, path: "/dashboard/contactus-page/seo" },
+    { name: "Safari Landing", icon: <FaHotel />, path: "/dashboard/safari-landing" },
+    { name: "Contact us page", icon: <FaHotel />, path: "/dashboard/contactus-page" },
+    { name: "Core Value", icon: <FaHotel />, path: "/dashboard/corevalue" },
+    { name: "Privacy Policy", icon: <FaHotel />, path: "/dashboard/privacy-policy" },
+    { name: "Terms & Condition", icon: <FaHotel />, path: "/dashboard/terms-conditions" },
+
     
 
 
@@ -69,9 +75,9 @@ const Sidebar = () => {
         })}
       </nav>
 
-      <button className="mt-auto text-white bg-[#d87028] py-2 rounded-lg hover:bg-[#eb9050]">
+      {/* <button className="mt-auto text-white bg-[#d87028] py-2 rounded-lg hover:bg-[#eb9050]">
         Logout
-      </button>
+      </button> */}
     </div>
   );
 };
