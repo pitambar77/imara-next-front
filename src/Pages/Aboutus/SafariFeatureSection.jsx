@@ -47,7 +47,7 @@ const SafariIntroSection = () => {
             contributes positively to Tanzania’s long-term wellbeing.
           </p>
           <Link
-            href={"/sustanbility"}
+            href={"/sustainability"}
             // onClick={() => navigate("/sustanbility")}
             className="bg-[#d87028] hover:bg-[#c35f22] cursor-pointer text-white font-semibold px-8 py-3 rounded-md transition"
           >

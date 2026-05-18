@@ -183,8 +183,6 @@ const Navbar = () => {
     };
   }, [mobileOpen]);
 
-
-
   const groupedResults = results.reduce((acc, item) => {
     if (!acc[item.type]) {
       acc[item.type] = [];
@@ -1111,19 +1109,52 @@ const Navbar = () => {
             <div key={index} className="border-b border-gray-200 py-2">
               <div className="flex justify-between items-center uppercase ">
                 {item.leftLinks || item.cards ? (
-                  <button
-                    onClick={() =>
-                      setOpenMenu(openMenu === index ? null : index)
-                    }
-                    className="w-full text-left flex justify-between items-center"
-                  >
-                    {item.title}
-                    <FiChevronDown
-                      className={`transition-transform ${
-                        openMenu === index ? "rotate-180" : ""
+                  // <button
+                  //   onClick={() =>
+                  //     setOpenMenu(openMenu === index ? null : index)
+                  //   }
+                  //   className="w-full text-left flex justify-between items-center"
+                  // >
+                  //   {item.title}
+                  //   <FiChevronDown
+                  //     className={`transition-transform ${
+                  //       openMenu === index ? "rotate-180" : ""
+                  //     }`}
+                  //   />
+                  // </button>
+                  <div className="w-full flex items-center justify-between">
+                    {/* Landing Page Link */}
+                    <Link
+                      href={item.path || "#"}
+                      onClick={() => {
+                        setMobileOpen(false);
+                        setOpenMenu(null);
+                      }}
+                      className={`uppercase font-semibold ${
+                        isActive(item.path) ? "text-[#d87028]" : "text-gray-800"
                       }`}
-                    />
-                  </button>
+                    >
+                      {item.title}
+                    </Link>
+
+                    {/* Dropdown Toggle */}
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        setOpenMenu(openMenu === index ? null : index);
+                      }}
+                      className="p-1"
+                    >
+                      <FiChevronDown
+                        className={`transition-transform duration-300 ${
+                          openMenu === index ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                  </div>
                 ) : (
                   <Link
                     href={item.path}
@@ -1142,49 +1173,6 @@ const Navbar = () => {
 
               {(item.leftLinks || item.cards) && openMenu === index && (
                 <ul className="pl-4 pb-2 space-y-2 mt-3 text-sm uppercase font-semibold">
-                  {/* {item.leftLinks?.map((link, idx) => (
-                    <li key={idx} className="hover:text-orange-600 transition">
-                      <Link
-                        href={link.path}
-                        onClick={() => {
-                          setMobileOpen(false);
-                          setOpenMenu(null);
-                        }}
-                        className={`flex items-center gap-3 ${
-                          isActive(link.path)
-                            ? "text-[#d87028]"
-                            : "text-gray-800"
-                        }`}
-                      >
-                        <IoCaretForwardOutline className="text-[#d87028] text-sm shrink-0" />
-
-                  
-                        <span className=" text-sm font-semibold">
-                          {link.label}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-
-                  {item.cards?.map((card, idx) => (
-                    <li key={idx}>
-                      <Link
-                        href={card.path}
-                        onClick={() => {
-                          setMobileOpen(false);
-                          setOpenMenu(null);
-                        }}
-                        className="flex items-center gap-3 text-gray-800 hover:text-[#d87028]"
-                      >
-                        <IoCaretForwardOutline className="text-[#d87028] text-sm shrink-0" />
-
-                        <span className="text-sm font-semibold">
-                          {card.title}
-                        </span>
-                      </Link>
-                    </li>
-                  ))} */}
-
                   {item.leftLinks?.length > 0
                     ? item.leftLinks.map((link, idx) => (
                         <li

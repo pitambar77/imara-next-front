@@ -145,7 +145,7 @@ const Footer = () => {
               >
                 <li>
                   <Link
-                    href="travelgroup/tanzania-family-safari"
+                    href="/travelgroup/tanzania-family-safari"
                     className="hover:text-[#d87028] transition"
                   >
                     Family Safari
@@ -428,7 +428,7 @@ const Footer = () => {
             alt="KPAP"
             width={120}
             height={32}
-            className="h-8 w-auto object-contain"
+            className=" h-6 md:h-8 w-auto object-contain"
           />
 
           <Image
@@ -436,7 +436,7 @@ const Footer = () => {
             alt="Travelife"
             width={140}
             height={40}
-            className="h-10 w-auto object-contain"
+            className="h-8 md:h-10 w-auto object-contain"
           />
           <a
             href="https://tatotz.org/portfolio/imara-kilele-safaris/"
@@ -448,7 +448,7 @@ const Footer = () => {
               alt="TATO"
               width={120}
               height={24}
-              className=" h-10 w-auto object-contain"
+              className=" h-8 md:h-10 w-auto object-contain"
             />
           </a>
           <Image
@@ -456,7 +456,7 @@ const Footer = () => {
             alt="ATTA"
             width={140}
             height={32}
-            className="h-10 w-auto object-contain"
+            className=" h-8 md:h-10 w-auto object-contain"
           />
         </div>
       </div>
