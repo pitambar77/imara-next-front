@@ -10,7 +10,7 @@ const KilimanjaroRoute = ({ overview }) => {
         <div key={item._id || index}>
           {/* HEADING */}
           <div className="text-center max-w-4xl mx-auto mb-12">
-            <h2 className="text-[28px] md:text-3xl font-extrabold text-[#1a1a1a]">
+            <h2 className="text-[24px] md:text-3xl font-extrabold text-[#1a1a1a]">
               {item.title}
             </h2>
 

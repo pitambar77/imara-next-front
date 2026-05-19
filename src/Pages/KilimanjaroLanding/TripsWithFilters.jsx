@@ -45,34 +45,6 @@ const TripsWithFilters = ({
     }, 300);
   };
 
-  /* ================= FETCH DATA ================= */
-
-  // useEffect(() => {
-  //   const fetchTrips = async () => {
-  //     try {
-  //       const res = await API.get("/packages");
-
-  //       const data = res.data || [];
-
-  //       setTrips(data);
-
-  //       /* detect max days automatically */
-  //       const maxDays = Math.max(
-  //         ...data.map((trip) => getDays(trip.accomoDay)),
-  //         1,
-  //       );
-
-  //       setDays(maxDays);
-  //     } catch (err) {
-  //       console.error("Trip fetch error:", err);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchTrips();
-  // }, []);
-
   const getRegionFromTitle = (title = "") => {
     return (
       regions.find((r) => title.toLowerCase().includes(r.toLowerCase())) || null
@@ -88,14 +60,6 @@ const TripsWithFilters = ({
 
   const filteredTrips = useMemo(() => {
     return trips.filter((trip) => {
-      /* DESTINATION FILTER */
-      //   if (
-      //     destination &&
-      //     trip.destination?.toLowerCase() !== destination.toLowerCase()
-      //   ) {
-      //     return false;
-      //   }
-
       if (
         destination.length > 0 &&
         !destination.includes(trip.destination?.toLowerCase())
@@ -133,12 +97,9 @@ const TripsWithFilters = ({
 
   /* ================= LOADING ================= */
 
-  // if (loading) {
-  //   return <p className="text-center py-10">Loading trips...</p>;
-  // }
 
   return (
-    <section className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0 py-8 md:py-12">
+    <section className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0 py-10 sm:py-12 md:py-16">
       <div>
         {title && (
           <h2 className="text-2xl md:text-3xl text-center mb-4 font-bold w-full text-[#1a1a1a] capitalize">
@@ -279,7 +240,7 @@ const TripsWithFilters = ({
           {filteredTrips.length === 0 ? (
             <p className="text-gray-500 text-lg">No trips found.</p>
           ) : (
-            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
               {filteredTrips.map((trip) => (
                 <TripCard
                   key={trip._id}

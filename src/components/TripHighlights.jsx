@@ -23,7 +23,10 @@ const TripHighlights = ({ title, subtitle, data }) => {
   };
 
   return (
-    <section id="highlight" className="w-full py-4 md:py-16 bg-white relative">
+    <section
+      id="highlight"
+      className="w-full py-10 sm:py-12 md:py-16 bg-white relative"
+    >
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
         {/* Title + Navigation */}
 
@@ -89,48 +92,79 @@ const TripHighlights = ({ title, subtitle, data }) => {
         >
           {data.map((trip) => (
             <SwiperSlide key={trip.id}>
-              <Link href={trip.link} className="block h-full cursor-pointer">
-                <div
-                  onClick={() =>
-                    setExpandedCard(expandedCard === trip.id ? null : trip.id)
-                  }
-                  className="trip-card rounded-sm overflow-hidden bg-white shadow-sm hover:shadow-lg transition duration-300 mb-4"
-                >
-                  <div className="relative">
-                    <Image
-                      src={trip.image}
-                      alt={trip.title}
-                      width={400}
-                      height={160}
-                      className="trip-image"
-                    />
-                  </div>
+              {trip.link ? (
+                <Link href={trip.link} className="block h-full cursor-pointer">
+                  <div
+                    onClick={() =>
+                      setExpandedCard(expandedCard === trip.id ? null : trip.id)
+                    }
+                    className="trip-card rounded-sm overflow-hidden bg-white shadow-sm hover:shadow-lg transition duration-300 mb-4"
+                  >
+                    <div className="relative">
+                      <Image
+                        src={trip.image}
+                        alt={trip.title}
+                        width={400}
+                        height={160}
+                        className="trip-image"
+                      />
+                    </div>
 
-                  <div className="p-5 flex flex-col justify-between flex-1 pb-4">
-                    <div>
-                      <h3 className="text-xl mb-4 leading-tight">
-                        {trip.title}
-                      </h3>
+                    <div className="p-5 flex flex-col justify-between flex-1 pb-4">
+                      <div>
+                        <h3 className="text-xl mb-4 leading-tight capitalize">
+                          {formatTitle(trip.title)}
+                        </h3>
 
-                      {/* <p
-                        className={`text-[15px] text-[#444] leading-relaxed ${
-                          expandedCard === trip.id ? "" : "line-clamp-6"
-                        }`}
-                      >
-                        {trip.description}
-                      </p> */}
-                      <div
-                        className={`rich-text trip-description max-w-none leading-relaxed text-[15px] text-[#444]
+                        <div
+                          className={`rich-text trip-description max-w-none leading-relaxed text-[15px] text-[#444]
   ${expandedCard === trip.id ? "" : "line-clamp-6"}
 `}
-                        dangerouslySetInnerHTML={{
-                          __html: trip.description || "",
-                        }}
+                          dangerouslySetInnerHTML={{
+                            __html: trip.description || "",
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ) : (
+                <div className="block h-full">
+                  <div
+                    onClick={() =>
+                      setExpandedCard(expandedCard === trip.id ? null : trip.id)
+                    }
+                    className="trip-card rounded-sm overflow-hidden bg-white shadow-sm hover:shadow-lg transition duration-300 mb-4"
+                  >
+                    <div className="relative">
+                      <Image
+                        src={trip.image}
+                        alt={trip.title}
+                        width={400}
+                        height={160}
+                        className="trip-image"
                       />
+                    </div>
+
+                    <div className="p-5 flex flex-col justify-between flex-1 pb-4">
+                      <div>
+                        <h3 className="text-xl mb-4 leading-tight capitalize">
+                          {formatTitle(trip.title)}
+                        </h3>
+
+                        <div
+                          className={`rich-text trip-description max-w-none leading-relaxed text-[15px] text-[#444]
+  ${expandedCard === trip.id ? "" : "line-clamp-6"}
+`}
+                          dangerouslySetInnerHTML={{
+                            __html: trip.description || "",
+                          }}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </Link>
+              )}
             </SwiperSlide>
           ))}
         </Swiper>

@@ -95,36 +95,12 @@ export default function EnquiryForm({
       ...prev,
       [name]: value,
     }));
-    // clear error while typing
+
     setErrors((prev) => ({
       ...prev,
       [name]: "",
     }));
   };
-
-  //   const handlePhoneChange = (value, data) => {
-  //     const formattedPhone = "+" + value;
-
-  //     setPhone(value);
-
-  //     setFormData((prev) => ({
-  //       ...prev,
-  //       phone: formattedPhone,
-  //       countryCode: "+" + data.dialCode,
-  //       country: data.countryCode.toUpperCase(), // tz, in, us
-  //     }));
-
-  //     if (!value) {
-  //       setPhoneError("Phone number is required");
-  //       return;
-  //     }
-
-  //     if (!isValidPhoneNumber(formattedPhone)) {
-  //       setPhoneError("Invalid phone number");
-  //     } else {
-  //       setPhoneError("");
-  //     }
-  //   };
 
   const handlePhoneChange = (value, data) => {
     const formattedPhone = "+" + value;
@@ -213,22 +189,24 @@ export default function EnquiryForm({
   ];
 
   return (
-    <div className="max-w-4xl mx-auto py-16">
-      <div className=" mb-4">
-        <h2 className="text-3xl font-semibold mb-2 text-center ">
+    <div className="max-w-4xl mx-auto py-10 sm:py-12 md:py-16 px-4 sm:px-6 md:px-0">
+      <div className=" mb-8 md:mb-10 text-center max-w-2xl mx-auto">
+        <h2 className=" text-2xl md:text-3xl font-semibold mb-2 text-center ">
           {formheading}
         </h2>
-        <p className="text-gray-600 mb-6 text-center">{formsubheading}</p>
+        <p className="text-gray-600 text-sm md:text-base">{formsubheading}</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6 ">
+      <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6 ">
         {/* PERSONAL DETAILS */}
         <div className="bg-gray-100 p-6 rounded">
           <h3 className="text-xl font-semibold mb-4">Personal Details</h3>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
             <div>
-              <label className=" mb-1 ">Name *</label>
+              <label className="mb-2 text-sm md:text-base font-medium">
+                Name *
+              </label>
               <input
                 ref={fieldRefs.name}
                 type="text"
@@ -242,7 +220,7 @@ export default function EnquiryForm({
             </div>
 
             <div>
-              <label className=" mb-1 ">
+              <label className=" mb-2 text-sm md:text-base font-medium ">
                 Phone Number (International Format)
               </label>
 
@@ -275,7 +253,9 @@ export default function EnquiryForm({
             </div>
 
             <div className="md:col-span-2">
-              <label className=" mb-1">Email *</label>
+              <label className="mb-2 text-sm md:text-base font-medium">
+                Email *
+              </label>
               <input
                 ref={fieldRefs.email}
                 type="email"
@@ -295,14 +275,6 @@ export default function EnquiryForm({
           <h3 className="text-xl font-semibold mb-4">Travel Dates</h3>
 
           <div>
-            {/* <TravelDatePicker
-              onChange={(data) =>
-                setFormData({
-                  ...formData,
-                  travelDate: data.startDate,
-                })
-              }
-            /> */}
             <TravelDatePicker
               onChange={(data) => {
                 setFormData((prev) => ({
@@ -328,7 +300,9 @@ export default function EnquiryForm({
 
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <label className="block mb-1 font-medium">Adults</label>
+              <label className="mb-2 text-sm md:text-base font-medium">
+                Adults
+              </label>
               <div className="relative">
                 <select
                   name="adults"
@@ -347,7 +321,9 @@ export default function EnquiryForm({
             </div>
 
             <div>
-              <label className="block mb-1 font-medium">Children</label>
+              <label className="mb-2 text-sm md:text-base font-medium">
+                Children
+              </label>
 
               <div className="relative">
                 <select
@@ -367,24 +343,6 @@ export default function EnquiryForm({
               </div>
             </div>
 
-            {/* <div>
-              <label className="block mb-1 font-medium">Destinations</label>
-              <div className="relative">
-                <select
-                  name="destination"
-                  onChange={handleChange}
-                  className="w-full border border-[#e5e7eb] text-sm text-gray-600 bg-white outline-0 appearance-none p-3 rounded"
-                >
-                  <option value="">All Destinations</option>
-                  <option>Tanzania</option>
-                  <option>Kenya</option>
-                  <option>Uganda</option>
-                  <option>Rwanda</option>
-                </select>
-                
-                <FaChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
-              </div>
-            </div> */}
             {formType !== "Kilimanjaro form" && (
               <div className="md:col-span-2">
                 <label className="block mb-2 font-medium">Trip Type</label>
@@ -420,17 +378,6 @@ export default function EnquiryForm({
                     Only Kilimanjaro
                   </label>
                 </div>
-
-                {/* <label className="flex items-center gap-2">
-                  <input
-                    type="radio"
-                    name="tripCategory"
-                    value="both"
-                    checked={tripCategory === "both"}
-                    onChange={(e) => setTripCategory(e.target.value)}
-                  />
-                  Both
-                </label> */}
               </div>
             )}
             <div>
@@ -462,11 +409,6 @@ export default function EnquiryForm({
                     kilimanjaroDestinations.map((d) => (
                       <option key={d}>{d}</option>
                     ))}
-
-                  {/* {tripCategory === "both" &&
-                    [...safariDestinations, ...kilimanjaroDestinations].map(
-                      (d) => <option key={d}>{d}</option>,
-                    )} */}
                 </select>
                 {errors.destination && (
                   <p className="text-red-500 text-sm mt-1">
@@ -479,7 +421,9 @@ export default function EnquiryForm({
             </div>
 
             <div>
-              <label className="block mb-1 font-medium">Tour Type</label>
+              <label className="mb-2 text-sm md:text-base font-medium">
+                Tour Type
+              </label>
               <div className="relative">
                 <select
                   ref={fieldRefs.tourType}
@@ -502,7 +446,9 @@ export default function EnquiryForm({
             </div>
 
             <div>
-              <label className="block mb-1 font-medium">Number of Days</label>
+              <label className="mb-2 text-sm md:text-base font-medium">
+                Number of Days
+              </label>
 
               <input
                 ref={fieldRefs.days}
@@ -518,7 +464,7 @@ export default function EnquiryForm({
             </div>
 
             <div className="md:col-span-2">
-              <label className="block mb-1 font-medium">
+              <label className="mb-2 text-sm md:text-base font-medium">
                 Message / Additional Details
               </label>
               <textarea
@@ -531,8 +477,8 @@ export default function EnquiryForm({
           </div>
         </div>
         {/* <p className=" py-4">By clicking 'Send', you agree to our <a className=" text-[#da7228]" target="blanck" href="https://imarakilelenisafaris.com/privacy-policy"> Privacy Policy.</a> </p> */}
-        <p className="py-4 flex items-start gap-2">
-          <FaCheck className="text-green-500 mt-1" />
+        <p className="py-2 flex items-start gap-2 text-sm sm:text-[15px] text-gray-700 leading-relaxed">
+          <FaCheck className="text-green-500 mt-1 flex-shrink-0" />
 
           <span>
             By clicking 'Enquire', you agree to our{" "}
@@ -551,7 +497,15 @@ export default function EnquiryForm({
         <button
           type="submit"
           disabled={loading}
-          className={`rounded-full px-8 py-3 font-semibold text-white 
+          className={`w-full
+        sm:w-auto
+        rounded-full
+        px-8
+        py-2.5
+        
+        text-white
+        transition-all
+        duration-300
   ${loading ? "bg-gray-400 cursor-not-allowed" : "bg-[#d97129] hover:bg-[#e8853f] cursor-pointer"}`}
         >
           {loading ? "Submitting..." : "ENQUIRE"}

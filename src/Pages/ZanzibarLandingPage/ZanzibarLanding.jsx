@@ -67,7 +67,7 @@ const ZanzibarLanding = ({ trips, data }) => {
       image: item.image,
       title: item.title,
       description: item.description,
-      link: `/package/${item.slug}`, // or your correct URL
+      // link: `/package/${item.slug}`, // or your correct URL
     })),
   );
 

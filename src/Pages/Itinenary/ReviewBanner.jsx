@@ -1,5 +1,5 @@
 import React from "react";
-import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { FaStar} from "react-icons/fa";
 
 const ReviewBanner = () => {
   return (
@@ -9,27 +9,28 @@ const ReviewBanner = () => {
         <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-center sm:text-left">
           <div className=" flex space-x-3 md:space-x-6">
             <h2 className="text-[42px] sm:text-[48px] md:text-[64px] font-extrabold leading-none">
-              4.9
+              5.0
             </h2>
 
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 text-[#d87029]">
               <FaStar />
               <FaStar />
               <FaStar />
               <FaStar />
-              <FaStarHalfAlt />
+             <FaStar />
             </div>
           </div>
 
           <p className="text-[14px] sm:text-[16px] font-semibold text-[#222] max-w-xs">
-            Based on 309 Independent Reviews
+            Based on 100 Independent Reviews
           </p>
         </div>
 
         {/* Right - Read Reviews */}
         <div className="mt-2 md:mt-0">
           <a
-            href="#"
+            href="https://www.tripadvisor.com/Attraction_Review-g317084-d34222480-Reviews-Imara_Kileleni_Safaris-Moshi_Kilimanjaro_Region.html"
+            target="blank"
             className="text-[14px] sm:text-[16px] font-semibold underline text-[#222] hover:text-[#d87028] transition"
           >
             Read reviews

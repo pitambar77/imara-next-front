@@ -33,7 +33,7 @@ const RelatedBlogCard = ({ title, subtitle, data }) => {
   return (
     <section
       id="highlight"
-      className="w-full py-4 md:py-16 bg-gray-50 relative"
+      className="w-full py-10 sm:py-12 md:py-16 bg-gray-50 relative"
     >
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
         <div className="mb-10">

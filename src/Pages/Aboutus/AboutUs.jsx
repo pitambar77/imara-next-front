@@ -89,17 +89,25 @@ const AboutUs = ({ aboutData }) => {
           {title}
         </h1>
       </div>
-      <div className="w-full bg-[#d76e28]">
-        <div className="max-w-7xl mx-auto px-4 py-4 text-center text-white text-xs md:text-sm font-semibold">
-          <span className="inline-flex items-center gap-2">
-            RATED 4.7 / 5
-            <FaStar className="text-yellow-300" />
-            <FaStar className="text-yellow-300" />
-            <FaStar className="text-yellow-300" />
-            <FaStar className="text-yellow-300" />
-            <FaStar className="text-yellow-300" />
-            <span className="opacity-90">| BASED ON 100 VERIFIED REVIEWS</span>
-          </span>
+      <div className="w-full bg-[#d76e28] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 py-3 md:py-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-center text-white text-[11px] sm:text-xs md:text-sm font-semibold leading-relaxed">
+            {/* Rating */}
+            <div className="flex items-center gap-1 sm:gap-2 flex-wrap justify-center">
+              <span>RATED 5 / 5</span>
+
+              <div className="flex items-center gap-1 text-yellow-300">
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+              </div>
+            </div>
+
+            {/* Reviews */}
+            <span className="opacity-90">BASED ON 100 VERIFIED REVIEWS</span>
+          </div>
         </div>
       </div>
       <div className=" w-full bg-[#fedec7] py-8 md:py-16 px-4 ">

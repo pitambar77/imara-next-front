@@ -64,7 +64,7 @@ const TripsSection = ({
   }, [selectedTrip]);
 
   return (
-    <section className={`w-full py-8 sm:py-12 md:py-16 ${bg}`}>
+    <section className={`w-full py-10 sm:py-12 md:py-16 ${bg}`}>
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0  ">
         {/* ================= HEADER ================= */}
 

@@ -9,6 +9,7 @@ import Featured from "../Home/Featured";
 import WhyVisitTanzania from "../Aboutus/WhyVisitTanzania";
 import TailormadeSection from "../Home/TailormadeSection";
 import ReviewsSection from "../Aboutus/ReviewsSection";
+import WhyVisitSection from "@/components/WhyVisitSection";
 
 const API_URL =
   "https://imarabackend.imarakilelenisafaris.com/api/sustanbility";
@@ -56,9 +57,9 @@ const Sustanbility = () => {
 
       {/* ================= OVERVIEW ================= */}
       {overviewinfo?.map((item) => (
-        <div key={item._id} className="py-8 md:py-16 bg-[#fedec7] px-4">
+        <div key={item._id} className="py-10 sm:py-12 md:py-16 bg-[#fedec7] px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h3 className="text-3xl mb-4">{item.title}</h3>
+            <h3 className="text-2xl md:text-3xl mb-4">{item.title}</h3>
             {item.description?.map((desc) => (
               <p key={desc._id} className="text-[#444] leading-relaxed mb-4">
                 {desc.content}
@@ -86,13 +87,13 @@ const Sustanbility = () => {
       {/* ================= WHY VISIT ================= */}
       {/* <WhyVisitSection
         title="Why visit Tanzania with Imara Kileleni Safaris?"
-        // cards={whyvisit?.map((item, index) => ({
-        //   id: index,
-        //   image: item.image,
-        //   title: item.title,
-        //   text: item.description,
-        // }))}
-        cards={cards}
+        cards={whyvisit?.map((item, index) => ({
+          id: index,
+          image: item.image,
+          title: item.title,
+          text: item.description,
+        }))}
+        // cards={cards}
       /> */}
 
       <WhyVisitTanzania />

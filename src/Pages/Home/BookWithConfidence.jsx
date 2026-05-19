@@ -11,22 +11,7 @@ import Link from "next/link";
 const BookWithConfidence = () => {
   return (
     <section id="more" className="w-full">
-      {/* Thin top rating bar */}
-      {/* <div className="w-full bg-[#d76e28]">
-        <div className="max-w-7xl mx-auto px-4 py-4 text-center text-white text-xs md:text-sm font-semibold">
-          <span className="inline-flex items-center gap-2">
-            RATED 5 / 5
-            <FaStar className="text-yellow-300" />
-            <FaStar className="text-yellow-300" />
-            <FaStar className="text-yellow-300" />
-            <FaStar className="text-yellow-300" />
-            <FaStar className="text-yellow-300" />
-            <span className="opacity-90">| BASED ON 100 VERIFIED REVIEWS</span>
-          </span>
-        </div>
-      </div> */}
-
-      <div className="w-full bg-[#d76e28] overflow-hidden">
+      <div className="w-full bg-[#d76e28] overflow-hidden mt-8">
         <div className="max-w-7xl mx-auto px-4 py-3 md:py-4">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-center text-white text-[11px] sm:text-xs md:text-sm font-semibold leading-relaxed">
             {/* Rating */}

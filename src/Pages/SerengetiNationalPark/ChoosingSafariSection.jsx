@@ -51,7 +51,7 @@ const ChoosingSafariSection = () => {
   return (
     <section
       id="packages"
-      className="bg-[#fedec7] pt-8 md:pt-16 px-4 md:px-10 lg:px-16 xl:px-18 2xl:px-28"
+      className="bg-[#fedec7] pt-10 sm:pt-12 md:pt-16 px-4 md:px-10 lg:px-16 xl:px-18 2xl:px-28"
     >
       {/* Heading */}
       <div className="max-w-5xl mx-auto text-center">

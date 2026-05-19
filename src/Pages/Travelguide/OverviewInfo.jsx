@@ -12,7 +12,7 @@ const OverviewInfo = ({ landing }) => {
       <div className="text-center max-w-3xl mx-auto space-y-3">
         {/* TITLE */}
         {overview.title && (
-          <h2 className="text-xl md:text-3xl capitalize text-center text-[#1a1a1a] mb-10">
+          <h2 className="text-2xl md:text-3xl capitalize text-center text-[#1a1a1a] mb-4 md:mb-10">
             {overview.title}
           </h2>
         )}

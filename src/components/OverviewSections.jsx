@@ -14,7 +14,7 @@ const OverviewSections = ({
     <section
       id="overview"
       style={{ backgroundColor: bg }}
-      className=" py-8 md:py-16"
+      className=" py-10 sm:py-12 md:py-16"
     >
       <div
         className={`

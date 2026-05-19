@@ -3,10 +3,10 @@ import { FaCheckCircle } from "react-icons/fa";
 
 const WhyJoinSection = () => {
   return (
-    <section className="w-full bg-[#ffffff] py-8 md:py-16 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
+    <section className="w-full bg-[#ffffff] py-10 sm:py-12 md:py-16 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
       {/* Heading */}
       <div className="text-center mb-12">
-        <h2 className="text-3xl capitalize text-[#1a1a1a]">Why Climb with Us</h2>
+        <h2 className=" text-2xl md:text-3xl capitalize text-[#1a1a1a]">Why Climb with Us</h2>
         <p className="text-[#444] text-[16px] mt-2">Because You Matter</p>
       </div>
 

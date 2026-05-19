@@ -43,7 +43,7 @@ const TanzaniaTabsSection = ({ taboverview }) => {
   }
 
   return (
-    <section className="bg-white py-8 md:py-16 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
+    <section className="bg-white py-10 sm:py-12 md:py-16 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
       {/* Title + Description */}
       <div className="text-center mb-8 md:mb-16 max-w-5xl mx-auto">
         <h2 className="text-2xl md:text-[32px] lg:text-[36px] font-bold text-[#1a1a1a] mb-3 capitalize">

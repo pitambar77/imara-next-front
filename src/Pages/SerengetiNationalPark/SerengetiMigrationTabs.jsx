@@ -20,27 +20,18 @@ const SerengetiMigrationTabs = ({ data = [] }) => {
   return (
     <section
       id="details"
-      className=" bg-white py-8 md:py-16 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0"
+      className=" bg-white py-10 sm:py-12 md:py-16 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0"
     >
       {/* HEADER */}
       <div className="text-center mx-auto mb-12 max-w-4xl">
         <h4 className="tracking-widest text-sm text-gray-500 font-semibold mb-4 uppercase">
           {migration.subtitle}
         </h4>
-        <h2 className="text-[32px] font-extrabold text-[#1a1a1a] mb-8 capitalize">
+        <h2 className=" text-2xl md:text-[32px] font-extrabold text-[#1a1a1a] mb-8 capitalize">
           {migration.title
             ?.toLowerCase()
             .replace(/\b\w/g, (c) => c.toUpperCase())}
         </h2>
-
-        {/* {migration.description?.map((d, i) => (
-          <p
-            key={i}
-            className=" text-[15px] text-[#444] space-y-5 leading-[1.8] mb-4"
-          >
-            {d.content}
-          </p>
-        ))} */}
 
         <div
           className="
@@ -54,40 +45,6 @@ const SerengetiMigrationTabs = ({ data = [] }) => {
             __html: migration.description || "",
           }}
         />
-
-        {/* {migration.description?.map((paragraph, i) => (
-          <p key={i} className="text-[15px] text-[#444] leading-[1.8] mb-4">
-            {paragraph.map((item, idx) => {
-              switch (item.type) {
-                case "bold":
-                  return <strong className="" key={idx}>{item.value} </strong>;
-
-                case "highlight":
-                  return (
-                    <span key={idx} className="bg-yellow-200 px-1">
-                      {item.value}{" "}
-                    </span>
-                  );
-
-                case "link":
-                  return (
-                    <a
-                      key={idx}
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#d87029] underline"
-                    >
-                      {item.value}{" "}
-                    </a>
-                  );
-
-                default:
-                  return <span key={idx}>{item.value} </span>;
-              }
-            })}
-          </p>
-        ))} */}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-9 gap-10">
@@ -135,40 +92,6 @@ const SerengetiMigrationTabs = ({ data = [] }) => {
               __html: sections[activeTab]?.details || "",
             }}
           />
-
-          {/* {sections[activeTab]?.details?.map((paragraph, i) => (
-            <p key={i} className="text-[15px] text-[#444] leading-relaxed mb-6">
-              {paragraph.map((item, idx) => {
-                switch (item.type) {
-                  case "bold":
-                    return <strong key={idx}>{item.value} </strong>;
-
-                  case "highlight":
-                    return (
-                      <span key={idx} className="bg-yellow-200 px-1">
-                        {item.value}{" "}
-                      </span>
-                    );
-
-                  case "link":
-                    return (
-                      <a
-                        key={idx}
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[#d87029] underline"
-                      >
-                        {item.value}{" "}
-                      </a>
-                    );
-
-                  default:
-                    return <span key={idx}>{item.value} </span>;
-                }
-              })}
-            </p>
-          ))} */}
 
           {sections[activeTab]?.image && (
             <Image

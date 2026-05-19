@@ -11,7 +11,11 @@ const SafariInfoSection = ({
   if (!overview) return null;
 
   return (
-    <section id="overview" style={{ backgroundColor: bg }} className="py-16">
+    <section
+      id="overview"
+      style={{ backgroundColor: bg }}
+      className=" py-10 sm:py-12 md:py-16"
+    >
       <div
         className={`
           grid grid-cols-1 lg:grid-cols-[62%_38%] 
@@ -57,7 +61,7 @@ const SafariInfoSection = ({
 
         {/* IMAGE COLUMN */}
         <div
-          className={`flex justify-center lg:justify-end ${
+          className={`hidden lg:flex justify-center lg:justify-end ${
             imagePosition === "left" ? "order-1 lg:order-2" : ""
           }`}
         >

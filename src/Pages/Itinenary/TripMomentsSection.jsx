@@ -38,8 +38,20 @@ const TripMomentsSection = ({ experience = [] }) => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  useEffect(() => {
+    if (activeIndex !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [activeIndex]);
+
   return (
-    <section  className="bg-[#fafafa] py-8 md:py-16 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0 text-center">
+    <section className="bg-[#fafafa] py-8 md:py-16 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0 text-center">
       <h2 className="text-[24px] md:text-3xl font-extrabold mb-1 text-[#111]">
         {heading}
       </h2>
@@ -74,109 +86,215 @@ const TripMomentsSection = ({ experience = [] }) => {
       </div>
 
       {activeIndex !== null && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex flex-col p-6 justify-center items-center">
-          {/* MODAL */}
-          <div
-            className="
-        relative bg-[#fee3cc] rounded-lg
-        w-full max-w-6xl
-        p-4 md:p-6
-        flex flex-col md:flex-row
-        max-h-[90vh] md:max-h-none
-        overflow-hidden
-      "
-          >
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 md:p-6">
+          {/* WRAPPER */}
+          <div className="relative w-full max-w-6xl flex flex-col items-center">
             {/* CLOSE BUTTON */}
             <button
               onClick={closeModal}
               className="
-          absolute top-3 right-3
-          text-gray-700 hover:text-[#d97129]
-          md:bg-transparent
-          bg-white p-2 rounded-full cursor-pointer shadow md:shadow-none
-          z-20
-        "
+        absolute
+        top-3
+        right-3
+        md:top-3
+        md:right-3
+        z-30
+        w-9
+        h-9
+        
+        flex
+        items-center
+        justify-center
+        rounded-full
+       
+        backdrop-blur-sm
+        text-[#d97129]
+    hover:text-[#f07822]
+        transition-all
+        duration-300
+        
+        cursor-pointer
+      "
             >
-              <FaTimes size={20} />
+              <FaTimes size={18} />
             </button>
 
-            {/* IMAGE */}
-            <div className="flex justify-center items-center bg-black md:bg-transparent p-0 md:p-4">
-              <img
-                src={moments[activeIndex].image}
-                alt={moments[activeIndex].title}
+            {/* MODAL */}
+            <div
+              className="
+        relative
+        bg-[#fee3cc]
+        rounded-lg
+        w-full
+        overflow-hidden
+        flex
+        flex-col
+        md:flex-row
+        max-h-[90vh]
+        shadow-2xl
+      "
+            >
+              {/* IMAGE */}
+              <div
                 className="
+          relative
+          w-full
+          md:w-[40%]
+          flex
+          justify-center
+          items-center
+          bg-black
+          
+          md:bg-transparent
+        "
+              >
+                <img
+                  src={moments[activeIndex].image}
+                  alt={moments[activeIndex].title}
+                  className="
             w-full
-            h-[400px]
-            md:h-[480px]
-            md:w-[420px]
-            object-cover rounded
+  h-[260px]
+  sm:h-[360px]
+  md:h-[520px]
+  object-contain
+  bg-black
+  md:rounded-l-lg
           "
-              />
+                />
+              </div>
+
+              {/* TEXT */}
+              <div
+                className="
+          flex-1
+          p-5
+          sm:p-6
+          md:py-12
+         
+          overflow-y-auto
+        "
+              >
+                <h3 className="text-xl sm:text-2xl mb-3 md:mb-4 text-[#111] leading-snug">
+                  {moments[activeIndex].title}
+                </h3>
+
+                <p className="text-[15px] md:text-[16px] text-[#444] leading-[1.9]">
+                  {moments[activeIndex].caption}
+                </p>
+              </div>
             </div>
 
-            {/* TEXT */}
-            <div className="flex-1 p-4 md:p-6 text-left overflow-y-auto">
-              <h3 className="text-xl md:text-2xl mb-3 md:mb-4">
-                {moments[activeIndex].title}
-              </h3>
-              <p className="text-sm md:text-[15px] text-[#444] leading-relaxed">
-                {moments[activeIndex].caption}
-              </p>
-            </div>
-          </div>
-          {/* THUMBNAILS */}
-          <div
-            className="
+            {/* THUMBNAILS */}
+            <div
+              className="
         hidden md:flex
-    absolute bottom-4 md:static
-    gap-3
-    mt-2 md:mt-6
-    px-3 md:px-6
-    overflow-x-auto
+        gap-3
+        mt-6
+        px-4
+        overflow-x-auto
+        scrollbar-hide
       "
-          >
-            {moments.map((m, i) => (
-              <img
-                key={m.id}
-                src={m.image}
-                onClick={() => setActiveIndex(i)}
-                className={`
-            w-16 h-16 md:w-20 md:h-20 
-            object-cover rounded cursor-pointer
-            transition
+            >
+              {moments.map((m, i) => (
+                <img
+                  key={m.id}
+                  src={m.image}
+                  onClick={() => setActiveIndex(i)}
+                  className={`
+            w-20
+            h-20
+            object-cover
+            rounded
+            cursor-pointer
+            transition-all
+            duration-300
+            flex-shrink-0
             ${
               i === activeIndex
-                ? "ring-2 ring-[#d87028]"
+                ? "ring-2 ring-[#d87028] scale-105"
                 : "opacity-70 hover:opacity-100"
             }
           `}
-              />
-            ))}
+                />
+              ))}
+            </div>
+
+            {/* DESKTOP NAV */}
+            <button
+              onClick={prevImage}
+              className="
+        hidden md:flex
+        absolute
+        left-[-60px]
+        top-1/2
+        -translate-y-1/2
+        bg-white
+        hover:text-[#d97129]
+        p-3
+        rounded-full
+        cursor-pointer
+        shadow-lg
+        transition-all
+        duration-300
+      "
+            >
+              <FaChevronLeft />
+            </button>
+
+            <button
+              onClick={nextImage}
+              className="
+        hidden md:flex
+        absolute
+        right-[-60px]
+        top-1/2
+        -translate-y-1/2
+        bg-white
+        hover:text-[#d97129]
+        p-3
+        rounded-full
+        cursor-pointer
+        shadow-lg
+        transition-all
+        duration-300
+      "
+            >
+              <FaChevronRight />
+            </button>
+
+            {/* MOBILE NAV */}
+            <div className="hidden gap-4 mt-5">
+              <button
+                onClick={prevImage}
+                className="
+          bg-white
+          hover:text-[#d97129]
+          p-3
+          rounded-full
+          shadow-lg
+          transition-all
+          duration-300
+        "
+              >
+                <FaChevronLeft />
+              </button>
+
+              <button
+                onClick={nextImage}
+                className="
+          bg-white
+          hover:text-[#d97129]
+          p-3
+          rounded-full
+          shadow-lg
+          transition-all
+          duration-300
+        "
+              >
+                <FaChevronRight />
+              </button>
+            </div>
           </div>
-
-          {/* DESKTOP NAV BUTTONS (UNCHANGED) */}
-          <button
-            onClick={prevImage}
-            className="
-        hidden md:block
-        absolute left-20 top-1/2 hover:text-[#d97129]
-        bg-white p-2 cursor-pointer rounded-full
-      "
-          >
-            <FaChevronLeft />
-          </button>
-
-          <button
-            onClick={nextImage}
-            className="
-        hidden md:block
-        absolute right-20 top-1/2 hover:text-[#d97129]
-        bg-white p-2 cursor-pointer rounded-full
-      "
-          >
-            <FaChevronRight />
-          </button>
         </div>
       )}
     </section>

@@ -29,7 +29,7 @@ const SafariExtrasSection = () => {
   ];
 
   return (
-    <section className="bg-[#fedec7] py-16 px-6 md:px-12 lg:px-20 text-center">
+    <section className="bg-[#fedec7] py-10  sm:py-12 md:py-16 px-6 md:px-12 lg:px-20 text-center">
       {/* Heading */}
       <h2 className="text-[22px] md:text-3xl capitalize font-extrabold text-[#1a1a1a] mb-3">
         Tanzania Safari Vehicle Features

@@ -2,10 +2,10 @@ import React from "react";
 
 const PositionsSection = ({ title, subtitle, positions }) => {
   return (
-    <section className=" py-8 md:py-16 bg-white max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
+    <section className=" py-10 sm:py-12 md:py-16 bg-white max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
       {/* Heading */}
       <div className="text-center mb-12">
-        <h2 className="text-3xl capitalize font-bold text-[#1a1a1a] mb-4">{title}</h2>
+        <h2 className=" text-2xl md:text-3xl capitalize font-bold text-[#1a1a1a] mb-4">{title}</h2>
         <p className="text-[#444] text-[16px] max-w-4xl mx-auto mt-2">{subtitle}</p>
       </div>
 

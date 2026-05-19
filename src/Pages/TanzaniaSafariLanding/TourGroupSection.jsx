@@ -41,7 +41,7 @@ const TourGroupSection = () => {
   }
 
   return (
-    <section className="bg-[#fedec8] py-8 md:py-16 ">
+    <section className="bg-[#fedec8] py-10 sm:py-12 md:py-16 ">
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
 
         {/* Header */}

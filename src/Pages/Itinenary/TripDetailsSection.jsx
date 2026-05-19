@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
 import {
   FaMapMarkerAlt,
   FaBus,
@@ -18,21 +19,45 @@ const TripDetailsSection = ({ trip }) => {
 
   const mapIframe = trip?.itinerary?.[0]?.map;
 
+  useEffect(() => {
+    if (showMap) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [showMap]);
+
   return (
     <section className="bg-white py-12 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0 text-[#222]">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* LEFT SIDE - Image */}
         <div className="relative">
           {/* Label */}
-          <div className="absolute bg-[#f9d7b9] text-[#1a1a1a] text-xs font-semibold px-3 py-2 ">
+          <div className="hidden  md:flex absolute bg-[#f9d7b9] text-[#1a1a1a] text-xs font-semibold px-3 py-2 ">
             {trip.add}
           </div>
 
-          <img
-            src={trip.image}
-            alt={trip.title}
-            className="rounded-md w-full object-cover h-auto md:h-[500px]"
-          />
+          <div className="w-full overflow-hidden rounded-md bg-black">
+            <Image
+              src={trip.image}
+              alt={trip.title}
+              width={1200}
+              height={800}
+              priority
+              className="
+      w-full
+      h-[280px]
+      sm:h-[320px]
+      md:h-[420px]
+      lg:h-[500px]
+      object-cover
+    "
+            />
+          </div>
 
           {/* Map Button */}
           <button
@@ -47,9 +72,9 @@ const TripDetailsSection = ({ trip }) => {
 
           {/* Highlight Box */}
           <div className="bg-[#fde6d5] rounded-md mt-4 p-4">
-            <h4 className="font-semibold text-[16px] mb-1">
+            <p className=" font-bold text-[16px] mb-1">
               What makes this trip special...
-            </h4>
+            </p>
             <p className="text-[16px] text-[#444] leading-relaxed">
               Every day brings new sights and quiet surprises from Tanzania’s
               open spaces.
@@ -93,13 +118,16 @@ const TripDetailsSection = ({ trip }) => {
             {/* Trip Info Icons */}
             <div className="flex flex-wrap items-center gap-4 text-[15px] font-medium text-[#444] mb-6 uppercase">
               <div className="flex items-center gap-1 uppercase">
-                <FaMapMarkerAlt className=" text-[#d97129]" /> <span className=" mt-1" >START: {trip.startLocation}</span> 
+                <FaMapMarkerAlt className=" text-[#d97129]" />{" "}
+                <span className=" mt-1">START: {trip.startLocation}</span>
               </div>
               <span className="flex items-center gap-1 uppercase">
-                <FaMapMarkerAlt className=" text-[#d97129]" /> <span className=" mt-1" >END: {trip.endLocation}</span> 
+                <FaMapMarkerAlt className=" text-[#d97129]" />{" "}
+                <span className=" mt-1">END: {trip.endLocation}</span>
               </span>
               <span className="flex items-center gap-1 ">
-                <FaBus className=" text-[#d97129]" /> <span className=" mt-1" > {trip.transport} </span>
+                <FaBus className=" text-[#d97129]" />{" "}
+                <span className=" mt-1"> {trip.transport} </span>
               </span>
             </div>
 
@@ -109,11 +137,12 @@ const TripDetailsSection = ({ trip }) => {
                 <FaUsers /> {trip.maxpeople}
               </span> */}
               <div className="flex items-center gap-2 bg-[#f9d7b9] px-3 py-2 rounded-full text-[15px] font-semibold">
-                <FaBed className=" text-[#d97129]" /> <span className="mt-0.5">{trip.accomoDay}</span> 
+                <FaBed className=" text-[#d97129]" />{" "}
+                <span className="mt-0.5">{trip.accomoDay}</span>
               </div>
               <div className="flex items-center gap-2 bg-[#f9d7b9] px-3 py-2 rounded-full text-[15px] font-semibold text-[#222]">
-                <FaSuitcase className=" text-[#d97129]"  />
-               <span className="mt-0.5"> {trip.accomoNight}</span>
+                <FaSuitcase className=" text-[#d97129]" />
+                <span className="mt-0.5"> {trip.accomoNight}</span>
               </div>
             </div>
 
@@ -130,7 +159,6 @@ const TripDetailsSection = ({ trip }) => {
               </div> */}
             </div>
 
-
             <div className="mt-8 md:mt-12">
               <h3 className="text-xl md:text-2xl font-bold mb-3">
                 What's included
@@ -139,20 +167,20 @@ const TripDetailsSection = ({ trip }) => {
               {/* Meals */}
               <ul className="text-[14px] md:text-[15px] text-[#333] grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
                 <li className="flex items-center gap-2">
-                  <FaUtensils className=" text-[#d97129]"  /> 5 BREAKFASTS
+                  <FaUtensils className=" text-[#d97129]" /> 5 BREAKFASTS
                 </li>
                 <li className="flex items-center gap-2">
-                  <FaUtensils className=" text-[#d97129]"  /> 5 LUNCHES
+                  <FaUtensils className=" text-[#d97129]" /> 5 LUNCHES
                 </li>
                 <li className="flex items-center gap-2">
-                  <FaUtensils className=" text-[#d97129]"  /> 5 DINNERS
+                  <FaUtensils className=" text-[#d97129]" /> 5 DINNERS
                 </li>
               </ul>
 
               {/* Guides */}
               <ul className="text-[14px] md:text-[15px] text-[#333] mb-3">
                 <li className="flex items-center gap-2">
-                  <FaGlobe className=" text-[#d97129]"  />
+                  <FaGlobe className=" text-[#d97129]" />
                   EXPERT TRIP MANAGER, DRIVER TEAM, LOCAL GUIDES
                 </li>
               </ul>
@@ -160,17 +188,17 @@ const TripDetailsSection = ({ trip }) => {
               {/* Transport + Experiences */}
               <ul className="text-[14px] md:text-[15px] text-[#333] grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
                 <li className="flex items-center gap-2">
-                  <FaGlobe className=" text-[#d97129]"  /> 9 INCLUDED EXPERIENCES
+                  <FaGlobe className=" text-[#d97129]" /> 9 INCLUDED EXPERIENCES
                 </li>
                 <li className="flex items-center gap-2">
-                  <FaBus className=" text-[#d97129]"  /> ALL INTERNAL TRANSPORT
+                  <FaBus className=" text-[#d97129]" /> ALL INTERNAL TRANSPORT
                 </li>
               </ul>
 
               {/* Accommodation */}
               <ul className="text-[14px] md:text-[15px] text-[#333] mb-4">
                 <li className="flex items-center gap-2">
-                  <FaBed className=" text-[#d97129]"  /> ALL ACCOMMODATION
+                  <FaBed className=" text-[#d97129]" /> ALL ACCOMMODATION
                 </li>
               </ul>
 
@@ -188,16 +216,19 @@ const TripDetailsSection = ({ trip }) => {
               {showNotIncluded && (
                 <ul className="mt-3 text-[14px] md:text-[15px] text-gray-700 space-y-2">
                   <li className="flex items-center gap-2">
-                    <FaGlobe className=" text-[#d97129]"  /> International flights
+                    <FaGlobe className=" text-[#d97129]" /> International
+                    flights
                   </li>
                   <li className="flex items-center gap-2">
-                    <FaGlobe className=" text-[#d97129]"  /> Travel insurance
+                    <FaGlobe className=" text-[#d97129]" /> Travel insurance
                   </li>
                   <li className="flex items-center gap-2">
-                    <FaGlobe className=" text-[#d97129]"  /> Personal expenses (souvenirs, drinks, etc.)
+                    <FaGlobe className=" text-[#d97129]" /> Personal expenses
+                    (souvenirs, drinks, etc.)
                   </li>
                   <li className="flex items-center gap-2">
-                    <FaGlobe className=" text-[#d97129]"  /> Tips for guides and drivers
+                    <FaGlobe className=" text-[#d97129]" /> Tips for guides and
+                    drivers
                   </li>
                 </ul>
               )}
@@ -240,7 +271,7 @@ const TripDetailsSection = ({ trip }) => {
       )} */}
       {/* MAP MODAL */}
       {showMap && (
-        <div className="fixed inset-0 bg-black/60 flex justify-center items-center z-50 px-4">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50 px-4">
           <div className="bg-white rounded-lg overflow-hidden w-full max-w-4xl shadow-lg relative">
             {/* Close Button */}
             <button

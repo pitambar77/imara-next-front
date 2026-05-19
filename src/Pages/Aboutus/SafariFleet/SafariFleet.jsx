@@ -13,10 +13,6 @@ import OverviewSections from "../../../components/OverviewSections";
 import TailormadeSection from "../../Home/TailormadeSection";
 import ReviewsSection from "../ReviewsSection";
 
-// const API_URL =
-//   "https://imarabackend.imarakilelenisafaris.com/api/fleet";
-// // ⬆️ replace if your endpoint is different
-
 const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/fleet`;
 
 const SafariFleet = () => {
@@ -56,17 +52,6 @@ const SafariFleet = () => {
 
   return (
     <div>
-      {/* ================= HERO ================= */}
-      {/* <div
-        className="relative w-full h-[40vh] md:h-[64vh] bg-center bg-cover flex items-center justify-center"
-        style={{ backgroundImage: `url('${heroImage}')` }}
-      >
-        <div className="absolute inset-0 bg-black/30"></div>
-        <h1 className="text-2xl md:text-5xl text-white uppercase z-10">
-          {heroTitle}
-        </h1>
-      </div> */}
-
       <div className="relative w-full h-[40vh] md:h-[64vh]">
         <Image src={heroImage} alt={heroTitle} fill className="object-cover" />
         <div className="absolute inset-0 bg-black/30"></div>

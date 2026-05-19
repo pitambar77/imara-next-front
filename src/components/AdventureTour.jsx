@@ -4,7 +4,7 @@ const AdventureTour = ({ title, sections }) => {
   return (
     <section
       id="adventure"
-      className="text-[#1a1a1a] py-8 md:py-16 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0"
+      className="text-[#1a1a1a] py-10 sm:py-12 md:py-16 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0"
     >
       {title && title.trim() !== "" && (
         <h2 className="text-center capitalize text-2xl md:text-[36px] mb-12 md:mb-16">
@@ -13,7 +13,10 @@ const AdventureTour = ({ title, sections }) => {
       )}
 
       {sections.map((item, index) => (
-        <div key={index} className="mb-2 md:mb-12">
+        <div
+          key={index}
+          className={`${index !== sections.length - 1 ? "mb-2 md:mb-12" : ""}`}
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 items-center">
             {/* IMAGE BLOCK */}
             <div

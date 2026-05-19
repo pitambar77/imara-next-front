@@ -1223,7 +1223,20 @@ const Navbar = () => {
           ))}
 
           {/* ===== Mobile Extra Links ===== */}
-          <div className=" mb-3 space-y-2 ">
+          <div className=" mb-3 space-y-2 font-semibold ">
+               <Link
+              href="/blog"
+              onClick={() => setMobileOpen(false)}
+              className={`block font-semibold border-b border-gray-200 py-2 ${
+                isActive("/blog")
+                  ? "text-[#d87028]"
+                  : "text-gray-800"
+              }`}
+            >
+              <span className="uppercase  font-semibold">
+                Blog
+              </span>
+            </Link>
             <Link
               href="/tanzania-travel-guide"
               onClick={() => setMobileOpen(false)}

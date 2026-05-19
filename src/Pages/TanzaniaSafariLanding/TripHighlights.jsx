@@ -46,7 +46,7 @@ const TripHighlights = ({ subtitle }) => {
   if (!highlights.length) return null;
 
   return (
-    <section className="w-full py-8 md:py-16 bg-white relative">
+    <section className="w-full py-10 sm:py-12 md:py-16 bg-white relative">
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
         {/* ================= TITLE + NAV ================= */}
 
@@ -55,7 +55,7 @@ const TripHighlights = ({ subtitle }) => {
         </h2>
 
         <div className="relative flex items-center justify-center mb-8 md:mb-12">
-          <p className="text-center text-[#444] text-[18px] ">{subtitle}</p>
+          <p className="text-center text-[#444] text-[18px]  ">{subtitle}</p>
 
           <div className="hidden md:block absolute right-0 flex items-center space-x-3">
             <button

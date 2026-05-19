@@ -71,7 +71,7 @@ const SerengetiNationalPark = ({ data, allDestinations, trips }) => {
       image: item.image,
       title: item.title,
       description: item.description,
-      link: `/tanzania-destinations/${slugify(item.title)}`, // ✅ add this
+      // link: `/tanzania-destinations/${slugify(item.title)}`, // ✅ add this
     })),
   );
 

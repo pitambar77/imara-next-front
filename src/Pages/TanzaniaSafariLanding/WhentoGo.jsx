@@ -32,25 +32,6 @@ const WhentoGo = () => {
     return Array.from(temp.querySelectorAll("li")).map((li) => li.textContent);
   };
 
-  /* ================= MAP MONTH DATA ================= */
-  // const monthsData = bestTime.months.map((m) => {
-  //   const paragraphs = m.content.filter((c) => c.type === "paragraph");
-  //   const highlights = m.content
-  //     .filter((c) => c.type === "list")
-  //     .map((c) => c.content);
-
-  //   return {
-  //     month: m.month,
-  //     icon: <WiCloudy />, // 🔁 can be dynamic later
-  //     rating: highlights.length >= 4 ? 5 : 3,
-  //     weatherIcon: <WiCloudy />,
-  //     view: "Good time to visit",
-  //     description1: paragraphs[0]?.content || "",
-  //     description2: paragraphs[1]?.content || "",
-  //     highlights,
-  //   };
-  // });
-
   const monthsData = bestTime.months.map((m) => ({
     month: m.month,
 
@@ -71,10 +52,10 @@ const WhentoGo = () => {
   if (!monthData) return null;
 
   return (
-    <div className=" bg-white py-8 md:py-16 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
+    <div className=" bg-white py-10 sm:py-12 md:py-16 max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
       {/* ================= HEADER ================= */}
       <div className=" text-center mb-16 px-0 md:px-24 mx-auto text-[#222]">
-        <h2 className="text-[30px] md:text-[36px]  text-[#1a1a1a] mb-3 capitalize">
+        <h2 className="text-2xl md:text-[36px]  text-[#1a1a1a] mb-3 capitalize">
           {bestTime.title}
         </h2>
 
@@ -95,12 +76,13 @@ const WhentoGo = () => {
       {/* ================= MONTH CARD ================= */}
       <div className="border border-gray-200 rounded-md shadow-sm bg-white">
         {/* --- Month Tabs --- */}
-        <div className="grid grid-cols-6 sm:grid-cols-6 lg:grid-cols-12 text-center border-b border-gray-200">
+        {/* <div className="grid grid-cols-6 sm:grid-cols-6 lg:grid-cols-12 text-center border-b border-gray-200"> */}
+        <div className="flex lg:grid lg:grid-cols-12 overflow-x-auto scrollbar-hide border-b border-gray-200">
           {monthsData.map((m) => (
             <button
               key={m.month}
               onClick={() => setActiveMonth(m.month)}
-              className={`flex flex-col items-center  py-4 text-sm font-medium transition-all ${
+              className={`min-w-[90px] lg:min-w-0 flex flex-col items-center py-4 px-2 text-sm font-medium transition-all flex-shrink-0 ${
                 activeMonth === m.month
                   ? "text-[#d87028] border-b-[3px] border-[#d87028] bg-white"
                   : "text-gray-400 hover:text-[#d87028]"
@@ -136,12 +118,7 @@ const WhentoGo = () => {
                 ?.toLowerCase()
                 .replace(/\b\w/g, (c) => c.toUpperCase())}
             </h3>
-            {/* <p className="text-[#444] mb-4 leading-relaxed">
-              {monthData.description1}
-            </p>
-            <p className="text-[#444] leading-relaxed">
-              {monthData.description2}
-            </p> */}
+
             <div
               className="rich-text text-[#444]"
               dangerouslySetInnerHTML={{
@@ -166,32 +143,41 @@ const WhentoGo = () => {
         <div className="border-t border-dotted border-gray-300 mx-8 my-4"></div>
 
         {/* --- Footer --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-8 pb-8">
+   
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start px-5 sm:px-8 pb-8">
+          {/* Our View */}
           <div>
             <p className="uppercase text-gray-500 text-sm font-semibold mb-4">
               Our View
             </p>
-            <div className="flex items-center">
-              <div className="flex items-center space-x-1">
+
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+              {/* Stars */}
+              <div className="flex items-center flex-wrap gap-1">
                 {Array(monthData.rating)
                   .fill()
                   .map((_, i) => (
                     <div key={i} className="bg-[#d87028] p-1 rounded-sm">
-                      <IoMdStar className="text-white text-xl" />
+                      <IoMdStar className="text-white text-lg sm:text-xl" />
                     </div>
                   ))}
               </div>
-              <p className="ml-3 text-[#444] font-medium text-[16px]">
+
+              {/* Text */}
+              <p className="text-[#444] font-medium text-[15px] sm:text-[16px]">
                 {monthData.view}
               </p>
             </div>
           </div>
 
+          {/* Weather */}
           <div>
             <p className="uppercase text-gray-500 text-sm mb-4 font-semibold">
               Weather in {monthData.month}
             </p>
-            <div className="bg-[#fde4d0] p-1 w-10 text-[#d87028] text-3xl rounded-md">
+
+            <div className="inline-flex items-center justify-center bg-[#fde4d0] p-2 w-12 h-12 text-[#d87028] text-3xl rounded-md">
               {monthData.weatherIcon}
             </div>
           </div>

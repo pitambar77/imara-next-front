@@ -23,7 +23,7 @@ const VehicleAndCabinSection = () => {
 
       {/* Title */}
       <div className="text-left  mb-16">
-        <h3 className="text-[28px] md:text-[32px] font-semibold text-[#1a1a1a] mb-3">
+        <h3 className="text-[24px] md:text-[32px] font-semibold text-[#1a1a1a] mb-3">
           Vehicle Configuration
         </h3>
         <p className="text-[#444] text-[16px] max-w-2xl ">

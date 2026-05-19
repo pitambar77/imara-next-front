@@ -11,18 +11,18 @@ const GuestReviewSection = () => {
         {/* ✅ Main Content */}
         <div className="relative z-10">
           {/* Header */}
-          <h2 className="text-center text-2xl md:text-3xl font-bold text-white py-10 capitalize">
+          <h2 className="text-center text-xl md:text-3xl  text-white py-6 md:py-10 capitalize">
             100 happy guests and counting
           </h2>
 
           {/* Rating Section */}
-          <div className="bg-white max-w-6xl mx-auto rounded-lg shadow-lg grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x border border-gray-200">
+          <div className="bg-white max-w-6xl mx-auto rounded-lg shadow-lg grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200 border border-gray-200">
             {/* ⭐ Overall Rating */}
-            <div className="p-8 flex flex-col items-start justify-center">
-              <h3 className="font-bold text-xl mb-4 text-[#222]">
+            <div className=" p-6 md:p-8 flex flex-col items-start justify-center">
+              <h3 className=" text-xl mb-4 text-[#222]">
                 Overall Rating
               </h3>
-              <div className="text-5xl font-bold text-[#222] mb-1">5.0</div>
+              <div className=" text-2xl md:text-5xl font-bold text-[#222] mb-1">5.0</div>
               <p className="text-gray-600 font-semibold mb-4">out of 5</p>
 
               <div className="flex items-center space-x-1 text-[#f5b400] text-xl mb-4">
@@ -50,7 +50,7 @@ const GuestReviewSection = () => {
             </div>
 
             {/* ⭐ Trip Rating */}
-            <div className="p-8 flex flex-col ">
+            <div className=" p-6 md:p-8 flex flex-col ">
               <h3 className="font-bold text-xl mb-2 text-[#222]">
                 Trip Rating
               </h3>
@@ -62,7 +62,7 @@ const GuestReviewSection = () => {
                 {/* Left Box */}
                 <div className="flex  mb-4">
                   <div className="bg-gray-50 px-6 py-8 rounded-md text-center">
-                    <div className="text-4xl font-bold text-[#222]">5.0</div>
+                    <div className=" text-2xl md:text-4xl font-bold text-[#222]">5.0</div>
                     <p className="text-gray-600 font-semibold text-sm">
                       out of 5
                     </p>
@@ -109,7 +109,7 @@ const GuestReviewSection = () => {
             </div>
 
             {/* ⭐ Customer Experience */}
-            <div className="p-8 flex flex-col justify-center">
+            <div className="p-6 md:p-8 flex flex-col justify-center">
               <h3 className="font-bold text-xl mb-2 text-[#222]">
                 Customer Experience
               </h3>
@@ -121,7 +121,7 @@ const GuestReviewSection = () => {
                 {/* Left Box */}
                 <div className="flex items-center">
                   <div className="bg-gray-50 px-6 py-8 rounded-md text-center">
-                    <div className="text-4xl font-bold text-[#222]">5.0</div>
+                    <div className=" text-2xl md:text-4xl font-bold text-[#222]">5.0</div>
                     <p className="text-gray-600 font-semibold text-sm">
                       out of 5
                     </p>
