@@ -86,7 +86,7 @@ const FooterForm = () => {
           />
           <p>
             *By checking this box, you accept the Imara{" "}
-            <Link href="privacy-policy" className="text-[#d87028] underline">
+            <Link href="/privacy-policy" className="text-[#d87028] underline">
               Privacy Policy
             </Link>
           </p>

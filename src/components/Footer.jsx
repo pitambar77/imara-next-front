@@ -393,26 +393,26 @@ const Footer = () => {
             </div>
 
             <div className="flex flex-wrap justify-center md:justify-end gap-2 text-sm mt-4 ">
-              <Link href="sustainability" className=" hover:text-[#d87028]">
+              <Link href="/sustainability" className=" hover:text-[#d87028]">
                 Sustanability
               </Link>
-              <Link href="core-values" className=" hover:text-[#d87028]">
+              <Link href="/core-values" className=" hover:text-[#d87028]">
                 Core Values
               </Link>
-              <Link href="#" className=" hover:text-[#d87028]">
+              <div className=" hover:text-[#d87028]">
                 Sitemap
-              </Link>
+              </div>
             </div>
 
             <div className="flex flex-wrap justify-center md:justify-end gap-2 text-sm mt-4  ">
               <Link
-                href="terms-and-conditions"
+                href="/terms-and-conditions"
                 className=" hover:text-[#d87028]"
               >
                 Terms and Conditions
               </Link>
               {/* <a href="#" className=" hover:text-[#d87028]">Booking Conditions</a> */}
-              <Link href="privacy-policy" className=" hover:text-[#d87028]">
+              <Link href="/privacy-policy" className=" hover:text-[#d87028]">
                 Privacy Policy
               </Link>
             </div>
