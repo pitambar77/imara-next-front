@@ -1,12 +1,12 @@
 import React from "react";
-import {
-  FaStar,
-  FaWallet,
-  FaHourglassHalf,
-  FaCalendarAlt,
-  FaShieldAlt,
-} from "react-icons/fa";
 import Link from "next/link";
+import {
+  CalendarDays,
+  Compass,
+  Hourglass,
+  ShieldHalf,
+  Star,
+} from "lucide-react";
 
 const BookWithConfidence = () => {
   return (
@@ -19,11 +19,11 @@ const BookWithConfidence = () => {
               <span>RATED 5 / 5</span>
 
               <div className="flex items-center gap-1 text-yellow-300">
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
+                <Star size={16} className="fill-yellow-300 text-yellow-300" />
+                <Star size={16} className="fill-yellow-300 text-yellow-300" />
+                <Star size={16} className="fill-yellow-300 text-yellow-300" />
+                <Star size={16} className="fill-yellow-300 text-yellow-300" />
+                <Star size={16} className="fill-yellow-300 text-yellow-300" />
               </div>
             </div>
 
@@ -47,7 +47,7 @@ const BookWithConfidence = () => {
             {/* Feature 1 */}
             <div className="flex items-start gap-4">
               <div className="flex-none w-14 h-14 rounded-full bg-black flex items-center justify-center">
-                <FaCalendarAlt className="text-[#f3a85f] w-6 h-6" />
+                <CalendarDays className="text-[#f3a85f] w-6 h-6" />
               </div>
               <div>
                 <p className="font-semibold text-[#444]">
@@ -59,7 +59,7 @@ const BookWithConfidence = () => {
             {/* Feature 2 */}
             <div className="flex items-start gap-4">
               <div className="flex-none w-14 h-14 rounded-full bg-black flex items-center justify-center">
-                <FaHourglassHalf className="text-[#f3a85f] w-6 h-6" />
+                <Hourglass className="text-[#f3a85f] w-6 h-6" />
               </div>
               <div>
                 <p className="font-semibold text-[#444]">
@@ -71,7 +71,7 @@ const BookWithConfidence = () => {
             {/* Feature 3 */}
             <div className="flex items-start gap-4">
               <div className="flex-none w-14 h-14 rounded-full bg-black flex items-center justify-center">
-                <FaCalendarAlt className="text-[#f3a85f] w-6 h-6" />
+                <Compass className="text-[#f3a85f] w-6 h-6" />
               </div>
               <div>
                 <p className="font-semibold text-[#444]">
@@ -83,7 +83,7 @@ const BookWithConfidence = () => {
             {/* Feature 4 */}
             <div className="flex items-start gap-4">
               <div className="flex-none w-14 h-14 rounded-full bg-black flex items-center justify-center">
-                <FaShieldAlt className="text-[#f3a85f] w-6 h-6" />
+                <ShieldHalf className="text-[#f3a85f] w-6 h-6" />
               </div>
               <div>
                 <p className="font-semibold text-[#444]">
@@ -96,7 +96,7 @@ const BookWithConfidence = () => {
           {/* CTA */}
           <div className="flex justify-center mt-16">
             <Link
-              href={"tailor-made-form"}
+              href="/tailor-made-tours"
               className="px-[21px] py-2.5 cursor-pointer rounded-full border-1 hover:border-[#d87028] text-black font-semibold bg-transparent hover:bg-[#d87028] hover:text-white transition"
               aria-label="Find out more"
             >

@@ -10,6 +10,7 @@ import { FaChevronDown } from "react-icons/fa";
 import axios from "axios";
 import { FaCheck } from "react-icons/fa";
 
+
 export default function EnquiryForm({
   formType = "enquiry",
   formheading = "Planning a Trip to Tanzania?",
@@ -188,12 +189,14 @@ export default function EnquiryForm({
     "Northern Circuit Route",
   ];
 
+  
+
   return (
     <div className="max-w-4xl mx-auto py-10 sm:py-12 md:py-16 px-4 sm:px-6 md:px-0">
       <div className=" mb-8 md:mb-10 text-center max-w-2xl mx-auto">
-        <h2 className=" text-2xl md:text-3xl font-semibold mb-2 text-center ">
+        <h1 className=" text-2xl md:text-3xl font-semibold mb-2 text-center ">
           {formheading}
-        </h2>
+        </h1>
         <p className="text-gray-600 text-sm md:text-base">{formsubheading}</p>
       </div>
 

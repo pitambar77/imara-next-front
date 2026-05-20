@@ -162,7 +162,7 @@ const TripHighlights = ({ subtitle }) => {
             }
 
             .trip-card {
-              height: 440px;
+              height:auto;
               display: flex;
               flex-direction: column;
               justify-content: space-between;

@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { IoIosArrowDropupCircle } from "react-icons/io";
+import { ChevronUp } from "lucide-react";
 
 
 const TailormadeSection = () => {
@@ -53,7 +53,7 @@ const TailormadeSection = () => {
             onClick={scrollToTop}
             className="flex items-center gap-2 cursor-pointer text-sm text-black font-medium hover:text-[#d87028] transition"
           >
-            <IoIosArrowDropupCircle className="text-[#d87028] text-[40px]" />
+          <ChevronUp size={24} className="bg-[#d87028] text-white  rounded-full" />
             <span>Back To Top</span>
           </button>
         </div>

@@ -2,9 +2,9 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import { FaArrowLeftLong, FaArrowRight } from "react-icons/fa6";
 import Image from "next/image";
 import PrimaryButton from "./PrimaryButton";
+import { MoveLeft, MoveRight } from "lucide-react";
 
 const slides = [
   {
@@ -93,11 +93,11 @@ const HeroSlider = () => {
 
       {/* Custom Navigation Buttons */}
       <div className="swiper-button-prev !hidden md:!flex !bg-white !text-gray-800 !rounded-full !p-3 !shadow-md hover:!bg-gray-100 transition">
-        <FaArrowLeftLong />
+       <MoveLeft strokeWidth={2.5}  />
       </div>
 
       <div className="swiper-button-next !hidden md:!flex !bg-white !text-gray-800 !rounded-full !p-3 !shadow-md hover:!bg-gray-100 transition">
-        <FaArrowRight />
+        <MoveRight strokeWidth={2.5}  />
       </div>
     </section>
   );

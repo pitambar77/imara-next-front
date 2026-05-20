@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { BiSolidUser } from "react-icons/bi";
 
@@ -138,11 +139,12 @@ const VehicleAndCabinSection = () => {
             </p>
 
             {/* Button */}
-            <button
+            <Link
+              href="/tailor-made-tours"
             onClick={()=>navigate('/contact-us')}
              className="bg-[#d76e28] cursor-pointer hover:bg-[#d86720] text-white hover:text-black/80 border border-[#d87028] rounded-md px-5 py-3 w-fit text-sm font-semibold transition">
               ← Book Your Safari Today
-            </button>
+            </Link>
           </div>
         </div>
       </div>

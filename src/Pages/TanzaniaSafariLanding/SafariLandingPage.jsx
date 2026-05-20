@@ -27,7 +27,7 @@ const SafariLandingPage = ({ trips, destination }) => {
         image={"/tanzania destination.webp"}
         title={destination.title}
         buttonText="Plan A Trip"
-        onButtonClick={"/tailor-made-form"}
+        onButtonClick={"/tailor-made-tours"}
       />
       <SafariInfoSection overview={destination.overviewinfo?.[0]} />
 

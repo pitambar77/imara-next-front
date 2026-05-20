@@ -27,6 +27,7 @@ import Communication from "../../assets/Communication.webp";
 import Knowledge from "../../assets/Knowledge.webp";
 import Service from "../../assets/Service.webp";
 import TailormadeSection from "../Home/TailormadeSection";
+import Link from "next/link";
 
 const AboutUs = ({ aboutData }) => {
   const data = [
@@ -203,12 +204,13 @@ const AboutUs = ({ aboutData }) => {
 
           {/* CTA */}
           <div className="flex justify-center mt-16">
-            <button
-              className="px-8 py-3 cursor-pointer rounded-full border-2 border-black text-black font-semibold bg-transparent hover:bg-black hover:text-white transition"
+            <Link
+              href="/tailor-made-tours"
+              className="px-[21px] py-2.5 cursor-pointer rounded-full border-1 hover:border-[#d87028] text-black font-semibold bg-transparent hover:bg-[#d87028] hover:text-white transition"
               aria-label="Find out more"
             >
               FIND OUT MORE
-            </button>
+            </Link>
           </div>
         </div>
       </div>

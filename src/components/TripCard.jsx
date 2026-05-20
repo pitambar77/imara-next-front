@@ -1,26 +1,18 @@
 "use client";
 
 import React from "react";
-import { FaCalendarAlt, FaGlobe } from "react-icons/fa";
 import Link from "next/link";
 import { slugify } from "../utils/slugify.js";
-import { MdOutlineSavedSearch } from "react-icons/md";
 import Image from "next/image";
 
 import CardButton from "./CardButton.jsx";
+import { CalendarDays, Globe, SearchX } from "lucide-react";
 
 const TripCard = ({ trip, onQuickView }) => {
   if (trip.promo) {
     return (
       <div className="rounded-sm overflow-hidden bg-white shadow-md flex flex-col justify-center items-center text-center h-[480px] relative">
-        {/* <img
-          src={trip.image}
-          alt={trip.title}
-          title={trip.title}
-          loading="lazy"
-          decoding="async"
-          className="w-full h-full object-cover"
-        /> */}
+    
         <Image
           src={trip.image}
           alt={trip.title}
@@ -43,12 +35,7 @@ const TripCard = ({ trip, onQuickView }) => {
       {/* Image */}
       <div className="relative h-48 md:h-42">
         <Link href={`/package/${slugify(trip.title)}`}>
-          {/* <img
-            src={trip.image}
-            alt={trip.title}
-            title={trip.title}
-            className="w-full h-48 md:h-42 object-cover"
-          /> */}
+       
 
           <Image
             src={trip.image}
@@ -64,7 +51,7 @@ const TripCard = ({ trip, onQuickView }) => {
           className="absolute bottom-3 left-3 cursor-pointer bg-white text-xs font-semibold px-3 py-1 rounded shadow-sm hover:bg-gray-100 transition"
         >
           <span className="flex items-center cursor-pointer font-semibold gap-1">
-            <MdOutlineSavedSearch className="text-lg" />
+            <SearchX strokeWidth={2} size={18} />
             QUICK VIEW
           </span>
         </button>
@@ -80,7 +67,7 @@ const TripCard = ({ trip, onQuickView }) => {
         {/* Trip Info */}
         <div className="text-sm flex flex-wrap items-center gap-2 mt-6 mb-3 text-[15px] text-[#444]">
           <span className="flex items-center gap-1 ">
-            <FaCalendarAlt className=" text-[#d97129]" />{" "}
+            <CalendarDays size={18} strokeWidth={2}  className=" text-[#d97129]" />{" "}
             <p className=" mt-1">{trip.days}</p>
           </span>
           {/* <span className="flex items-center gap-1">
@@ -88,7 +75,7 @@ const TripCard = ({ trip, onQuickView }) => {
             <p className=" mt-1"> {trip.places}</p>
           </span> */}
           <span className="flex items-center gap-1">
-            <FaGlobe className=" text-[#d97129]" />{" "}
+            <Globe size={18} strokeWidth={2} className=" text-[#d97129]" />{" "}
             <p className=" mt-1">{trip.country}</p>
           </span>
         </div>

@@ -43,21 +43,20 @@ const TourGroupSection = () => {
   return (
     <section className="bg-[#fedec8] py-10 sm:py-12 md:py-16 ">
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 lg:px-18 xl:px-0">
-
         {/* Header */}
         <h2 className="text-center capitalize text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-3">
           Tours by group type
         </h2>
 
         <p className="text-center text-[#444] text-[18px] mb-12">
-          Find safari options designed for families, couples, friends, and groups.
+          Find safari options designed for families, couples, friends, and
+          groups.
         </p>
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {tourGroups.map((item) => (
             <div key={item._id} className="flex flex-col">
-
               {/* Image */}
               <Link
                 href={`/travelgroup/${item.slug}`}
@@ -84,7 +83,6 @@ const TourGroupSection = () => {
               <p className="text-[#444] text-[16px] mt-3 leading-relaxed">
                 {item.overviewinfo?.[0]?.subtitle}
               </p>
-
             </div>
           ))}
         </div>
@@ -92,7 +90,6 @@ const TourGroupSection = () => {
         {/* BOOK WITH CONFIDENCE */}
         <div className="bg-[#fedec7]">
           <div className="max-w-7xl mx-auto px-6 md:px-10 mt-12 md:mt-24">
-
             <h2 className="text-center text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-8 md:mb-16 capitalize">
               Plan Your Safari
             </h2>
@@ -117,14 +114,16 @@ const TourGroupSection = () => {
             </div>
 
             <div className="flex justify-center mt-16">
-              <button className="px-8 py-3 cursor-pointer rounded-full border-2 border-black text-black font-semibold hover:bg-black hover:text-white transition">
+              <Link
+                href="/tailor-made-tours"
+                className="px-[21px] py-2.5 cursor-pointer rounded-full border-1 hover:border-[#d87028] text-black font-semibold bg-transparent hover:bg-[#d87028] hover:text-white transition"
+                aria-label="Find out more"
+              >
                 FIND OUT MORE
-              </button>
+              </Link>
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
   );

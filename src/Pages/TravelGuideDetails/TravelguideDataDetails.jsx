@@ -34,9 +34,9 @@ const TravelguideDataDetails = ({ blog, faqSection }) => {
     <section className="bg-[#F8E6D5] py-16">
       <div className="px-4 max-w-4xl mx-auto">
         {/* ===== MAIN HEADING ===== */}
-        <h2 className="text-[24px] md:text-4xl capitalize text-center font-bold text-[#111] mb-4">
+        <h1 className="text-[24px] md:text-4xl capitalize text-center font-bold text-[#111] mb-4">
           {blog.title}
-        </h2>
+        </h1>
 
         <p className="mb-10 leading-7 text-center capitalize text-[#444]">
           {blog.subtitle || "Travel Trips"}
