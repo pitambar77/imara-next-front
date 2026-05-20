@@ -1,6 +1,5 @@
-// responsive
-
 import React from "react";
+import Image from "next/image";
 
 const OverviewSections = ({
   label,
@@ -43,7 +42,7 @@ const OverviewSections = ({
 
           {/* Responsive Text Columns */}
 
-  <div
+          <div
             className="
               text-[15px] md:text-[16px] text-[#333] space-y-4 leading-[1.8]
               md:[column-count:2] md:[column-gap:3rem]
@@ -52,7 +51,7 @@ const OverviewSections = ({
             <div
               className="rich-text text-[#444]"
               dangerouslySetInnerHTML={{
-                __html: paragraphs|| "",
+                __html: paragraphs || "",
               }}
             />
           </div>
@@ -64,15 +63,22 @@ const OverviewSections = ({
             imagePosition === "left" ? "order-1 lg:order-2" : ""
           }`}
         >
-          <img
-            src={image}
-            alt={title}
+          <div
             className="
-              rounded-md w-full max-w-[420px]
-              h-auto md:h-[420px] lg:h-[560px]
-              object-cover shadow-sm
-            "
-          />
+    relative w-full max-w-[420px]
+    h-[320px] md:h-[420px] lg:h-[560px]
+    rounded-md overflow-hidden shadow-sm
+  "
+          >
+            <Image
+              src={image}
+              alt={title}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 420px"
+              quality={80}
+              className="object-cover"
+            />
+          </div>
         </div>
       </div>
 

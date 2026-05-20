@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,6 +13,7 @@ const Banner = ({ image, title, buttonText, onButtonClick }) => {
         fill
         sizes="100vw"
         priority
+        fetchPriority="high"
         className="object-cover"
       />
 

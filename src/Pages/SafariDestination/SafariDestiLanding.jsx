@@ -1,4 +1,4 @@
-"use client";
+
 
 import React from "react";
 import Image from "next/image";
@@ -89,7 +89,6 @@ const SafariDestiLanding = ({ trips, page }) => {
       })),
     ) || [];
 
-  console.log(page);
 
   return (
     <div>

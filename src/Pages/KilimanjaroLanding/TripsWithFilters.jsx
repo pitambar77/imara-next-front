@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useMemo, useState } from "react";
 // import API from "../../api/axios";
 import TripCard from "../../components/TripCard";
