@@ -195,7 +195,7 @@ const Footer = () => {
                 className="flex md:hidden justify-between items-center w-full font-bold text-lg mb-2"
                 onClick={() => toggle("plan2")}
               >
-                Travel Planning
+                Tanzania Travel Guide
                 <ChevronDown size={22}
                   className={`transition-transform duration-300 ${
                     open.plan2 ? "rotate-180" : ""

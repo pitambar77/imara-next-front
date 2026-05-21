@@ -384,7 +384,9 @@ import React, { useState, useEffect } from "react";
 import API from "../../api/axios.js";
 import CustomRichEditor from "../../components/CustomRichEditor";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://imarabackend.imarakilelenisafaris.com";
+const API_BASE =
+  process.env.NEXT_PUBLIC_API_BASE ||
+  "https://imarabackend.imarakilelenisafaris.com";
 
 const getImageUrl = (url) => {
   if (!url) return null;
@@ -397,6 +399,8 @@ const TravelgroupForm = ({ editData, onSuccess }) => {
     title: "",
     subtitle: "",
     category: "",
+    FaqTitle: "",
+    FaqSubTitle: "",
   });
 
   const [mainImage, setMainImage] = useState(null);
@@ -414,6 +418,8 @@ const TravelgroupForm = ({ editData, onSuccess }) => {
       title: editData.title || "",
       subtitle: editData.subtitle || "",
       category: editData.category || "",
+      FaqTitle: editData.FaqTitle || "",
+      FaqSubTitle: editData.FaqSubTitle || "",
     });
 
     setMainImagePreview(getImageUrl(editData.image));
@@ -569,6 +575,8 @@ const TravelgroupForm = ({ editData, onSuccess }) => {
     data.append("title", formData.title);
     data.append("subtitle", formData.subtitle);
     data.append("category", formData.category);
+    data.append("FaqTitle", formData.FaqTitle);
+    data.append("FaqSubTitle", formData.FaqSubTitle);
 
     if (mainImage) data.append("mainImage", mainImage);
 
@@ -845,8 +853,23 @@ const TravelgroupForm = ({ editData, onSuccess }) => {
 
       {/* =============== Q&A SECTION =============== */}
       <section className="col-span-2 mt-6">
+        <h3 className="text-xl font-semibold mb-4">FAQs </h3>
+        <input
+          className="border p-2 w-full mb-2"
+          name="FaqTitle"
+          placeholder="FAQ Title"
+          value={formData.FaqTitle}
+          onChange={handleChange}
+        />
+
+        <input
+          className="border p-2 w-full mb-10"
+          name="FaqSubTitle"
+          placeholder="FAQ Subtitle"
+          value={formData.FaqSubTitle}
+          onChange={handleChange}
+        />
         <div className="flex justify-between">
-          <h3 className="text-xl font-semibold">FAQs / About Booking</h3>
           <button
             type="button"
             onClick={addQa}

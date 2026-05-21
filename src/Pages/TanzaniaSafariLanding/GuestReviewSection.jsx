@@ -1,5 +1,6 @@
+import { Star } from "lucide-react";
 import React from "react";
-import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+
 
 const GuestReviewSection = () => {
   return (
@@ -25,12 +26,12 @@ const GuestReviewSection = () => {
               <div className=" text-2xl md:text-5xl font-bold text-[#222] mb-1">5.0</div>
               <p className="text-gray-600 font-semibold mb-4">out of 5</p>
 
-              <div className="flex items-center space-x-1 text-[#f5b400] text-xl mb-4">
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStarHalfAlt />
+              <div className="flex items-center space-x-1 mb-4">
+                <Star size={18} className="fill-[#f5b400] text-[#f5b400]" />
+                <Star size={18} className="fill-[#f5b400] text-[#f5b400]" />
+                <Star size={18} className="fill-[#f5b400] text-[#f5b400]" />
+                <Star size={18} className="fill-[#f5b400] text-[#f5b400]" />
+               <Star size={18} className="fill-[#f5b400] text-[#f5b400]" />
                 <span className="text-black text-[16px] font-semibold ml-2">
                   5.0
                 </span>
@@ -66,12 +67,12 @@ const GuestReviewSection = () => {
                     <p className="text-gray-600 font-semibold text-sm">
                       out of 5
                     </p>
-                    <div className="flex justify-center text-[#f5b400] mt-1">
-                      <FaStar />
-                      <FaStar />
-                      <FaStar />
-                      <FaStar />
-                      <FaStarHalfAlt />
+                    <div className="flex justify-center text-[#f5b400] space-x-0.5 mt-1">
+                      <Star size={18} className="fill-[#f5b400] text-[#f5b400]" />
+                      <Star size={18} className="fill-[#f5b400] text-[#f5b400]" />
+                      <Star size={18} className="fill-[#f5b400] text-[#f5b400]" />
+                      <Star size={18} className="fill-[#f5b400] text-[#f5b400]" />
+                      <Star size={18} className="fill-[#f5b400] text-[#f5b400]" />
                     </div>
                   </div>
                 </div>
@@ -91,7 +92,7 @@ const GuestReviewSection = () => {
                     >
                       <span className="w-6 font-semibold mt-1">{r.stars}</span>
                       <span>
-                        <FaStar className="text-[#f5b400] text-[10px] mr-2 " />
+                        <Star size={10} className="text-[#f5b400] fill-[#f5b400] mr-2 " />
                       </span>
                       <div className="w-[12rem] bg-gray-200 h-3 rounded-full overflow-hidden">
                         <div
@@ -125,12 +126,12 @@ const GuestReviewSection = () => {
                     <p className="text-gray-600 font-semibold text-sm">
                       out of 5
                     </p>
-                    <div className="flex justify-center text-[#f5b400] mt-1">
-                      <FaStar />
-                      <FaStar />
-                      <FaStar />
-                      <FaStar />
-                      <FaStarHalfAlt />
+                    <div className="flex justify-center text-[#f5b400] space-x-0.5 mt-1">
+                     <Star size={18} className="fill-[#f5b400] text-[#f5b400]" />
+                      <Star size={18} className="fill-[#f5b400] text-[#f5b400]" />
+                      <Star size={18} className="fill-[#f5b400] text-[#f5b400]" />
+                      <Star size={18} className="fill-[#f5b400] text-[#f5b400]" />
+                      <Star size={18} className="fill-[#f5b400] text-[#f5b400]" />
                     </div>
                   </div>
                 </div>
@@ -150,7 +151,7 @@ const GuestReviewSection = () => {
                     >
                       <span className="w-6 mt-1 font-semibold">{r.stars}</span>
                       <span>
-                        <FaStar className="text-[#f5b400] text-[10px] mr-2 " />
+                        <Star size={10} className="text-[#f5b400] fill-[#f5b400] mr-2 " />
                       </span>
                       <div className="w-[12rem] bg-gray-200 h-3 rounded-full overflow-hidden">
                         <div

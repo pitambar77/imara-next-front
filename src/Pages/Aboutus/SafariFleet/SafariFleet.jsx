@@ -52,7 +52,7 @@ const SafariFleet = () => {
 
   return (
     <div>
-      <div className="relative w-full h-[40vh] md:h-[64vh]">
+      <div className="relative w-full aspect-[16/9] md:h-[500px] 2xl:h-[650px]">
         <Image src={heroImage} alt={heroTitle} fill className="object-cover" />
         <div className="absolute inset-0 bg-black/30"></div>
 

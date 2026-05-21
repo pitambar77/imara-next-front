@@ -139,13 +139,14 @@ const TripMomentsSection = ({ experience = [] }) => {
                 className="
           relative
           w-full
-          md:w-[40%]
+          md:w-[30%]
           flex
           justify-center
           items-center
-          bg-black
+          md:bg-[#d87029]
+          md:pt-0
+          pt-4
           
-          md:bg-transparent
         "
               >
                 <img
@@ -157,7 +158,8 @@ const TripMomentsSection = ({ experience = [] }) => {
   sm:h-[360px]
   md:h-[520px]
   object-contain
-  bg-black
+  md:bg-[#ec9e6b]
+  bg-[#fee3cc]
   md:rounded-l-lg
           "
                 />

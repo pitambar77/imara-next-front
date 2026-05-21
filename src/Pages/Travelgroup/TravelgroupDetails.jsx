@@ -14,6 +14,7 @@ import TailormadeSection from "../Home/TailormadeSection";
 import Banner from "../../components/Banner";
 import ReviewsSection from "../Aboutus/ReviewsSection";
 
+
 const TravelgroupDetails = ({ slug, trips, item }) => {
 
 
@@ -68,7 +69,7 @@ const TravelgroupDetails = ({ slug, trips, item }) => {
       <AdventureTour sections={adventureSections} />
 
       {/* ================= FAQ ================= */}
-      <FAQSection title="Top Frequently ask questions" faqs={safariFaqs} />
+      <FAQSection title={item.FaqTitle} subtitle={item.FaqSubTitle} faqs={safariFaqs} />
 
       <BookWithConfidence />
       <ReviewsSection />

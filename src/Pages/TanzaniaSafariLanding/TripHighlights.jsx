@@ -6,11 +6,10 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 
-import { FaArrowLeftLong, FaArrowRight } from "react-icons/fa6";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { MoveLeft, MoveRight } from "lucide-react";
 
 const TripHighlights = ({ subtitle }) => {
   const swiperNavPrevRef = useRef(null);
@@ -62,13 +61,13 @@ const TripHighlights = ({ subtitle }) => {
               ref={swiperNavPrevRef}
               className="swiper-button-prev-custom cursor-pointer hover:border-[#d97129c4] hover:text-[#d97129c4] bg-white border border-gray-300 text-gray-800 rounded-full p-3 hover:bg-gray-100 shadow-sm transition"
             >
-              <FaArrowLeftLong />
+             <MoveLeft />
             </button>
             <button
               ref={swiperNavNextRef}
               className="swiper-button-next-custom cursor-pointer hover:border-[#d97129c4] hover:text-[#d97129c4] bg-white border border-gray-300 text-gray-800 rounded-full p-3 hover:bg-gray-100 shadow-sm transition"
             >
-              <FaArrowRight />
+             <MoveRight />
             </button>
           </div>
         </div>

@@ -12,6 +12,7 @@ import {
 
 import Link from "next/link";
 import Image from "next/image";
+import { CalendarDays, Hourglass, ShieldCheck, Wallet } from "lucide-react";
 
 const TourGroupSection = () => {
   const [tourGroups, setTourGroups] = useState([]);
@@ -96,19 +97,19 @@ const TourGroupSection = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-center text-[#444]">
               <Feature
-                icon={<FaWallet />}
+                icon={<Wallet />}
                 text="Share your travel dates and interests."
               />
               <Feature
-                icon={<FaHourglassHalf />}
+                icon={<Hourglass />}
                 text="Choose parks, stays, and activities."
               />
               <Feature
-                icon={<FaCalendarAlt />}
+                icon={<CalendarDays />}
                 text="Review your custom safari itinerary."
               />
               <Feature
-                icon={<FaShieldAlt />}
+                icon={<ShieldCheck />}
                 text="Confirm booking and prepare to travel."
               />
             </div>

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Banner = ({ image, title, buttonText, onButtonClick }) => {
   return (
-    <section className="relative w-full h-[350px] md:h-[500px] 2xl:h-[650px]">
+    <section className="relative w-full aspect-[16/9] md:h-[500px] 2xl:h-[650px]">
 
       {/* Background Image */}
       <Image

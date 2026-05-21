@@ -192,7 +192,7 @@ export default function EnquiryForm({
   
 
   return (
-    <div className="max-w-4xl mx-auto py-10 sm:py-12 md:py-16 px-4 sm:px-6 md:px-0">
+    <div className="max-w-4xl mx-auto py-10 sm:py-12 md:py-16 px-4 sm:px-6">
       <div className=" mb-8 md:mb-10 text-center max-w-2xl mx-auto">
         <h1 className=" text-2xl md:text-3xl font-semibold mb-2 text-center ">
           {formheading}

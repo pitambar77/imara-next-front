@@ -79,7 +79,7 @@ const AboutUs = ({ aboutData }) => {
   return (
     <>
       <div
-        className="relative w-full h-[40vh] md:h-[64vh] bg-center bg-cover flex items-center justify-center"
+        className="relative w-full aspect-[16/9] md:h-[500px] 2xl:h-[650px] bg-center bg-cover flex items-center justify-center"
         style={{
           backgroundImage: `url(${image})`,
         }}

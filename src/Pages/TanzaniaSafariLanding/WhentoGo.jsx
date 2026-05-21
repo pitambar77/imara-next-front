@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import API from "../../api/axios";
-
-import { FaStar, FaCheckCircle } from "react-icons/fa";
-import { WiDaySunny, WiRain, WiCloudy } from "react-icons/wi";
-import { IoMdStar } from "react-icons/io";
+import { CircleCheck, Cloudy, Star } from "lucide-react";
 
 const WhentoGo = () => {
   const [bestTime, setBestTime] = useState(null);
@@ -35,11 +32,11 @@ const WhentoGo = () => {
   const monthsData = bestTime.months.map((m) => ({
     month: m.month,
 
-    icon: <WiCloudy />,
+    icon: <Cloudy />,
 
     rating: 5,
 
-    weatherIcon: <WiCloudy />,
+    weatherIcon: <Cloudy />,
 
     view: "Good time to visit",
 
@@ -96,11 +93,11 @@ const WhentoGo = () => {
               </span>
               <div className="flex justify-center mt-1">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <FaStar
+                  <Star
                     key={i}
                     size={10}
                     className={`${
-                      i < m.rating ? "text-[#d87028]" : "text-gray-300"
+                      i < m.rating ? "text-[#d87028] fill-[#d87028]" : "text-gray-300"
                     }`}
                   />
                 ))}
@@ -132,7 +129,7 @@ const WhentoGo = () => {
           <div className="flex flex-col justify-center">
             {monthData.highlights.map((item, i) => (
               <div key={i} className="flex items-start gap-2 mb-3">
-                <FaCheckCircle className="text-[#d87028] mt-1" />
+                <CircleCheck size={20} className="fill-[#d87028] text-white mt-0.5 " />
                 <p className="text-[#444] text-[16px]">{item}</p>
               </div>
             ))}
@@ -159,7 +156,7 @@ const WhentoGo = () => {
                   .fill()
                   .map((_, i) => (
                     <div key={i} className="bg-[#d87028] p-1 rounded-sm">
-                      <IoMdStar className="text-white text-lg sm:text-xl" />
+                      <Star size={16} strokeWidth={1} className="text-white fill-white" />
                     </div>
                   ))}
               </div>

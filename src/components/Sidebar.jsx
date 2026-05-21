@@ -16,36 +16,88 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   const links = [
-    { name: "Travel Guide", icon: <FaMapMarkedAlt />, path: "/dashboard/travelguidenew" },
-    { name: "Tanzania Travel Guide", icon: <FaMapMarkedAlt />, path: "/dashboard/tanzania-travelguide-landing" },
-    { name: "Kilimanjaro Travel Guide", icon: <FaMapMarkedAlt />, path: "/dashboard/kilimanjaro-travelguide-landing" },
-    { name: "Blog landing", icon: <FaMapMarkedAlt />, path: "/dashboard/blog-landing" },
-     { name: "Blog Details", icon: <FaMapMarkedAlt />, path: "/dashboard/blogimara" },
+    {
+      name: "Travel Guide",
+      icon: <FaMapMarkedAlt />,
+      path: "/dashboard/travelguidenew",
+    },
+    {
+      name: "Tanzania Travel Guide",
+      icon: <FaMapMarkedAlt />,
+      path: "/dashboard/tanzania-travelguide-landing",
+    },
+    {
+      name: "Kilimanjaro Travel Guide",
+      icon: <FaMapMarkedAlt />,
+      path: "/dashboard/kilimanjaro-travelguide-landing",
+    },
+    {
+      name: "Blog landing",
+      icon: <FaMapMarkedAlt />,
+      path: "/dashboard/blog-landing",
+    },
+    {
+      name: "Blog Details",
+      icon: <FaMapMarkedAlt />,
+      path: "/dashboard/blogimara",
+    },
     { name: "Package", icon: <FaUmbrellaBeach />, path: "/dashboard/package" },
-    { name: "Destination Details", icon: <FaRoute />, path: "/dashboard/destination" },
-    { name: "Destination Landing", icon: <FaHotel />, path: "/dashboard/destination-landing" },
-    { name: "Kilimanjarolanding", icon: <FaHotel />, path: "/dashboard/kilimanjaro" },
+    {
+      name: "Destination Details",
+      icon: <FaRoute />,
+      path: "/dashboard/destination",
+    },
+    {
+      name: "Destination Landing",
+      icon: <FaHotel />,
+      path: "/dashboard/destination-landing",
+    },
+    {
+      name: "Kilimanjarolanding",
+      icon: <FaHotel />,
+      path: "/dashboard/kilimanjaro",
+    },
     { name: "Travel Group", icon: <FaHotel />, path: "/dashboard/travelgroup" },
     { name: "Zanzibar", icon: <FaHotel />, path: "/dashboard/zanzibar" },
-    { name: "Sustanbility", icon: <FaHotel />, path: "/dashboard/sustainbility/seo" },
+    {
+      name: "Sustanbility",
+      icon: <FaHotel />,
+      path: "/dashboard/sustainbility/seo",
+    },
     { name: "Team", icon: <FaHotel />, path: "/dashboard/team/seo" },
     { name: "About", icon: <FaHotel />, path: "/dashboard/about-us/seo" },
     { name: "Fleet", icon: <FaHotel />, path: "/dashboard/safari-fleet/seo" },
     { name: "Home Page", icon: <FaHotel />, path: "/dashboard/homepage/seo" },
-    { name: "Safari Landing", icon: <FaHotel />, path: "/dashboard/safari-landing" },
-    { name: "Contact us page", icon: <FaHotel />, path: "/dashboard/contactus-page" },
+    {
+      name: "Safari Landing",
+      icon: <FaHotel />,
+      path: "/dashboard/safari-landing",
+    },
+    {
+      name: "Contact us page",
+      icon: <FaHotel />,
+      path: "/dashboard/contactus-page",
+    },
     { name: "Core Value", icon: <FaHotel />, path: "/dashboard/corevalue" },
-    { name: "Privacy Policy", icon: <FaHotel />, path: "/dashboard/privacy-policy" },
-    { name: "Terms & Condition", icon: <FaHotel />, path: "/dashboard/terms-conditions" },
-
-    
-
-
+    {
+      name: "Privacy Policy",
+      icon: <FaHotel />,
+      path: "/dashboard/privacy-policy",
+    },
+    {
+      name: "Terms & Condition",
+      icon: <FaHotel />,
+      path: "/dashboard/terms-conditions",
+    },
+    {
+      name: "Tailormade tours",
+      icon: <FaHotel />,
+      path: "/dashboard/tailormade-tours",
+    },
   ];
 
   return (
     <div className="bg-[#fde6d5] w-64 h-screen flex flex-col p-5 fixed top-0 left-0 overflow-y-auto">
-
       <Image
         src={imaralogo}
         alt="imara-logo"
