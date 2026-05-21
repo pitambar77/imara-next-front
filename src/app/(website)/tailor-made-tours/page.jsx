@@ -1,5 +1,5 @@
-import EnquiryForm from "@/components/EnquiryForm";
 import { getTailormadeTours } from "@/lib/getTailormadeTours";
+import TailormadeToursForm from "@/Pages/TailormadeTourForm/TailormadeToursForm";
 
 export async function generateMetadata() {
   const data = await getTailormadeTours();
@@ -64,7 +64,8 @@ export default async function Page() {
         />
       )}
 
-      <EnquiryForm landing={landing} />
+      {/* <EnquiryForm landing={landing} /> */}
+      <TailormadeToursForm landing={landing}  />
     </>
   )
 }
