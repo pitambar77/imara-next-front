@@ -1,12 +1,10 @@
-
-
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  compress: true,
   allowedDevOrigins: ["imarakilelenisafaris.com", "101.53.148.53"],
 
   images: {
-    unoptimized: true, 
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -21,7 +19,8 @@ const nextConfig = {
     return [
       {
         source: "/sitemap.xml",
-        destination: "https://imarabackend.imarakilelenisafaris.com/sitemap.xml",
+        destination:
+          "https://imarabackend.imarakilelenisafaris.com/sitemap.xml",
       },
       {
         source: "/api/:path*",
