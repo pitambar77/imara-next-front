@@ -1,7 +1,7 @@
 import React from "react";
-import { GoDotFill } from "react-icons/go";
 import Image from "next/image";
 import Faqs from "../Travelguide/Faqs";
+import { Dot } from "lucide-react";
 /* 🔹 Recursive list renderer */
 const RenderList = ({ items }) => {
   if (!Array.isArray(items) || !items.length) return null;
@@ -11,7 +11,7 @@ const RenderList = ({ items }) => {
       {items.map((item) => (
         <li key={item.id} className="flex gap-3">
           <span className=" border-gray-600 mt-0.5">
-            <GoDotFill />
+            <Dot />
           </span>
 
           <div>

@@ -3,13 +3,7 @@
 import React from "react";
 
 import Banner from "../../components/Banner";
-import {
-  FaCalendarAlt,
-  FaHourglassHalf,
-  FaShieldAlt,
-  FaStar,
-  FaWallet,
-} from "react-icons/fa";
+
 import AboutInfoSection from "./AboutInfoSection";
 import OnTheRoadSection from "./OnTheRoadSection";
 import OffTheRoadSection from "./OffTheRoadSection";
@@ -28,6 +22,7 @@ import Knowledge from "../../assets/Knowledge.webp";
 import Service from "../../assets/Service.webp";
 import TailormadeSection from "../Home/TailormadeSection";
 import Link from "next/link";
+import { CalendarDays, Hourglass, ShieldCheck, Star, Wallet } from "lucide-react";
 
 const AboutUs = ({ aboutData }) => {
   const data = [
@@ -98,11 +93,11 @@ const AboutUs = ({ aboutData }) => {
               <span>RATED 5 / 5</span>
 
               <div className="flex items-center gap-1 text-yellow-300">
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
+                <Star size={18} className=" fill-amber-300" />
+                <Star size={18} className=" fill-amber-300" />
+                <Star size={18} className=" fill-amber-300" />
+                <Star size={18} className=" fill-amber-300" />
+                <Star size={18} className=" fill-amber-300" />
               </div>
             </div>
 
@@ -156,7 +151,7 @@ const AboutUs = ({ aboutData }) => {
             {/* Feature 1 */}
             <div className="flex items-start gap-4">
               <div className="flex-none w-14 h-14 rounded-full bg-black flex items-center justify-center">
-                <FaWallet className="text-[#f3a85f] w-6 h-6" />
+                < CalendarDays className="text-[#f3a85f] w-6 h-6" />
               </div>
               <div>
                 <p className="font-semibold text-[#444]">
@@ -168,7 +163,7 @@ const AboutUs = ({ aboutData }) => {
             {/* Feature 2 */}
             <div className="flex items-start gap-4">
               <div className="flex-none w-14 h-14 rounded-full bg-black flex items-center justify-center">
-                <FaHourglassHalf className="text-[#f3a85f] w-6 h-6" />
+                <Hourglass className="text-[#f3a85f] w-6 h-6" />
               </div>
               <div>
                 <p className="font-semibold text-[#444]">
@@ -180,7 +175,7 @@ const AboutUs = ({ aboutData }) => {
             {/* Feature 3 */}
             <div className="flex items-start gap-4">
               <div className="flex-none w-14 h-14 rounded-full bg-black flex items-center justify-center">
-                <FaCalendarAlt className="text-[#f3a85f] w-6 h-6" />
+                <Wallet className="text-[#f3a85f] w-6 h-6" />
               </div>
               <div>
                 <p className="font-semibold text-[#444]">
@@ -192,7 +187,7 @@ const AboutUs = ({ aboutData }) => {
             {/* Feature 4 */}
             <div className="flex items-start gap-4">
               <div className="flex-none w-14 h-14 rounded-full bg-black flex items-center justify-center">
-                <FaShieldAlt className="text-[#f3a85f] w-6 h-6" />
+                <ShieldCheck className="text-[#f3a85f] w-6 h-6" />
               </div>
               <div>
                 <p className="font-semibold text-[#444]">

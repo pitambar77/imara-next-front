@@ -3,13 +3,6 @@
 import React, { useEffect, useState } from "react";
 import API from "../../api/axios";
 
-import {
-  FaWallet,
-  FaHourglassHalf,
-  FaCalendarAlt,
-  FaShieldAlt,
-} from "react-icons/fa";
-
 import Link from "next/link";
 import Image from "next/image";
 import { CalendarDays, Hourglass, ShieldCheck, Wallet } from "lucide-react";

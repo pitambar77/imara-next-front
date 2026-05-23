@@ -1,7 +1,7 @@
 "use client";
 
+import { Minus, Plus } from "lucide-react";
 import React, { useState } from "react";
-import { FaPlus, FaMinus } from "react-icons/fa";
 
 const Faqs = ({ title, subtitle, faqs }) => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -69,7 +69,7 @@ const Faqs = ({ title, subtitle, faqs }) => {
               {faq.question}
 
               <span className="text-[14px] text-[#111]">
-                {openIndex === index ? <FaMinus /> : <FaPlus />}
+                {openIndex === index ? <Minus /> : <Plus />}
               </span>
             </button>
 

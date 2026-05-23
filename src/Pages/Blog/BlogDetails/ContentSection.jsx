@@ -617,18 +617,11 @@
 
 import React from "react";
 import { useEffect, useState } from "react";
-
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaStar,
-  FaStarHalfAlt,
-} from "react-icons/fa";
-import { FaXTwitter, FaYoutube } from "react-icons/fa6";
 import Image from "next/image";
 import FAQSection from "./FAQSection";
 import ImageContentSection from "./ImageContentSection";
 import PackageSection from "./PackageSection";
+import { Star } from "lucide-react";
 
 const RenderList = ({ items, level = 0 }) => {
   if (!Array.isArray(items) || !items.length) return null;
@@ -765,51 +758,6 @@ const ContentSection = ({ blog, trips }) => {
                 </Tag>
               );
             }
-            // case "paragraph": {
-            //   const flattened = Array.isArray(s.content)
-            //     ? s.content.flat() // 🔥 IMPORTANT FIX
-            //     : [];
-
-            //   return (
-            //     <p
-            //       key={i}
-            //       className="text-[16px] md:text-[17px] text-[#444] leading-relaxed mb-4"
-            //     >
-            //       {flattened.map((block, j) => {
-            //         if (!block) return null;
-
-            //         if (block.type === "bold")
-            //           return (
-            //             <strong key={j} className="font-semibold text-[#111]">
-            //               {block.value}
-            //             </strong>
-            //           );
-
-            //         if (block.type === "highlight")
-            //           return (
-            //             <span key={j} className="bg-yellow-200 px-1 rounded">
-            //               {block.value}
-            //             </span>
-            //           );
-
-            //         if (block.type === "link")
-            //           return (
-            //             <a
-            //               key={j}
-            //               href={block.url}
-            //               target="_blank"
-            //               rel="noopener noreferrer"
-            //               className="text-[#d87028] underline hover:opacity-80 mx-1"
-            //             >
-            //               {block.value}
-            //             </a>
-            //           );
-
-            //         return <span key={j}>{block.value}</span>;
-            //       })}
-            //     </p>
-            //   );
-            // }
 
             case "paragraph":
               return (
@@ -821,34 +769,6 @@ const ContentSection = ({ blog, trips }) => {
                   }}
                 />
               );
-
-            // case "quote":
-            //   return (
-            //     <div
-            //       key={i}
-            //       className="relative bg-[#d87029] rounded-2xl px-6 py-12 md:px-10 md:py-16 my-10 overflow-hidden"
-            //     >
-            //       {/* Opening Quote */}
-            //       <span className="absolute top-2 left-4 text-white/20 text-[80px] md:text-[120px] leading-none">
-            //         “
-            //       </span>
-
-            //       {/* Content */}
-            //       <div className="relative z-10 max-w-3xl mx-auto text-center">
-            //         <div
-            //           className="quote-box rich-text text-white italic text-xl md:text-2xl leading-relaxed"
-            //           dangerouslySetInnerHTML={{
-            //             __html: s.text || "",
-            //           }}
-            //         />
-            //       </div>
-
-            //       {/* Closing Quote */}
-            //       <span className="absolute bottom-0 right-4 text-white/20 text-[80px] md:text-[120px] leading-none">
-            //         ”
-            //       </span>
-            //     </div>
-            //   );
 
             case "quote":
               return (
@@ -889,7 +809,6 @@ const ContentSection = ({ blog, trips }) => {
                   </div>
                 </div>
               );
-
 
             case "image":
               if (!s.image?.url) return null;
@@ -1035,11 +954,26 @@ const ContentSection = ({ blog, trips }) => {
                   <div className="bg-[#d87028] text-white font-semibold text-center py-3 rounded-md mb-10">
                     RATED 5★ BY OVER 100 TRAVELLERS{" "}
                     <span className="inline-flex items-center gap-1">
-                      <FaStar />
-                      <FaStar />
-                      <FaStar />
-                      <FaStar />
-                      <FaStarHalfAlt />
+                      <Star
+                        size={18}
+                        className="fill-[#d87028] text-[#d87028]"
+                      />
+                      <Star
+                        size={18}
+                        className="fill-[#d87028] text-[#d87028]"
+                      />
+                      <Star
+                        size={18}
+                        className="fill-[#d87028] text-[#d87028]"
+                      />
+                      <Star
+                        size={18}
+                        className="fill-[#d87028] text-[#d87028]"
+                      />
+                      <Star
+                        size={18}
+                        className="fill-[#d87028] text-[#d87028]"
+                      />
                     </span>{" "}
                     <span className="text-white/90 font-normal">
                       5/5 (100 REVIEWS)
@@ -1061,7 +995,11 @@ const ContentSection = ({ blog, trips }) => {
                         {/* Stars */}
                         <div className="flex justify-center mb-5 text-[#FFD700] text-xl">
                           {Array.from({ length: r.rating || 5 }).map((_, i) => (
-                            <FaStar key={i} />
+                            <Star
+                              size={18}
+                              className="fill-[#FFD700]"
+                              key={i}
+                            />
                           ))}
                         </div>
 
@@ -1134,7 +1072,18 @@ const ContentSection = ({ blog, trips }) => {
                 className="p-2 rounded-full bg-[#d87028] hover:bg-[#c35f22] transition"
                 aria-label="Facebook"
               >
-                <FaFacebookF className="text-white" />
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 320 512"
+                  className="text-white"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path>
+                </svg>
               </a>
 
               {/* Instagram */}
@@ -1145,7 +1094,18 @@ const ContentSection = ({ blog, trips }) => {
                 className="p-2 rounded-full bg-[#d87028] hover:bg-[#c35f22] transition"
                 aria-label="Instagram"
               >
-                <FaInstagram className="text-white" />
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 448 512"
+                  className="text-white"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+                </svg>
               </a>
 
               {/* Twitter / X */}
@@ -1156,7 +1116,18 @@ const ContentSection = ({ blog, trips }) => {
                 className="p-2 rounded-full bg-[#d87028] hover:bg-[#c35f22] transition"
                 aria-label="Twitter"
               >
-                <FaXTwitter className="text-white" />
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 512 512"
+                  className="text-white"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path>
+                </svg>
               </a>
 
               {/* YouTube */}
@@ -1167,7 +1138,18 @@ const ContentSection = ({ blog, trips }) => {
                 className="p-2 rounded-full bg-[#d87028] hover:bg-[#c35f22] transition"
                 aria-label="YouTube"
               >
-                <FaYoutube className="text-white" />
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 576 512"
+                  className="text-white"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path>
+                </svg>
               </a>
             </div>
           </div>
@@ -1211,7 +1193,18 @@ const ContentSection = ({ blog, trips }) => {
                   className="p-2 rounded-full bg-[#d87028] hover:bg-[#c35f22] transition"
                   aria-label="Facebook"
                 >
-                  <FaFacebookF className="text-white" />
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    strokeWidth="0"
+                    viewBox="0 0 320 512"
+                    className="text-white"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path>
+                  </svg>
                 </a>
 
                 {/* Instagram */}
@@ -1222,7 +1215,18 @@ const ContentSection = ({ blog, trips }) => {
                   className="p-2 rounded-full bg-[#d87028] hover:bg-[#c35f22] transition"
                   aria-label="Instagram"
                 >
-                  <FaInstagram className="text-white" />
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    strokeWidth="0"
+                    viewBox="0 0 448 512"
+                    className="text-white"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+                  </svg>
                 </a>
 
                 {/* Pinterest */}
@@ -1233,7 +1237,18 @@ const ContentSection = ({ blog, trips }) => {
                   className="p-2 rounded-full bg-[#d87028] hover:bg-[#c35f22] transition"
                   aria-label="Pinterest"
                 >
-                  <FaXTwitter className="text-white" />
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    strokeWidth="0"
+                    viewBox="0 0 512 512"
+                    className="text-white"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path>
+                  </svg>
                 </a>
 
                 {/* YouTube */}
@@ -1244,7 +1259,18 @@ const ContentSection = ({ blog, trips }) => {
                   className="p-2 rounded-full bg-[#d87028] hover:bg-[#c35f22] transition"
                   aria-label="YouTube"
                 >
-                  <FaYoutube className="text-white" />
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    strokeWidth="0"
+                    viewBox="0 0 576 512"
+                    className="text-white"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path>
+                  </svg>
                 </a>
               </div>
             </div>

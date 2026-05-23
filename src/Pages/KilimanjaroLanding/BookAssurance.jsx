@@ -1,12 +1,6 @@
+import { CalendarDays, Hourglass, ShieldCheck, Star, Wallet } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import {
-  FaStar,
-  FaWallet,
-  FaHourglassHalf,
-  FaCalendarAlt,
-  FaShieldAlt,
-} from "react-icons/fa";
 
 const BookAssurance = () => {
   return (
@@ -19,12 +13,12 @@ const BookAssurance = () => {
             <div className="flex items-center gap-1 sm:gap-2 flex-wrap justify-center">
               <span>RATED 5 / 5</span>
 
-              <div className="flex items-center gap-1 text-yellow-300">
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
+              <div className="flex items-center gap-1  ">
+                <Star size={20} strokeWidth={1.5} className="fill-yellow-300 text-amber-300" />
+                <Star size={20} strokeWidth={1.5} className="fill-yellow-300 text-amber-300" />
+                <Star size={20} strokeWidth={1.5} className="fill-yellow-300 text-amber-300" />
+                <Star size={20} strokeWidth={1.5} className="fill-yellow-300 text-amber-300" />
+                <Star size={20} strokeWidth={1.5} className="fill-yellow-300 text-amber-300" />
               </div>
             </div>
 
@@ -48,7 +42,7 @@ const BookAssurance = () => {
             {/* Feature 1 */}
             <div className="flex items-start gap-4">
               <div className="flex-none w-14 h-14 rounded-full bg-black flex items-center justify-center">
-                <FaWallet className="text-[#f3a85f] w-6 h-6" />
+               <Wallet className="text-[#f3a85f] w-6 h-6" />
               </div>
               <div>
                 <p className="font-semibold text-black">
@@ -60,7 +54,7 @@ const BookAssurance = () => {
             {/* Feature 2 */}
             <div className="flex items-start gap-4">
               <div className="flex-none w-14 h-14 rounded-full bg-black flex items-center justify-center">
-                <FaHourglassHalf className="text-[#f3a85f] w-6 h-6" />
+              <Hourglass className="text-[#f3a85f] w-6 h-6" />
               </div>
               <div>
                 <p className="font-semibold text-black">
@@ -72,7 +66,7 @@ const BookAssurance = () => {
             {/* Feature 3 */}
             <div className="flex items-start gap-4">
               <div className="flex-none w-14 h-14 rounded-full bg-black flex items-center justify-center">
-                <FaCalendarAlt className="text-[#f3a85f] w-6 h-6" />
+           <CalendarDays className="text-[#f3a85f] w-6 h-6" />
               </div>
               <div>
                 <p className="font-semibold text-black">
@@ -84,7 +78,7 @@ const BookAssurance = () => {
             {/* Feature 4 */}
             <div className="flex items-start gap-4">
               <div className="flex-none w-14 h-14 rounded-full bg-black flex items-center justify-center">
-                <FaShieldAlt className="text-[#f3a85f] w-6 h-6" />
+                <ShieldCheck className="text-[#f3a85f] w-6 h-6" />
               </div>
               <div>
                 <p className="font-semibold text-black">

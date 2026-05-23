@@ -1,4 +1,4 @@
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 const ContactDetailsSection = () => {
   return (
@@ -19,14 +19,15 @@ const ContactDetailsSection = () => {
             {/* Office Location */}
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#3c2313] flex items-center justify-center shrink-0">
-                <FaMapMarkerAlt className="text-white text-lg sm:text-xl" />
+                <MapPin className="text-white text-lg sm:text-xl" />
               </div>
               <div>
                 <h4 className="text-base sm:text-lg font-bold uppercase tracking-wide">
                   Office Location
                 </h4>
                 <p className="text-sm opacity-90">
-                  KIUSA LINE STREET,MOSHI,KILIMANJARO <br/>P.O. BOX 623
+                  KIUSA LINE STREET,MOSHI,KILIMANJARO <br />
+                  P.O. BOX 623
                 </p>
               </div>
             </div>
@@ -34,7 +35,7 @@ const ContactDetailsSection = () => {
             {/* Call / WhatsApp */}
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#3c2313] flex items-center justify-center shrink-0">
-                <FaPhoneAlt className="text-white text-lg sm:text-xl" />
+             <Phone className="text-white text-lg sm:text-xl" />
               </div>
               <div>
                 <h4 className="text-base sm:text-lg font-bold uppercase tracking-wide">
@@ -51,7 +52,7 @@ const ContactDetailsSection = () => {
             {/* Email Address */}
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#3c2313] flex items-center justify-center shrink-0">
-                <FaEnvelope className="text-white text-lg sm:text-xl" />
+                <Mail className="text-white text-lg sm:text-xl" />
               </div>
               <div className="break-all sm:break-normal">
                 <h4 className="text-base sm:text-lg font-bold uppercase tracking-wide">

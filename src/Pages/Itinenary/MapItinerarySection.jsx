@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import FullItineraryModal from "./FullItineraryModal";
-import { IoLocation } from "react-icons/io5";
-import { FaHome } from "react-icons/fa";
+import { House, MapPin } from "lucide-react";
 
 const MapItinerarySection = ({ itinerary = [] }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -28,7 +27,7 @@ const MapItinerarySection = ({ itinerary = [] }) => {
           <div className="flex border border-gray-400 rounded-full overflow-hidden shadow-sm">
             <button className="px-6 py-2 bg-[#d87028] text-white cursor-pointer">
               <span className="flex items-center gap-1">
-                <IoLocation />
+               <MapPin size={18}/>
                 <span>Map View</span>
               </span>
             </button>
@@ -111,7 +110,7 @@ const MapItinerarySection = ({ itinerary = [] }) => {
                     )} */}
                       {day.accommodationName?.trim() && (
                         <p className="text-[#d87028] text-sm md:text-lg font-semibold flex items-center gap-2">
-                          <FaHome className=" text-sm md:text-lg relative -top-[2px]" />
+                        <House size={18} className=" text-sm md:text-lg relative -top-[2px]" />
                           {day.accommodationName}
                         </p>
                       )}

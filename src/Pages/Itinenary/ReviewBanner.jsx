@@ -1,3 +1,4 @@
+import { Star } from "lucide-react";
 import React from "react";
 import { FaStar} from "react-icons/fa";
 
@@ -13,11 +14,11 @@ const ReviewBanner = () => {
             </h2>
 
             <div className="flex items-center gap-1 text-[#d87029]">
-              <FaStar />
-              <FaStar />
-              <FaStar />
-              <FaStar />
-             <FaStar />
+              <Star size={18} className="fill-[#d87029]"/>
+              <Star size={18} className="fill-[#d87029]"/>
+              <Star size={18} className="fill-[#d87029]"/>
+              <Star size={18} className="fill-[#d87029]"/>
+             <Star size={18} className="fill-[#d87029]"/>
             </div>
           </div>
 

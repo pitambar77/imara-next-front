@@ -1,8 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import API from "../../api/axios";
-import { slugify } from "../../utils/slugify";
+import React from "react";
 
 import TripDetailsSection from "./TripDetailsSection";
 import TripMomentsSection from "./TripMomentsSection";

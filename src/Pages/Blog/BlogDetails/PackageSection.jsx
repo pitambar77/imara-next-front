@@ -2,16 +2,10 @@
 import { useInView } from "react-intersection-observer";
 import React, { useEffect, useMemo, useState, useRef } from "react";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
 import { FaArrowLeftLong, FaArrowRight } from "react-icons/fa6";
-
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import TripCard from "@/components/TripCard";
-import PrimaryButton from "@/components/PrimaryButton";
 import TripQuickViewModal from "@/components/TripQuickViewModal";
+import { MoveLeft, MoveRight } from "lucide-react";
 
 const PackageSection = ({
   title,
@@ -38,14 +32,6 @@ const PackageSection = ({
     rootMargin: "200px",
   });
 
-  // const filteredTrips = useMemo(() => {
-  //   return trips.filter(
-  //     (trip) =>
-  //       trip.destination &&
-  //       trip.destination.trim().toLowerCase() === destination.toLowerCase() &&
-  //       trip._id !== currentTripId,
-  //   );
-  // }, [trips, destination, currentTripId]);
 
   const normalize = (str = "") => str.trim().toLowerCase();
 
@@ -99,14 +85,14 @@ const PackageSection = ({
                   ref={swiperNavPrevRef}
                   className="bg-white border border-gray-300 hover:border-[#d97129c4] hover:text-[#d97129c4] duration-300 rounded-full p-3 shadow-sm cursor-pointer"
                 >
-                  <FaArrowLeftLong />
+                <MoveLeft size={16}/>
                 </button>
 
                 <button
                   ref={swiperNavNextRef}
                   className="bg-white border border-gray-300 hover:border-[#d97129c4] hover:text-[#d97129c4] duration-300 rounded-full p-3 shadow-sm cursor-pointer"
                 >
-                  <FaArrowRight />
+                   <MoveRight size={16}/>
                 </button>
               </div>
             )}
@@ -135,85 +121,19 @@ const PackageSection = ({
             </div>
           )}
         </div>
-
-        {/* ================= SLIDER ================= */}
+        {/* ================= CUSTOM SLIDER ================= */}
 
         {layout === "slider" && (
           <>
-            <Swiper
-              modules={[Navigation, Pagination]}
-              spaceBetween={16}
-              slidesPerView={1.1}
-              pagination={{ clickable: true, el: ".custom-pagination" }}
-              breakpoints={{
-                640: { slidesPerView: 1 },
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
-                1280: { slidesPerView: 3 },
-              }}
-              onBeforeInit={(swiper) => {
-                swiper.params.navigation.prevEl = swiperNavPrevRef.current;
-                swiper.params.navigation.nextEl = swiperNavNextRef.current;
-                swiper.params.pagination.el = ".custom-pagination";
-              }}
-              navigation={
-                showArrows
-                  ? {
-                      prevEl: swiperNavPrevRef.current,
-                      nextEl: swiperNavNextRef.current,
-                    }
-                  : false
-              }
-              className="pb-12"
-            >
-              {filteredTrips.map((trip) => (
-                <SwiperSlide key={trip._id}>
-                  <TripCard
-                    trip={{
-                      id: trip._id,
-                      image: trip.landingImage || trip.image,
-                      title: trip.title,
-                      days: trip.accomoDay,
-                      country: "Tanzania",
-                      discountedPrice: trip.price,
-                      description: trip.description,
-                    }}
-                    onQuickView={() => setSelectedTrip(trip)}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-
-            {/* PAGINATION */}
-            <div
-              className="custom-pagination flex justify-center my-4"
-              style={{
-                position: "relative",
-                bottom: "0px",
-                textAlign: "center",
-              }}
-            ></div>
-
-            {/* PAGINATION STYLE */}
-            <style>
-              {`
-              .custom-pagination .swiper-pagination-bullet-active {
-                background-color: #d97129 !important;
-                width: 8px !important;
-                height: 8px !important;
-                transform: scale(1.3);
-                transition: all 0.35s ease;
-              }
-            `}
-            </style>
+            <CustomPackageSlider
+              trips={filteredTrips}
+              setSelectedTrip={setSelectedTrip}
+              showArrows={showArrows}
+              prevRef={swiperNavPrevRef}
+              nextRef={swiperNavNextRef}
+            />
           </>
         )}
-
-        {/* {btnname && btnlink && (
-          <div className="flex justify-center mt-4">
-            <PrimaryButton href={btnlink}>{btnname}</PrimaryButton>
-          </div>
-        )} */}
       </div>
 
       {/* ================= MODAL ================= */}
@@ -228,3 +148,222 @@ const PackageSection = ({
 };
 
 export default PackageSection;
+
+const CustomPackageSlider = ({
+  trips,
+  setSelectedTrip,
+  showArrows,
+  prevRef,
+  nextRef,
+}) => {
+  const [current, setCurrent] = useState(0);
+  const [transition, setTransition] = useState(true);
+
+  const startX = useRef(0);
+  const isDragging = useRef(false);
+
+  const [slidesPerView, setSlidesPerView] = useState(3);
+
+  // RESPONSIVE
+  useEffect(() => {
+    const updateSlides = () => {
+      if (window.innerWidth < 640) {
+        setSlidesPerView(1.1);
+      } else if (window.innerWidth < 768) {
+        setSlidesPerView(1);
+      } else if (window.innerWidth < 1024) {
+        setSlidesPerView(2);
+      } else {
+        setSlidesPerView(3);
+      }
+    };
+
+    updateSlides();
+
+    window.addEventListener("resize", updateSlides);
+
+    return () => window.removeEventListener("resize", updateSlides);
+  }, []);
+
+  // CLONE
+  const cloneCount = Math.ceil(slidesPerView);
+
+  const sliderData = [...trips, ...trips.slice(0, cloneCount)];
+
+  // NEXT
+  const nextSlide = () => {
+    if (current >= trips.length) return;
+
+    setCurrent((prev) => prev + 1);
+    setTransition(true);
+  };
+
+  // PREV
+  const prevSlide = () => {
+    if (current === 0) {
+      setTransition(false);
+
+      setCurrent(trips.length - 1);
+
+      setTimeout(() => {
+        setTransition(true);
+      }, 50);
+
+      return;
+    }
+
+    setCurrent((prev) => prev - 1);
+  };
+
+  // AUTO SLIDE ONLY MOBILE/TABLET
+  useEffect(() => {
+    if (window.innerWidth >= 1024) return;
+
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [current]);
+
+  // RESET LOOP
+  useEffect(() => {
+    if (current >= trips.length) {
+      const timeout = setTimeout(() => {
+        setTransition(false);
+
+        setCurrent(0);
+
+        setTimeout(() => {
+          setTransition(true);
+        }, 50);
+      }, 700);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [current, trips.length]);
+
+  // SWIPE START
+  const handleStart = (clientX) => {
+    startX.current = clientX;
+    isDragging.current = true;
+  };
+
+  // SWIPE END
+  const handleEnd = (clientX) => {
+    if (!isDragging.current) return;
+
+    const distance = startX.current - clientX;
+
+    if (Math.abs(distance) < 10) {
+      isDragging.current = false;
+      return;
+    }
+
+    if (distance > 50) {
+      nextSlide();
+    }
+
+    if (distance < -50) {
+      prevSlide();
+    }
+
+    isDragging.current = false;
+  };
+
+  // BUTTONS
+  useEffect(() => {
+    if (prevRef?.current) {
+      prevRef.current.onclick = prevSlide;
+    }
+
+    if (nextRef?.current) {
+      nextRef.current.onclick = nextSlide;
+    }
+  });
+
+  return (
+    <>
+      <div
+        className="overflow-hidden active:cursor-grabbing select-none pb-4"
+        onTouchStart={(e) => handleStart(e.touches[0].clientX)}
+        onTouchEnd={(e) => handleEnd(e.changedTouches[0].clientX)}
+        onMouseDown={(e) => handleStart(e.clientX)}
+        onMouseUp={(e) => handleEnd(e.clientX)}
+        onMouseLeave={(e) => {
+          if (isDragging.current) {
+            handleEnd(e.clientX);
+          }
+        }}
+      >
+        {/* TRACK WRAPPER */}
+        <div className="px-[2px]">
+          {/* TRACK */}
+          <div
+            className={`flex ${
+              transition ? "transition-transform duration-700 ease-in-out" : ""
+            }`}
+            style={{
+              gap: "16px",
+              transform: `translateX(calc(-${
+                current * (100 / slidesPerView)
+              }% - ${current * 16}px))`,
+            }}
+          >
+            {sliderData.map((trip, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0"
+                style={{
+                  width: `calc(${100 / slidesPerView}% - ${
+                    16 - 16 / slidesPerView
+                  }px)`,
+                }}
+              >
+                <TripCard
+                  trip={{
+                    id: trip._id,
+                    image: trip.landingImage || trip.image,
+                    title: trip.title,
+                    days: trip.accomoDay,
+                    country: "Tanzania",
+                    discountedPrice: trip.price,
+                    description: trip.description,
+                  }}
+                  onQuickView={() => setSelectedTrip(trip)}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* PAGINATION */}
+      <div className="hidden md:flex justify-center my-4 gap-3">
+        {Array.from({
+          length: Math.ceil(trips.length / slidesPerView),
+        }).map((_, index) => {
+          const activeDot = Math.floor(
+            (current % trips.length) / slidesPerView,
+          );
+
+          return (
+            <button
+              key={index}
+              onClick={() => {
+                setCurrent(index * slidesPerView);
+
+                setTransition(true);
+              }}
+              className={`rounded-full transition-all duration-300 ${
+                activeDot === index
+                  ? "bg-[#d97129] w-3 h-3 scale-125"
+                  : "bg-[#c4c4c4] w-2 h-2"
+              }`}
+            />
+          );
+        })}
+      </div>
+    </>
+  );
+};

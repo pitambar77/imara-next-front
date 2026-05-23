@@ -7,7 +7,7 @@ import { format } from "date-fns";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import "./calendar.css";
-import { FaCalendarDays } from "react-icons/fa6";
+import { CalendarDays } from "lucide-react";
 
 export default function TravelDatePicker({ value, onChange }) {
   const [showPicker, setShowPicker] = useState(false);
@@ -60,7 +60,7 @@ export default function TravelDatePicker({ value, onChange }) {
         onClick={handleOpen}
         className="border border-gray-100 p-3 text-sm text-gray-600  rounded cursor-pointer bg-white flex items-center gap-3  "
       >
-        <FaCalendarDays className="text-sm text-gray-600" />
+        <CalendarDays className="text-sm text-gray-600" />
 
         {format(selectedDate, "EEE dd MMM yyyy")}
       </div>

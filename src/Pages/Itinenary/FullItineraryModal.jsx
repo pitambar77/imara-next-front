@@ -1,9 +1,5 @@
-
-
 import React, { useState } from "react";
-import { IoLocation } from "react-icons/io5";
-  import { FaHome } from "react-icons/fa";
-
+import { House, MapPin } from "lucide-react";
 
 const FullItineraryModal = ({ days, mode, onClose }) => {
   const [activeTab, setActiveTab] = useState("itinerary");
@@ -37,7 +33,7 @@ const FullItineraryModal = ({ days, mode, onClose }) => {
                 : "bg-white text-[#444]"
             }`}
           >
-            <IoLocation />
+            <MapPin size={18} />
             <span className="hidden sm:inline">Map View</span>
           </button>
 
@@ -95,7 +91,7 @@ const FullItineraryModal = ({ days, mode, onClose }) => {
 
               {day.accommodationName && (
                 <p className="mt-2 text-[#d87028] font-semibold flex items-center gap-2 text-sm sm:text-base">
-                  <FaHome className="text-base sm:text-lg" />
+                  <House size={18} className="text-base sm:text-lg" />
                   {day.accommodationName}
                 </p>
               )}

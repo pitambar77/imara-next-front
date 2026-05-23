@@ -2,11 +2,10 @@
 import React from "react";
 
 import Banner from "@/components/Banner";
-
-import { FaStar } from "react-icons/fa";
 import BlogCategoryCard from "./BlogCategoryCard";
 import TailormadeSection from "@/Pages/Home/TailormadeSection";
 import RelatedBlogCard from "./RelatedBlogCard";
+import { Star } from "lucide-react";
 
 const BlogLanding = ({ blogs }) => {
   return (
@@ -23,11 +22,11 @@ const BlogLanding = ({ blogs }) => {
                    <span>RATED 5 / 5</span>
      
                    <div className="flex items-center gap-1 text-yellow-300">
-                     <FaStar />
-                     <FaStar />
-                     <FaStar />
-                     <FaStar />
-                     <FaStar />
+                     <Star size={18} className="fill-yellow-300" />
+                     <Star size={18} className="fill-yellow-300" />
+                     <Star size={18} className="fill-yellow-300" />
+                     <Star size={18} className="fill-yellow-300" />
+                     <Star size={18} className="fill-yellow-300" />
                    </div>
                  </div>
      

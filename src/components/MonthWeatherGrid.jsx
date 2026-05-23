@@ -1,5 +1,5 @@
+import { CloudRainWind, Sun } from "lucide-react";
 import React from "react";
-import { IoSunny,IoRainyOutline } from "react-icons/io5";
 
 const MonthWeatherGrid = ({ data }) => {
   return (
@@ -24,7 +24,7 @@ const MonthWeatherGrid = ({ data }) => {
             className="bg-[#fddac5] py-6 border-2 border-white flex flex-col items-center"
           >
             <span className="text-3xl text-[#ffa127]">
-              <IoSunny />
+              <Sun/>
             </span>
             <p className="font-semibold text-[#333] mt-2">{item.temp}</p>
           </div>
@@ -38,7 +38,7 @@ const MonthWeatherGrid = ({ data }) => {
             key={index}
             className="bg-[#fddac5] py-6 border-2 border-white flex flex-col items-center"
           >
-            <span className="text-3xl text-[#5698c1]"><IoRainyOutline /></span>
+            <span className="text-3xl text-[#5698c1]"><CloudRainWind /></span>
             <p className="font-semibold text-[#333] mt-2">{item.rain}</p>
           </div>
         ))}

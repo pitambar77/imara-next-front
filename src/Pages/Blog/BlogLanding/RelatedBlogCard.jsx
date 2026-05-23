@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { FaRegCalendarAlt } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
+import { CalendarDays } from "lucide-react";
 
 const RelatedBlogCard = ({
   title,
@@ -111,8 +111,8 @@ const RelatedBlogCard = ({
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <FaRegCalendarAlt
-                      className="text-[16px]"
+                 <CalendarDays
+                    size={18}
                       style={{ color: primaryColor }}
                     />
                     <span className="uppercase text-xs md:text-sm font-medium text-[#444]">

@@ -2,8 +2,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 // import API from "../../api/axios";
 import TripCard from "../../components/TripCard";
-import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 import TripQuickViewModal from "../../components/TripQuickViewModal";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 /* ================= REGIONS ================= */
 
@@ -144,7 +144,7 @@ const TripsWithFilters = ({
                   className="flex justify-between items-center cursor-pointer shadow bg-gray-50 p-3 w-full font-semibold"
                 >
                   {category}
-                  {openSection === "region" ? <FaAngleUp /> : <FaAngleDown />}
+                  {openSection === "region" ? <ChevronUp /> : <ChevronDown />}
                 </button>
 
                 {openSection === "region" && (
@@ -176,7 +176,7 @@ const TripsWithFilters = ({
                   className="flex justify-between items-center  cursor-pointer bg-gray-50 p-3 w-full font-semibold"
                 >
                   Itinerary Lengths
-                  {openSection === "days" ? <FaAngleUp /> : <FaAngleDown />}
+                  {openSection === "days" ? <ChevronUp /> : <ChevronDown />}
                 </button>
 
                 {openSection === "days" && (
@@ -209,7 +209,7 @@ const TripsWithFilters = ({
                   className="flex justify-between items-center cursor-pointer bg-gray-50 p-3 w-full font-semibold"
                 >
                   Travel Style
-                  {openSection === "style" ? <FaAngleUp /> : <FaAngleDown />}
+                  {openSection === "style" ? <ChevronUp /> : <ChevronDown />}
                 </button>
 
                 {openSection === "style" && (

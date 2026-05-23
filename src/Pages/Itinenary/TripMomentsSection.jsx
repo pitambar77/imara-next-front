@@ -1,3 +1,4 @@
+import { ChevronLeft, ChevronRight, Maximize, X } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import {
   FaExpand,
@@ -75,7 +76,7 @@ const TripMomentsSection = ({ experience = [] }) => {
               onClick={() => openModal(index)}
               className="absolute top-3 right-3 bg-black/50 rounded-full p-2"
             >
-              <FaExpand className="text-white text-[14px]" />
+              <Maximize size={18} className="text-white" />
             </div>
 
             <div className="absolute  bottom-0 w-full bg-gradient-to-t from-black/100 to-transparent text-white px-4 py-3 text-[14px]">
@@ -116,7 +117,7 @@ const TripMomentsSection = ({ experience = [] }) => {
         cursor-pointer
       "
             >
-              <FaTimes size={18} />
+              <X size={18} strokeWidth={4} />
             </button>
 
             {/* MODAL */}
@@ -240,7 +241,7 @@ const TripMomentsSection = ({ experience = [] }) => {
         duration-300
       "
             >
-              <FaChevronLeft />
+              <ChevronLeft />
             </button>
 
             <button
@@ -261,7 +262,7 @@ const TripMomentsSection = ({ experience = [] }) => {
         duration-300
       "
             >
-              <FaChevronRight />
+              <ChevronRight />
             </button>
 
             {/* MOBILE NAV */}
@@ -278,7 +279,7 @@ const TripMomentsSection = ({ experience = [] }) => {
           duration-300
         "
               >
-                <FaChevronLeft />
+                <ChevronLeft />
               </button>
 
               <button
@@ -293,7 +294,7 @@ const TripMomentsSection = ({ experience = [] }) => {
           duration-300
         "
               >
-                <FaChevronRight />
+                <ChevronRight />
               </button>
             </div>
           </div>

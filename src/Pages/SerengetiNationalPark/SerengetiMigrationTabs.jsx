@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { FaGlobeAfrica } from "react-icons/fa";
-
 import Image from "next/image";
+import { Earth } from "lucide-react";
 
-const icons = [<FaGlobeAfrica />];
+const icons = [<Earth />];
 
 const SerengetiMigrationTabs = ({ data = [] }) => {
   if (!Array.isArray(data) || !data.length) return null;

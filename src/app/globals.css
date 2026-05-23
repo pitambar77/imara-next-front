@@ -7,13 +7,8 @@
   --font-avenir: "AvenirRegular", sans-serif;
 }
 
-/* @import "leaflet/dist/leaflet.css"; */
-/* @import "swiper/css";
-@import "swiper/css/navigation";
-@import "swiper/css/pagination"; */
-
-/* Custom Swiper pagination style */
-.custom-swiper .swiper-pagination {
+/* 23/05/*/
+/* .custom-swiper .swiper-pagination {
   bottom: 30px !important;
 }
 
@@ -31,7 +26,7 @@
   background: white;
   border-color: white;
   transform: scale(1.2);
-}
+} */
 
 @keyframes fadeIn {
   from {
@@ -270,32 +265,7 @@ html {
   margin-bottom: 1rem;
 }
 
-/* .rich-text h1 {
-  font-size: 42px !important;
-}
 
-.rich-text h2 {
-  font-size: 36px !important;
-  margin-top: 3rem;
-}
-
-.rich-text h3 {
-  font-size: 28px !important;
-  margin-top: 2rem;
-}
-
-.rich-text h4 {
-  font-size: 24px !important;
-  margin-top: 1.5rem;
-}
-
-.rich-text h5 {
-  font-size: 20px !important;
-}
-
-.rich-text h6 {
-  font-size: 18px !important;
-} */
 
 .rich-text h1 {
   font-size: clamp(32px, 5vw, 42px) !important;
@@ -377,25 +347,6 @@ html {
   line-height: 1.8;
 }
 
-/* .rich-text ul {
-  list-style: disc;
-  margin-left: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.rich-text ol {
-  list-style: decimal;
-  margin-left: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.rich-text li {
-  margin-bottom: 0.5rem;
-} */
-
-/* ===========================
-   QUOTE BOX
-=========================== */
 
 .quote-box,
 .quote-box p,

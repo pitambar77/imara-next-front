@@ -1,6 +1,6 @@
 import React from "react";
-import { FaClock, FaAward } from "react-icons/fa";
 import Image from "next/image";
+import { Clock, ShieldCog } from "lucide-react";
 
 const OffTheRoadSection = () => {
   return (
@@ -23,7 +23,7 @@ const OffTheRoadSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-6xl mx-auto mt-20">
           {/* === Left Column - 24/7 Support Teams === */}
           <div className="flex flex-col items-center text-center">
-            <FaClock className="text-[#d76e28] text-5xl mb-6" />
+            <Clock size={48} className="text-[#d76e28] mb-6" />
             <h3 className="text-[20px] md:text-3xl font-extrabold text-[#111] mb-4">
               24/7 Assistance
             </h3>
@@ -37,7 +37,7 @@ const OffTheRoadSection = () => {
           {/* === Right Column - Welfare Officers === */}
           <div className="flex flex-col items-center text-center">
             <div className="relative">
-              <FaAward className="text-[#d76e28] text-5xl mb-6" />
+            <ShieldCog size={48} className="text-[#d76e28] mb-6" />
               {/* <span className="absolute top-[-8px] right-[-14px] text-[#e63946] text-xl">❤</span> */}
             </div>
             <h3 className="text-[20px] md:text-3xl font-extrabold text-[#111] mb-4">

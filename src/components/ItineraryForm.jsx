@@ -6,9 +6,9 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
 import { isValidPhoneNumber } from "libphonenumber-js";
-import { FaChevronDown } from "react-icons/fa";
 import axios from "axios";
 import { FaCheck } from "react-icons/fa";
+import { Check, ChevronDown } from "lucide-react";
 
 export default function ItineraryForm({
   formType = "Itinerary",
@@ -302,7 +302,7 @@ export default function ItineraryForm({
                   ))}
                 </select>
                 {/* Custom Icon */}
-                <FaChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
               </div>
             </div>
 
@@ -325,7 +325,7 @@ export default function ItineraryForm({
                 </select>
 
                 {/* Custom Icon */}
-                <FaChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
               </div>
             </div>
 
@@ -364,7 +364,7 @@ export default function ItineraryForm({
                   <p className="text-red-500 text-sm mt-1">{errors.tourType}</p>
                 )}
                 {/* Custom Icon */}
-                <FaChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
               </div>
             </div>
 
@@ -383,7 +383,7 @@ export default function ItineraryForm({
         </div>
         {/* <p className=" py-4">By clicking 'Send', you agree to our <a className=" text-[#da7228]" target="blanck" href="https://imarakilelenisafaris.com/privacy-policy"> Privacy Policy.</a> </p> */}
         <p className="py-2 flex items-start gap-2 text-sm sm:text-[15px] text-gray-700 leading-relaxed">
-          <FaCheck className="text-green-500 mt-1 flex-shrink-0" />
+          <Check size={20} strokeWidth={3} className="text-green-500  flex-shrink-0" />
 
           <span>
             By clicking 'Enquire', you agree to our{" "}

@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: 'AcuminPro';
   src: url('/fonts/fonnts.com-AcuminPro-Black.ttf') format('truetype');
   font-weight: normal;
@@ -44,6 +44,54 @@
   font-family: "AvenirLight";
   src: url("/fonts/avenir/avenir-next-light.ttf")
     format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+} */
+
+@font-face {
+  font-family: "AcuminPro";
+  src: url("/fonts/fonnts.com-AcuminPro-Black.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "fonnts.com-AcuminPro-Bold";
+  src: url("/fonts/fonnts.com-AcuminPro-Bold.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Soleil";
+  src: url("/fonts/soleil/fonnts.com-SoleilRegular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AvenirRegular";
+  src: url("/fonts/avenir/Avenir Next LT Pro Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AvenirDemi";
+  src: url("/fonts/avenir/Avenir Next LT Pro Demi.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AvenirLight";
+  src: url("/fonts/avenir/avenir-next-light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;

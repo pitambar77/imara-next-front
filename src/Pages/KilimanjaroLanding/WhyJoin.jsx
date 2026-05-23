@@ -1,5 +1,5 @@
+import { CircleCheck } from "lucide-react";
 import React from "react";
-import { FaCheckCircle } from "react-icons/fa";
 
 const WhyJoinSection = () => {
   return (
@@ -50,7 +50,7 @@ const WhyJoinSection = () => {
 // Reusable Item Component
 const Benefit = ({ text }) => (
   <div className="flex items-start gap-4">
-    <FaCheckCircle className="text-[#d87328] text-xl flex-shrink-0" />
+    <CircleCheck className="fill-[#d87328] text-white mt-0.5  flex-shrink-0" />
     <p className="text-[16px] text-[#111]  leading-relaxed">
       {text}
     </p>

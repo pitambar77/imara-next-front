@@ -1,11 +1,11 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { FiSearch } from "react-icons/fi";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import imaralogo from "@/assets/imaralogo.png";
+import { Search } from "lucide-react";
 
 export default function SearchContent() {
   const searchParams = useSearchParams();
@@ -132,7 +132,7 @@ export default function SearchContent() {
           type="submit"
           className="bg-[#d87029] hover:bg-[#ed9458] cursor-pointer text-white px-6 py-2 rounded-md flex items-center gap-3 transition"
         >
-          <FiSearch size={20} />
+         <Search size={18} />
           Search
         </button>
       </form>
