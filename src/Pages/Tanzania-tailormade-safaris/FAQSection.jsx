@@ -5,28 +5,51 @@ import Image from "next/image";
 
 const faqs = [
   {
-    q: "When is the best time to visit Tanzania for a safari?",
-    a: "Tanzania is a year-round destination. The Great Migration river crossings are at their most dramatic July–October in the northern Serengeti. The calving season (January–March) in the Ndutu Plains is equally spectacular. The dry seasons (June–October) offer the best game viewing across Tarangire, Lake Manyara and the Ngorongoro Crater. The green season (November–May) has fewer crowds, lush scenery and excellent bird life.",
+    q: "Are your safaris private or group tours?",
+    a: "All our safaris are private and tailor-made. Your journey is designed around your interests, travel style, pace, and preferred experiences — no shared buses or fixed group schedules.",
   },
+
   {
-    q: "How far in advance should I book?",
-    a: "We recommend booking 6–12 months in advance for peak seasons.",
+    q: "Which Tanzania destinations do you specialize in?",
+    a: "We curate safaris across Tanzania’s most iconic destinations, including <strong>Serengeti National Park, Ngorongoro Crater, Tarangire, Lake Manyara, Zanzibar, Ruaha, and Nyerere National Park (Selous)</strong>.",
   },
+
   {
-    q: "Is Tanzania safe for US travelers?",
-    a: "Yes, Tanzania is considered safe with proper guidance.",
+    q: "Can you customize my itinerary?",
+    a: "Absolutely. Every traveller is different. Whether you're planning a <strong>luxury safari, honeymoon, family adventure, migration safari, or beach & bush escape</strong>, we tailor the experience around you.",
   },
+
   {
-    q: "Do I need vaccinations or a visa?",
-    a: "Most travelers need a visa and recommended vaccinations.",
+    q: "What is included in your safari packages?",
+    a: "Most safari packages typically include:",
+    list: [
+      "Accommodation",
+      "Private safari vehicle & professional guide",
+      "Park fees",
+      "Meals as mentioned in the itinerary",
+      "Airport transfers",
+      "Internal arrangements as specified",
+    ],
+    bottom:
+      "Your proposal will clearly outline all inclusions and exclusions before booking.",
   },
+
   {
-    q: "What makes Wild Voyager different from other operators?",
-    a: "We focus on fully customized luxury experiences.",
+    q: "When is the best time to visit Tanzania?",
+    a: "Tanzania is a year-round safari destination. The best timing depends on your travel goals:",
+    list: [
+      "<strong>June – October:</strong> Best for wildlife viewing & dry season safaris",
+      "<strong>December – March:</strong> Calving season & migration experiences",
+      "<strong>January – February:</strong> Excellent for Serengeti migration births",
+      "<strong>Zanzibar:</strong> Great throughout much of the year",
+    ],
+    bottom:
+      "We’ll always recommend the best season based on your safari priorities.",
   },
+
   {
-    q: "Should I combine my Tanzania safari with Zanzibar?",
-    a: "Yes, it's a perfect combination of safari + beach.",
+    q: "Why travel with Imara Kileleni Safaris?",
+    a: "Because we focus on <strong>personalized planning, authentic Tanzania experiences, expert local knowledge, and seamless service</strong> — creating safaris that feel deeply memorable, not mass-produced.",
   },
 ];
 
@@ -142,10 +165,51 @@ export default function FAQSection() {
                 </button>
 
                 {/* Answer */}
-                {openIndex === i && (
+                {/* {openIndex === i && (
                   <p className=" !font-avenir text-[#444] mt-4 leading-7">
                     {item.a}
                   </p>
+                )} */}
+                {/* Answer */}
+                {openIndex === i && (
+                  <div className="mt-4">
+                    {/* Main Answer */}
+                    {item.a && (
+                      <p
+                        className="!font-avenir text-[#444] leading-7"
+                        dangerouslySetInnerHTML={{ __html: item.a }}
+                      />
+                    )}
+
+                    {/* List */}
+                    {item.list && (
+                      <ul className="mt-4 space-y-2 ml-4">
+                        {item.list.map((listItem, idx) => (
+                          <li
+                            key={idx}
+                            className="flex items-start gap-3"
+                          >
+                            <span className="text-[#d87029] text-lg ">
+                              •
+                            </span>
+
+                            <span
+                              className="!font-avenir text-[#444] leading-7"
+                              dangerouslySetInnerHTML={{ __html: listItem }}
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {/* Bottom Text */}
+                    {item.bottom && (
+                      <p
+                        className="!font-avenir text-[#444] leading-7 mt-4"
+                        dangerouslySetInnerHTML={{ __html: item.bottom }}
+                      />
+                    )}
+                  </div>
                 )}
               </div>
             ))}

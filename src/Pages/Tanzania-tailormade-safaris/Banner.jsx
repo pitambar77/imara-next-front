@@ -1,5 +1,3 @@
-
-
 import Image from "next/image";
 import React from "react";
 
@@ -11,14 +9,15 @@ import Link from "next/link";
 const brands = [
   { id: 1, name: "ATTA", img: atta, link: "" },
   { id: 2, name: "SafariBookings", img: asta, link: "" },
-  { id: 3, name: "TATO", img: atta, link: "" },
+  { id: 3, name: "TATO", img: "/tra.png", link: "" },
   {
     id: 4,
     name: "Tripadvisor",
-    img: asta,
+    img: "/tripadvisor.png",
     link: "https://www.tripadvisor.com/Attraction_Review-g317084-d34222480-Reviews-Imara_Kileleni_Safaris-Moshi_Kilimanjaro_Region.html",
+    rating:"Rated 5.0/5"
   },
-  { id: 5, name: "KPAP", img: asta, link: "" },
+  { id: 5, name: "KPAP", img: "/tulstip.png", rating:"TrustScore 4.6/5", link: "" },
 ];
 
 const Banner = () => {
@@ -26,7 +25,7 @@ const Banner = () => {
     <section className="relative h-screen w-full overflow-x-hidden">
       {/* Background Image */}
       <Image
-        src="https://images.unsplash.com/photo-1580145575237-75fec2a0320b?fm=jpg&q=60&w=3000&auto=format&fit=crop"
+        src={"/tanzania-tailormade-landing-n.webp"}
         alt="Safari"
         fill
         priority
@@ -83,17 +82,16 @@ const Banner = () => {
       {/* Center Content */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center text-white px-4">
         <h1 className="text-4xl md:text-5xl lg:text-7xl tracking-wide mb-4 !font-cormorant font-normal">
-          Your Private Tanzania <br className="hidden md:block" />
-          Safari
+          Luxury Tanzania Safaris
         </h1>
 
         <h2 className="hidden md:block text-lg md:text-2xl lg:text-4xl !font-cormorant italic text-[#e99b64] mb-4">
-          Fully Planned, Zero Stress
+          Travel Tanzania in exceptional comfort.
         </h2>
 
         <p className="hidden md:block text-lg md:text-xl mb-4 md:mb-6 max-w-2xl !font-avenir">
-          We handle everything, from the moment you land Tanzania till you board
-          your flight back home.
+          Discover Tanzania’s iconic wildlife destinations with fully customized
+          safari journeys.
         </p>
 
         {/* Buttons */}
@@ -105,7 +103,7 @@ const Banner = () => {
             }}
             className="font-avenir text-sm md:text-base bg-[#d87028] text-white px-[21px] py-2.5 rounded-full font-semibold hover:bg-[#eb8034de] transition cursor-pointer"
           >
-            Plan My Safari →
+           Get My Custom Safari →
           </button>
 
           <button
@@ -162,6 +160,7 @@ const Banner = () => {
                 height={80}
                 className="opacity-80 hover:opacity-100 transition"
               />
+             <p className=" text-center text-[#eac0a4] text-[10px] mt-2">{brand.rating}</p> 
             </a>
           ))}
         </div>

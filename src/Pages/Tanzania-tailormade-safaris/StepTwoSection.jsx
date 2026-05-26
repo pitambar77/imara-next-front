@@ -2,27 +2,26 @@
 
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-
+import { useRouter } from "next/navigation";
 import { isValidPhoneNumber } from "libphonenumber-js";
 import { useState, useRef, useEffect } from "react";
 import TravelDatePicker from "./TravelDatePicker";
-// import { useSearchParams } from "next/navigation";
-// const options = [
-//   "Best of Tanzania Safari and Beach Escape",
-//   "Great Migration & Big Cats Safaris",
-//   "Serengeti National park",
-//   "Lake Manyara",
-// ];
+
 
 const options = [
-  { label: "Serengeti National Park", value: "serengeti" },
-  { label: "Ngorongoro Crater", value: "ngorongoro" },
-  { label: "Lake Manyara", value: "lake-manyara" },
+  { label: "Serengeti National Park", value: "Serengeti National Park" },
+  { label: "Ngorongoro Crater", value: "Ngorongoro Crater" },
+  { label: "Tarangire National Park", value: "Tarangire National Park" },
   {
-    label: "Best of Tanzania Safari and Beach Escape",
-    value: "Best_of_Tanzania_Safari_and_Beach_Escape",
+    label: "Lake Manyarak",
+    value: "Lake Manyara",
   },
-  { label: "Great Migration & Big Cats Safaris", value: "Great_Migration" },
+  { label: "Zanzibar", value: "Zanzibar" },
+  { label: "Mount Kilimanjaro", value: "Mount Kilimanjaro" },
+  {
+    label: "Not Sure — Need Expert Advice",
+    value: "Not Sure — Need Expert Advice",
+  },
 ];
 
 export default function StepTwoSection({ selectedDestinations }) {
@@ -48,7 +47,7 @@ export default function StepTwoSection({ selectedDestinations }) {
 
   const dropdownRef = useRef(null);
 
-  // const searchParams = useSearchParams();
+  const router = useRouter();
 
   const fieldRefs = {
     name: useRef(null),
@@ -69,23 +68,6 @@ export default function StepTwoSection({ selectedDestinations }) {
     }
   }, [selectedDestinations]);
 
-  // useEffect(() => {
-  //   const data = searchParams.get("destinations");
-
-  //   if (data) {
-  //     try {
-  //       const parsed = JSON.parse(decodeURIComponent(data));
-
-  //       setFormData((prev) => ({
-  //         ...prev,
-  //         destination: parsed,
-  //       }));
-  //     } catch (err) {
-  //       console.error("Invalid data", err);
-  //     }
-  //   }
-  // }, []);
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -99,43 +81,6 @@ export default function StepTwoSection({ selectedDestinations }) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  // const validateForm = () => {
-  //   const newErrors = {};
-
-  //   if (!formData.name.trim()) newErrors.name = "Name is required";
-
-  //   if (!formData.phone) newErrors.phone = "Phone number is required";
-
-  //   if (!formData.email.trim()) {
-  //     newErrors.email = "Email is required";
-  //   } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-  //     newErrors.email = "Invalid email";
-  //   }
-
-  //   if (!formData.destination)
-  //     newErrors.destination = "Please select a destination";
-
-  //   if (!formData.travelDate)
-  //     newErrors.travelDate = "Please select a travel date";
-
-  //   if (!formData.days || formData.days < 1)
-  //     newErrors.days = "Please enter number of days";
-  //   if (!formData.tourType) newErrors.tourType = "Please select a travel date";
-
-  //   setErrors(newErrors);
-
-  //   // scroll to first error
-  //   const firstError = Object.keys(newErrors)[0];
-  //   if (firstError && fieldRefs[firstError]?.current) {
-  //     fieldRefs[firstError].current.scrollIntoView({
-  //       behavior: "smooth",
-  //       block: "center",
-  //     });
-  //     fieldRefs[firstError].current.focus();
-  //   }
-
-  //   return Object.keys(newErrors).length === 0;
-  // };
 
   const validateForm = () => {
     const newErrors = {};
@@ -239,10 +184,24 @@ export default function StepTwoSection({ selectedDestinations }) {
     try {
       setLoading(true);
 
-      // 🔥 Replace with your API
-      console.log("Form Data:", formData);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE}/api/tanzania-tailormade-safari`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        },
+      );
 
-      alert("Form submitted successfully!");
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Something went wrong");
+      }
+
+      router.push("/thank-you");
 
       // reset form
       setFormData({
@@ -356,19 +315,7 @@ export default function StepTwoSection({ selectedDestinations }) {
               {/* Tier */}
               <div>
                 <label className="label">Safari Tier Interest *</label>
-                {/* <select
-                  name="destination"
-                  value={formData.destination}
-                  onChange={handleChange}
-                  ref={fieldRefs.destination}
-                  className="input"
-                >
-                  <option>Select a tier</option>
-                  <option>Best of Tanzania Safari and Beach Escape</option>
-                  <option>Great Migration & Big Cats Safaris</option>
-                  <option>Serengeti National park</option>
-                  <option>Lake Manyara</option>
-                </select> */}
+
                 <div className="relative" ref={dropdownRef}>
                   <div
                     onClick={() => setOpen((prev) => !prev)}
@@ -396,25 +343,12 @@ export default function StepTwoSection({ selectedDestinations }) {
                     <div className="absolute w-full mt-1 bg-white border border-[#e5ded6] rounded-md shadow z-10 max-h-60 overflow-auto">
                       {options.map((item) => (
                         <label
-                          key={item}
+                          key={item.value}
                           className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer"
                         >
                           <input
                             type="checkbox"
                             checked={formData.destination.includes(item.value)}
-                            // onChange={() => {
-                            //   setFormData((prev) => ({
-                            //     ...prev,
-                            //     destination: prev.destination.includes(item)
-                            //       ? prev.destination.filter((v) => v !== item)
-                            //       : [...prev.destination, item],
-                            //   }));
-
-                            //   setErrors((prev) => ({
-                            //     ...prev,
-                            //     destination: "",
-                            //   }));
-                            // }}
                             onChange={() => {
                               const value = item.value;
                               setFormData((prev) => ({

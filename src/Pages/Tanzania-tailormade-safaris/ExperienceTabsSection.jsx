@@ -3,76 +3,113 @@
 import { useState } from "react";
 import Image from "next/image";
 
-const tabs = ["Experiences", "Accommodation", "Vehicle/Flights"];
+const tabs = ["Experiences", "Vehicle/Flights"];
 
 const data = {
   Experiences: [
     {
       title: "Private Game Drives",
-      tag: "HEART OF THE WILD",
-      desc: "Set out at dawn or dusk in a private land cruiser with your expert guide — tracking the Big Five across open savannah, riverbanks and acacia woodlands at your own pace.",
-      img: "https://media.istockphoto.com/id/2244811741/photo/masai-giraffe-walks-across-a-dirt-road-in-front-of-a-safari-vehicle-on-the-savannah-plains-of.jpg?s=612x612&w=0&k=20&c=FKGtQLi8vV0-C_wJWMKB4Vd55s_eEQb5v7gt449mgZY=",
+      tag: "Heart of Tanzania",
+      desc: "Venture deep into Tanzania’s iconic wilderness on private game drives through Serengeti, Ngorongoro, Tarangire, and Ruaha, guided by safari experts as you track the Big Five across endless plains and ancient landscapes.",
+      img: "/private-game-drive.jpg",
     },
     {
-      title: "Sundowner",
-      tag: "GOLDEN HOUR ESCAPE",
-      desc: "Unwind in the heart of the wilderness as the sun dips below the horizon, painting the sky in deep amber and gold—perfectly paired with handcrafted drinks and uninterrupted views.",
-      img: "https://media.istockphoto.com/id/921714004/photo/three-giraffes-under-acacia-tree.jpg?s=612x612&w=0&k=20&c=qBWHfq_x7CwQkVcMvgzudc3ODq1WAVbsedyre99Bj0w=",
+      title: "Sundowner Experience",
+      tag: "Golden Safari Moments",
+      desc: "Relax in the heart of Tanzania’s wild beauty as the African sun melts into the horizon, enjoying handcrafted drinks surrounded by sweeping savannah views and untouched wilderness.",
+      img: "/souranded-bush.webp",
     },
     {
       title: "Bush Breakfast & Dinner",
-      tag: "WILD DINING",
-      desc: "From freshly prepared breakfasts at dawn with wildlife calls in the air, to lantern-lit dinners under a canopy of stars — every meal in the bush is an experience in itself.",
-      img: "https://media.istockphoto.com/id/921714004/photo/three-giraffes-under-acacia-tree.jpg?s=612x612&w=0&k=20&c=qBWHfq_x7CwQkVcMvgzudc3ODq1WAVbsedyre99Bj0w=",
+      tag: "Flavours of the Bush",
+      desc: "Experience unforgettable dining in Tanzania’s wilderness — from sunrise breakfasts amidst the sounds of nature to elegant lantern-lit dinners beneath the vast African sky.",
+      img: "/bush-breakfast.jpg",
     },
     {
       title: "Balloon Safari",
-      tag: "SKYLINE SAFARI",
-      desc: "From freshly prepared breakfasts at dawn with wildlife calls in the air, to lantern-lit dinners under a canopy of stars — every meal in the bush is an experience in itself.",
-      img: "https://media.istockphoto.com/id/921714004/photo/three-giraffes-under-acacia-tree.jpg?s=612x612&w=0&k=20&c=qBWHfq_x7CwQkVcMvgzudc3ODq1WAVbsedyre99Bj0w=",
+      tag: "Above the Serengeti",
+      desc: "Float silently above the legendary Serengeti plains at sunrise, witnessing breathtaking aerial views of roaming wildlife, the Great Migration routes, and endless golden landscapes.",
+      img: "/ballon-safari.jpg",
     },
     {
       title: "Maasai Village Visit",
-      tag: "CULTURAL IMMERSION",
-      desc: "From freshly prepared breakfasts at dawn with wildlife calls in the air, to lantern-lit dinners under a canopy of stars — every meal in the bush is an experience in itself.",
-      img: "https://media.istockphoto.com/id/2244811741/photo/masai-giraffe-walks-across-a-dirt-road-in-front-of-a-safari-vehicle-on-the-savannah-plains-of.jpg?s=612x612&w=0&k=20&c=FKGtQLi8vV0-C_wJWMKB4Vd55s_eEQb5v7gt449mgZY=",
+      tag: "Authentic Tanzania Culture",
+      desc: "Connect with Tanzania’s rich heritage through an authentic Maasai cultural experience, discovering traditional customs, vibrant ceremonies, storytelling, and centuries-old pastoral traditions.",
+      img: "/massai-village.webp",
     },
     {
       title: "Walking Safari",
-      tag: "INTO THE WILD",
-      desc: "From freshly prepared breakfasts at dawn with wildlife calls in the air, to lantern-lit dinners under a canopy of stars — every meal in the bush is an experience in itself.",
-      img: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+      tag: "Walk the Tanzanian Wilderness",
+      desc: "Step beyond the safari vehicle and explore Tanzania’s untamed bush on foot, guided by experienced naturalists who reveal hidden wildlife tracks, native flora, and the finer details of the ecosystem.",
+      img: "/safri-walking-1.jpg",
     },
   ],
 
-  Accommodation: [
-    {
-      title: "Luxury Lodges",
-      tag: "PREMIUM STAY",
-      desc: "From freshly prepared breakfasts at dawn with wildlife calls in the air, to lantern-lit dinners under a canopy of stars — every meal in the bush is an experience in itself.",
-      img: "https://media.istockphoto.com/id/921714004/photo/three-giraffes-under-acacia-tree.jpg?s=612x612&w=0&k=20&c=qBWHfq_x7CwQkVcMvgzudc3ODq1WAVbsedyre99Bj0w=",
-    },
-    {
-      title: "Tented Camps",
-      tag: "AUTHENTIC EXPERIENCE",
-      desc: "From freshly prepared breakfasts at dawn with wildlife calls in the air, to lantern-lit dinners under a canopy of stars — every meal in the bush is an experience in itself.",
-      img: "https://media.istockphoto.com/id/921714004/photo/three-giraffes-under-acacia-tree.jpg?s=612x612&w=0&k=20&c=qBWHfq_x7CwQkVcMvgzudc3ODq1WAVbsedyre99Bj0w=",
-    },
-  ],
+  // Accommodation: [
+  //   {
+  //     title: "Luxury Lodges",
+  //     tag: "PREMIUM STAY",
+  //     desc: "From freshly prepared breakfasts at dawn with wildlife calls in the air, to lantern-lit dinners under a canopy of stars — every meal in the bush is an experience in itself.",
+  //     img: "https://media.istockphoto.com/id/921714004/photo/three-giraffes-under-acacia-tree.jpg?s=612x612&w=0&k=20&c=qBWHfq_x7CwQkVcMvgzudc3ODq1WAVbsedyre99Bj0w=",
+  //   },
+  //   {
+  //     title: "Tented Camps",
+  //     tag: "AUTHENTIC EXPERIENCE",
+  //     desc: "From freshly prepared breakfasts at dawn with wildlife calls in the air, to lantern-lit dinners under a canopy of stars — every meal in the bush is an experience in itself.",
+  //     img: "https://media.istockphoto.com/id/921714004/photo/three-giraffes-under-acacia-tree.jpg?s=612x612&w=0&k=20&c=qBWHfq_x7CwQkVcMvgzudc3ODq1WAVbsedyre99Bj0w=",
+  //   },
+  // ],
 
   "Vehicle/Flights": [
     {
-      title: "Private Safari Vehicles",
-      tag: "COMFORT TRAVEL",
-      desc: "From freshly prepared breakfasts at dawn with wildlife calls in the air, to lantern-lit dinners under a canopy of stars — every meal in the bush is an experience in itself.",
-      img: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+      title: "Unfiltered Tanzania Wilderness",
+      tag: "Open Vehicle",
+      desc: "Completely open and immersive — experience Tanzania’s iconic wilderness with uninterrupted views across Serengeti, Tarangire, and Ngorongoro, ideal for photography and authentic safari moments.",
+      img: "/open-vechile-tanzania.webp",
     },
     {
-      title: "Bush Flights",
-      tag: "FAST ACCESS",
-      desc: "From freshly prepared breakfasts at dawn with wildlife calls in the air, to lantern-lit dinners under a canopy of stars — every meal in the bush is an experience in itself.",
-      img: "https://media.istockphoto.com/id/2244811741/photo/masai-giraffe-walks-across-a-dirt-road-in-front-of-a-safari-vehicle-on-the-savannah-plains-of.jpg?s=612x612&w=0&k=20&c=FKGtQLi8vV0-C_wJWMKB4Vd55s_eEQb5v7gt449mgZY=",
+      title: "Comfort Meets Adventure",
+      tag: "Semi-Open Vehicle",
+      desc: "Designed for balanced comfort, featuring large sliding windows and partial openings — offering exceptional wildlife viewing while protecting you from dust, sun, and changing safari conditions.",
+      img: "/semi-open-vechicle.webp",
     },
+    {
+      title: "Relaxed Safari Journey",
+      tag: "Closed Vehicle",
+      desc: "Fully enclosed with panoramic windows — comfortable, secure, and perfect for extended game drives through Tanzania’s diverse landscapes and wildlife-rich destinations.",
+      img: "/closed-vechicle.webp",
+    },
+    {
+      title: "Wings Over Tanzania",
+      tag: "Bush Flight",
+      desc: "Fly seamlessly into Tanzania’s remote wilderness with trusted bush aviation connections, linking destinations like Serengeti, Ruaha, Selous, and Zanzibar for fast, scenic, and effortless travel.",
+      img: "/bush-flight.jpg",
+    },
+     {
+      title: "Raw Safari Freedom",
+      tag: "Open Vehicle",
+      desc: "Feel completely connected to Tanzania’s wild landscapes with open-air game drives delivering panoramic wildlife viewing, unobstructed photography, and a true safari immersion.",
+      img: "/open-vechile-1.webp",
+    },
+    {
+      title: "Refined Safari Comfort",
+      tag: "Semi-Open Vehicle",
+      desc: "Blending adventure with comfort, semi-open safari vehicles provide expansive views with added protection — ideal for exploring Tanzania’s vast national parks in style.",
+      img: "/semi-open-vechicle-1.webp",
+    },
+    {
+      title: "Protected Luxury Exploration",
+      tag: "Closed Vehicle",
+      desc: "Travel comfortably through Tanzania’s wilderness in fully enclosed safari vehicles, combining security, relaxation, and uninterrupted wildlife encounters.",
+      img: "/closed-vechicle-1.webp",
+    },
+    {
+      title: "Sky Safari Tanzania",
+      tag: "Bush Flight",
+      desc: "Connect effortlessly between Tanzania’s most spectacular safari destinations through scenic bush flights, transforming long journeys into breathtaking aerial experiences.",
+      img: "/bush-flight-1.jpg",
+    },
+    
   ],
 };
 

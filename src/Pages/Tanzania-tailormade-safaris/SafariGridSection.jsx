@@ -12,95 +12,321 @@ import { BiWorld } from "react-icons/bi";
 const trips = [
   {
     id: 1,
-    title: "Best of Tanzania Safari and Beach Escape",
-    value: "Best_of_Tanzania_Safari_and_Beach_Escape",
-    days: "10 Days 9 Nights",
-    price: "$3,800",
+    title: "Great Migration, Wildlife Adventure, Zanzibar Escape",
+    value: "Great Migration, Wildlife Adventure, Zanzibar Escape",
+    tag: "POPULAR",
+    days: "16 Days 15 Nights",
+    price: "$4,900 p.p",
     places: "7 Places",
     countries: "1 Country",
-    rating: 4.8,
-    img: "https://media.istockphoto.com/id/2244811741/photo/masai-giraffe-walks-across-a-dirt-road-in-front-of-a-safari-vehicle-on-the-savannah-plains-of.jpg?s=612x612&w=0&k=20&c=FKGtQLi8vV0-C_wJWMKB4Vd55s_eEQb5v7gt449mgZY=",
-    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
-    tag: "Beach Holiday, Wildlife Adventure",
+    motitle:
+      "Witness the Great Migration & Unwind on Zanzibar’s White-Sand Beaches",
+    motag: "Standard",
+    rating: 5,
+    img: "/great-migration-1.webp",
+    img1: "/zanzibar-white-sand.webp",
+
     itinerary: [
       { day: "Day 1", place: "Arusha" },
-      { day: "Day 2", place: "Tarangire" },
-      { day: "Day 3", place: "Ngorongoro" },
-      { day: "Day 4", place: "Serengeti" },
+      { day: "Day 2", place: "Arusha National Park" },
+      { day: "Day 3", place: "Tarangire" },
+      { day: "Day 4", place: "Lake Manyara" },
       { day: "Day 5", place: "Serengeti" },
-      { day: "Day 6", place: "Zanzibar" },
-      { day: "Day 7", place: "Arusha" },
-      { day: "Day 8", place: "Tarangire" },
-      { day: "Day 9", place: "Ngorongoro" },
-      { day: "Day 10", place: "Serengeti" },
-      { day: "Day 11", place: "Serengeti" },
+      { day: "Day 6", place: "Serengeti" },
+      { day: "Day 7", place: "Serengeti" },
+      { day: "Day 8", place: "Serengeti" },
+      { day: "Day 9", place: "Ngorongoro Highlands" },
+      { day: "Day 10", place: "Ngorongoro " },
+      { day: "Day 11", place: "Zanzibar" },
       { day: "Day 12", place: "Zanzibar" },
+      { day: "Day 13", place: "Zanzibar" },
+      { day: "Day 14", place: "Zanzibar" },
+      { day: "Day 15", place: "Zanzibar" },
+      { day: "Day 16", place: "Zanzibar" },
     ],
   },
   {
     id: 2,
-    title: "Great Migration & Big Cats Safaris",
-    value: "Great_Migration",
-    days: "7 Days 6 Nights",
-    price: "$3,200",
-    img: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
-    tag: "Wildlife Adventure",
+    title: "Big Five Safari, Cultural Encounters, Scenic Tanzania Adventure",
+    value: "Big Five Safari, Cultural Encounters, Scenic Tanzania Adventure",
+    tag: "POPULAR",
+    days: "11 Days 10 Nights",
+    price: "$3,200  p.p",
+    places: "6 Places",
+    countries: "1 Country",
+    motitle:
+      "Experience the Wild Heart of Tanzania & Timeless African Landscapes",
+    motag: "Standard",
+    rating: 5,
+    img: "/big-five.webp",
+    img1: "/big-five-1.webp",
+
+    itinerary: [
+      { day: "Day 1", place: "Arusha" },
+      { day: "Day 2", place: "Arusha National Park" },
+      { day: "Day 3", place: "Tarangire" },
+      { day: "Day 4", place: "Lake Manyara" },
+      { day: "Day 5", place: "Serengeti" },
+      { day: "Day 6", place: "Serengeti" },
+      { day: "Day 7", place: "Serengeti" },
+      { day: "Day 8", place: "Ngorongoro " },
+      { day: "Day 9", place: "Lake Eyasi" },
+      { day: "Day 10", place: "Arusha " },
+      { day: "Day 11", place: "Kilimanjaro" },
+    ],
   },
   {
     id: 3,
-    title: "Best of Tanzania Safari and Beach Escape",
-    days: "10 Days 9 Nights",
-    price: "$3,800",
-    img: "https://media.istockphoto.com/id/921714004/photo/three-giraffes-under-acacia-tree.jpg?s=612x612&w=0&k=20&c=qBWHfq_x7CwQkVcMvgzudc3ODq1WAVbsedyre99Bj0w=",
-    tag: "Beach Holiday, Wildlife Adventure",
+    title: "Great Migration, Big Five Safari, Zanzibar Beach Escape",
+    value: "Great Migration, Big Five Safari, Zanzibar Beach Escape",
+    tag: "MOST POPULAR",
+    days: "12 Days 11 Nights",
+    price: "$3,200  p.p",
+    places: "7 Places",
+    countries: "1 Country",
+    motitle:
+      "Follow the Great Migration & Relax on Zanzibar’s Turquoise Shores",
+    motag: "Standard",
+    rating: 5,
+    img: "/big-five-2.webp",
+    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+
+    itinerary: [
+      { day: "Day 1", place: "Arusha" },
+      { day: "Day 2", place: " Kilimanjaro " },
+      { day: "Day 3", place: "Tarangire" },
+      { day: "Day 4", place: "Ngorongoro " },
+      { day: "Day 5", place: "Serengeti" },
+      { day: "Day 6", place: "Serengeti" },
+      { day: "Day 7", place: "Serengeti" },
+      { day: "Day 8", place: "Ngorongoro " },
+      { day: "Day 9", place: "Zanzibar" },
+      { day: "Day 10", place: "Zanzibar " },
+      { day: "Day 11", place: "Zanzibar" },
+      { day: "Day 12", place: "Zanzibar" },
+    ],
   },
   {
     id: 4,
-    title: "Tanzania Big Five & Cultural Experience Safaris",
-    days: "6 Days 5 Nights",
-    price: "$2,900",
-    img: "https://media.istockphoto.com/id/472058123/photo/elephant-family-at-dawn-africa.jpg?s=612x612&w=0&k=20&c=grXHX9Bx8iHRc15GA9g-kwSP3l6vRnGDRNtxIrtcdzE=",
-    tag: "Wildlife Adventure",
+    title:
+      "Cultural Encounters, Rift Valley Adventure, Authentic Tanzania Safari",
+    value:
+      "Cultural Encounters, Rift Valley Adventure, Authentic Tanzania Safari",
+    tag: "ADVENTURE & CULTURE",
+    days: "7 Days 6 Nights",
+    price: "$2,450 p.p",
+    places: "6 Places",
+    countries: "1 Country",
+    motitle:
+      "Discover Tanzania’s Hidden Tribes, Crater Wonders & Remote Rift Valley Landscapes",
+    motag: "Standard",
+    rating: 5,
+    img: "/cultural-encunter.webp",
+    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+
+    itinerary: [
+      { day: "Day 1", place: "Monduli Juu" },
+      { day: "Day 2", place: "Lake Eyasi" },
+      { day: "Day 3", place: "Ngorongoro Crater" },
+      { day: "Day 4", place: "Lake Natron" },
+      { day: "Day 5", place: "Lake Natron" },
+      { day: "Day 6", place: "Mto wa Mbu" },
+      { day: "Day 7", place: "Arusha" },
+      { day: "Day 8", place: "Ngorongoro " },
+      { day: "Day 9", place: "Lake Eyasi" },
+      { day: "Day 10", place: "Arusha " },
+      { day: "Day 11", place: "Kilimanjaro" },
+    ],
   },
   {
     id: 5,
-    title: "Ultimate Wildebeest Migration & Big Five Safaris",
-    days: "8 Days 7 Nights",
-    price: "$3,800",
-    img: "https://media.istockphoto.com/id/1370705436/photo/female-traveler-contemplating-safari-trip-across-the-scenic-african-savannah.jpg?s=612x612&w=0&k=20&c=KWSF4DJvngcOJUKIzhOfge-mnO5cdF04D7f8joM4I9k=",
-    tag: "Wildlife Adventure",
+    title:
+      "Luxury Glamping, Cultural Discovery, Big Five & Rift Valley Adventure",
+    value:
+      "Luxury Glamping, Cultural Discovery, Big Five & Rift Valley Adventure",
+    tag: " PREMIUM SAFARI EXPERIENCE",
+    days: "10 Days 9 Nights",
+    price: "$4,980 p.p",
+    places: "8 Places",
+    countries: "1 Country",
+    motitle:
+      "Journey Through Tanzania’s Wild Landscapes, Ancient Cultures & Luxury Safari Escapes",
+    motag: "Luxury Glamping",
+    rating: 5,
+    img: "/big-five-3.webp",
+    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+
+    itinerary: [
+      { day: "Day 1", place: "Arusha & Monduli Highlands" },
+      { day: "Day 2", place: "Lake Manyara" },
+      { day: "Day 3", place: "Lake Eyasi" },
+      { day: "Day 4", place: "Ngorongoro" },
+      { day: "Day 5", place: "Serengeti" },
+      { day: "Day 6", place: "Serengeti" },
+      { day: "Day 7", place: "Lake Natron" },
+      { day: "Day 8", place: "Rift Valley Highland " },
+      { day: "Day 9", place: "Tarangire" },
+      { day: "Day 10", place: "Arusha " },
+    ],
   },
   {
     id: 6,
-    title: "Tanzania Big Five & Cultural Experience Safaris",
-    days: "6 Days 5 Nights",
-    price: "$2,900",
-    img: "https://media.istockphoto.com/id/2244811741/photo/masai-giraffe-walks-across-a-dirt-road-in-front-of-a-safari-vehicle-on-the-savannah-plains-of.jpg?s=612x612&w=0&k=20&c=FKGtQLi8vV0-C_wJWMKB4Vd55s_eEQb5v7gt449mgZY=",
-    tag: "Wildlife Adventure",
+    title: "Great Migration, Maasai Culture, Big Five & Highland Adventure",
+    value: "Great Migration, Maasai Culture, Big Five & Highland Adventure",
+    tag: "SIGNATURE SAFARI",
+    days: "15 Days 14 Nights",
+    price: "$6,250 p.p",
+    places: "9 Places",
+    countries: "1 Country",
+    motitle:
+      "Experience the Great Migration, Maasai Traditions & Tanzania’s Untamed Wilderness",
+    motag: "Premium Safari",
+    rating: 5,
+    img: "/big-five-4.webp",
+    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+
+    itinerary: [
+      { day: "Day 1", place: "Arusha" },
+      { day: "Day 2", place: "Arusha" },
+      { day: "Day 3", place: "Arusha" },
+      { day: "Day 4", place: "Lake Manyara" },
+      { day: "Day 5", place: "Great Rift Valley Journey" },
+      { day: "Day 6", place: "Serengeti" },
+      { day: "Day 7", place: "Serengeti" },
+      { day: "Day 8", place: "Serengeti" },
+      { day: "Day 9", place: "Serengeti" },
+      { day: "Day 10", place: "Ngorongoro" },
+      { day: "Day 11", place: "Ngorongoro" },
+      { day: "Day 12", place: "Empakaai & Olmoti " },
+      { day: "Day 13", place: "Tarangire " },
+      { day: "Day 14", place: "Tarangire " },
+      { day: "Day 15", place: "Arusha" },
+    ],
   },
   {
     id: 7,
-    title: "Best of Tanzania Safari and Beach Escape",
-    days: "10 Days 9 Nights",
-    price: "$3,800",
-    img: "https://media.istockphoto.com/id/1370705436/photo/female-traveler-contemplating-safari-trip-across-the-scenic-african-savannah.jpg?s=612x612&w=0&k=20&c=KWSF4DJvngcOJUKIzhOfge-mnO5cdF04D7f8joM4I9k=",
-    tag: "Beach Holiday, Wildlife Adventure",
+    title: "Ngorongoro Crater, Serengeti Adventure, Classic Camping Experience",
+    value: "Ngorongoro Crater, Serengeti Adventure, Classic Camping Experience",
+    tag: "BUDGET SAFARI",
+    days: "3 Days 2 Nights",
+    price: "$1200 p.p",
+    places: "4 Places",
+    countries: "1 Country",
+    motitle:
+      "Explore Tanzania’s Iconic Wildlife Parks on an Authentic Safari Adventure",
+    motag: "Budget Camping Safari",
+    rating: 5,
+    img: "/camping.webp",
+    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+
+    itinerary: [
+      { day: "Day 1", place: "Ngorongoro " },
+      { day: "Day 2", place: "Serengeti " },
+      { day: "Day 3", place: "Arusha" },
+    ],
   },
   {
     id: 8,
-    title: "Great Migration & Big Cats Safaris",
-    days: "7 Days 6 Nights",
-    price: "$3,200",
-    img: "https://media.istockphoto.com/id/2244811741/photo/masai-giraffe-walks-across-a-dirt-road-in-front-of-a-safari-vehicle-on-the-savannah-plains-of.jpg?s=612x612&w=0&k=20&c=FKGtQLi8vV0-C_wJWMKB4Vd55s_eEQb5v7gt449mgZY=",
-    tag: "Wildlife Adventure",
+    title: "Ngorongoro Crater, Serengeti Plains & Rift Valley Discovery",
+    value: "Ngorongoro Crater, Serengeti Plains & Rift Valley Discovery",
+    tag: "SIGNATURE SAFARI",
+    days: "5 Days 4 Nights",
+    price: "$2900 p.p",
+    places: "5 Places",
+    countries: "1 Country",
+    motitle:
+      "Discover Ngorongoro Crater, Serengeti Wildlife & Tanzania’s Iconic Landscapes",
+    motag: "Mid-Range Safari Experience",
+    rating: 5,
+    img: "/nagarangaro-creator.webp",
+    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+
+    itinerary: [
+      { day: "Day 1", place: "Tarangire " },
+      { day: "Day 2", place: "Ngorongoro  " },
+      { day: "Day 3", place: "Serengeti " },
+      { day: "Day 4", place: "Serengeti " },
+      { day: "Day 5", place: "Arusha " },
+    ],
   },
   {
     id: 9,
-    title: "Best of Tanzania Safari and Beach Escape",
+    title: "Tarangire, Ngorongoro Crater & Serengeti Classic Wildlife Circuit",
+    value: "Tarangire, Ngorongoro Crater & Serengeti Classic Wildlife Circuit",
+    tag: "SIGNATURE SAFARI",
+    days: "5 Days 4 Nights",
+    price: "$2200 p.p",
+    places: "3 Major National Parks ",
+    countries: "1 Country",
+    motitle:
+      "Explore Tanzania’s Iconic Parks: Big Five, Crater Safari & Serengeti Plains",
+    motag: "Classic Mid-Range Safari",
+    rating: 5,
+    img: "/tarangire-wild.webp",
+    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+
+    itinerary: [
+      { day: "Day 1", place: "Tarangire " },
+      { day: "Day 2", place: "Ngorongoro  " },
+      { day: "Day 3", place: "Serengeti " },
+      { day: "Day 4", place: "Serengeti " },
+      { day: "Day 5", place: "Arusha " },
+    ],
+  },
+  {
+    id: 10,
+    title: "Tarangire & Ngorongoro Crater Highland Retreat",
+    value: "Tarangire & Ngorongoro Crater Highland Retreat",
+    tag: "SIGNATURE SAFARI",
+    days: "7 Days 6 Nights",
+    price: "$1800 p.p",
+    places: "2 Key Safari Zones  ",
+    countries: "1 Country",
+    motitle:
+      "Discover Ngorongoro Highlands, Crater Views & Relaxed Safari Leisure",
+    motag: "Leisure Safari Experience",
+    rating: 5,
+    img: "/nagarangaro-retret.webp",
+    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+
+    itinerary: [
+      { day: "Day 1", place: "Arusha " },
+      { day: "Day 2", place: "Tarangire   " },
+      { day: "Day 3", place: "Ngorongoro  " },
+      { day: "Day 4", place: "Zanzibar " },
+      { day: "Day 5", place: "Zanzibar " },
+      { day: "Day 6", place: "Zanzibar " },
+      { day: "Day 7", place: "Zanzibar " },
+    ],
+  },
+  {
+    id: 11,
+    title: "Tarangire, Ngorongoro Crater, Serengeti & Zanzibar Escape",
+    value: "Tarangire, Ngorongoro Crater, Serengeti & Zanzibar Escape",
+    tag: "SIGNATURE SAFARI",
     days: "10 Days 9 Nights",
-    price: "$3,800",
-    img: "https://media.istockphoto.com/id/1370705436/photo/female-traveler-contemplating-safari-trip-across-the-scenic-african-savannah.jpg?s=612x612&w=0&k=20&c=KWSF4DJvngcOJUKIzhOfge-mnO5cdF04D7f8joM4I9k=",
-    tag: "Beach Holiday, Wildlife Adventure",
+    price: "$2500 p.p",
+    places: "3 Safari Parks + 1 Island",
+    countries: "1 Country",
+    motitle:
+      "Experience Tanzania’s Big Five Safari & Zanzibar’s Tropical Paradise",
+    motag: "Safari + Beach Experience",
+    rating: 5,
+    img: "/zanzibar-excape.webp",
+    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+
+    itinerary: [
+      { day: "Day 1", place: "Arusha " },
+      { day: "Day 2", place: "Tarangire   " },
+      { day: "Day 3", place: "Ngorongoro  " },
+      { day: "Day 4", place: "Serengeti " },
+      { day: "Day 5", place: "Serengeti  " },
+      { day: "Day 6", place: "Zanzibar " },
+      { day: "Day 7", place: "Zanzibar   " },
+      { day: "Day 8", place: "Zanzibar  " },
+      { day: "Day 9", place: "Zanzibar " },
+      { day: "Day 10", place: "Zanzibar  " },
+    ],
   },
 ];
 
@@ -113,12 +339,12 @@ export default function SafariGridSection({ setSelected }) {
       <div className="max-w-7xl mx-auto text-center">
         {/* Heading */}
         <h2 className=" !font-cormorant text-3xl md:text-4xl lg:text-5xl  text-center mb-4 capitalize">
-          Build Your Dream Safari
+          Signature Safari Experiences
         </h2>
 
         <p className=" !font-avenir text-center text-[#444] text-[18px] mb-8 md:mb-12 max-w-2xl mx-auto">
-          Most of our guests are planning a once-in-a-lifetime trip and prefer
-          doing it properly. If that sounds like you, you're in the right place.
+          From the Great Migration to Masai traditions, immerse in Tanzania’s
+          wildlife and landscapes for memories that last.
         </p>
 
         {/* Grid */}
@@ -217,17 +443,21 @@ export default function SafariGridSection({ setSelected }) {
             </button>
 
             <div className="grid md:grid-cols-[60%_40%] h-[90vh] p-8">
+      
               {/* LEFT */}
-              <div className="relative h-[300px] md:h-full bg-[#eee] ">
-                <Image
-                  src={activeImage || selectedTrip.img}
-                  alt={selectedTrip.title}
-                  fill
-                  className="object-cover transition duration-300"
-                />
+              <div className="flex flex-col h-full bg-[#eee]">
+                {/* Main Image */}
+                <div className="relative flex-1 min-h-[300px]">
+                  <Image
+                    src={activeImage || selectedTrip.img}
+                    alt={selectedTrip.title}
+                    fill
+                    className="object-cover transition duration-300"
+                  />
+                </div>
 
                 {/* Small thumbs */}
-                <div className="absolute bottom-0 left-0 w-full bg-white/90 p-4 flex gap-4 overflow-x-auto">
+                <div className="w-full bg-white p-4 flex gap-4 overflow-x-auto">
                   <button
                     onClick={() => setActiveImage(selectedTrip.img)}
                     className={`w-[120px] h-[80px] cursor-pointer rounded overflow-hidden flex-shrink-0 border-2 ${
@@ -279,22 +509,23 @@ export default function SafariGridSection({ setSelected }) {
                   {/* Tags */}
                   <div className="flex gap-2 mb-4">
                     <span className="bg-[#d87029] text-white text-xs px-3 py-1 rounded font-semibold">
-                      POPULAR
+                      {selectedTrip.tag}
                     </span>
 
                     <span className="bg-[#f3a876] text-black text-xs px-3 py-1 rounded font-semibold">
-                      {selectedTrip.tag}
+                      {selectedTrip.motag}
                     </span>
                   </div>
 
                   {/* Title */}
                   <h2 className="text-xl font-semibold !font-cormorant leading-tight mb-2">
-                    {selectedTrip.title}
+                    {selectedTrip.motitle}
                   </h2>
 
-                  <p className="  text-[#444] !font-avenir mb-4">Standard</p>
+                  <p className="  text-[#444] !font-avenir mb-4">
+                    {selectedTrip.motag}
+                  </p>
 
-                  
                   <div className="font-avenir flex flex-wrap gap-5">
                     <span className="flex items-center gap-2">
                       <FaRegCalendarAlt className="text-[#d87029]" />

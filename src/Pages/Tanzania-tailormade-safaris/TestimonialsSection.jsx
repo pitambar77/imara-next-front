@@ -4,38 +4,38 @@ import Image from "next/image";
 
 const reviews = [
   {
-    text: "I usually get a bit anxious with travel planning, but this was probably the most relaxed I've ever felt on a trip. Wild Voyager handled everything — and it all ran so smoothly. We saw SO much wildlife.",
-    name: "J. & RUBY M",
+    text: "The safari literally couldn't have been much better. My partner and I just recently got engaged and we wanted to do a little celebration vacation. I've always wanted to do some safari or more adventurous so we reached out to them and it was settled swiftly.",
+    name: "Braylee F",
   },
   {
-    text: "Everything was very well planned from the itinerary to the stays and safari experiences. It didn't feel like a packaged tour; it felt like a thoughtfully curated journey.",
-    name: "P. & ALTO H",
+    text: "I could happily go for a trip like this every year. Even going back again to the Serengeti national park is enticing to us, but we should probably try some of the other options for next year. Huge props to them for providing us more than we expected from a safari tour.",
+    name: "Colt B",
   },
   {
-    text: "Our guide was amazing, making sure we saw everything from big to small animals and the plentiful bird life in the Serengeti. The entire experience was seamless.",
-    name: "GRACE E",
+    text: "A big thank you to Imara Kileleni Safaris for an unforgettable journey in Tarangire National Park. Everything was perfectly organized, and the guide’s knowledge made wildlife spotting truly special—especially the incredible elephant herds. ",
+    name: "John M",
   },
   {
-    text: "Great 16 days family safari holidays in Serengeti, Ngorongoro & Tarangire. Outstanding guides and excellent organisation by Deepak & team.",
-    name: "ANDREAS",
+    text: "Imara Kileleni was able to facilitate a wonderful day trip to Tarangire National Park and also a wonderful Day trip to Mt. Kilimanjaro via Shira route We had a wonderful time to step out from work. It’s was well arranged with every nitty gritty taken care of .",
+    name: "Blanca Opati",
   },
 ];
 
 const videos = [
   {
-    name: "DR. IRA FREDDER, USA",
-    img: "https://media.istockphoto.com/id/1370705436/photo/female-traveler-contemplating-safari-trip-across-the-scenic-african-savannah.jpg?s=612x612&w=0&k=20&c=KWSF4DJvngcOJUKIzhOfge-mnO5cdF04D7f8joM4I9k=",
-    text: "The Serengeti river crossing was the most dramatic thing I’ve ever witnessed.",
+    name: "Gabriel P",
+    img: "/safari-review.jpg",
+    text: "Completely entrancing scenery. I can only recommend other couples with a bit of wanderlust to do something like this!",
   },
   {
-    name: "ALICE KEMPER, USA",
-    img: "https://media.istockphoto.com/id/2244811741/photo/masai-giraffe-walks-across-a-dirt-road-in-front-of-a-safari-vehicle-on-the-savannah-plains-of.jpg?s=612x612&w=0&k=20&c=FKGtQLi8vV0-C_wJWMKB4Vd55s_eEQb5v7gt449mgZY=",
-    text: "From the first email to the last night at camp — these people are genuinely world class.",
+    name: "Sven N",
+    img: "/review-kili.jpg",
+    text: "Climbing Kilimanjaro was an astonishing experience that we will hardly ever forget. It was certainly not the easiest, but with great effort comes great memories.",
   },
   {
-    name: "KAYLA STEVENSON, USA",
-    img: "https://media.istockphoto.com/id/1370705436/photo/female-traveler-contemplating-safari-trip-across-the-scenic-african-savannah.jpg?s=612x612&w=0&k=20&c=KWSF4DJvngcOJUKIzhOfge-mnO5cdF04D7f8joM4I9k=",
-    text: "By day three we felt like we’d lived on the Serengeti our whole lives.",
+    name: "Ramona F",
+    img: "/review-family.jpg",
+    text: "Did the family safari. Great. Cant stop thinking about it still almost after a month now. I have discussed with the family if they want to do another safari trip later this year again haha.",
   },
 ];
 
@@ -86,7 +86,7 @@ export default function TestimonialsSection() {
         <div>
           <div className="flex items-center gap-4 mb-6">
             <p className=" !font-avenir text-sm md:text-sm tracking-[0.2em] text-[#d87029] uppercase whitespace-nowrap">
-              Video Stories
+               Stories
             </p>
             <div className="flex-1 h-[1px] bg-[#f5dbca]"></div>
           </div>
@@ -107,11 +107,11 @@ export default function TestimonialsSection() {
                   />
 
                   {/* Play overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center">
+                  {/* <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-12 h-12 bg-white/80 rounded-full flex items-center justify-center">
                       ▶
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* Name strip */}
                   <div className=" !font-avenir absolute bottom-3 w-full bg-[#d87029] text-white text-xs text-center py-2 tracking-widest">

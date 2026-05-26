@@ -4,39 +4,39 @@ import { useState } from "react";
 
 const destinations = [
   {
-    name: "SERENGETI NATIONAL PARK",
-    value: "serengeti",
-    img: "https://media.istockphoto.com/id/2244811741/photo/masai-giraffe-walks-across-a-dirt-road-in-front-of-a-safari-vehicle-on-the-savannah-plains-of.jpg?s=612x612&w=0&k=20&c=FKGtQLi8vV0-C_wJWMKB4Vd55s_eEQb5v7gt449mgZY=",
+    name: "Serengeti National Park",
+    value: "Serengeti National Park",
+    img: "/serengeti-national-park-desti.webp",
   },
   {
-    name: "NGORONGORO CRATER",
-    value: "ngorongoro",
-    img: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+    name: "Ngorongoro Crater",
+    value: "Ngorongoro Crater",
+    img: "/nagarangaro-creator-desti.webp",
   },
   {
-    name: "LAKE MANYARA",
-    value: "lake-manyara",
+    name: "Tarangire National Park",
+    value: "Tarangire National Park",
+    img: "/tarangire-natinal-park-desti.webp",
+  },
+  {
+    name: "Lake Manyara",
+    value: "Lake Manyara",
+    img: "/lake-manyara-desti.webp",
+  },
+  {
+    name: "Zanzibar",
+    value: "Zanzibar",
+    img: "/zanzibar-desti.webp",
+  },
+  {
+    name: "Mount Kilimanjaro",
+    value: "Mount Kilimanjaro",
+    img: "/mount-kili-desti.webp",
+  },
+  {
+    name: "Not Sure — Need Expert Advice",
+    value: "Not Sure - Need Expert Advice",
     img: "https://media.istockphoto.com/id/921714004/photo/three-giraffes-under-acacia-tree.jpg?s=612x612&w=0&k=20&c=qBWHfq_x7CwQkVcMvgzudc3ODq1WAVbsedyre99Bj0w=",
-  },
-  {
-    name: "NDUTU PLAINS",
-    img: "https://media.istockphoto.com/id/2244811741/photo/masai-giraffe-walks-across-a-dirt-road-in-front-of-a-safari-vehicle-on-the-savannah-plains-of.jpg?s=612x612&w=0&k=20&c=FKGtQLi8vV0-C_wJWMKB4Vd55s_eEQb5v7gt449mgZY=",
-  },
-  {
-    name: "TARANGIRE NATIONAL PARK",
-    img: "https://media.istockphoto.com/id/2244811741/photo/masai-giraffe-walks-across-a-dirt-road-in-front-of-a-safari-vehicle-on-the-savannah-plains-of.jpg?s=612x612&w=0&k=20&c=FKGtQLi8vV0-C_wJWMKB4Vd55s_eEQb5v7gt449mgZY=",
-  },
-  {
-    name: "ARUSHA NATIONAL PARK",
-    img: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
-  },
-  {
-    name: "ZANZIBAR",
-    img: "https://media.istockphoto.com/id/921714004/photo/three-giraffes-under-acacia-tree.jpg?s=612x612&w=0&k=20&c=qBWHfq_x7CwQkVcMvgzudc3ODq1WAVbsedyre99Bj0w=",
-  },
-  {
-    name: "TANZANIA + KENYA",
-    img: "https://media.istockphoto.com/id/2244811741/photo/masai-giraffe-walks-across-a-dirt-road-in-front-of-a-safari-vehicle-on-the-savannah-plains-of.jpg?s=612x612&w=0&k=20&c=FKGtQLi8vV0-C_wJWMKB4Vd55s_eEQb5v7gt449mgZY=",
   },
 ];
 
@@ -48,12 +48,13 @@ export default function DestinationStepSection({ setSelected }) {
       <div className="max-w-7xl mx-auto text-center">
         {/* Heading */}
         <h2 className=" !font-cormorant text-3xl md:text-4xl lg:text-5xl text-center mb-4 capitalize">
-          Build Your Dream Safari
+          Create Your Signature Experience
         </h2>
 
         <p className=" !font-avenir text-center text-[#444] text-[18px] mb-6 md:mb-12 max-w-2xl mx-auto">
-          Most of our guests are planning a once-in-a-lifetime trip and prefer
-          doing it properly. If that sounds like you, you're in the right place.
+          Discover bespoke international tour packages crafted with privacy,
+          refined comfort, and seamless planning for discerning global
+          travellers
         </p>
 
         {/* Step Badge */}
@@ -66,7 +67,7 @@ export default function DestinationStepSection({ setSelected }) {
 
         {/* Title */}
         <h3 className="text-2xl md:text-4xl !font-cormorant  mb-3">
-          Where Do You Want to Go?
+         Where Do You Want to Go?*
         </h3>
 
         <p className=" !font-avenir text-[#444] mb-8 md:mb-12">
@@ -109,7 +110,7 @@ export default function DestinationStepSection({ setSelected }) {
               </div>
 
               {/* Label */}
-              <div className=" font-avenir font-bold text-xs md:text-sm tracking-widest text-[#d87029] px-3 py-3 text-center ">
+              <div className=" font-avenir font-bold text-xs md:text-sm uppercase tracking-widest text-[#d87029] px-3 py-3 text-center ">
                 {item.name}
               </div>
             </div>

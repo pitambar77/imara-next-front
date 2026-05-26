@@ -23,12 +23,15 @@ export default function FooterSection() {
           </div>
 
           {/* Button */}
-          <Link
-            href="#"
+          <button
+            onClick={() => {
+              const section = document.getElementById("step-2");
+              section?.scrollIntoView({ behavior: "smooth" });
+            }}
             className="text-[#d87028] font-avenir bg-white px-[21px] py-2.5 rounded-full font-semibold hover:bg-[#f0b184de] hover:text-white transition cursor-pointer shadow hover:opacity-90  duration-300"
           >
             Speak With a Specialist →
-          </Link>
+          </button>
         </div>
       </div>
 
@@ -36,11 +39,16 @@ export default function FooterSection() {
       <div className="bg-gradient-to-r from-[#1a0f08] via-[#2a1a0f] to-[#1a0f08] py-6 px-6 text-sm text-gray-400">
         <div className="  max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Left */}
-          <p className=" order-2 md:order-1 !font-avenir">© 2026 Kileleni Safaris. All rights reserved.</p>
+          <p className=" order-2 md:order-1 !font-avenir">
+            © 2026 Kileleni Safaris. All rights reserved.
+          </p>
 
           {/* Right */}
           <div className="flex gap-6 order-1 md:order-2">
-            <Link href="#" className= " !font-avenir hover:text-white transition">
+            <Link
+              href="#"
+              className=" !font-avenir hover:text-white transition"
+            >
               Privacy Policy
             </Link>
             <Link href="#" className="!font-avenir hover:text-white transition">
