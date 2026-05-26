@@ -131,7 +131,7 @@ export default function DestinationStepSection({ setSelected }) {
               const section = document.getElementById("step-2");
               section?.scrollIntoView({ behavior: "smooth" });
             }}
-            className=" bg-[#d87028] text-white px-6   rounded-full  hover:bg-[#eb8034de] transition cursor-pointer !font-avenir text-sm md:text-base md:py-2.5"
+            className=" bg-[#d87028] text-white px-6 py-2  rounded-full  hover:bg-[#eb8034de] transition cursor-pointer !font-avenir text-sm md:text-base md:py-2.5"
           >
             Continue to Plan My Safari →
           </button>

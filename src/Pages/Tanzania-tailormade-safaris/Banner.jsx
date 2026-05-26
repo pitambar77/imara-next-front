@@ -15,21 +15,45 @@ const brands = [
     name: "Tripadvisor",
     img: "/tripadvisor.png",
     link: "https://www.tripadvisor.com/Attraction_Review-g317084-d34222480-Reviews-Imara_Kileleni_Safaris-Moshi_Kilimanjaro_Region.html",
-    rating:"Rated 5.0/5"
+    rating: "Rated 5.0/5",
   },
-  { id: 5, name: "KPAP", img: "/tulstip.png", rating:"TrustScore 4.6/5", link: "" },
+  {
+    id: 5,
+    name: "KPAP",
+    img: "/tulstip.png",
+    rating: "TrustScore 4.6/5",
+    link: "",
+  },
 ];
 
 const Banner = () => {
   return (
     <section className="relative h-screen w-full overflow-x-hidden">
       {/* Background Image */}
-      <Image
+      {/* <Image
         src={"/tanzania-tailormade-landing-n.webp"}
         alt="Safari"
         fill
         priority
         className="object-cover"
+      /> */}
+
+      {/* Desktop Image */}
+      <Image
+        src="/tanzania-tailormade-landing-n.webp"
+        alt="Safari"
+        fill
+        priority
+        className="hidden md:block object-cover"
+      />
+
+      {/* Mobile Image */}
+      <Image
+        src="/mobile-screen-1.webp"
+        alt="Safari"
+        fill
+        priority
+        className="block md:hidden object-cover object-left"
       />
 
       {/* Overlay */}
@@ -103,7 +127,7 @@ const Banner = () => {
             }}
             className="font-avenir text-sm md:text-base bg-[#d87028] text-white px-[21px] py-2.5 rounded-full font-semibold hover:bg-[#eb8034de] transition cursor-pointer"
           >
-           Get My Custom Safari →
+            Get My Custom Safari →
           </button>
 
           <button
@@ -160,7 +184,9 @@ const Banner = () => {
                 height={80}
                 className="opacity-80 hover:opacity-100 transition"
               />
-             <p className=" text-center text-[#eac0a4] text-[10px] mt-2">{brand.rating}</p> 
+              <p className=" text-center text-[#eac0a4] text-[10px] mt-2">
+                {brand.rating}
+              </p>
             </a>
           ))}
         </div>

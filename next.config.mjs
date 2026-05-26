@@ -4,7 +4,6 @@ const nextConfig = {
   allowedDevOrigins: ["imarakilelenisafaris.com", "101.53.148.53"],
 
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
