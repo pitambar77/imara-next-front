@@ -24,7 +24,7 @@ const trips = [
     motag: "Standard",
     rating: 5,
     img: "/great-migration-1.webp",
-    map: "/Itinerary-map.png",
+    map: "/16-Days-Witness-the-Great-Migration-Unwind-on-Zanzibar-White-Sand-Beaches.png",
     img1: "/landing-bigfive-lion.webp",
     img2: "/landing-zanzibar.webp",
 
@@ -60,7 +60,7 @@ const trips = [
       "Experience the Wild Heart of Tanzania & Timeless African Landscapes",
     motag: "Standard",
     rating: 5,
-    map:"/11 Days Experience the Wild Heart of Tanzania & Timeless African Landscapes.png",
+    map:"/11-Days-Experience-the-Wild-Heart-of-Tanzania-Timeless-African-Landscapes.png",
     img: "/landing-bigfive-lion-hunting.webp",
     img1: "/big-five-1.webp",
     img2: "/big-five.webp",
@@ -92,7 +92,7 @@ const trips = [
       "Follow the Great Migration & Relax on Zanzibar’s Turquoise Shores",
     motag: "Standard",
     rating: 5,
-    map:"/12 Days Follow the Great Migration & Relax on Zanzibar’s Turquoise Shores.png",
+    map:"/12-Days-Follow-the-Great-Migration-Relax-on-Zanzibars-Turquoise-Shores.png",
     img: "/landing-bigfive-cheetha-tree.webp",
     img1: "/landing-bigfive-elephant.webp",
     img2: "/big-five-2.webp",
@@ -127,7 +127,7 @@ const trips = [
       "Discover Tanzania’s Hidden Tribes, Crater Wonders & Remote Rift Valley Landscapes",
     motag: "Standard",
     rating: 5,
-    map:"/7 Days Discover Tanzania’s Hidden Tribes, Crater Wonders & Remote Rift Valley Landscapes.png",
+    map:"/7-Days-Discover-Tanzanias-Hidden-Tribes-Crater-Wonders-Remote-Rift-Valley-Landscapes.png",
     img: "/cultural-encunter.webp",
     img1: "/landing-culture-activity.webp",
     img2: "/landing-culture-village-tour.webp",
@@ -157,7 +157,7 @@ const trips = [
       "Journey Through Tanzania’s Wild Landscapes, Ancient Cultures & Luxury Safari Escapes",
     motag: "Luxury Glamping",
     rating: 5,
-    map:"/10 Days Journey Through Tanzania’s Wild Landscapes, Ancient Cultures & Luxury Safari Escapes.png",
+    map:"/10-Days-Journey-Through-Tanzanias-Wild-Landscapes-Ancient-Cultures-Luxury-Safari-Escapes.png",
     img: "/landing-rift-vally.webp",
     img1: "/landing-bigfive-buffalo.webp",
     img2: "/big-five-3.webp",
@@ -188,7 +188,7 @@ const trips = [
       "Experience the Great Migration, Maasai Traditions & Tanzania’s Untamed Wilderness",
     motag: "Premium Safari",
     rating: 5,
-map:"/15 Days Experience the Great Migration, Maasai Traditions & Tanzania’s Untamed Wilderness.png",
+map:"/15-Days-Experience-the-Great-Migration-Maasai-Traditions-Tanzanias-Untamed-Wilderness.png",
     img: "/landing-bigfive-two-lions.webp",
     img1: "/big-five-4.webp",
     img2: "/landing-bigfive-lion-tree.webp",
@@ -223,7 +223,7 @@ map:"/15 Days Experience the Great Migration, Maasai Traditions & Tanzania’s U
       "Explore Tanzania’s Iconic Wildlife Parks on an Authentic Safari Adventure",
     motag: "Budget Camping Safari",
     rating: 5,
-    map:"/3 Days Explore Tanzania’s Iconic Wildlife Parks on an Authentic Safari Adventure.png",
+    map:"/3-Days-Explore-Tanzanias-Iconic-Wildlife-Parks-on-an-Authentic-Safari-Adventure.png",
     img: "/camping.webp",
     img1: "/landing-bigfive-cheetha.webp",
     img2: "/landing-bigfive-giraph.webp",
@@ -247,7 +247,7 @@ map:"/15 Days Experience the Great Migration, Maasai Traditions & Tanzania’s U
       "Discover Ngorongoro Crater, Serengeti Wildlife & Tanzania’s Iconic Landscapes",
     motag: "Mid-Range Safari Experience",
     rating: 5,
-    map:"/5 Days Discover Ngorongoro Crater, Serengeti Wildlife & Tanzania’s Iconic Landscapes.png",
+    map:"/5-Days-Discover-Ngorongoro-Crater-Serengeti-Wildlife-Tanzanias-Iconic-Landscapes.png",
     img: "/landing-bigfive-lion-nagarangaro.webp",
     img1: "/big-five-2.webp",
     img2: "/nagarangaro-creator.webp",
@@ -272,7 +272,7 @@ map:"/15 Days Experience the Great Migration, Maasai Traditions & Tanzania’s U
       "Explore Tanzania’s Iconic Parks: Big Five, Crater Safari & Serengeti Plains",
     motag: "Classic Mid-Range Safari",
     rating: 5,
-    map:"/5 Days Explore Tanzania’s Iconic Parks_ Big Five, Crater Safari & Serengeti Plains.png",
+    map:"/5-Days-Explore-Tanzanias-Iconic-Parks-Big-Five-Crater-Safari-Serengeti-Plains.png",
     img: "/tarangire-wild.webp",
     img1: "/landing-bigfive-elephant.webp",
     img2: "/landing-bigfive-nagarangaro.webp",
@@ -490,7 +490,7 @@ export default function SafariGridSection({ setSelected }) {
                           src={activeImage || images[0]}
                           alt={selectedTrip.title}
                           fill
-                          className="object-cover transition duration-300"
+                          className=" transition duration-300 "
                         />
 
                         {/* Navigation Buttons */}
