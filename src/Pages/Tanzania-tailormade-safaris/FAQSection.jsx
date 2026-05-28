@@ -78,7 +78,7 @@ export default function FAQSection() {
             {/* Video Card */}
             <div className="relative rounded-md overflow-hidden mb-6">
               <Image
-                src="https://media.istockphoto.com/id/2244811741/photo/masai-giraffe-walks-across-a-dirt-road-in-front-of-a-safari-vehicle-on-the-savannah-plains-of.jpg?s=612x612&w=0&k=20&c=FKGtQLi8vV0-C_wJWMKB4Vd55s_eEQb5v7gt449mgZY="
+                src="/imara-vechille-1.webp"
                 alt="FAQ"
                 width={600}
                 height={400}
@@ -86,60 +86,75 @@ export default function FAQSection() {
               />
 
               {/* Overlay */}
-              <div className="absolute inset-0 bg-black/30 flex items-center justify-center flex-col text-white">
+              {/* <div className="absolute inset-0 bg-black/30 flex items-center justify-center flex-col text-white">
                 <div className="w-14 h-14 rounded-full bg-white/80 flex items-center justify-center mb-2">
                   ▶
                 </div>
                 <p className=" !font-avenir text-xs tracking-widest uppercase">
                   Watch Our FAQ Guide
                 </p>
-              </div>
+              </div> */}
             </div>
-
-            {/* Resource Card */}
-            <div className="bg-white rounded-md p-4 flex items-center gap-4 mb-4 shadow-sm">
-              <Image
-                src="https://media.istockphoto.com/id/2244811741/photo/masai-giraffe-walks-across-a-dirt-road-in-front-of-a-safari-vehicle-on-the-savannah-plains-of.jpg?s=612x612&w=0&k=20&c=FKGtQLi8vV0-C_wJWMKB4Vd55s_eEQb5v7gt449mgZY="
-                alt=""
-                width={60}
-                height={100}
-                className="rounded"
-              />
-              <div className="flex-1">
-                <p className=" !font-avenir text-sm text-[#d87029] uppercase tracking-widest">
-                  Free Resource
-                </p>
-                <h4 className=" !font-cormorant font-semibold text-lg py-2">
-                  Guide to East Africa Safaris
-                </h4>
-                <p className=" !font-avenir text-sm text-[#444]">
-                  Everything you need to plan confidently.
-                </p>
+            <div
+              onClick={() => {
+                const section = document.getElementById("step-2");
+                section?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className=" cursor-pointer"
+            >
+              {/* Resource Card */}
+              <div className="bg-white rounded-md p-4 flex items-center gap-4 mb-4 shadow-sm">
+                <Image
+                  src="/imara-vechille-1.webp"
+                  alt=""
+                  width={60}
+                  height={100}
+                  className="rounded"
+                />
+                <div className="flex-1">
+                  <p className=" !font-avenir text-sm text-[#d87029] uppercase tracking-widest">
+                    Chat with Experts
+                  </p>
+                  <h4 className=" !font-cormorant font-semibold text-lg py-2">
+                    Plan Tanzania Safaris with local specialists
+                  </h4>
+                  <p className=" !font-avenir text-sm text-[#444]">
+                    Ask questions and get clear safari guidance
+                  </p>
+                </div>
+                <span className="text-[#d87029]">→</span>
               </div>
-              <span className="text-[#d87029]">→</span>
+
+              {/* FAQ Page Card */}
             </div>
-
-            {/* FAQ Page Card */}
-            <div className="bg-white rounded-md p-4 flex items-center gap-4 shadow-sm">
-              <Image
-                src="https://media.istockphoto.com/id/2244811741/photo/masai-giraffe-walks-across-a-dirt-road-in-front-of-a-safari-vehicle-on-the-savannah-plains-of.jpg?s=612x612&w=0&k=20&c=FKGtQLi8vV0-C_wJWMKB4Vd55s_eEQb5v7gt449mgZY="
-                alt=""
-                width={60}
-                height={100}
-                className="rounded"
-              />
-              <div className="flex-1">
-                <p className=" !font-avenir text-sm text-[#d87029] uppercase tracking-widest">
-                  Full FAQ Page
-                </p>
-                <h4 className=" !font-cormorant font-semibold text-lg py-2">
-                  Browse All FAQs
-                </h4>
-                <p className=" !font-avenir text-sm text-[#444]">
-                  Visas, vaccinations, packing, money — everything answered.
-                </p>
+            <div
+              onClick={() => {
+                const section = document.getElementById("step-2");
+                section?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className=" cursor-pointer"
+            >
+              <div className="bg-white rounded-md p-4 flex items-center gap-4 shadow-sm">
+                <Image
+                  src="/imara-vechille-1.webp"
+                  alt=""
+                  width={60}
+                  height={100}
+                  className="rounded"
+                />
+                <div className="flex-1">
+                  <p className=" !font-avenir text-sm text-[#d87029] uppercase tracking-widest">
+                    Expert Safari Help
+                  </p>
+                  <h4 className=" !font-cormorant font-semibold text-lg py-2">
+                    Ask Us Anything
+                  </h4>
+                  <p className=" !font-avenir text-sm text-[#444]">
+                    Get clear answers before booking
+                  </p>
+                </div>
+                <span className="text-[#d87029]">→</span>
               </div>
-              <span className="text-[#d87029]">→</span>
             </div>
           </div>
 
@@ -185,13 +200,8 @@ export default function FAQSection() {
                     {item.list && (
                       <ul className="mt-4 space-y-2 ml-4">
                         {item.list.map((listItem, idx) => (
-                          <li
-                            key={idx}
-                            className="flex items-start gap-3"
-                          >
-                            <span className="text-[#d87029] text-lg ">
-                              •
-                            </span>
+                          <li key={idx} className="flex items-start gap-3">
+                            <span className="text-[#d87029] text-lg ">•</span>
 
                             <span
                               className="!font-avenir text-[#444] leading-7"

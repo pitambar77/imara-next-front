@@ -16,11 +16,12 @@ const options = [
     label: "Lake Manyarak",
     value: "Lake Manyara",
   },
+   { label: "Arusha National Park", value: "Arusha National Park" },
   { label: "Zanzibar", value: "Zanzibar" },
   { label: "Mount Kilimanjaro", value: "Mount Kilimanjaro" },
   {
-    label: "Not Sure — Need Expert Advice",
-    value: "Not Sure — Need Expert Advice",
+    label: "Not Sure - Need Expert Advice",
+    value: "Not Sure - Need Expert Advice",
   },
 ];
 

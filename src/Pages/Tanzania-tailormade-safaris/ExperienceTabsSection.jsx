@@ -35,7 +35,8 @@ const data = {
       title: "Maasai Village Visit",
       tag: "Authentic Tanzania Culture",
       desc: "Connect with Tanzania’s rich heritage through an authentic Maasai cultural experience, discovering traditional customs, vibrant ceremonies, storytelling, and centuries-old pastoral traditions.",
-      img: "/massai-village.webp",
+      // img: "/massai-village.webp",
+      img: "/landing-culture-village-tour.webp",
     },
     {
       title: "Walking Safari",

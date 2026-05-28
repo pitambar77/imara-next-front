@@ -24,7 +24,9 @@ const trips = [
     motag: "Standard",
     rating: 5,
     img: "/great-migration-1.webp",
-    img1: "/zanzibar-white-sand.webp",
+    map: "/Itinerary-map.png",
+    img1: "/landing-bigfive-lion.webp",
+    img2: "/landing-zanzibar.webp",
 
     itinerary: [
       { day: "Day 1", place: "Arusha" },
@@ -58,8 +60,10 @@ const trips = [
       "Experience the Wild Heart of Tanzania & Timeless African Landscapes",
     motag: "Standard",
     rating: 5,
-    img: "/big-five.webp",
+    map:"/11 Days Experience the Wild Heart of Tanzania & Timeless African Landscapes.png",
+    img: "/landing-bigfive-lion-hunting.webp",
     img1: "/big-five-1.webp",
+    img2: "/big-five.webp",
 
     itinerary: [
       { day: "Day 1", place: "Arusha" },
@@ -88,8 +92,10 @@ const trips = [
       "Follow the Great Migration & Relax on Zanzibar’s Turquoise Shores",
     motag: "Standard",
     rating: 5,
-    img: "/big-five-2.webp",
-    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+    map:"/12 Days Follow the Great Migration & Relax on Zanzibar’s Turquoise Shores.png",
+    img: "/landing-bigfive-cheetha-tree.webp",
+    img1: "/landing-bigfive-elephant.webp",
+    img2: "/big-five-2.webp",
 
     itinerary: [
       { day: "Day 1", place: "Arusha" },
@@ -121,8 +127,10 @@ const trips = [
       "Discover Tanzania’s Hidden Tribes, Crater Wonders & Remote Rift Valley Landscapes",
     motag: "Standard",
     rating: 5,
+    map:"/7 Days Discover Tanzania’s Hidden Tribes, Crater Wonders & Remote Rift Valley Landscapes.png",
     img: "/cultural-encunter.webp",
-    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+    img1: "/landing-culture-activity.webp",
+    img2: "/landing-culture-village-tour.webp",
 
     itinerary: [
       { day: "Day 1", place: "Monduli Juu" },
@@ -132,10 +140,6 @@ const trips = [
       { day: "Day 5", place: "Lake Natron" },
       { day: "Day 6", place: "Mto wa Mbu" },
       { day: "Day 7", place: "Arusha" },
-      { day: "Day 8", place: "Ngorongoro " },
-      { day: "Day 9", place: "Lake Eyasi" },
-      { day: "Day 10", place: "Arusha " },
-      { day: "Day 11", place: "Kilimanjaro" },
     ],
   },
   {
@@ -153,8 +157,10 @@ const trips = [
       "Journey Through Tanzania’s Wild Landscapes, Ancient Cultures & Luxury Safari Escapes",
     motag: "Luxury Glamping",
     rating: 5,
-    img: "/big-five-3.webp",
-    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+    map:"/10 Days Journey Through Tanzania’s Wild Landscapes, Ancient Cultures & Luxury Safari Escapes.png",
+    img: "/landing-rift-vally.webp",
+    img1: "/landing-bigfive-buffalo.webp",
+    img2: "/big-five-3.webp",
 
     itinerary: [
       { day: "Day 1", place: "Arusha & Monduli Highlands" },
@@ -182,9 +188,10 @@ const trips = [
       "Experience the Great Migration, Maasai Traditions & Tanzania’s Untamed Wilderness",
     motag: "Premium Safari",
     rating: 5,
-    img: "/big-five-4.webp",
-    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
-
+map:"/15 Days Experience the Great Migration, Maasai Traditions & Tanzania’s Untamed Wilderness.png",
+    img: "/landing-bigfive-two-lions.webp",
+    img1: "/big-five-4.webp",
+    img2: "/landing-bigfive-lion-tree.webp",
     itinerary: [
       { day: "Day 1", place: "Arusha" },
       { day: "Day 2", place: "Arusha" },
@@ -216,8 +223,10 @@ const trips = [
       "Explore Tanzania’s Iconic Wildlife Parks on an Authentic Safari Adventure",
     motag: "Budget Camping Safari",
     rating: 5,
+    map:"/3 Days Explore Tanzania’s Iconic Wildlife Parks on an Authentic Safari Adventure.png",
     img: "/camping.webp",
-    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+    img1: "/landing-bigfive-cheetha.webp",
+    img2: "/landing-bigfive-giraph.webp",
 
     itinerary: [
       { day: "Day 1", place: "Ngorongoro " },
@@ -238,9 +247,10 @@ const trips = [
       "Discover Ngorongoro Crater, Serengeti Wildlife & Tanzania’s Iconic Landscapes",
     motag: "Mid-Range Safari Experience",
     rating: 5,
-    img: "/nagarangaro-creator.webp",
-    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
-
+    map:"/5 Days Discover Ngorongoro Crater, Serengeti Wildlife & Tanzania’s Iconic Landscapes.png",
+    img: "/landing-bigfive-lion-nagarangaro.webp",
+    img1: "/big-five-2.webp",
+    img2: "/nagarangaro-creator.webp",
     itinerary: [
       { day: "Day 1", place: "Tarangire " },
       { day: "Day 2", place: "Ngorongoro  " },
@@ -262,8 +272,10 @@ const trips = [
       "Explore Tanzania’s Iconic Parks: Big Five, Crater Safari & Serengeti Plains",
     motag: "Classic Mid-Range Safari",
     rating: 5,
+    map:"/5 Days Explore Tanzania’s Iconic Parks_ Big Five, Crater Safari & Serengeti Plains.png",
     img: "/tarangire-wild.webp",
-    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+    img1: "/landing-bigfive-elephant.webp",
+    img2: "/landing-bigfive-nagarangaro.webp",
 
     itinerary: [
       { day: "Day 1", place: "Tarangire " },
@@ -273,61 +285,61 @@ const trips = [
       { day: "Day 5", place: "Arusha " },
     ],
   },
-  {
-    id: 10,
-    title: "Tarangire & Ngorongoro Crater Highland Retreat",
-    value: "Tarangire & Ngorongoro Crater Highland Retreat",
-    tag: "SIGNATURE SAFARI",
-    days: "7 Days 6 Nights",
-    price: "$1800 p.p",
-    places: "2 Key Safari Zones  ",
-    countries: "1 Country",
-    motitle:
-      "Discover Ngorongoro Highlands, Crater Views & Relaxed Safari Leisure",
-    motag: "Leisure Safari Experience",
-    rating: 5,
-    img: "/nagarangaro-retret.webp",
-    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+  // {
+  //   id: 10,
+  //   title: "Tarangire & Ngorongoro Crater Highland Retreat",
+  //   value: "Tarangire & Ngorongoro Crater Highland Retreat",
+  //   tag: "SIGNATURE SAFARI",
+  //   days: "7 Days 6 Nights",
+  //   price: "$1800 p.p",
+  //   places: "2 Key Safari Zones  ",
+  //   countries: "1 Country",
+  //   motitle:
+  //     "Discover Ngorongoro Highlands, Crater Views & Relaxed Safari Leisure",
+  //   motag: "Leisure Safari Experience",
+  //   rating: 5,
+  //   img: "/nagarangaro-retret.webp",
+  //   img1: "/big-five-2.webp",
 
-    itinerary: [
-      { day: "Day 1", place: "Arusha " },
-      { day: "Day 2", place: "Tarangire   " },
-      { day: "Day 3", place: "Ngorongoro  " },
-      { day: "Day 4", place: "Zanzibar " },
-      { day: "Day 5", place: "Zanzibar " },
-      { day: "Day 6", place: "Zanzibar " },
-      { day: "Day 7", place: "Zanzibar " },
-    ],
-  },
-  {
-    id: 11,
-    title: "Tarangire, Ngorongoro Crater, Serengeti & Zanzibar Escape",
-    value: "Tarangire, Ngorongoro Crater, Serengeti & Zanzibar Escape",
-    tag: "SIGNATURE SAFARI",
-    days: "10 Days 9 Nights",
-    price: "$2500 p.p",
-    places: "3 Safari Parks + 1 Island",
-    countries: "1 Country",
-    motitle:
-      "Experience Tanzania’s Big Five Safari & Zanzibar’s Tropical Paradise",
-    motag: "Safari + Beach Experience",
-    rating: 5,
-    img: "/zanzibar-excape.webp",
-    img1: "https://media.istockphoto.com/id/880400564/photo/leopard-rests-in-a-tree-at-sunset.jpg?s=612x612&w=0&k=20&c=jnE07FW8UvgNvjgKF08hOksJBcpXkLOCpB0Z6oJ7uEY=",
+  //   itinerary: [
+  //     { day: "Day 1", place: "Arusha " },
+  //     { day: "Day 2", place: "Tarangire   " },
+  //     { day: "Day 3", place: "Ngorongoro  " },
+  //     { day: "Day 4", place: "Zanzibar " },
+  //     { day: "Day 5", place: "Zanzibar " },
+  //     { day: "Day 6", place: "Zanzibar " },
+  //     { day: "Day 7", place: "Zanzibar " },
+  //   ],
+  // },
+  // {
+  //   id: 11,
+  //   title: "Tarangire, Ngorongoro Crater, Serengeti & Zanzibar Escape",
+  //   value: "Tarangire, Ngorongoro Crater, Serengeti & Zanzibar Escape",
+  //   tag: "SIGNATURE SAFARI",
+  //   days: "10 Days 9 Nights",
+  //   price: "$2500 p.p",
+  //   places: "3 Safari Parks + 1 Island",
+  //   countries: "1 Country",
+  //   motitle:
+  //     "Experience Tanzania’s Big Five Safari & Zanzibar’s Tropical Paradise",
+  //   motag: "Safari + Beach Experience",
+  //   rating: 5,
+  //   img: "/zanzibar-excape.webp",
+  //   img1: "/big-five-2.webp",
 
-    itinerary: [
-      { day: "Day 1", place: "Arusha " },
-      { day: "Day 2", place: "Tarangire   " },
-      { day: "Day 3", place: "Ngorongoro  " },
-      { day: "Day 4", place: "Serengeti " },
-      { day: "Day 5", place: "Serengeti  " },
-      { day: "Day 6", place: "Zanzibar " },
-      { day: "Day 7", place: "Zanzibar   " },
-      { day: "Day 8", place: "Zanzibar  " },
-      { day: "Day 9", place: "Zanzibar " },
-      { day: "Day 10", place: "Zanzibar  " },
-    ],
-  },
+  //   itinerary: [
+  //     { day: "Day 1", place: "Arusha " },
+  //     { day: "Day 2", place: "Tarangire   " },
+  //     { day: "Day 3", place: "Ngorongoro  " },
+  //     { day: "Day 4", place: "Serengeti " },
+  //     { day: "Day 5", place: "Serengeti  " },
+  //     { day: "Day 6", place: "Zanzibar " },
+  //     { day: "Day 7", place: "Zanzibar   " },
+  //     { day: "Day 8", place: "Zanzibar  " },
+  //     { day: "Day 9", place: "Zanzibar " },
+  //     { day: "Day 10", place: "Zanzibar  " },
+  //   ],
+  // },
 ];
 
 export default function SafariGridSection({ setSelected }) {
@@ -363,7 +375,7 @@ export default function SafariGridSection({ setSelected }) {
                 <button
                   onClick={() => {
                     setSelectedTrip(trip);
-                    setActiveImage(trip.img);
+                    setActiveImage(trip.map || trip.img);
                   }}
                   className="absolute top-3 left-3 cursor-pointer bg-white text-xs font-semibold px-3 py-1 rounded shadow-sm hover:bg-gray-100 transition"
                 >
@@ -443,55 +455,85 @@ export default function SafariGridSection({ setSelected }) {
             </button>
 
             <div className="grid md:grid-cols-[60%_40%] h-[90vh] p-8">
-      
               {/* LEFT */}
-              <div className="flex flex-col h-full bg-[#eee]">
-                {/* Main Image */}
-                <div className="relative flex-1 min-h-[300px]">
-                  <Image
-                    src={activeImage || selectedTrip.img}
-                    alt={selectedTrip.title}
-                    fill
-                    className="object-cover transition duration-300"
-                  />
-                </div>
+              <div className="flex flex-col h-full relative">
+                {(() => {
+                  const images = [
+                    selectedTrip.map,
+                    selectedTrip.img,
+                    selectedTrip.img1,
+                    selectedTrip.img2,
+                    selectedTrip.img3,
+                  ].filter(Boolean);
 
-                {/* Small thumbs */}
-                <div className="w-full bg-white p-4 flex gap-4 overflow-x-auto">
-                  <button
-                    onClick={() => setActiveImage(selectedTrip.img)}
-                    className={`w-[120px] h-[80px] cursor-pointer rounded overflow-hidden flex-shrink-0 border-2 ${
-                      activeImage === selectedTrip.img
-                        ? "border-[#d87029]"
-                        : "border-transparent"
-                    }`}
-                  >
-                    <Image
-                      src={selectedTrip.img}
-                      alt=""
-                      width={120}
-                      height={80}
-                      className="w-full h-full object-cover"
-                    />
-                  </button>
+                  const currentIndex = images.indexOf(activeImage);
 
-                  <button
-                    onClick={() => setActiveImage(selectedTrip.img1)}
-                    className={`w-[120px] h-[80px] cursor-pointer rounded overflow-hidden flex-shrink-0 border-2 ${
-                      activeImage === selectedTrip.img1
-                        ? "border-[#d87029]"
-                        : "border-transparent"
-                    }`}
-                  >
-                    <Image
-                      src={selectedTrip.img1}
-                      alt=""
-                      width={120}
-                      height={80}
-                      className="w-full h-full object-cover"
-                    />
-                  </button>
-                </div>
+                  const handlePrev = () => {
+                    const prevIndex =
+                      currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+
+                    setActiveImage(images[prevIndex]);
+                  };
+
+                  const handleNext = () => {
+                    const nextIndex =
+                      currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+
+                    setActiveImage(images[nextIndex]);
+                  };
+
+                  return (
+                    <>
+                      {/* Main Image */}
+                      <div className="relative flex-1 min-h-[300px] overflow-hidden">
+                        <Image
+                          src={activeImage || images[0]}
+                          alt={selectedTrip.title}
+                          fill
+                          className="object-cover transition duration-300"
+                        />
+
+                        {/* Navigation Buttons */}
+                        <button
+                          onClick={handlePrev}
+                          className="absolute cursor-pointer left-2 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white w-10 h-10 rounded-full flex items-center justify-center shadow-md transition"
+                        >
+                          ←
+                        </button>
+
+                        <button
+                          onClick={handleNext}
+                          className="absolute cursor-pointer right-2 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white w-10 h-10 rounded-full flex items-center justify-center shadow-md transition"
+                        >
+                          →
+                        </button>
+                      </div>
+
+                      {/* Thumbnails */}
+                      <div className="w-full bg-white p-4 flex gap-4 overflow-x-auto">
+                        {images.map((img, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setActiveImage(img)}
+                            className={`w-[120px] h-[80px] cursor-pointer rounded overflow-hidden flex-shrink-0 border-2 ${
+                              activeImage === img
+                                ? "border-[#d87029]"
+                                : "border-transparent"
+                            }`}
+                          >
+                            <Image
+                              src={img}
+                              alt={`thumb-${index}`}
+                              width={120}
+                              height={80}
+                              className="w-full h-full object-cover"
+                            />
+                          </button>
+                        ))}
+                      </div>
+                    </>
+                  );
+                })()}
               </div>
 
               {/* RIGHT */}

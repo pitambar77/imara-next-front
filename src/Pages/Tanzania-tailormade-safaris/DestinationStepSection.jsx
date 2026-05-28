@@ -24,6 +24,11 @@ const destinations = [
     img: "/lake-manyara-desti.webp",
   },
   {
+    name: "Arusha National Park",
+    value: "Arusha National Park",
+    img: "/arusha-ntional.webp",
+  },
+  {
     name: "Zanzibar",
     value: "Zanzibar",
     img: "/zanzibar-desti.webp",
@@ -36,7 +41,7 @@ const destinations = [
   {
     name: "Not Sure — Need Expert Advice",
     value: "Not Sure - Need Expert Advice",
-    img: "https://media.istockphoto.com/id/921714004/photo/three-giraffes-under-acacia-tree.jpg?s=612x612&w=0&k=20&c=qBWHfq_x7CwQkVcMvgzudc3ODq1WAVbsedyre99Bj0w=",
+    img: "/big-five-2.webp",
   },
 ];
 
@@ -67,7 +72,7 @@ export default function DestinationStepSection({ setSelected }) {
 
         {/* Title */}
         <h3 className="text-2xl md:text-4xl !font-cormorant  mb-3">
-         Where Do You Want to Go?*
+          Where Do You Want to Go?*
         </h3>
 
         <p className=" !font-avenir text-[#444] mb-8 md:mb-12">
@@ -110,7 +115,13 @@ export default function DestinationStepSection({ setSelected }) {
               </div>
 
               {/* Label */}
-              <div className=" font-avenir font-bold text-xs md:text-sm uppercase tracking-widest text-[#d87029] px-3 py-3 text-center ">
+              <div
+                className={`font-avenir font-bold text-xs md:text-sm uppercase tracking-widest px-3 py-3 text-center transition ${
+                  selected.includes(item.value)
+                    ? "bg-[#d87029] text-white"
+                    : "bg-white text-[#d87029]"
+                }`}
+              >
                 {item.name}
               </div>
             </div>

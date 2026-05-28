@@ -29,3 +29,4 @@ export const soleil = localFont({
   display: "swap",
 });
 
+

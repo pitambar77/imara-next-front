@@ -14,7 +14,7 @@ export default function WhySection() {
           {/* Left Media */}
           <div className=" order-2 md:order-1 relative w-full h-[200px] sm:h-[260px] lg:h-[320px] bg-black rounded-lg overflow-hidden">
             <Image
-              src="/our-destination-sec.webp" // also fix path (see below)
+              src="/imara-vechille-2.webp" // also fix path (see below)
               alt="Why section"
               fill
               className="object-cover"

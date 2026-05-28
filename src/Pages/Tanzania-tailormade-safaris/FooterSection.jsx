@@ -1,6 +1,4 @@
 "use client";
-
-import PrimaryButton from "@/components/PrimaryButton";
 import Link from "next/link";
 
 export default function FooterSection() {
