@@ -67,7 +67,7 @@ const SafariFleet = () => {
           label={overview.subtitle || "Tanzania Safaris"}
           title={overview.title}
           // image={overviewimage || '/safari-fleet-1.webp'}
-          image="/safari-fleet-1.webp"
+          image="/safari-fleet-overview.webp"
           imagePosition="right"
           bg="#fcfcfc"
           paragraphs={overview.description}

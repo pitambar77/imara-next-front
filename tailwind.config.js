@@ -8,8 +8,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        soleil: ["Soleil", "sans-serif"],
-        acumin: ["AcuminPro", "sans-serif"],
+        soleil: ["var(--font-soleil)"],
+        acumin: ["var(--font-acumin)"],
+        acuminBold: ["var(--font-acumin-bold)"],
+        avenir: ["var(--font-avenir)"],
         cormorant: ["var(--font-cormorant)"],
       },
     },

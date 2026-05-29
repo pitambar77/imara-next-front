@@ -11,7 +11,7 @@ const VehicleAndCabinSection = () => {
       {/* Top Images */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
         <img
-          src={'/safari-fleet-2.webp'}
+          src={'/closed-vechicle.webp'}
           alt="Safari Vehicle 1"
           className="w-full h-auto md:h-[420px] object-cover rounded-lg shadow-sm"
         />

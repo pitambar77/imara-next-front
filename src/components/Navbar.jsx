@@ -473,14 +473,14 @@ const Navbar = () => {
           title: "Our Team",
           desc: "People Behind Safaris",
           image:
-            "https://media.istockphoto.com/id/514632058/photo/lions-on-african-safari-in-tanzania.jpg?s=612x612&w=0&k=20&c=tZ2hwpz8Uub6p2dPcUk02qf1qLFEmcCvg4S4cU0fgt4=",
+            "/landing-team-members.webp",
           path: "#",
         },
         {
           title: "Safari Fleet",
           desc: "Built for Rugged Roads",
           image:
-            "https://res.cloudinary.com/dq0ug85oe/image/upload/v1766502250/imarakileleni_uploads/up869so8a9lzobojlsxf.webp",
+            "/imara-vechille-2.webp",
           path: "/safari-fleet",
         },
         {

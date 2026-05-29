@@ -1,5 +1,5 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"); */
-@import "./fonts.css";
+/* @import "./fonts.css"; */
 @import "tailwindcss";
 
 @theme {
@@ -22,7 +22,7 @@
   animation: fadeIn 0.3s ease-out;
 }
 
-h1,
+/* h1,
 h2 {
   font-family: "AcuminPro";
 }
@@ -44,6 +44,30 @@ span {
 
 .font-acumin-bold {
   font-family: "fonnts.com-AcuminPro-Bold", sans-serif;
+} */
+
+h1,
+h2 {
+  font-family: var(--font-acumin);
+}
+
+h3 {
+  font-family: var(--font-acumin-bold);
+}
+
+ul,
+p,
+button,
+span {
+  font-family: var(--font-soleil);
+}
+
+.ctf {
+  font-family: var(--font-soleil);
+}
+
+.font-acumin-bold {
+  font-family: var(--font-acumin-bold);
 }
 
 /* Remove arrows in Chrome, Safari, Edge */
@@ -179,7 +203,7 @@ html {
 .rich-text strong,
 .rich-text em,
 .rich-text mark {
-  font-family: "Soleil", sans-serif !important;
+  font-family: var(--font-soleil), sans-serif !important;
   color: #444 !important;
   line-height: 1.6;
 }
@@ -216,7 +240,7 @@ html {
 .rich-text h4,
 .rich-text h5,
 .rich-text h6 {
-  font-family: "fonnts.com-AcuminPro-Bold" !important;
+  font-family: var(--font-acumin-bold) !important;
   color: #111 !important;
   line-height: 1.3;
   margin-bottom: 1rem;
