@@ -151,7 +151,8 @@ const HeroSlider = () => {
                 title={slide.title}
                 fill
                 priority={index === 0}
-                fetchPriority={index === 0 ? "high" : undefined}
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : "low"}
                 quality={80}
                 sizes="100vw"
                 draggable={false}
