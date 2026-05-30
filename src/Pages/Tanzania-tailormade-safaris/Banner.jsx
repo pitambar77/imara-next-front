@@ -8,22 +8,22 @@ import Link from "next/link";
 
 const brands = [
   { id: 1, name: "ATTA", img: atta, link: "" },
-  { id: 2, name: "SafariBookings", img: asta, link: "" },
-  { id: 3, name: "TATO", img: "/tra.png", link: "" },
+  // { id: 2, name: "SafariBookings", img: asta, link: "" },
+  { id: 2, name: "TATO", img: "/tra.png", link: "" },
   {
-    id: 4,
+    id: 3,
     name: "Tripadvisor",
     img: "/tripadvisor.png",
     link: "https://www.tripadvisor.com/Attraction_Review-g317084-d34222480-Reviews-Imara_Kileleni_Safaris-Moshi_Kilimanjaro_Region.html",
     rating: "Rated 5.0/5",
   },
-  {
-    id: 5,
-    name: "KPAP",
-    img: "/tulstip.png",
-    rating: "TrustScore 4.6/5",
-    link: "",
-  },
+  // {
+  //   id: 5,
+  //   name: "KPAP",
+  //   img: "/tulstip.png",
+  //   rating: "TrustScore 4.6/5",
+  //   link: "",
+  // },
 ];
 
 const Banner = () => {

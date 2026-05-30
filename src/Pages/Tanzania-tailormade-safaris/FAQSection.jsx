@@ -168,7 +168,7 @@ export default function FAQSection() {
                   className="w-full flex justify-between items-center text-left cursor-pointer"
                 >
                   <span
-                    className={` !font-avenir font-medium transition hover:text-[#d87029] ${
+                    className={` !font-avenir font-bold text-lg transition hover:text-[#d87029] ${
                       openIndex === i ? "text-[#d87029]" : "text-[#444]"
                     }`}
                   >

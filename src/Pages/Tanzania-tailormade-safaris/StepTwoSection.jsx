@@ -7,7 +7,6 @@ import { isValidPhoneNumber } from "libphonenumber-js";
 import { useState, useRef, useEffect } from "react";
 import TravelDatePicker from "./TravelDatePicker";
 
-
 const options = [
   { label: "Serengeti National Park", value: "Serengeti National Park" },
   { label: "Ngorongoro Crater", value: "Ngorongoro Crater" },
@@ -16,7 +15,7 @@ const options = [
     label: "Lake Manyarak",
     value: "Lake Manyara",
   },
-   { label: "Arusha National Park", value: "Arusha National Park" },
+  { label: "Arusha National Park", value: "Arusha National Park" },
   { label: "Zanzibar", value: "Zanzibar" },
   { label: "Mount Kilimanjaro", value: "Mount Kilimanjaro" },
   {
@@ -267,21 +266,61 @@ export default function StepTwoSection({ selectedDestinations }) {
               <div className="bg-white text-black p-6 rounded-lg border border-[#d87029]">
                 <div className="flex justify-between items-center mb-2">
                   <h3 className=" !font-cormorant font-semibold text-xl text-[#d87029]">
-                    Deluxe
+                    Budget Safari
                   </h3>
-                  <span className=" !font-avenir text-sm text-[#d87029]">
+                  {/* <span className=" !font-avenir text-sm text-[#d87029]">
                     From $500 / person / day
-                  </span>
+                  </span> */}
                 </div>
                 <p className=" !font-avenir leading-6 text-sm text-[#444]">
-                  An expertly guided introduction to Tanzania’s legendary parks.
-                  Premium tented camps in the Serengeti and Ngorongoro, private
-                  game drives, all meals included.
+                  Enjoy a well-organized and authentic safari experience with
+                  comfortable lodges, tented camps, or selected campsites.
+                  Travel with a professional English-speaking guide in a shared
+                  or private 4x4 vehicle, while enjoying reliable logistics,
+                  practical accommodations, and unforgettable wildlife
+                  encounters — ideal for travelers seeking affordability without
+                  sacrificing the safari experience.
+                </p>
+              </div>
+              <div className="bg-white text-black p-6 rounded-lg border border-[#d87029]">
+                <div className="flex justify-between items-center mb-2">
+                  <h3 className=" !font-cormorant font-semibold text-xl text-[#d87029]">
+                    Mid-Luxury Safari
+                  </h3>
+                  {/* <span className=" !font-avenir text-sm text-[#d87029]">
+                    From $500 / person / day
+                  </span> */}
+                </div>
+                <p className=" !font-avenir leading-6 text-sm text-[#444]">
+                  Experience the perfect balance of comfort, quality, and value
+                  with carefully selected lodges and tented camps in beautiful
+                  locations. Enjoy enhanced service, experienced safari guides,
+                  comfortable 4x4 vehicles, smooth transfers, excellent dining,
+                  and well-appointed accommodations throughout your journey.
+                </p>
+              </div>
+              <div className="bg-white text-black p-6 rounded-lg border border-[#d87029]">
+                <div className="flex justify-between items-center mb-2">
+                  <h3 className=" !font-cormorant font-semibold text-xl text-[#d87029]">
+                    Luxury Safari
+                  </h3>
+                  {/* <span className=" !font-avenir text-sm text-[#d87029]">
+                    From $500 / person / day
+                  </span> */}
+                </div>
+                <p className=" !font-avenir leading-6 text-sm text-[#444]">
+                  Indulge in Tanzania’s finest safari experience with premium
+                  lodges and luxury tented camps in prime wildlife destinations.
+                  Enjoy private game drives, expert guides, personalized
+                  service, seamless logistics, and exclusive experiences such as
+                  bush breakfasts, sundowners, and wilderness dining — all
+                  designed to deliver exceptional comfort, privacy, and
+                  unforgettable moments.
                 </p>
               </div>
 
               {/* Other Cards */}
-              {[
+              {/* {[
                 { title: "Premium", price: "From $800 / person / day" },
                 { title: "Luxury", price: "From $1,200 / person / day" },
                 { title: "Under $500 / person / day", price: "Budget range" },
@@ -295,7 +334,7 @@ export default function StepTwoSection({ selectedDestinations }) {
                     {item.price}
                   </span>
                 </div>
-              ))}
+              ))} */}
             </div>
           </div>
 
@@ -377,7 +416,7 @@ export default function StepTwoSection({ selectedDestinations }) {
               </div>
 
               {/* Number of days  */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="label">Preferred Travel Date *</label>
                   <div className="relative">
@@ -446,7 +485,7 @@ export default function StepTwoSection({ selectedDestinations }) {
               </div>
 
               {/* Name + Email */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="label">Your Name *</label>
                   <input
@@ -521,13 +560,13 @@ export default function StepTwoSection({ selectedDestinations }) {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-[#d87029] text-white py-3 uppercase tracking-widest text-sm rounded disabled:opacity-60"
+                className="bg-[#d87028] text-white w-full px-6 py-2  rounded-full  hover:bg-[#eb8034de] transition cursor-pointer !font-avenir text-sm md:text-base md:py-2.5"
               >
                 {loading ? "Submitting..." : "Get My Custom Safari Plan →"}
               </button>
 
               {/* Footer */}
-              <div className="flex justify-between text-xs text-gray-500">
+              <div className="flex flex-col md:flex-row justify-between text-xs text-gray-500">
                 <span>No obligation · Your details are never shared</span>
                 <span>* Required fields</span>
               </div>

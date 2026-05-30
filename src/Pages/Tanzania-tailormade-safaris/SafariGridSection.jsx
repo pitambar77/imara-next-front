@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CardButton from "@/components/CardButton";
 import PrimaryButton from "@/components/PrimaryButton";
 import Image from "next/image";
@@ -60,7 +60,7 @@ const trips = [
       "Experience the Wild Heart of Tanzania & Timeless African Landscapes",
     motag: "Standard",
     rating: 5,
-    map:"/11-Days-Experience-the-Wild-Heart-of-Tanzania-Timeless-African-Landscapes.png",
+    map: "/11-Days-Experience-the-Wild-Heart-of-Tanzania-Timeless-African-Landscapes.png",
     img: "/landing-bigfive-lion-hunting.webp",
     img1: "/big-five-1.webp",
     img2: "/big-five.webp",
@@ -92,7 +92,7 @@ const trips = [
       "Follow the Great Migration & Relax on Zanzibar’s Turquoise Shores",
     motag: "Standard",
     rating: 5,
-    map:"/12-Days-Follow-the-Great-Migration-Relax-on-Zanzibars-Turquoise-Shores.png",
+    map: "/12-Days-Follow-the-Great-Migration-Relax-on-Zanzibars-Turquoise-Shores.png",
     img: "/landing-bigfive-cheetha-tree.webp",
     img1: "/landing-bigfive-elephant.webp",
     img2: "/big-five-2.webp",
@@ -127,7 +127,7 @@ const trips = [
       "Discover Tanzania’s Hidden Tribes, Crater Wonders & Remote Rift Valley Landscapes",
     motag: "Standard",
     rating: 5,
-    map:"/7-Days-Discover-Tanzanias-Hidden-Tribes-Crater-Wonders-Remote-Rift-Valley-Landscapes.png",
+    map: "/7-Days-Discover-Tanzanias-Hidden-Tribes-Crater-Wonders-Remote-Rift-Valley-Landscapes.png",
     img: "/cultural-encunter.webp",
     img1: "/landing-culture-activity.webp",
     img2: "/landing-culture-village-tour.webp",
@@ -157,7 +157,7 @@ const trips = [
       "Journey Through Tanzania’s Wild Landscapes, Ancient Cultures & Luxury Safari Escapes",
     motag: "Luxury Glamping",
     rating: 5,
-    map:"/10-Days-Journey-Through-Tanzanias-Wild-Landscapes-Ancient-Cultures-Luxury-Safari-Escapes.png",
+    map: "/10-Days-Journey-Through-Tanzanias-Wild-Landscapes-Ancient-Cultures-Luxury-Safari-Escapes.png",
     img: "/landing-rift-vally.webp",
     img1: "/landing-bigfive-buffalo.webp",
     img2: "/big-five-3.webp",
@@ -188,7 +188,7 @@ const trips = [
       "Experience the Great Migration, Maasai Traditions & Tanzania’s Untamed Wilderness",
     motag: "Premium Safari",
     rating: 5,
-map:"/15-Days-Experience-the-Great-Migration-Maasai-Traditions-Tanzanias-Untamed-Wilderness.png",
+    map: "/15-Days-Experience-the-Great-Migration-Maasai-Traditions-Tanzanias-Untamed-Wilderness.png",
     img: "/landing-bigfive-two-lions.webp",
     img1: "/big-five-4.webp",
     img2: "/landing-bigfive-lion-tree.webp",
@@ -223,7 +223,7 @@ map:"/15-Days-Experience-the-Great-Migration-Maasai-Traditions-Tanzanias-Untamed
       "Explore Tanzania’s Iconic Wildlife Parks on an Authentic Safari Adventure",
     motag: "Budget Camping Safari",
     rating: 5,
-    map:"/3-Days-Explore-Tanzanias-Iconic-Wildlife-Parks-on-an-Authentic-Safari-Adventure.png",
+    map: "/3-Days-Explore-Tanzanias-Iconic-Wildlife-Parks-on-an-Authentic-Safari-Adventure.png",
     img: "/camping.webp",
     img1: "/landing-bigfive-cheetha.webp",
     img2: "/landing-bigfive-giraph.webp",
@@ -247,7 +247,7 @@ map:"/15-Days-Experience-the-Great-Migration-Maasai-Traditions-Tanzanias-Untamed
       "Discover Ngorongoro Crater, Serengeti Wildlife & Tanzania’s Iconic Landscapes",
     motag: "Mid-Range Safari Experience",
     rating: 5,
-    map:"/5-Days-Discover-Ngorongoro-Crater-Serengeti-Wildlife-Tanzanias-Iconic-Landscapes.png",
+    map: "/5-Days-Discover-Ngorongoro-Crater-Serengeti-Wildlife-Tanzanias-Iconic-Landscapes.png",
     img: "/landing-bigfive-lion-nagarangaro.webp",
     img1: "/big-five-2.webp",
     img2: "/nagarangaro-creator.webp",
@@ -272,7 +272,7 @@ map:"/15-Days-Experience-the-Great-Migration-Maasai-Traditions-Tanzanias-Untamed
       "Explore Tanzania’s Iconic Parks: Big Five, Crater Safari & Serengeti Plains",
     motag: "Classic Mid-Range Safari",
     rating: 5,
-    map:"/5-Days-Explore-Tanzanias-Iconic-Parks-Big-Five-Crater-Safari-Serengeti-Plains.png",
+    map: "/5-Days-Explore-Tanzanias-Iconic-Parks-Big-Five-Crater-Safari-Serengeti-Plains.png",
     img: "/tarangire-wild.webp",
     img1: "/landing-bigfive-elephant.webp",
     img2: "/landing-bigfive-nagarangaro.webp",
@@ -345,6 +345,18 @@ map:"/15-Days-Experience-the-Great-Migration-Maasai-Traditions-Tanzanias-Untamed
 export default function SafariGridSection({ setSelected }) {
   const [selectedTrip, setSelectedTrip] = useState(null);
   const [activeImage, setActiveImage] = useState("");
+
+  useEffect(() => {
+  if (selectedTrip) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+
+  return () => {
+    document.body.style.overflow = "auto";
+  };
+}, [selectedTrip]);
 
   return (
     <section className="bg-[#fff] py-12 md:py-20 px-4 md:px-6">
@@ -444,8 +456,8 @@ export default function SafariGridSection({ setSelected }) {
 
       {/* Modal */}
       {selectedTrip && (
-        <div className="fixed inset-0 z-[999] bg-black/70 p-2 md:p-6">
-          <div className="bg-white max-w-6xl mx-auto h-[90vh] rounded-md overflow-hidden relative">
+        <div className="fixed inset-0 z-[999] bg-black/60 backdrop-blur-md p-2 md:p-6">
+          <div className="bg-white max-w-6xl mx-auto h-[95vh]  lg:h-[90vh] rounded-md overflow-hidden relative">
             {/* Close */}
             <button
               onClick={() => setSelectedTrip(null)}
@@ -454,9 +466,9 @@ export default function SafariGridSection({ setSelected }) {
               ×
             </button>
 
-            <div className="grid md:grid-cols-[60%_40%] h-[90vh] p-8">
+            <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] h-full p-3 md:p-5 lg:p-8 overflow-y-auto lg:overflow-hidden">
               {/* LEFT */}
-              <div className="flex flex-col h-full relative">
+              <div className="flex flex-col md:h-[500px] lg:h-full relative">
                 {(() => {
                   const images = [
                     selectedTrip.map,
@@ -485,37 +497,37 @@ export default function SafariGridSection({ setSelected }) {
                   return (
                     <>
                       {/* Main Image */}
-                      <div className="relative flex-1 min-h-[300px] overflow-hidden">
+                      <div className="relative flex-1 min-h-[220px] md:min-h-[400px] lg:min-h-[300px] overflow-hidden">
                         <Image
                           src={activeImage || images[0]}
                           alt={selectedTrip.title}
                           fill
-                          className=" transition duration-300 "
+                          className=" object-contain transition duration-300 "
                         />
 
                         {/* Navigation Buttons */}
                         <button
                           onClick={handlePrev}
-                          className="absolute cursor-pointer left-2 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white w-10 h-10 rounded-full flex items-center justify-center shadow-md transition"
+                          className="absolute cursor-pointer left-2 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center shadow-md transition"
                         >
                           ←
                         </button>
 
                         <button
                           onClick={handleNext}
-                          className="absolute cursor-pointer right-2 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white w-10 h-10 rounded-full flex items-center justify-center shadow-md transition"
+                          className="absolute cursor-pointer right-2 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center shadow-md transition"
                         >
                           →
                         </button>
                       </div>
 
                       {/* Thumbnails */}
-                      <div className="w-full bg-white p-4 flex gap-4 overflow-x-auto">
+                      <div className="w-full bg-white p-2 md:p-4 flex gap-2 md:gap-4 overflow-x-auto">
                         {images.map((img, index) => (
                           <button
                             key={index}
                             onClick={() => setActiveImage(img)}
-                            className={`w-[120px] h-[80px] cursor-pointer rounded overflow-hidden flex-shrink-0 border-2 ${
+                            className={`w-[90px] h-[60px] md:w-[120px] md:h-[80px] cursor-pointer rounded overflow-hidden flex-shrink-0 border-2 ${
                               activeImage === img
                                 ? "border-[#d87029]"
                                 : "border-transparent"
@@ -537,19 +549,19 @@ export default function SafariGridSection({ setSelected }) {
               </div>
 
               {/* RIGHT */}
-              <div className="flex flex-col h-full overflow-hidden">
+              <div className="flex flex-col h-auto md:h-full overflow-hidden">
                 {/* Top */}
                 <div className="p-6 ">
                   {/* Rating */}
-                  <div className="flex items-center gap-2 mb-3">
+                  <div className=" hidden md:flex items-center gap-2 mb-3">
                     <span className="text-[#d87029] text-xl">★★★★★</span>
-                    <span className=" !font-avenir font-semibold text-2xl">
+                    <span className="  !font-avenir font-semibold text-2xl">
                       {selectedTrip.rating}
                     </span>
                   </div>
 
                   {/* Tags */}
-                  <div className="flex gap-2 mb-4">
+                  <div className=" hidden md:flex gap-2 mb-4">
                     <span className="bg-[#d87029] text-white text-xs px-3 py-1 rounded font-semibold">
                       {selectedTrip.tag}
                     </span>
@@ -560,15 +572,15 @@ export default function SafariGridSection({ setSelected }) {
                   </div>
 
                   {/* Title */}
-                  <h2 className="text-xl font-semibold !font-cormorant leading-tight mb-2">
+                  <h2 className="text-lg md:text-xl font-semibold !font-cormorant leading-tight mb-2">
                     {selectedTrip.motitle}
                   </h2>
 
-                  <p className="  text-[#444] !font-avenir mb-4">
+                  <p className="  text-[#444] text-sm md:text-base !font-avenir mb-4">
                     {selectedTrip.motag}
                   </p>
 
-                  <div className="font-avenir flex flex-wrap gap-5">
+                  <div className="font-avenir flex flex-row flex-wrap gap-3 md:gap-5 text-sm md:text-base">
                     <span className="flex items-center gap-2">
                       <FaRegCalendarAlt className="text-[#d87029]" />
                       {selectedTrip.days}
@@ -579,7 +591,7 @@ export default function SafariGridSection({ setSelected }) {
                       {selectedTrip.places}
                     </span>
 
-                    <span className="flex items-center gap-2">
+                    <span className=" hidden md:flex items-center gap-2">
                       <BiWorld className="text-[#d87029]" />
                       {selectedTrip.countries}
                     </span>
@@ -587,33 +599,39 @@ export default function SafariGridSection({ setSelected }) {
                 </div>
 
                 {/* ITINERARY */}
-                <div className="flex-1 overflow-y-auto p-6 min-h-0">
-                  <div className="relative pl-8">
-                    {/* Line */}
-                    <div className="absolute left-[10px] top-0 bottom-0 w-[2px] bg-[#e49866]"></div>
+                <div className="flex-1 overflow-y-auto p-4 md:p-6 min-h-0 max-h-[250px] md:max-h-[350px] lg:max-h-none">
+                  <div className="relative">
+                    {/* Vertical Line */}
+                    <div className="absolute left-[5px] top-0 bottom-0 w-[2px] bg-[#e49866]" />
 
                     {selectedTrip.itinerary.map((item, index) => (
-                      <div key={index} className="relative mb-8">
+                      <div
+                        key={index}
+                        className="relative flex items-start gap-4 mb-6 "
+                      >
                         {/* Dot */}
                         <div
-                          className={`absolute -left-[30px] w-3 h-3 rounded-full border-4 border-[#d87029] bg-white ${
+                          className={`relative z-10 flex-shrink-0 rounded-full ${
                             index !== 0 &&
                             index !== selectedTrip.itinerary.length - 1
-                              ? "w-3 h-3 left-[-26px] border-0 bg-black top-3"
-                              : ""
+                              ? "w-3 h-3 bg-[#d87029] mt-1.5"
+                              : "w-3 h-3 border-4 border-[#d87029] bg-white mt-1.5"
                           }`}
-                        ></div>
+                        />
 
-                        <h4 className=" !font-avenir font-semibold">
-                          {item.day}: {item.place}
-                        </h4>
+                        {/* Content */}
+                        <div className="flex-1">
+                          <h4 className="font-avenir font-semibold text-sm md:text-base leading-relaxed">
+                            {item.day}: {item.place}
+                          </h4>
+                        </div>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Bottom */}
-                <div className="  border-t border-t-[#f8dcca] p-6 flex items-center justify-between">
+                <div className="  border-t border-t-[#f8dcca] p-4 md:p-6 flex flex-row gap-4 sm:gap-0 items-start sm:items-center justify-between">
                   <div>
                     <p className=" !font-avenir text-lg font-bold">
                       From {selectedTrip.price}

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-const tabs = ["Experiences", "Vehicle/Flights"];
+const tabs = ["Experiences","Accommodations", "Vehicle/Flights"];
 
 const data = {
   Experiences: [
@@ -46,20 +46,44 @@ const data = {
     },
   ],
 
-  // Accommodation: [
-  //   {
-  //     title: "Luxury Lodges",
-  //     tag: "PREMIUM STAY",
-  //     desc: "From freshly prepared breakfasts at dawn with wildlife calls in the air, to lantern-lit dinners under a canopy of stars — every meal in the bush is an experience in itself.",
-  //     img: "https://media.istockphoto.com/id/921714004/photo/three-giraffes-under-acacia-tree.jpg?s=612x612&w=0&k=20&c=qBWHfq_x7CwQkVcMvgzudc3ODq1WAVbsedyre99Bj0w=",
-  //   },
-  //   {
-  //     title: "Tented Camps",
-  //     tag: "AUTHENTIC EXPERIENCE",
-  //     desc: "From freshly prepared breakfasts at dawn with wildlife calls in the air, to lantern-lit dinners under a canopy of stars — every meal in the bush is an experience in itself.",
-  //     img: "https://media.istockphoto.com/id/921714004/photo/three-giraffes-under-acacia-tree.jpg?s=612x612&w=0&k=20&c=qBWHfq_x7CwQkVcMvgzudc3ODq1WAVbsedyre99Bj0w=",
-  //   },
-  // ],
+  Accommodations: [
+    {
+      title: "Elewana Collections",
+      tag: "luxury safari",
+      desc: "Experience luxury Tanzania safaris with Elewana Collections, offering premium lodges and elegant tented camps in iconic destinations like the Serengeti and Ngorongoro. Perfect for travellers seeking luxury safari accommodation, exceptional comfort, and unforgettable wildlife experiences.",
+      img: "/Elewana.webp",
+    },
+    {
+      title: "Sopa Lodges",
+      tag: "comfortable safari",
+      desc: "Sopa Lodges Tanzania provide comfortable safari stays in prime wildlife destinations, combining spacious accommodations, warm hospitality, and scenic surroundings. An excellent choice for travellers looking for reliable mid-range to luxury Tanzania safari lodges.",
+      img: "/sopa-lodge.webp",
+    },
+     {
+      title: "Serena Hotels",
+      tag: "premium safari",
+      desc: "Discover authentic African hospitality with Serena Hotels Tanzania, known for stylish lodges, premium amenities, and exceptional service across Tanzania’s top safari locations. Ideal for luxury safari holidays, honeymoon safaris, and premium wildlife adventures.",
+      img: "/Serena.webp",
+    },
+     {
+      title: "Tarangire Safari Lodge",
+      tag: "authentic safari",
+      desc: "Located within Tarangire National Park, Tarangire Safari Lodge offers classic safari charm, stunning wildlife views, and immersive bush experiences. A perfect option for travellers searching for authentic Tanzania safari lodges and unforgettable game-viewing stays.",
+      img: "/Tarangire-Safari-Lodge.webp",
+    },
+    {
+      title: "Bougainvillea Group of Lodges",
+      tag: "charming safari",
+      desc: "The Bougainvillea Group of Lodges offers comfortable and charming accommodations in key Tanzania safari destinations, blending personalized service, cozy surroundings, and convenient access to wildlife parks. Ideal for affordable luxury and mid-range Tanzania safari experiences.",
+      img: "/Bougainvillea.webp",
+    },
+    {
+      title: "The Zanzibar Collections",
+      tag: "beach escape",
+      desc: "Enhance your Tanzania safari with a luxury beach escape at The Zanzibar Collections, featuring boutique beachfront accommodations, world-class hospitality, and relaxing Indian Ocean experiences. Perfect for Tanzania safari and Zanzibar holiday packages, honeymoon trips, and luxury beach vacations.",
+      img: "/Zanzibar-Collections.webp",
+    },
+  ],
 
   "Vehicle/Flights": [
     {
@@ -173,7 +197,7 @@ export default function ExperienceTabsSection() {
 
               {/* Content */}
               <div className="p-5">
-                <p className=" !font-avenir text-xs tracking-wider text-[#d87029] mb-4">
+                <p className=" !font-avenir text-xs uppercase tracking-wider text-[#d87029] mb-4">
                   {item.tag}
                 </p>
 

@@ -67,13 +67,31 @@ export default function TravelDatePicker({ value, onChange }) {
 
       {/* CALENDAR POPUP */}
       {showPicker && (
+        // <div
+        //   ref={pickerRef}
+        //   className={`absolute z-50 mt-2 shadow-lg bg-white rounded-xl  overflow-hidden `}
+        // >
+        //   <button
+        //     onClick={() => setShowPicker(false)}
+        //     className="absolute top-2 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600"
+        //   >
+        //     ✕
+        //   </button>
+
+        //   <Calendar
+        //     date={selectedDate}
+        //     onChange={handleChange}
+        //     minDate={new Date()}
+        //   />
+        // </div>
         <div
           ref={pickerRef}
-          className={`absolute z-50 mt-2 shadow-lg bg-white rounded-xl  overflow-hidden `}
+          className="absolute z-50 mt-2 bg-white rounded-xl shadow-lg overflow-hidden
+             origin-top-left scale-[0.85] sm:scale-100"
         >
           <button
             onClick={() => setShowPicker(false)}
-            className="absolute top-2 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600"
+            className="absolute top-2 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 cursor-pointer"
           >
             ✕
           </button>
@@ -88,5 +106,3 @@ export default function TravelDatePicker({ value, onChange }) {
     </div>
   );
 }
-
-
