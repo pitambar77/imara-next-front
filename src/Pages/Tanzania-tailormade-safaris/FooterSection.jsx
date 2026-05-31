@@ -26,7 +26,7 @@ export default function FooterSection() {
               const section = document.getElementById("step-2");
               section?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="text-[#d87028] font-avenir bg-white px-[21px] py-2.5 rounded-full font-semibold hover:bg-[#f0b184de] hover:text-white transition cursor-pointer shadow hover:opacity-90  duration-300"
+            className="text-[#d87028] !font-avenir bg-white px-[21px] py-2.5 rounded-full  hover:bg-[#f0b184de] hover:text-white transition cursor-pointer shadow hover:opacity-90  duration-300"
           >
             Speak With a Specialist →
           </button>

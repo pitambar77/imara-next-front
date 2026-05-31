@@ -1,8 +1,7 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import atta from "../../assets/atta-logo-la.webp";
-import asta from "../../assets/asta-logo.webp";
 import imaralogo from "@/assets/imaralogo.png";
 import Link from "next/link";
 
@@ -17,16 +16,21 @@ const brands = [
     link: "https://www.tripadvisor.com/Attraction_Review-g317084-d34222480-Reviews-Imara_Kileleni_Safaris-Moshi_Kilimanjaro_Region.html",
     rating: "Rated 5.0/5",
   },
-  // {
-  //   id: 5,
-  //   name: "KPAP",
-  //   img: "/tulstip.png",
-  //   rating: "TrustScore 4.6/5",
-  //   link: "",
-  // },
 ];
 
 const Banner = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section className="relative h-screen w-full overflow-x-hidden">
       {/* Background Image */}
@@ -60,8 +64,14 @@ const Banner = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/100" />
 
       {/* Navbar */}
-      <div className="absolute top-0 left-0 w-full z-20 text-white">
-        <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 xl:px-0 py-6 flex items-center justify-between">
+      <div
+        className={`fixed top-0 left-0 w-full z-50 text-white transition-all duration-300 ${
+          scrolled
+            ? "bg-[#fdfaf5] backdrop-blur-md shadow-lg"
+            : "bg-transparent py-1 "
+        }`}
+      >
+        <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 xl:px-0 py-3 md:py-6 flex items-center justify-between">
           {/* Logo */}
           <Link href="#" className="flex items-center">
             <Image
@@ -75,7 +85,11 @@ const Banner = () => {
           </Link>
 
           {/* Menu */}
-          <div className="hidden md:flex gap-10 uppercase tracking-wider text-sm !font-avenir">
+          <div
+            className={`hidden md:flex gap-10 uppercase tracking-wider text-sm !font-avenir ${
+              scrolled ? "text-[#d87029]" : "text-white"
+            }`}
+          >
             <a href="#why-travel" className="hover:opacity-70">
               Why Us
             </a>
@@ -96,7 +110,7 @@ const Banner = () => {
               const section = document.getElementById("step-2");
               section?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="font-avenir text-sm md:text-base bg-[#d87028] text-white px-[21px] py-2.5 rounded-full font-semibold hover:bg-[#eb8034de] transition cursor-pointer"
+            className="!font-avenir text-sm md:text-base bg-[#d87028] text-white px-[21px] py-2.5 rounded-full hover:bg-[#eb8034de] transition cursor-pointer"
           >
             Plan My Safari
           </button>
@@ -125,7 +139,7 @@ const Banner = () => {
               const section = document.getElementById("step-2");
               section?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="font-avenir text-sm md:text-base bg-[#d87028] text-white px-[21px] py-2.5 rounded-full font-semibold hover:bg-[#eb8034de] transition cursor-pointer"
+            className="!font-avenir text-sm md:text-base bg-[#d87028] text-white px-[21px] py-2.5 rounded-full  hover:bg-[#eb8034de] transition cursor-pointer"
           >
             Get My Custom Safari →
           </button>
@@ -135,7 +149,7 @@ const Banner = () => {
               const section = document.getElementById("experience");
               section?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="border border-white bg-transparent font-avenir text-sm md:text-base px-[21px] py-2.5 rounded-full font-semibold hover:bg-[#eb8034de] transition cursor-pointer"
+            className="border border-white bg-transparent !font-avenir text-sm md:text-base px-[21px] py-2.5 rounded-full  hover:bg-[#eb8034de] transition cursor-pointer"
           >
             Explore Experiences →
           </button>
@@ -148,13 +162,7 @@ const Banner = () => {
         <div className="md:hidden overflow-x-scroll scrollbar-hide px-4">
           <div className="flex items-center gap-4 divide-x divide-white/30 w-max min-w-max">
             {brands.map((brand) => (
-              <a
-                key={brand.id}
-                href={brand.link || "#"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-shrink-0 px-4"
-              >
+              <div key={brand.id} className="flex-shrink-0 px-4">
                 <Image
                   src={brand.img}
                   alt={brand.name}
@@ -162,7 +170,7 @@ const Banner = () => {
                   height={40}
                   className="opacity-80"
                 />
-              </a>
+              </div>
             ))}
           </div>
         </div>
@@ -170,13 +178,7 @@ const Banner = () => {
         {/* DESKTOP */}
         <div className="hidden md:flex justify-center items-center divide-x divide-white/30 max-w-6xl mx-auto">
           {brands.map((brand) => (
-            <a
-              key={brand.id}
-              href={brand.link || "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6"
-            >
+            <div key={brand.id} className="px-6">
               <Image
                 src={brand.img}
                 alt={brand.name}
@@ -187,7 +189,7 @@ const Banner = () => {
               <p className=" text-center text-[#eac0a4] text-[10px] mt-2">
                 {brand.rating}
               </p>
-            </a>
+            </div>
           ))}
         </div>
       </div>

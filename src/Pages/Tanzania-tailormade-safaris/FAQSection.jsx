@@ -53,8 +53,27 @@ const faqs = [
   },
 ];
 
+const safariCards = [
+  {
+    title: "Budget Safari",
+    content:
+      "Enjoy a well-organized and authentic safari experience with comfortable lodges, tented camps, or selected campsites. Travel with a professional English-speaking guide in a shared or private 4x4 vehicle while enjoying reliable logistics and unforgettable wildlife encounters.",
+  },
+  {
+    title: "Mid-Luxury Safari",
+    content:
+      "Experience the perfect balance of comfort, quality, and value with carefully selected lodges and tented camps in beautiful locations. Enjoy enhanced service, experienced safari guides, comfortable 4x4 vehicles, smooth transfers, and excellent dining.",
+  },
+  {
+    title: "Luxury Safari",
+    content:
+      "Indulge in Tanzania’s finest safari experience with premium lodges and luxury tented camps in prime wildlife destinations. Enjoy private game drives, expert guides, personalized service, seamless logistics, and exclusive experiences.",
+  },
+];
+
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(0);
+  const [activeCard, setActiveCard] = useState(0);
 
   return (
     <section id="faq" className="bg-[#f6f3ee] py-12 md:py-20 px-4 md:px-6">
@@ -74,8 +93,8 @@ export default function FAQSection() {
         {/* Layout */}
         <div className="grid md:grid-cols-2 gap-12">
           {/* LEFT SIDE */}
-          <div>
-            {/* Video Card */}
+          {/* <div>
+            
             <div className="relative rounded-md overflow-hidden mb-6">
               <Image
                 src="/imara-vechille-1.webp"
@@ -85,15 +104,7 @@ export default function FAQSection() {
                 className="object-cover w-full h-[200px] md:h-[300px] lg:h-[260px]"
               />
 
-              {/* Overlay */}
-              {/* <div className="absolute inset-0 bg-black/30 flex items-center justify-center flex-col text-white">
-                <div className="w-14 h-14 rounded-full bg-white/80 flex items-center justify-center mb-2">
-                  ▶
-                </div>
-                <p className=" !font-avenir text-xs tracking-widest uppercase">
-                  Watch Our FAQ Guide
-                </p>
-              </div> */}
+             
             </div>
             <div
               onClick={() => {
@@ -102,7 +113,7 @@ export default function FAQSection() {
               }}
               className=" cursor-pointer"
             >
-              {/* Resource Card */}
+            
               <div className="bg-white rounded-md p-4 flex items-center gap-4 mb-4 shadow-sm">
                 <Image
                   src="/imara-vechille-1.webp"
@@ -125,7 +136,6 @@ export default function FAQSection() {
                 <span className="text-[#d87029]">→</span>
               </div>
 
-              {/* FAQ Page Card */}
             </div>
             <div
               onClick={() => {
@@ -156,6 +166,55 @@ export default function FAQSection() {
                 <span className="text-[#d87029]">→</span>
               </div>
             </div>
+          </div> */}
+
+          <div>
+            {/* <p className=" !font-avenir text-xs tracking-[0.2em] text-[#d87029] uppercase mb-4">
+              Choose Your Safari
+            </p>
+
+            <h2 className=" !font-cormorant text-4xl mb-4">
+              Curated Experiences
+            </h2>
+
+            <p className=" !font-avenir leading-6 text-sm mb-8 max-w-xl">
+              Every journey begins with a conversation. These are starting
+              points — each fully tailored to you.
+            </p> */}
+
+            <div className="space-y-4">
+              {safariCards.map((card, index) => (
+                <div
+                  key={index}
+                  onClick={() => setActiveCard(index)}
+                  className={`bg-white rounded-lg border p-6 cursor-pointer transition-all duration-300 ${
+                    activeCard === index
+                      ? "border-[#d87029]/40"
+                      : "border-gray-200 hover:border-[#d87029]/40"
+                  }`}
+                >
+                  <div className="flex justify-between items-center">
+                    <h3
+                      className={`!font-cormorant font-semibold text-xl ${
+                        activeCard === index ? "text-[#d87029]" : "text-[#444]"
+                      }`}
+                    >
+                      {card.title}
+                    </h3>
+
+                    <span className="text-[#d87029] text-xl">
+                      {activeCard === index ? "−" : "+"}
+                    </span>
+                  </div>
+
+                  {activeCard === index && (
+                    <p className="!font-avenir leading-6 text-sm text-[#444] mt-4">
+                      {card.content}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* RIGHT SIDE (Accordion) */}
@@ -168,7 +227,7 @@ export default function FAQSection() {
                   className="w-full flex justify-between items-center text-left cursor-pointer"
                 >
                   <span
-                    className={` !font-avenir font-semibold text-lg transition hover:text-[#d87029] ${
+                    className={` !font-avenir  text-lg transition hover:text-[#d87029] ${
                       openIndex === i ? "text-[#d87029]" : "text-[#444]"
                     }`}
                   >

@@ -6,7 +6,7 @@ const destinations = [
   {
     name: "Serengeti National Park",
     value: "Serengeti National Park",
-    img: "/serengeti-national-park-desti.webp",
+    img: "/Serengeti-National-park-new.webp",
   },
   {
     name: "Ngorongoro Crater",
@@ -105,6 +105,14 @@ export default function DestinationStepSection({ setSelected }) {
               }`}
             >
               {/* Image */}
+              {/* <div className="relative h-[100px] md:h-[160px]">
+                <Image
+                  src={item.img}
+                  alt={item.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition duration-500"
+                />
+              </div> */}
               <div className="relative h-[100px] md:h-[160px]">
                 <Image
                   src={item.img}
@@ -112,6 +120,27 @@ export default function DestinationStepSection({ setSelected }) {
                   fill
                   className="object-cover group-hover:scale-105 transition duration-500"
                 />
+
+                {selected.includes(item.value) && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                    <div className="w-12 h-12 rounded-full bg-[#d87029] flex items-center justify-center shadow-lg">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-7 h-7 text-white"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={3}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Label */}

@@ -11,6 +11,7 @@ import FitSection from './FitSection'
 import FAQSection from './FAQSection'
 import TestimonialsSection from './TestimonialsSection'
 import FooterSection from './FooterSection'
+import GallerySection from './GallerySection'
 
 const Hero = () => {
 
@@ -22,6 +23,7 @@ const Hero = () => {
         <SafariGridSection setSelected={setSelectedDestinations}/>
         <DestinationStepSection setSelected={setSelectedDestinations} />
         <StepTwoSection selectedDestinations={selectedDestinations} />
+        <GallerySection/>
         <ExperienceTabsSection/>
         <FitSection/>
         <FAQSection/>

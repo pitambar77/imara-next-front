@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import CardButton from "@/components/CardButton";
-import PrimaryButton from "@/components/PrimaryButton";
 import Image from "next/image";
 import { MdOutlineSavedSearch } from "react-icons/md";
 import { FaRegCalendarAlt } from "react-icons/fa";
@@ -347,16 +345,16 @@ export default function SafariGridSection({ setSelected }) {
   const [activeImage, setActiveImage] = useState("");
 
   useEffect(() => {
-  if (selectedTrip) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "auto";
-  }
+    if (selectedTrip) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
 
-  return () => {
-    document.body.style.overflow = "auto";
-  };
-}, [selectedTrip]);
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [selectedTrip]);
 
   return (
     <section className="bg-[#fff] py-12 md:py-20 px-4 md:px-6">
@@ -433,7 +431,7 @@ export default function SafariGridSection({ setSelected }) {
                       section?.scrollIntoView({ behavior: "smooth" });
                     }}
                     href={"/"}
-                    className=" !font-avenir bg-[#d87028] text-white text-sm px-5 py-2 rounded-full font-semibold hover:bg-[#eb8034de] transition cursor-pointer"
+                    className=" !font-avenir bg-[#d87028] text-white text-sm md:text-base px-5 py-2 rounded-full  hover:bg-[#eb8034de] transition cursor-pointer"
                   >
                     Book Now
                   </button>
@@ -445,12 +443,15 @@ export default function SafariGridSection({ setSelected }) {
 
         {/* Bottom Button */}
         <div className=" mt-8 md:mt-16">
-          <PrimaryButton
-            href={"/"}
-            className=" !font-avenir text-sm md:text-base md:py-3.5"
+          <button
+            onClick={() => {
+              const section = document.getElementById("step-2");
+              section?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="!font-avenir text-sm md:text-base bg-[#d87028] text-white px-[21px] py-2.5 rounded-full  hover:bg-[#eb8034de] transition cursor-pointer"
           >
-            Continue to Plan My Safari →
-          </PrimaryButton>
+            Get My Custom Safari →
+          </button>
         </div>
       </div>
 
@@ -646,7 +647,7 @@ export default function SafariGridSection({ setSelected }) {
                       const section = document.getElementById("step-2");
                       section?.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="bg-[#d87028] text-white px-[21px] py-2.5 rounded-full font-semibold hover:bg-[#eb8034de] transition cursor-pointer"
+                    className="bg-[#d87028] text-white !font-avenir px-[21px] py-2.5 rounded-full  hover:bg-[#eb8034de] transition cursor-pointer"
                   >
                     Book Now
                   </button>
