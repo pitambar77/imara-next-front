@@ -73,14 +73,14 @@ const Banner = () => {
       >
         <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-10 xl:px-0 py-3 md:py-6 flex items-center justify-between">
           {/* Logo */}
-          <Link href="#" className="flex items-center">
+          <Link href="#" className="flex items-center ">
             <Image
               src={imaralogo}
               alt="Imara Kileleni Safaris"
               width={180}
               height={60}
               priority
-              className="h-10 sm:h-11 md:h-12 w-auto"
+              className="h-10 sm:h-11 md:h-12 w-auto "
             />
           </Link>
 
@@ -160,9 +160,9 @@ const Banner = () => {
       <div className="absolute bottom-4 left-0 w-full z-20">
         {/* MOBILE SLIDER */}
         <div className="md:hidden overflow-x-scroll scrollbar-hide px-4">
-          <div className="flex items-center gap-4 divide-x divide-white/30 w-max min-w-max">
+          <div className="flex items-center gap-1 divide-x divide-white/30 w-max min-w-max">
             {brands.map((brand) => (
-              <div key={brand.id} className="flex-shrink-0 px-4">
+              <div key={brand.id} className="flex-shrink-0 px-1">
                 <Image
                   src={brand.img}
                   alt={brand.name}

@@ -6,6 +6,7 @@ import { MdOutlineSavedSearch } from "react-icons/md";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { BiWorld } from "react-icons/bi";
+import { X } from "lucide-react";
 
 const trips = [
   {
@@ -462,9 +463,10 @@ export default function SafariGridSection({ setSelected }) {
             {/* Close */}
             <button
               onClick={() => setSelectedTrip(null)}
-              className="absolute top-3 right-4 z-50 text-4xl cursor-pointer"
+              className="absolute top-5 right-6 z-50 text-xl cursor-pointer text-white p-1 rounded-full bg-[#d87029]"
             >
-              ×
+            <X size={16}/>
+           
             </button>
 
             <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] h-full p-3 md:p-5 lg:p-8 overflow-y-auto lg:overflow-hidden">

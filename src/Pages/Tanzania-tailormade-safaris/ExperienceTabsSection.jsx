@@ -189,7 +189,7 @@ export default function ExperienceTabsSection() {
                   onClick={() => setActiveTab(tab)}
                   className={`
           relative
-          h-[30px]
+          h-[34px]
           px-4
           flex
           items-center
@@ -198,7 +198,7 @@ export default function ExperienceTabsSection() {
           !font-avenir
           text-sm
           
-          tracking-[0.2em]
+          tracking-[0.1em]
           
           transition-all
 
@@ -226,7 +226,7 @@ export default function ExperienceTabsSection() {
         items-center
         justify-center
         whitespace-nowrap
-        h-[30px]
+        h-[34px]
         px-5
         border
         border-t-0
@@ -236,7 +236,7 @@ export default function ExperienceTabsSection() {
         !font-avenir
         text-sm
         
-        tracking-[0.2em]
+        tracking-[0.1em]
   
         transition-all
 
