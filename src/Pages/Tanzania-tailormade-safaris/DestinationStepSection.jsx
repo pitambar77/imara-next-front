@@ -19,15 +19,16 @@ const destinations = [
     img: "/tarangire-natinal-park-desti.webp",
   },
   {
-    name: "Lake Manyara",
-    value: "Lake Manyara",
-    img: "/lake-manyara-desti.webp",
-  },
-  {
     name: "Arusha National Park",
     value: "Arusha National Park",
     img: "/arusha-ntional.webp",
   },
+  {
+    name: "Lake Manyara",
+    value: "Lake Manyara",
+    img: "/lake-manyara-desti.webp",
+  },
+
   {
     name: "Zanzibar",
     value: "Zanzibar",

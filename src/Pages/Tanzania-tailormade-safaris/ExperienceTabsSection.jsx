@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-const tabs = ["Experiences","Accommodations", "Vehicle/Flights"];
+const tabs = ["Experiences", "Accommodations", "Vehicle/Flights"];
 
 const data = {
   Experiences: [
@@ -59,13 +59,13 @@ const data = {
       desc: "Sopa Lodges Tanzania provide comfortable safari stays in prime wildlife destinations, combining spacious accommodations, warm hospitality, and scenic surroundings. An excellent choice for travellers looking for reliable mid-range to luxury Tanzania safari lodges.",
       img: "/sopa-lodge.webp",
     },
-     {
+    {
       title: "Serena Hotels",
       tag: "premium safari",
       desc: "Discover authentic African hospitality with Serena Hotels Tanzania, known for stylish lodges, premium amenities, and exceptional service across Tanzania’s top safari locations. Ideal for luxury safari holidays, honeymoon safaris, and premium wildlife adventures.",
       img: "/Serena.webp",
     },
-     {
+    {
       title: "Tarangire Safari Lodge",
       tag: "authentic safari",
       desc: "Located within Tarangire National Park, Tarangire Safari Lodge offers classic safari charm, stunning wildlife views, and immersive bush experiences. A perfect option for travellers searching for authentic Tanzania safari lodges and unforgettable game-viewing stays.",
@@ -110,7 +110,7 @@ const data = {
       desc: "Fly seamlessly into Tanzania’s remote wilderness with trusted bush aviation connections, linking destinations like Serengeti, Ruaha, Selous, and Zanzibar for fast, scenic, and effortless travel.",
       img: "/bush-flight.jpg",
     },
-     {
+    {
       title: "Raw Safari Freedom",
       tag: "Open Vehicle",
       desc: "Feel completely connected to Tanzania’s wild landscapes with open-air game drives delivering panoramic wildlife viewing, unobstructed photography, and a true safari immersion.",
@@ -134,7 +134,6 @@ const data = {
       desc: "Connect effortlessly between Tanzania’s most spectacular safari destinations through scenic bush flights, transforming long journeys into breathtaking aerial experiences.",
       img: "/bush-flight-1.jpg",
     },
-    
   ],
 };
 
@@ -160,13 +159,106 @@ export default function ExperienceTabsSection() {
         </h2>
 
         {/* Tabs */}
-        <div className="w-full overflow-x-auto scrollbar-hide">
+        {/* <div className="w-full overflow-x-auto scrollbar-hide">
           <div className="flex justify-start md:justify-center gap-4 md:gap-8 mb-6 md:mb-12 min-w-max px-4">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`uppercase text-xs sm:text-sm !font-avenir tracking-[0.2em] pb-2 whitespace-nowrap cursor-pointer transition ${
+                  activeTab === tab
+                    ? "text-[#d87029] border-b-2 border-[#d87029]"
+                    : "text-[#444] hover:text-black"
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+        </div> */}
+
+        <div className="mb-6 md:mb-12">
+          {/* Mobile */}
+
+          <div className="md:hidden overflow-hidden">
+            {/* First Row */}
+            <div className="grid grid-cols-2 border border-[#d8c9b8] rounded-t-sm overflow-hidden">
+              {tabs.slice(0, 2).map((tab, index) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`
+          relative
+          h-[30px]
+          px-4
+          flex
+          items-center
+          justify-center
+          whitespace-nowrap
+          !font-avenir
+          text-sm
+          
+          tracking-[0.2em]
+          
+          transition-all
+
+          ${index === 0 ? "border-r border-[#d8c9b8]" : ""}
+
+          ${
+            activeTab === tab
+              ? "bg-[#f1e9e3] text-[#d87029]"
+              : "bg-white text-[#444]"
+          }
+        `}
+                >
+                  <span className="relative z-10">{tab}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Second Row */}
+            <div className="flex justify-center">
+              <button
+                onClick={() => setActiveTab(tabs[2])}
+                className={`
+        relative
+        flex
+        items-center
+        justify-center
+        whitespace-nowrap
+        h-[30px]
+        px-5
+        border
+        border-t-0
+        border-[#d8c9b8]
+        rounded-b-sm
+
+        !font-avenir
+        text-sm
+        
+        tracking-[0.2em]
+  
+        transition-all
+
+        ${
+          activeTab === tabs[2]
+            ? "bg-[#f1e9e3] text-[#d87029]"
+            : "bg-white text-[#444]"
+        }
+      `}
+              >
+                <span className="relative z-10">{tabs[2]}</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Desktop */}
+          <div className="hidden md:flex justify-center gap-8">
+            {tabs.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`uppercase text-sm !font-avenir tracking-[0.2em] pb-2 cursor-pointer transition ${
                   activeTab === tab
                     ? "text-[#d87029] border-b-2 border-[#d87029]"
                     : "text-[#444] hover:text-black"
@@ -193,7 +285,6 @@ export default function ExperienceTabsSection() {
                   className="object-cover"
                 />
               </div>
-              
 
               {/* Content */}
               <div className="p-5">
