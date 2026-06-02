@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-const tabs = ["Experiences", "Accommodations", "Vehicle/Flights"];
+const tabs = ["Experiences", "Accommodations", "Vehicle"];
 
 const data = {
   Experiences: [
@@ -85,7 +85,7 @@ const data = {
     },
   ],
 
-  "Vehicle/Flights": [
+  Vehicle: [
     {
       title: "Unfiltered Tanzania Wilderness",
       tag: "Open Vehicle",
@@ -104,12 +104,12 @@ const data = {
       desc: "Fully enclosed with panoramic windows — comfortable, secure, and perfect for extended game drives through Tanzania’s diverse landscapes and wildlife-rich destinations.",
       img: "/closed-vechicle.webp",
     },
-    {
-      title: "Wings Over Tanzania",
-      tag: "Bush Flight",
-      desc: "Fly seamlessly into Tanzania’s remote wilderness with trusted bush aviation connections, linking destinations like Serengeti, Ruaha, Selous, and Zanzibar for fast, scenic, and effortless travel.",
-      img: "/bush-flight.jpg",
-    },
+    // {
+    //   title: "Wings Over Tanzania",
+    //   tag: "Bush Flight",
+    //   desc: "Fly seamlessly into Tanzania’s remote wilderness with trusted bush aviation connections, linking destinations like Serengeti, Ruaha, Selous, and Zanzibar for fast, scenic, and effortless travel.",
+    //   img: "/bush-flight.jpg",
+    // },
     {
       title: "Raw Safari Freedom",
       tag: "Open Vehicle",
@@ -128,12 +128,12 @@ const data = {
       desc: "Travel comfortably through Tanzania’s wilderness in fully enclosed safari vehicles, combining security, relaxation, and uninterrupted wildlife encounters.",
       img: "/closed-vechicle-1.webp",
     },
-    {
-      title: "Sky Safari Tanzania",
-      tag: "Bush Flight",
-      desc: "Connect effortlessly between Tanzania’s most spectacular safari destinations through scenic bush flights, transforming long journeys into breathtaking aerial experiences.",
-      img: "/bush-flight-1.jpg",
-    },
+    // {
+    //   title: "Sky Safari Tanzania",
+    //   tag: "Bush Flight",
+    //   desc: "Connect effortlessly between Tanzania’s most spectacular safari destinations through scenic bush flights, transforming long journeys into breathtaking aerial experiences.",
+    //   img: "/bush-flight-1.jpg",
+    // },
   ],
 };
 
@@ -161,8 +161,8 @@ export default function ExperienceTabsSection() {
         <div className="mb-6 md:mb-12">
           {/* Mobile */}
 
-          <div className="md:hidden overflow-hidden">
-            {/* First Row */}
+          {/* <div className="md:hidden overflow-hidden">
+       
             <div className="grid grid-cols-2 border border-[#d8c9b8] rounded-t-sm overflow-hidden">
               {tabs.slice(0, 2).map((tab, index) => (
                 <button
@@ -197,7 +197,7 @@ export default function ExperienceTabsSection() {
               ))}
             </div>
 
-            {/* Second Row */}
+   
             <div className="flex justify-center">
               <button
                 onClick={() => setActiveTab(tabs[2])}
@@ -230,6 +230,40 @@ export default function ExperienceTabsSection() {
               >
                 <span className="relative z-10">{tabs[2]}</span>
               </button>
+            </div>
+          </div> */}
+
+          <div className="md:hidden overflow-hidden">
+            <div className="flex border border-[#d8c9b8] rounded-sm overflow-hidden w-fit mx-auto">
+              {tabs.map((tab, index) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`
+                   
+          h-[36px]
+          px-2
+          flex
+          items-center
+          justify-center
+          whitespace-nowrap
+          !font-avenir
+          text-xs
+          tracking-[0.08em]
+          transition-all
+
+          ${index !== tabs.length - 1 ? "border-r border-[#d8c9b8]" : ""}
+
+          ${
+            activeTab === tab
+              ? "bg-[#f1e9e3] text-[#d87029]"
+              : "bg-white text-[#444]"
+          }
+        `}
+                >
+                  {tab}
+                </button>
+              ))}
             </div>
           </div>
 

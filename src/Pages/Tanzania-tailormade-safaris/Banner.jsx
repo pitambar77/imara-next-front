@@ -224,7 +224,7 @@ const Banner = () => {
           Luxury Tanzania Safaris
         </h1>
 
-        <h2 className=" text-[20px] md:text-2xl lg:text-4xl !font-cormorant italic text-[#e99b64] mb-6 md:mb-4">
+        <h2 className=" text-[22px] md:text-2xl lg:text-4xl !font-cormorant italic text-[#e99b64] mb-6 md:mb-4">
           Travel Tanzania in exceptional comfort.
         </h2>
 

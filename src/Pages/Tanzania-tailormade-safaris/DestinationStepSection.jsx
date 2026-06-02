@@ -49,7 +49,7 @@ const destinations = [
   {
     name: "Mikumi National Park",
     desc: "Open plains, rich wildlife, and exceptional game viewing. A classic Tanzanian safari destination known for lions, elephants, giraffes, and breathtaking landscapes.",
-    img: "/big-five-2.webp",
+    img: "/mukimi-d.webp",
   },
 ];
 
