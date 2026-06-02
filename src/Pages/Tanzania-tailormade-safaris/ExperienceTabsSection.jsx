@@ -158,25 +158,6 @@ export default function ExperienceTabsSection() {
           Inside the Experience
         </h2>
 
-        {/* Tabs */}
-        {/* <div className="w-full overflow-x-auto scrollbar-hide">
-          <div className="flex justify-start md:justify-center gap-4 md:gap-8 mb-6 md:mb-12 min-w-max px-4">
-            {tabs.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`uppercase text-xs sm:text-sm !font-avenir tracking-[0.2em] pb-2 whitespace-nowrap cursor-pointer transition ${
-                  activeTab === tab
-                    ? "text-[#d87029] border-b-2 border-[#d87029]"
-                    : "text-[#444] hover:text-black"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
-        </div> */}
-
         <div className="mb-6 md:mb-12">
           {/* Mobile */}
 
@@ -292,7 +273,7 @@ export default function ExperienceTabsSection() {
                   {item.tag}
                 </p>
 
-                <h3 className=" !font-cormorant text-lg md:text-xl font-medium mb-4 text-[#111] leading-tight">
+                <h3 className=" !font-cormorant text-[22px] font-medium mb-4 text-[#111] leading-tight">
                   {item.title}
                 </h3>
 

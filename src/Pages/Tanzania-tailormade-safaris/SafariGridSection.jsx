@@ -12,6 +12,7 @@ const trips = [
   {
     id: 1,
     title: "Great Migration, Wildlife Adventure, Zanzibar Escape",
+   
     value: "Great Migration, Wildlife Adventure, Zanzibar Escape",
     tag: "POPULAR",
     days: "16 Days 15 Nights",
@@ -404,12 +405,12 @@ export default function SafariGridSection({ setSelected }) {
 
               {/* Content */}
               <div className="my-6">
-                <h3 className=" !font-cormorant text-xl md:text-2xl font-semibold leading-tight my-4">
+                <h3 className=" !font-cormorant text-[22px] md:text-2xl font-semibold leading-tight my-4">
                   {trip.title}
                 </h3>
 
-                <p className=" text-[#444] !font-avenir ">{trip.days}</p>
-                <p className=" text-[#444]  mb-2 !font-avenir ">
+                <p className=" text-[#444] text-sm md:text-[15px] !font-avenir ">{trip.days}</p>
+                <p className=" text-[#444] text-sm md:text-[15px]  mb-2 !font-avenir ">
                   Availability : All Year Round
                 </p>
 
@@ -432,7 +433,7 @@ export default function SafariGridSection({ setSelected }) {
                       section?.scrollIntoView({ behavior: "smooth" });
                     }}
                     href={"/"}
-                    className=" !font-avenir bg-[#d87028] text-white text-sm md:text-base px-5 py-2 rounded-full  hover:bg-[#eb8034de] transition cursor-pointer"
+                    className=" !font-avenir text-xs tracking-[0.72px] md:tracking-[2.4px] uppercase bg-[#d87028] border border-[#e78e4b] text-white px-6 md:py-2.5 py-3 rounded-xs hover:bg-[#eb8034de] transition cursor-pointer whitespace-nowrap"
                   >
                     Book Now
                   </button>
@@ -443,13 +444,13 @@ export default function SafariGridSection({ setSelected }) {
         </div>
 
         {/* Bottom Button */}
-        <div className=" mt-8 md:mt-16">
+        <div className=" mt-8 md:mt-16 ">
           <button
             onClick={() => {
               const section = document.getElementById("step-2");
               section?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="!font-avenir text-sm md:text-base bg-[#d87028] text-white px-[21px] py-2.5 rounded-full  hover:bg-[#eb8034de] transition cursor-pointer"
+            className=" w-full md:w-auto !font-avenir text-xs tracking-[0.72px] md:tracking-[2.4px] uppercase bg-[#d87028] border border-[#e78e4b] text-white px-6 md:py-2.5 py-3 rounded-xs hover:bg-[#eb8034de] transition cursor-pointer whitespace-nowrap"
           >
             Get My Custom Safari →
           </button>
@@ -649,7 +650,7 @@ export default function SafariGridSection({ setSelected }) {
                       const section = document.getElementById("step-2");
                       section?.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="bg-[#d87028] text-white !font-avenir px-[21px] py-2.5 rounded-full  hover:bg-[#eb8034de] transition cursor-pointer"
+                    className="!font-avenir text-xs tracking-[0.72px] md:tracking-[2.4px] uppercase bg-[#d87028] border border-[#e78e4b] text-white px-[10px] md:px-6 md:py-2.5 py-[7px] rounded-xs hover:bg-[#eb8034de] transition cursor-pointer whitespace-nowrap"
                   >
                     Book Now
                   </button>

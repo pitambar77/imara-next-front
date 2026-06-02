@@ -9,27 +9,29 @@ export default function FooterSection() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Text */}
           <div className="max-w-2xl">
-            <h2 className=" !font-cormorant text-3xl md:text-4xl leading-snug mb-3">
+            <h2 className=" !font-cormorant text-[24px] md:text-4xl leading-snug mb-3 text-center md:text-left">
               Your once-in-a-lifetime Tanzania safari starts with one
               conversation.
             </h2>
 
-            <p className=" !font-avenir text-sm opacity-90">
+            <p className=" !font-avenir text-sm text-center md:text-left opacity-90">
               Availability is limited. Most itineraries book 8–14 months in
               advance.
             </p>
           </div>
 
           {/* Button */}
-          <button
-            onClick={() => {
-              const section = document.getElementById("step-2");
-              section?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="text-[#d87028] !font-avenir bg-white px-[21px] py-2.5 rounded-full  hover:bg-[#f0b184de] hover:text-white transition cursor-pointer shadow hover:opacity-90  duration-300"
-          >
-            Speak With a Specialist →
-          </button>
+          <div className="w-full md:w-auto">
+            <button
+              onClick={() => {
+                const section = document.getElementById("step-2");
+                section?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="w-full md:w-auto text-[#d87028] !font-avenir bg-white px-6 py-3 md:py-2.5 rounded-xs text-xs tracking-[0.72px] md:tracking-[2.4px] uppercase hover:bg-[#f0b184de] hover:text-white transition cursor-pointer shadow duration-300"
+            >
+              Speak With a Specialist →
+            </button>
+          </div>
         </div>
       </div>
 

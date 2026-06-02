@@ -51,7 +51,7 @@ export default function GallerySection() {
   };
 
   return (
-    <section className="bg-white py-12 md:py-20 px-4">
+    <section className="bg-gradient-to-r from-[#2a1a0f] via-[#3a2415] to-[#2a1a0f] py-12 md:py-20 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <p className="!font-avenir text-xs md:text-sm text-center tracking-[0.2em] text-[#d87029] uppercase mb-3">
@@ -60,17 +60,21 @@ export default function GallerySection() {
 
         <div className="w-10 h-[1px] bg-[#d87029] mx-auto mb-4 md:mb-6"></div>
 
-        <h2 className="!font-cormorant text-3xl md:text-4xl lg:text-5xl text-center capitalize mb-4">
-          Tanzania, Through Our Lens
+        <h2 className="!font-cormorant text-[#f3f0ed]  text-3xl md:text-4xl lg:text-5xl text-center capitalize mb-4">
+          Tanzania,{" "}
+          <span className=" !font-cormorant italic text-[#d87029]">
+            {" "}
+            Through Our Lens
+          </span>
         </h2>
 
-        <p className="!font-avenir text-[#444] mt-4 mb-10 max-w-xl mx-auto text-center">
+        <p className="!font-avenir text-[#f1a878] mt-4 mb-16 max-w-xl mx-auto text-center">
           Every frame tells a real story from the African wilderness. Nothing
           artificial, nothing staged.
         </p>
 
         {/* Desktop Gallery */}
-        <div className="hidden lg:grid grid-cols-4 gap-3">
+        <div className="hidden lg:grid grid-cols-4 gap-2.5">
           {/* Large Left Image */}
           <div className="col-span-2 row-span-2 h-[650px] relative overflow-hidden rounded-md">
             <Image
@@ -160,16 +164,16 @@ export default function GallerySection() {
         {/* Tablet */}
         <div className="hidden md:grid lg:hidden grid-cols-2 gap-3">
           {[
-           "/gallery-big-1.webp",
-    "/gallery-row-1.webp",
-    "/gallery-row-2.webp",
-    "/gallery-row-3.webp",
-    "/gallery-row-4.webp",
-    "/gallery-row-5.webp",
-    "/gallery-last-row-1.webp",
-    "/gallery-last-row-2.webp",
-    "/gallery-last-row-3.webp",
-     "/gallery-last-row-4.webp",
+            "/gallery-big-1.webp",
+            "/gallery-row-1.webp",
+            "/gallery-row-2.webp",
+            "/gallery-row-3.webp",
+            "/gallery-row-4.webp",
+            "/gallery-row-5.webp",
+            "/gallery-last-row-1.webp",
+            "/gallery-last-row-2.webp",
+            "/gallery-last-row-3.webp",
+            "/gallery-last-row-4.webp",
           ].map((img, i) => (
             <div
               key={i}
@@ -224,6 +228,53 @@ export default function GallerySection() {
                     : "w-2 bg-gray-300"
                 }`}
               />
+            ))}
+          </div>
+        </div>
+
+        {/* Stats Section */}
+        <div className=" pt-10 md:pt-16 max-w-[900px] mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 ">
+            {[
+              {
+                value: "10,000+",
+                label: "HAPPY GUESTS",
+                subLabel: "SINCE 2015",
+              },
+              {
+                value: "5.0",
+                label: "TRIPADVISOR",
+                subLabel: "RATING",
+              },
+              {
+                value: "4.6",
+                label: "TRUSTPILOT",
+                subLabel: "SCORE",
+              },
+              {
+                value: "10+",
+                label: "YEARS IN",
+                subLabel: "THE FIELD",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className={`text-center px-4 ${
+                  index !== 3 ? "md:border-r border-[#3a2a1d]" : ""
+                }`}
+              >
+                <h3 className="!font-cormorant text-[#d87029] text-4xl md:text-5xl leading-none">
+                  {item.value}
+                </h3>
+
+                <p className="!font-avenir mt-4 text-[11px]  tracking-[0.25em] text-[#f1a878] uppercase">
+                  {item.label}
+                </p>
+
+                <p className="!font-avenir text-[11px]  tracking-[0.25em] text-[#f1a878] uppercase">
+                  {item.subLabel}
+                </p>
+              </div>
             ))}
           </div>
         </div>

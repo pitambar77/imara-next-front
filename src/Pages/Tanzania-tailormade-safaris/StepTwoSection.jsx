@@ -39,22 +39,23 @@ const options = [
   {
     label:
       "Luxury Glamping, Cultural Discovery, Big Five & Rift Valley Adventure",
-    value: "Luxury Glamping, Cultural Discovery, Big Five & Rift Valley Adventure",
+    value:
+      "Luxury Glamping, Cultural Discovery, Big Five & Rift Valley Adventure",
   },
   {
-    label:"Great Migration, Maasai Culture, Big Five & Highland Adventure",
+    label: "Great Migration, Maasai Culture, Big Five & Highland Adventure",
     value: "Great Migration, Maasai Culture, Big Five & Highland Adventure",
   },
   {
-    label:"Ngorongoro Crater, Serengeti Adventure, Classic Camping Experience",
+    label: "Ngorongoro Crater, Serengeti Adventure, Classic Camping Experience",
     value: "Ngorongoro Crater, Serengeti Adventure, Classic Camping Experience",
   },
   {
-    label:"Ngorongoro Crater, Serengeti Plains & Rift Valley Discovery",
+    label: "Ngorongoro Crater, Serengeti Plains & Rift Valley Discovery",
     value: "Ngorongoro Crater, Serengeti Plains & Rift Valley Discovery",
   },
   {
-    label:"Tarangire, Ngorongoro Crater & Serengeti Classic Wildlife Circuit",
+    label: "Tarangire, Ngorongoro Crater & Serengeti Classic Wildlife Circuit",
     value: "Tarangire, Ngorongoro Crater & Serengeti Classic Wildlife Circuit",
   },
 ];
@@ -271,24 +272,25 @@ export default function StepTwoSection({ selectedDestinations }) {
         {/* STEP */}
         <div className="flex flex-col items-center mb-12">
           <span className=" !font-avenir border border-[#d87029] text-[#d87029] px-6 py-2 rounded-full text-sm tracking-[0.2em] uppercase">
-            Step 2
+            Build Your Safari
           </span>
-          <div className="w-10 h-[1px] bg-[#d87029] mt-3"></div>
-          <p className=" !font-avenir text-gray-300 mt-4">
+          <div className="w-10 h-[1px] bg-[#d87029] mt-3 mb-8"></div>
+          {/* <p className=" !font-avenir text-gray-300 mt-4">
             Just a few details and we’ll design your private itinerary
+          </p> */}
+          <h2 className=" !font-cormorant text-3xl md:text-4xl lg:text-5xl  text-center mb-4 capitalize">
+            Design Your Dream Tanzania Safari
+          </h2>
+
+          <p className=" !font-avenir text-center text-[#f1a878] text-[15px] mb-4 max-w-xl mx-auto">
+            Tell us what stirs your imagination. We’ll craft a private itinerary
+            around your vision.
           </p>
         </div>
 
         {/* RIGHT SIDE FORM */}
         <div className="bg-[#f6f3ee] text-black rounded-md p-8 shadow-xl">
-          <h3 className=" !font-avenir font-bold text-sm tracking-[0.2em] text-[#d87029] uppercase mb-4">
-            Design Your Dream Safari
-          </h3>
-
-          <p className=" !font-avenir text-sm text-[#444] mb-10">
-            Tell us what stirs your imagination. We’ll craft a private itinerary
-            around your vision.
-          </p>
+       
 
           <form className="space-y-6" onSubmit={handleSubmit}>
             {/* Header */}
@@ -499,14 +501,14 @@ export default function StepTwoSection({ selectedDestinations }) {
             <button
               type="submit"
               disabled={loading}
-              className="bg-[#d87028] text-white w-full px-6 py-2  rounded-full  hover:bg-[#eb8034de] transition cursor-pointer !font-avenir text-sm md:text-base md:py-2.5"
+              className="!font-avenir text-xs tracking-[0.72px] md:tracking-[2.4px] uppercase bg-[#d87028] border border-[#e78e4b] text-white  px-6 md:py-2.5 py-3 rounded-xs hover:bg-[#eb8034de] transition cursor-pointer whitespace-nowrap w-full"
             >
               {loading ? "Submitting..." : "Get My Custom Safari Plan →"}
             </button>
 
             {/* Footer */}
             <div className="flex flex-col md:flex-row justify-between text-xs text-gray-500">
-              <span >No obligation · Your details are never shared</span>
+              <span>No obligation · Your details are never shared</span>
               <span>* Required fields</span>
             </div>
           </form>

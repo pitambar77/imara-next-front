@@ -93,95 +93,8 @@ export default function FAQSection() {
         {/* Layout */}
         <div className="grid md:grid-cols-2 gap-12">
           {/* LEFT SIDE */}
-          {/* <div>
-            
-            <div className="relative rounded-md overflow-hidden mb-6">
-              <Image
-                src="/imara-vechille-1.webp"
-                alt="FAQ"
-                width={600}
-                height={400}
-                className="object-cover w-full h-[200px] md:h-[300px] lg:h-[260px]"
-              />
-
-             
-            </div>
-            <div
-              onClick={() => {
-                const section = document.getElementById("step-2");
-                section?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className=" cursor-pointer"
-            >
-            
-              <div className="bg-white rounded-md p-4 flex items-center gap-4 mb-4 shadow-sm">
-                <Image
-                  src="/imara-vechille-1.webp"
-                  alt=""
-                  width={60}
-                  height={100}
-                  className="rounded"
-                />
-                <div className="flex-1">
-                  <p className=" !font-avenir text-sm text-[#d87029] uppercase tracking-widest">
-                    Chat with Experts
-                  </p>
-                  <h4 className=" !font-cormorant font-semibold text-lg py-2">
-                    Plan Tanzania Safaris with local specialists
-                  </h4>
-                  <p className=" !font-avenir text-sm text-[#444]">
-                    Ask questions and get clear safari guidance
-                  </p>
-                </div>
-                <span className="text-[#d87029]">→</span>
-              </div>
-
-            </div>
-            <div
-              onClick={() => {
-                const section = document.getElementById("step-2");
-                section?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className=" cursor-pointer"
-            >
-              <div className="bg-white rounded-md p-4 flex items-center gap-4 shadow-sm">
-                <Image
-                  src="/imara-vechille-1.webp"
-                  alt=""
-                  width={60}
-                  height={100}
-                  className="rounded"
-                />
-                <div className="flex-1">
-                  <p className=" !font-avenir text-sm text-[#d87029] uppercase tracking-widest">
-                    Expert Safari Help
-                  </p>
-                  <h4 className=" !font-cormorant font-semibold text-lg py-2">
-                    Ask Us Anything
-                  </h4>
-                  <p className=" !font-avenir text-sm text-[#444]">
-                    Get clear answers before booking
-                  </p>
-                </div>
-                <span className="text-[#d87029]">→</span>
-              </div>
-            </div>
-          </div> */}
 
           <div>
-            {/* <p className=" !font-avenir text-xs tracking-[0.2em] text-[#d87029] uppercase mb-4">
-              Choose Your Safari
-            </p>
-
-            <h2 className=" !font-cormorant text-4xl mb-4">
-              Curated Experiences
-            </h2>
-
-            <p className=" !font-avenir leading-6 text-sm mb-8 max-w-xl">
-              Every journey begins with a conversation. These are starting
-              points — each fully tailored to you.
-            </p> */}
-
             <div className="space-y-4">
               {safariCards.map((card, index) => (
                 <div
@@ -227,7 +140,7 @@ export default function FAQSection() {
                   className="w-full flex justify-between items-center text-left cursor-pointer"
                 >
                   <span
-                    className={` !font-avenir  text-lg transition hover:text-[#d87029] ${
+                    className={` !font-avenir font-semibold text-lg transition hover:text-[#d87029] ${
                       openIndex === i ? "text-[#d87029]" : "text-[#444]"
                     }`}
                   >

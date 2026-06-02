@@ -7,6 +7,14 @@
   --font-avenir: "AvenirRegular", sans-serif;
 }
 
+body {
+  text-rendering: optimizeLegibility;
+}
+
+strong {
+  font-weight: 600;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
