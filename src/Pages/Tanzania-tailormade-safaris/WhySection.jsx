@@ -6,7 +6,7 @@ export default function WhySection() {
   return (
     <section
       id="why-travel"
-      className="bg-[#fdfaf5] py-12 md:py-20 px-4 md:px-6"
+      className="bg-[#ffffff] py-12 md:py-20 px-4 md:px-6"
     >
       <div className="max-w-7xl mx-auto">
         {/* Top Section */}

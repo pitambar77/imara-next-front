@@ -18,7 +18,7 @@ const Hero = () => {
   return (
     <div>
       <Banner />
-      <WhySection />
+
       <SafariGridSection setSelected={setSelectedDestinations} />
       <DestinationStepSection setSelected={setSelectedDestinations} />
       <StepTwoSection selectedDestinations={selectedDestinations} />
@@ -26,7 +26,9 @@ const Hero = () => {
       <ExperienceTabsSection />
       <FitSection />
       <GallerySection />
+
       <FAQSection />
+      <WhySection />
       <TestimonialsSection />
       <FooterSection />
     </div>

@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
 
 const destinations = [
   {
@@ -48,6 +47,7 @@ const destinations = [
   },
   {
     name: "Mikumi National Park",
+    value: "Mikumi National Park",
     desc: "Open plains, rich wildlife, and exceptional game viewing. A classic Tanzanian safari destination known for lions, elephants, giraffes, and breathtaking landscapes.",
     img: "/mukimi-d.webp",
   },
@@ -68,31 +68,8 @@ export default function DestinationStepSection() {
           travellers
         </p>
 
-        {/* Step Badge */}
-        {/* <div className="flex flex-col items-center mb-4 md:mb-6">
-          <span className=" !font-avenir border border-[#d87029] text-[#d87029] px-6 py-2 rounded-full text-sm tracking-[0.2em] uppercase">
-            Step 1
-          </span>
-          <div className="w-10 h-[1px] bg-[#d87029] mt-3"></div>
-        </div> */}
-
-        {/* Title */}
-        {/* <h3 className="text-2xl md:text-4xl !font-cormorant  mb-3">
-          Where Do You Want to Go?*
-        </h3>
-
-        <p className=" !font-avenir text-[#444] mb-8 md:mb-12">
-          Please select at least one destination — you can choose multiple
-        </p> */}
-
         {/* Grid */}
         <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
-          {/* {destinations.map((item, i) => (
-            <div
-              key={i}
-              className="group cursor-pointer rounded-md overflow-hidden bg-white shadow-sm hover:shadow-md transition"
-            > */}
-
           {destinations.map((item, i) => (
             <div
               key={i}
@@ -109,11 +86,11 @@ export default function DestinationStepSection() {
 
               {/* Label */}
               <h2
-                className={`!font-cormorant text-lg md:text-xl capitalize tracking-widest px-4 py-3 text-left transition `}
+                className={`!font-cormorant text-[22px] font-medium text-[#111] leading-tight px-5 py-3 text-left transition `}
               >
                 {item.name}
               </h2>
-              <p className="!font-avenir text-sm md:text-[15px] text-[#444] px-4 mb-4 text-left leading-[1.6]">
+              <p className="!font-avenir  leading-6 text-[#444]  px-5 mb-5 text-left ">
                 {item.desc}
               </p>
             </div>

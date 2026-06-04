@@ -2,8 +2,9 @@ import React from "react";
 import WhatHappensNext from "./WhatHappensNext";
 // import SafariExpert from "./SafariExpert";
 // import GuestReviewSection from "../TanzaniaSafariLanding/GuestReviewSection";
-// import BookWithConfidence from "../Home/BookWithConfidence";
+import BookWithConfidence from "../Home/BookWithConfidence";
 import Featured from "../Home/Featured";
+import TailormadeSection from "../Home/TailormadeSection";
 
 const ThankYouPage = () => {
   return (
@@ -21,6 +22,7 @@ const ThankYouPage = () => {
       <GuestReviewSection/> */}
       {/* <BookWithConfidence/> */}
       <Featured/>
+      <TailormadeSection />
     </>
   );
 };

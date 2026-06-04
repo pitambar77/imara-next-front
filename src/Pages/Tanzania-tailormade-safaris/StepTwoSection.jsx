@@ -8,55 +8,54 @@ import { useState, useRef, useEffect } from "react";
 import TravelDatePicker from "./TravelDatePicker";
 
 const options = [
-  { label: "Serengeti National Park", value: "Serengeti National Park" },
-  { label: "Ngorongoro Crater", value: "Ngorongoro Crater" },
-  { label: "Tarangire National Park", value: "Tarangire National Park" },
-  {
-    label: "Lake Manyarak",
-    value: "Lake Manyara",
-  },
-  { label: "Arusha National Park", value: "Arusha National Park" },
-  { label: "Zanzibar", value: "Zanzibar" },
-  { label: "Mount Kilimanjaro", value: "Mount Kilimanjaro" },
-  {
-    label: "Not Sure - Need Expert Advice",
-    value: "Not Sure - Need Expert Advice",
-  },
   {
     label: "Great Migration, Wildlife Adventure, Zanzibar Escape",
     value: "Great Migration, Wildlife Adventure, Zanzibar Escape",
+    days: 16,
   },
   {
     label: "Big Five Safari, Cultural Encounters, Scenic Tanzania Adventure",
     value: "Big Five Safari, Cultural Encounters, Scenic Tanzania Adventure",
+    days: 11,
+  },
+  {
+    label: "Great Migration, Big Five Safari, Zanzibar Beach Escape",
+    value: "Great Migration, Big Five Safari, Zanzibar Beach Escape",
+    days: 12,
   },
   {
     label:
       "Cultural Encounters, Rift Valley Adventure, Authentic Tanzania Safari",
     value:
       "Cultural Encounters, Rift Valley Adventure, Authentic Tanzania Safari",
+    days: 7,
   },
   {
     label:
       "Luxury Glamping, Cultural Discovery, Big Five & Rift Valley Adventure",
     value:
       "Luxury Glamping, Cultural Discovery, Big Five & Rift Valley Adventure",
+    days: 10,
   },
   {
     label: "Great Migration, Maasai Culture, Big Five & Highland Adventure",
     value: "Great Migration, Maasai Culture, Big Five & Highland Adventure",
+    days: 15,
   },
   {
     label: "Ngorongoro Crater, Serengeti Adventure, Classic Camping Experience",
     value: "Ngorongoro Crater, Serengeti Adventure, Classic Camping Experience",
+    days: 3,
   },
   {
     label: "Ngorongoro Crater, Serengeti Plains & Rift Valley Discovery",
     value: "Ngorongoro Crater, Serengeti Plains & Rift Valley Discovery",
+    days: 5,
   },
   {
     label: "Tarangire, Ngorongoro Crater & Serengeti Classic Wildlife Circuit",
     value: "Tarangire, Ngorongoro Crater & Serengeti Classic Wildlife Circuit",
+    days: 5,
   },
 ];
 
@@ -65,7 +64,8 @@ export default function StepTwoSection({ selectedDestinations }) {
   const [phoneError, setPhoneError] = useState("");
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
+    firstname: "",
+    lastname: "",
     phone: "",
     countryCode: "",
     country: "",
@@ -94,12 +94,16 @@ export default function StepTwoSection({ selectedDestinations }) {
     days: useRef(null),
   };
 
-  // ✅ auto-fill from step 1
   useEffect(() => {
     if (selectedDestinations.length) {
+      const selectedSafari = options.find(
+        (o) => o.value === selectedDestinations[0],
+      );
+
       setFormData((prev) => ({
         ...prev,
         destination: selectedDestinations,
+        days: selectedSafari?.days || "",
       }));
     }
   }, [selectedDestinations]);
@@ -121,7 +125,10 @@ export default function StepTwoSection({ selectedDestinations }) {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.firstname.trim())
+      newErrors.firstname = "First name is required";
+    if (!formData.lastname.trim())
+      newErrors.lastname = " Last name is required";
 
     if (!formData.phone) {
       newErrors.phone = "Phone number is required";
@@ -241,7 +248,8 @@ export default function StepTwoSection({ selectedDestinations }) {
 
       // reset form
       setFormData({
-        name: "",
+        firstname: "",
+        lastname: "",
         phone: "",
         countryCode: "",
         country: "",
@@ -275,9 +283,7 @@ export default function StepTwoSection({ selectedDestinations }) {
             Build Your Safari
           </span>
           <div className="w-10 h-[1px] bg-[#d87029] mt-3 mb-8"></div>
-          {/* <p className=" !font-avenir text-gray-300 mt-4">
-            Just a few details and we’ll design your private itinerary
-          </p> */}
+
           <h2 className=" !font-cormorant text-3xl md:text-4xl lg:text-5xl  text-center mb-4 capitalize">
             Design Your Dream Tanzania Safari
           </h2>
@@ -289,12 +295,8 @@ export default function StepTwoSection({ selectedDestinations }) {
         </div>
 
         {/* RIGHT SIDE FORM */}
-        <div className="bg-[#f6f3ee] text-black rounded-md p-8 shadow-xl">
-       
-
+        <div className="bg-[#f6f3ee] text-black rounded-md p-20 shadow-xl">
           <form className="space-y-6" onSubmit={handleSubmit}>
-            {/* Header */}
-
             {/* Tier */}
             <div>
               <label className="label">Safari Tier Interest *</label>
@@ -304,12 +306,7 @@ export default function StepTwoSection({ selectedDestinations }) {
                   onClick={() => setOpen((prev) => !prev)}
                   className="input flex justify-between items-center cursor-pointer"
                 >
-                  {/* <span className="text-gray-600 text-sm">
-                      {formData.destination.length > 0
-                        ? formData.destination.join(", ")
-                        : "Select a tier"}
-                    </span> */}
-                  <span className="text-gray-600 text-sm">
+                  <span className="text-[#444] text-sm !font-avenir">
                     {formData.destination.length > 0
                       ? formData.destination
                           .map(
@@ -330,24 +327,26 @@ export default function StepTwoSection({ selectedDestinations }) {
                         className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer"
                       >
                         <input
-                          type="checkbox"
-                          checked={formData.destination.includes(item.value)}
+                          type="radio"
+                          name="safariTier"
+                          checked={formData.destination[0] === item.value}
                           onChange={() => {
-                            const value = item.value;
                             setFormData((prev) => ({
                               ...prev,
-                              destination: prev.destination.includes(value)
-                                ? prev.destination.filter((v) => v !== value)
-                                : [...prev.destination, value],
+                              destination: [item.value],
+                              days: item.days || "",
                             }));
 
                             setErrors((prev) => ({
                               ...prev,
                               destination: "",
+                              days: "",
                             }));
+
+                            setOpen(false);
                           }}
                         />
-                        <span className="text-sm">{item.label}</span>
+                        <span className="text-sm !font-avenir ">{item.label}</span>
                       </label>
                     ))}
                   </div>
@@ -385,14 +384,15 @@ export default function StepTwoSection({ selectedDestinations }) {
               </div>
               <div>
                 <label className="label">Number of Days *</label>
+
                 <input
                   type="number"
                   name="days"
                   value={formData.days}
-                  onChange={handleChange}
+                  readOnly
                   ref={fieldRefs.days}
-                  className="input"
-                  placeholder="e.g. 7"
+                  className="input bg-gray-100 cursor-not-allowed text-[#444] text-sm !font-avenir"
+                  placeholder="Auto selected"
                 />
                 {errors.days && (
                   <p className="text-red-500 text-sm">{errors.days}</p>
@@ -409,7 +409,7 @@ export default function StepTwoSection({ selectedDestinations }) {
                   name="adults"
                   value={formData.adults}
                   onChange={handleChange}
-                  className="input"
+                  className="input text-[#444] text-sm !font-avenir"
                   placeholder="e.g. 2"
                 />
               </div>
@@ -421,7 +421,7 @@ export default function StepTwoSection({ selectedDestinations }) {
                   name="children"
                   value={formData.children}
                   onChange={handleChange}
-                  className="input"
+                  className="input text-[#444] text-sm !font-avenir"
                   placeholder="e.g. 0"
                 />
               </div>
@@ -430,20 +430,37 @@ export default function StepTwoSection({ selectedDestinations }) {
             {/* Name + Email */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="label">Your Name *</label>
+                <label className="label">First Name *</label>
                 <input
-                  name="name"
-                  ref={fieldRefs.name}
-                  value={formData.name}
+                  name="firstname"
+                  ref={fieldRefs.firstname}
+                  value={formData.firstname}
                   onChange={handleChange}
-                  className="input"
-                  placeholder="First & last name"
+                  className="input text-[#444] text-sm !font-avenir"
+                  placeholder="First name"
                 />
-                {errors.name && (
-                  <p className="text-red-500 text-sm">{errors.name}</p>
+                {errors.firstname && (
+                  <p className="text-red-500 text-sm">{errors.firstname}</p>
                 )}
               </div>
 
+              <div>
+                <label className="label">Last Name *</label>
+                <input
+                  name="lastname"
+                  ref={fieldRefs.lastname}
+                  value={formData.lastname}
+                  onChange={handleChange}
+                  className="input text-[#444] text-sm !font-avenir"
+                  placeholder="Last name"
+                />
+                {errors.lastname && (
+                  <p className="text-red-500 text-sm">{errors.lastname}</p>
+                )}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="label">Email *</label>
                 <input
@@ -451,35 +468,35 @@ export default function StepTwoSection({ selectedDestinations }) {
                   ref={fieldRefs.email}
                   value={formData.email}
                   onChange={handleChange}
-                  className="input"
+                  className="input text-[#444] text-sm !font-avenir"
                   placeholder="your@email.com"
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm">{errors.email}</p>
                 )}
               </div>
-            </div>
 
-            {/* Phone */}
+              {/* Phone */}
 
-            <div>
-              <label className="label">Phone</label>
-              <PhoneInput
-                country={"tz"}
-                ref={fieldRefs.phone}
-                value={phone}
-                // onChange={(phone) => setPhone(phone)}
-                onChange={handlePhoneChange}
-                enableSearch={true}
-                inputClass="!w-full !h-12 !rounded-md !bg-[#f3eee7] !border !border-[#e5ded6] focus:outline-none focus:ring-1 focus:ring-[#d87029]"
-                containerStyle={{
-                  width: "100%",
-                }}
-              />
-              {errors.phone && (
-                <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
-              )}
-              {/* <input className="input" placeholder="+1 (000) 000-0000" /> */}
+              <div>
+                <label className="label">Phone</label>
+                <PhoneInput
+                  country={"tz"}
+                  ref={fieldRefs.phone}
+                  value={phone}
+                  // onChange={(phone) => setPhone(phone)}
+                  onChange={handlePhoneChange}
+                  enableSearch={true}
+                  inputClass="!w-full !h-12 !rounded-md !bg-[#f3eee7] !border !border-[#e5ded6] focus:outline-none focus:ring-1 focus:ring-[#d87029] text-[#444] text-sm !font-avenir"
+                  containerStyle={{
+                    width: "100%",
+                  }}
+                />
+                {errors.phone && (
+                  <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                )}
+                {/* <input className="input" placeholder="+1 (000) 000-0000" /> */}
+              </div>
             </div>
             {/* Textarea */}
             <div>
@@ -489,15 +506,11 @@ export default function StepTwoSection({ selectedDestinations }) {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                className="input"
+                className="input text-[#444] text-sm !font-avenir"
                 placeholder="Wildlife priorities, past travels, special occasions, bucket-list moments..."
               ></textarea>
             </div>
 
-            {/* Button */}
-            {/* <button className="w-full bg-gradient-to-r from-[#d87029] to-[#d87029] text-white py-3 uppercase tracking-widest text-sm rounded">
-                Get My Custom Safari Plan →
-              </button> */}
             <button
               type="submit"
               disabled={loading}
