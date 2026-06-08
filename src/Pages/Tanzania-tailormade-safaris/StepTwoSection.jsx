@@ -295,7 +295,7 @@ export default function StepTwoSection({ selectedDestinations }) {
         </div>
 
         {/* RIGHT SIDE FORM */}
-        <div className="bg-[#f6f3ee] text-black rounded-md p-20 shadow-xl">
+        <div className="bg-[#f6f3ee] text-black rounded-md p-4 md:p-20 shadow-xl">
           <form className="space-y-6" onSubmit={handleSubmit}>
             {/* Tier */}
             <div>
