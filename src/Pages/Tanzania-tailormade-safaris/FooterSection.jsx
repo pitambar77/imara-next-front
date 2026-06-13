@@ -40,7 +40,7 @@ export default function FooterSection() {
         <div className="  max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Left */}
           <p className=" order-2 md:order-1 !font-avenir">
-            © 2026 Kileleni Safaris. All rights reserved.
+            © 2026 Imara Kileleni Safaris. All rights reserved.
           </p>
 
           {/* Right */}

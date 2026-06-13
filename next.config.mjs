@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  compress: true,
+  compress: false,
   allowedDevOrigins: ["imarakilelenisafaris.com", "101.53.148.53"],
-
   images: {
     remotePatterns: [
       {
@@ -12,8 +11,8 @@ const nextConfig = {
       },
     ],
     qualities: [70, 75, 80],
+    contentDispositionType: "inline",
   },
-
   async rewrites() {
     return [
       {
