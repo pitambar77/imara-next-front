@@ -99,7 +99,7 @@ const budgets = [
     name: "Luxury Safari",
     value: "Luxury Safari",
     desc: "Premium lodges, exclusive experiences, and seamless service.",
-    img: "/Imara_15.webp",
+    img: "/imara_15.webp",
   },
   {
     name: "Not Decided Yet",
