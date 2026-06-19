@@ -12,17 +12,17 @@ const days = [
   {
     name: "6 – 10 Days",
     value: "6 – 10 Days",
-    img: "/imara_10.webp",
+    img: "/Imara_10.webp",
   },
   {
     name: "11 – 15 Days",
     value: "11 – 15 Days",
-    img: "/imara_11.webp",
+    img: "/Imara_11.webp",
   },
   {
     name: "Not sure yet",
     value: "Not sure yet",
-    img: "/imara_12.webp",
+    img: "/Imara_12.webp",
   },
 ];
 

@@ -87,25 +87,25 @@ const budgets = [
     name: "Budget Safari",
     value: "Budget Safari",
     desc: "Authentic camps with excellent guiding and great wildlife access.",
-    img: "/imara_13.webp",
+    img: "/Imara_13.webp",
   },
   {
     name: "Mid-Range Safari",
     value: "Mid-Range Safari",
     desc: "Comfortable lodges and tented camps with great value.",
-    img: "/imara_14.webp",
+    img: "/Imara_14.webp",
   },
   {
     name: "Luxury Safari",
     value: "Luxury Safari",
     desc: "Premium lodges, exclusive experiences, and seamless service.",
-    img: "/imara_15.webp",
+    img: "/Imara_15.webp",
   },
   {
     name: "Not Decided Yet",
     value: "Not Decided Yet",
     desc: "We'll recommend the best options for you.",
-    img: "/imara_16.webp",
+    img: "/Imara_16.webp",
   },
 ];
 
