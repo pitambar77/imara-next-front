@@ -244,6 +244,14 @@ export default function StepTwoSection({ selectedDestinations }) {
         throw new Error(data.message || "Something went wrong");
       }
 
+      if (window.gtag) {
+        window.gtag("event", "conversion", {
+          send_to: "AW-17893363008/sdljCIGrxvQbEMCanNRC",
+          value: 1.0,
+          currency: "USD",
+        });
+      }
+
       router.push("/thank-you");
 
       // reset form
@@ -346,7 +354,9 @@ export default function StepTwoSection({ selectedDestinations }) {
                             setOpen(false);
                           }}
                         />
-                        <span className="text-sm !font-avenir ">{item.label}</span>
+                        <span className="text-sm !font-avenir ">
+                          {item.label}
+                        </span>
                       </label>
                     ))}
                   </div>

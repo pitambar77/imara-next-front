@@ -400,3 +400,118 @@ html {
   color: rgba(255, 255, 255, 0.5);
   margin-left: 6px;
 }
+
+.react-calendar {
+  width: 340px !important;
+  max-width: 100%;
+  background: #fff;
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 8px;
+  padding: 24px 28px 32px;
+  font-family: "Avenir", sans-serif !important;
+  box-shadow: none;
+}
+
+/* Header */
+.react-calendar__navigation {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.react-calendar__navigation button {
+  min-width: 40px;
+  height: 42px;
+  border-radius: 8px;
+  border: none;
+  background: #f2f2f2;
+  color: #444;
+  font-size: 28px;
+  font-weight: 300;
+}
+
+.react-calendar__navigation button:hover {
+  background: #ebebeb;
+}
+
+.react-calendar__navigation__label {
+  flex-grow: 1 !important;
+  background: transparent !important;
+  font-size: 20px !important;
+}
+
+.react-calendar__navigation__label:hover {
+  background: transparent !important;
+}
+
+/* Week Names */
+.react-calendar__month-view__weekdays {
+  margin-bottom: 18px;
+}
+
+.react-calendar__month-view__weekdays abbr {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 400;
+  color: #777;
+}
+
+/* Date Cells */
+.react-calendar__tile {
+  height: 40px;
+  font-size: 17px;
+  color: #222;
+  border-radius: 999px;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.react-calendar__tile:hover {
+  background: #f4f4f4;
+}
+
+.react-calendar__tile--now {
+  background: transparent !important;
+  font-weight: 500;
+}
+
+/* .react-calendar__tile--active {
+  background: #d87029 !important;
+  color: #222 !important;
+} */
+
+.react-calendar__tile--active {
+  background:#d87029 !important;
+  color: white !important;
+  position: relative;
+}
+
+.react-calendar__tile--active::before {
+  content: "";
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  background: #d87029;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.react-calendar__tile:disabled {
+  color: #d8d8d8 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Remove blue focus */
+.react-calendar button:focus {
+  outline: none;
+}
+
+/* Hide double arrows */
+.react-calendar__navigation__prev2-button,
+.react-calendar__navigation__next2-button {
+  display: none;
+}

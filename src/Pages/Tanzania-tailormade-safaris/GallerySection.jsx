@@ -237,9 +237,9 @@ export default function GallerySection() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 ">
             {[
               {
-                value: "10,000+",
+                value: "500+",
                 label: "HAPPY GUESTS",
-                subLabel: "SINCE 2015",
+                subLabel: "SINCE 2012",
               },
               {
                 value: "5.0",
@@ -247,12 +247,12 @@ export default function GallerySection() {
                 subLabel: "RATING",
               },
               {
-                value: "4.6",
-                label: "TRUSTPILOT",
+                value: "4.7",
+                label: "Google",
                 subLabel: "SCORE",
               },
               {
-                value: "10+",
+                value: "14+",
                 label: "YEARS IN",
                 subLabel: "THE FIELD",
               },
