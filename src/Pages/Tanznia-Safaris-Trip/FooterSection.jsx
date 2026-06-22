@@ -29,7 +29,7 @@ export default function FooterSection() {
               }}
               className="w-full md:w-auto text-[#d87028] !font-avenir bg-white px-6 py-3 md:py-2.5 rounded-xs text-xs tracking-[0.72px] md:tracking-[2.4px] uppercase hover:bg-[#f0b184de] hover:text-white transition cursor-pointer shadow duration-300"
             >
-              Speak With a Specialist →
+              Create Your Custom Safari →
             </button>
           </div>
         </div>

@@ -50,7 +50,7 @@ export default function WhySection() {
               Tailor-Made Tanzania Safari Planning
             </h3>
             <p className=" text-[#444] leading-relaxed !font-avenir">
-              Every <strong> luxury Tanzania safari </strong> is customized around your interests,
+              Every <strong className=" font-medium"> luxury Tanzania safari </strong> is customized around your interests,
               travel style, comfort level, and dream wildlife experiences.
             </p>
           </div>
@@ -63,7 +63,7 @@ export default function WhySection() {
               Expert Guides, Authentic Experiences
             </h3>
             <p className=" text-[#444] leading-relaxed !font-avenir">
-              Our professional <strong> Tanzania safari guides </strong> combine local expertise,
+              Our professional <strong className=" font-medium"> Tanzania safari guides </strong> combine local expertise,
               wildlife knowledge, and storytelling for truly meaningful safari
               journeys.
             </p>
@@ -78,7 +78,7 @@ export default function WhySection() {
             </h3>
             <p className=" text-[#444] leading-relaxed !font-avenir">
               Travel privately with expert guides, exclusive vehicles, and
-              flexible schedules that unlock extraordinary <strong> wildlife safari 
+              flexible schedules that unlock extraordinary <strong className=" font-medium"> wildlife safari 
               experiences </strong>.
             </p>
           </div>
@@ -91,7 +91,7 @@ export default function WhySection() {
               Stay Close To Tanzania’s Wildlife
             </h3>
             <p className=" text-[#444] leading-relaxed !font-avenir">
-              Wake up in premium <strong> safari lodges and luxury camps </strong> positioned near
+              Wake up in premium <strong className=" font-medium"> safari lodges and luxury camps </strong> positioned near
               Serengeti, Ngorongoro, and Tanzania’s most spectacular wildlife
               areas.
             </p>

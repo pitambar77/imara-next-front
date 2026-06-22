@@ -140,7 +140,7 @@ export default function FAQSection() {
                   className="w-full flex justify-between items-center text-left cursor-pointer"
                 >
                   <span
-                    className={` !font-avenir font-semibold text-lg transition hover:text-[#d87029] ${
+                    className={` !font-cormorant font-[500] text-lg md:text-xl transition hover:text-[#d87029] ${
                       openIndex === i ? "text-[#d87029]" : "text-[#444]"
                     }`}
                   >
@@ -163,7 +163,7 @@ export default function FAQSection() {
                     {/* Main Answer */}
                     {item.a && (
                       <p
-                        className="!font-avenir text-[#444] leading-7"
+                        className="!font-avenir text-[#444] leading-7 [&_strong]:font-medium"
                         dangerouslySetInnerHTML={{ __html: item.a }}
                       />
                     )}
@@ -176,7 +176,7 @@ export default function FAQSection() {
                             <span className="text-[#d87029] text-lg ">•</span>
 
                             <span
-                              className="!font-avenir text-[#444] leading-7"
+                              className="!font-avenir text-[#444] leading-7 [&_strong]:font-medium"
                               dangerouslySetInnerHTML={{ __html: listItem }}
                             />
                           </li>

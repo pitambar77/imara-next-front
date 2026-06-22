@@ -38,7 +38,7 @@ const destinations = [
     name: "Zanzibar",
     value: "Zanzibar",
     desc: "White sand beaches, turquoise waters, and the historic charm of Stone Town.",
-    img: "/imara_7.webp ",
+    img: "/zanzibar-sa-trip.webp ",
   },
   {
     name: "Mount Kilimanjaro",
@@ -131,7 +131,7 @@ export default function DestinationStepSection({ safariData, setSafariData }) {
                 </h2>
 
                 <p
-                  className={`!font-avenir leading-6 text-center ${
+                  className={`!font-avenir leading-6 text-center hidden md:block ${
                     safariData.destinations.includes(item.value)
                       ? "text-white/90"
                       : "text-[#444]"
