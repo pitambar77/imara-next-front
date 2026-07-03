@@ -244,13 +244,13 @@ export default function StepTwoSection({ selectedDestinations }) {
         throw new Error(data.message || "Something went wrong");
       }
 
-      if (window.gtag) {
-        window.gtag("event", "conversion", {
-          send_to: "AW-17893363008/sdljCIGrxvQbEMCanNRC",
-          value: 1.0,
-          currency: "USD",
-        });
-      }
+      // if (window.gtag) {
+      //   window.gtag("event", "conversion", {
+      //     send_to: "AW-17893363008/sdljCIGrxvQbEMCanNRC",
+      //     value: 1.0,
+      //     currency: "USD",
+      //   });
+      // }
 
       router.push("/thank-you");
 

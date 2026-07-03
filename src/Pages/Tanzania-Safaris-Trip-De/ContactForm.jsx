@@ -228,13 +228,13 @@ export default function ContactForm({ safariData }) {
         throw new Error(data.message || "Something went wrong");
       }
 
-      // if (window.gtag) {
-      //   window.gtag("event", "conversion", {
-      //     send_to: "AW-17893363008/sdljCIGrxvQbEMCanNRC",
-      //     value: 1.0,
-      //     currency: "USD",
-      //   });
-      // }
+      if (window.gtag) {
+        window.gtag("event", "conversion", {
+          send_to: "AW-17893363008/sdljCIGrxvQbEMCanNRC",
+          value: 1.0,
+          currency: "USD",
+        });
+      }
 
       router.push("/thank-you");
 
@@ -269,12 +269,12 @@ export default function ContactForm({ safariData }) {
     >
       <div className="max-w-7xl mx-auto">
         <h2 className="!font-cormorant text-3xl md:text-4xl lg:text-5xl mb-4 text-[#2c2c2c]">
-          5. Contact Information
+          5. Kontaktinformationen
         </h2>
 
         <p className="!font-avenir text-[#444] text-lg mb-10">
-          Share your details and our safari expert will create your personalized
-          itinerary and quotation.
+          Teilen Sie uns Ihre Daten mit, und unser Safari-Experte erstellt Ihre
+          persönliche Reiseroute und Ihr individuelles Angebot.
         </p>
 
         {/* RIGHT SIDE FORM */}
@@ -282,14 +282,14 @@ export default function ContactForm({ safariData }) {
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="label">First Name *</label>
+                <label className="label">Vorname *</label>
                 <input
                   name="firstname"
                   ref={fieldRefs.firstname}
                   value={formData.firstname}
                   onChange={handleChange}
                   className="input text-[#444] text-sm !font-avenir !bg-[#fff]"
-                  placeholder="First name"
+                  placeholder="Vorname"
                 />
                 {errors.firstname && (
                   <p className="text-red-500 text-sm">{errors.firstname}</p>
@@ -297,14 +297,14 @@ export default function ContactForm({ safariData }) {
               </div>
 
               <div>
-                <label className="label">Last Name *</label>
+                <label className="label">Nachname *</label>
                 <input
                   name="lastname"
                   ref={fieldRefs.lastname}
                   value={formData.lastname}
                   onChange={handleChange}
                   className="input text-[#444] text-sm !font-avenir !bg-[#fff]"
-                  placeholder="Last name"
+                  placeholder="Nachname"
                 />
                 {errors.lastname && (
                   <p className="text-red-500 text-sm">{errors.lastname}</p>
@@ -312,14 +312,14 @@ export default function ContactForm({ safariData }) {
               </div>
             </div>
             <div>
-              <label className="label">Email *</label>
+              <label className="label">E-Mail *</label>
               <input
                 name="email"
                 ref={fieldRefs.email}
                 value={formData.email}
                 onChange={handleChange}
                 className="input text-[#444] text-sm !font-avenir !bg-[#fff]"
-                placeholder="your@email.com"
+                placeholder="ihre@email.com"
               />
               {errors.email && (
                 <p className="text-red-500 text-sm">{errors.email}</p>
@@ -329,7 +329,7 @@ export default function ContactForm({ safariData }) {
             {/* Adults + Children */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="label">Adults *</label>
+                <label className="label">Erwachsene *</label>
                 <input
                   type="number"
                   name="adults"
@@ -341,7 +341,7 @@ export default function ContactForm({ safariData }) {
               </div>
 
               <div>
-                <label className="label">Children</label>
+                <label className="label">Kinder</label>
                 <input
                   type="number"
                   name="children"
@@ -357,7 +357,7 @@ export default function ContactForm({ safariData }) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="label">Country of Residency *</label>
+                <label className="label">Wohnsitzland *</label>
                 <select
                   name="countryOfResidence"
                   ref={fieldRefs.countryOfResidence}
@@ -365,7 +365,7 @@ export default function ContactForm({ safariData }) {
                   onChange={handleChange}
                   className="input !h-12 text-[#444] !bg-[#fff] text-sm !font-avenir"
                 >
-                  <option value="">Select Country</option>
+                  <option value="">Land auswählen</option>
                   <option value="Afghanistan">Afghanistan</option>
                   <option value="Albania">Albania</option>
                   <option value="Algeria">Algeria</option>
@@ -582,7 +582,7 @@ export default function ContactForm({ safariData }) {
               {/* Phone */}
 
               <div>
-                <label className="label">Phone</label>
+                <label className="label">Telefon</label>
                 <PhoneInput
                   country={"tz"}
                   ref={fieldRefs.phone}
@@ -603,14 +603,14 @@ export default function ContactForm({ safariData }) {
             </div>
             {/* Textarea */}
             <div>
-              <label className="label">Message</label>
+              <label className="label">Nachricht</label>
               <textarea
                 rows="4"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 className="input text-[#444] text-sm !font-avenir !bg-[#fff]"
-                placeholder="Tell us more about your travel plan..."
+                placeholder="Erzählen Sie uns mehr über Ihre Reisepläne..."
               ></textarea>
             </div>
 
@@ -623,7 +623,7 @@ export default function ContactForm({ safariData }) {
               disabled={loading}
               className="!font-avenir text-xs tracking-[0.72px] md:tracking-[2.4px] uppercase bg-[#d87028] border border-[#e78e4b] text-white  px-6 md:py-2.5 py-3 rounded-xs hover:bg-[#eb8034de] transition cursor-pointer whitespace-nowrap w-full"
             >
-              {loading ? "Submitting..." : "Send Me My Safari Plan"}
+              {loading ? "Submitting..." : "Senden Sie mir meinen Safari-Plan"}
             </button>
           </form>
         </div>
