@@ -222,6 +222,7 @@ export default function GallerySection() {
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
+                aria-label={`Go to gallery image ${index + 1}`}
                 className={`h-2 rounded-full transition-all ${
                   currentSlide === index
                     ? "w-6 bg-[#d87029]"

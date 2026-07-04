@@ -59,15 +59,24 @@ export default function ContactForm({ safariData }) {
     }
 
     if (!safariData?.days) {
-      return scrollToSection("days", "Bitte wählen Sie die Anzahl der Tage aus");
+      return scrollToSection(
+        "days",
+        "Bitte wählen Sie die Anzahl der Tage aus",
+      );
     }
 
     if (!safariData?.travelStyle) {
-      return scrollToSection("travel-style", "Bitte wählen Sie eine Reiseart aus");
+      return scrollToSection(
+        "travel-style",
+        "Bitte wählen Sie eine Reiseart aus",
+      );
     }
 
     if (!safariData?.travelDate) {
-      return scrollToSection("travel-date", "Bitte wählen Sie Ihr Reisedatum aus");
+      return scrollToSection(
+        "travel-date",
+        "Bitte wählen Sie Ihr Reisedatum aus",
+      );
     }
 
     setStepError("");
@@ -336,6 +345,11 @@ export default function ContactForm({ safariData }) {
                   name="adults"
                   value={formData.adults}
                   onChange={handleChange}
+                  onKeyDown={(e) => {
+                    if (["e", "E", "+", "-"].includes(e.key)) {
+                      e.preventDefault();
+                    }
+                  }}
                   className="input text-[#444] !bg-[#fff] text-sm !font-avenir"
                   placeholder="e.g. 2"
                 />
@@ -348,6 +362,11 @@ export default function ContactForm({ safariData }) {
                   name="children"
                   value={formData.children}
                   onChange={handleChange}
+                  onKeyDown={(e) => {
+                    if (["e", "E", "+", "-"].includes(e.key)) {
+                      e.preventDefault();
+                    }
+                  }}
                   className="input text-[#444] text-sm !font-avenir !bg-[#fff]"
                   placeholder="e.g. 0"
                 />
@@ -622,9 +641,12 @@ export default function ContactForm({ safariData }) {
             <button
               type="submit"
               disabled={loading}
+              aria-label="Senden Sie mir meinen Safari-Plan"
               className="!font-avenir text-xs tracking-[0.72px] md:tracking-[2.4px] uppercase bg-[#d87028] border border-[#e78e4b] text-white  px-6 md:py-2.5 py-3 rounded-xs hover:bg-[#eb8034de] transition cursor-pointer whitespace-nowrap w-full"
             >
-              {loading ? "Wird gesendet..." : "Senden Sie mir meinen Safari-Plan"}
+              {loading
+                ? "Wird gesendet..."
+                : "Senden Sie mir meinen Safari-Plan"}
             </button>
           </form>
         </div>

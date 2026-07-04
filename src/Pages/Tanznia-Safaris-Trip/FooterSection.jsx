@@ -27,6 +27,7 @@ export default function FooterSection() {
                 const section = document.getElementById("destinations");
                 section?.scrollIntoView({ behavior: "smooth" });
               }}
+              aria-label="Create Your Custom Safari"
               className="w-full md:w-auto text-[#d87028] !font-avenir bg-white px-6 py-3 md:py-2.5 rounded-xs text-xs tracking-[0.72px] md:tracking-[2.4px] uppercase hover:bg-[#f0b184de] hover:text-white transition cursor-pointer shadow duration-300"
             >
               Create Your Custom Safari →

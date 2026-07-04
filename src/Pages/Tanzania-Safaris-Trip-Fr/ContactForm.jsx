@@ -344,6 +344,11 @@ export default function ContactForm({ safariData }) {
                   name="adults"
                   value={formData.adults}
                   onChange={handleChange}
+                  onKeyDown={(e) => {
+                    if (["e", "E", "+", "-"].includes(e.key)) {
+                      e.preventDefault();
+                    }
+                  }}
                   className="input text-[#444] !bg-[#fff] text-sm !font-avenir"
                   placeholder="e.g. 2"
                 />
@@ -356,6 +361,11 @@ export default function ContactForm({ safariData }) {
                   name="children"
                   value={formData.children}
                   onChange={handleChange}
+                  onKeyDown={(e) => {
+                    if (["e", "E", "+", "-"].includes(e.key)) {
+                      e.preventDefault();
+                    }
+                  }}
                   className="input text-[#444] text-sm !font-avenir !bg-[#fff]"
                   placeholder="e.g. 0"
                 />
@@ -632,6 +642,7 @@ export default function ContactForm({ safariData }) {
             <button
               type="submit"
               disabled={loading}
+              aria-label="Envoyez-moi mon plan de safari"
               className="!font-avenir text-xs tracking-[0.72px] md:tracking-[2.4px] uppercase bg-[#d87028] border border-[#e78e4b] text-white  px-6 md:py-2.5 py-3 rounded-xs hover:bg-[#eb8034de] transition cursor-pointer whitespace-nowrap w-full"
             >
               {loading ? "Envoi en cours..." : "Envoyez-moi mon plan de safari"}

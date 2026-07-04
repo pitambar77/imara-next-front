@@ -26,6 +26,7 @@ export default function FooterSection() {
                 const section = document.getElementById("destinations");
                 section?.scrollIntoView({ behavior: "smooth" });
               }}
+              aria-label="Ihre individuelle Safari erstellen"
               className="w-full md:w-auto text-[#d87028] !font-avenir bg-white px-6 py-3 md:py-2.5 rounded-xs text-xs tracking-[0.72px] md:tracking-[2.4px] uppercase hover:bg-[#f0b184de] hover:text-white transition cursor-pointer shadow duration-300"
             >
               Ihre individuelle Safari erstellen →
@@ -38,12 +39,12 @@ export default function FooterSection() {
       <div className="bg-gradient-to-r from-[#1a0f08] via-[#2a1a0f] to-[#1a0f08] py-6 px-6 text-sm text-gray-400">
         <div className="  max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Left */}
-          <p className=" order-2 md:order-1 !font-avenir">
+          <p className=" order-2 md:order-1 !font-avenir text-center">
             © 2026 Imara Kileleni Safaris. Alle Rechte vorbehalten.
           </p>
 
           {/* Right */}
-          <div className="flex gap-6 order-1 md:order-2">
+          <div className="flex flex-col md:flex-row gap-1.5 md:gap-6 text-center order-1 md:order-2">
             <Link
               href="/privacy-policy"
               target="_blank"

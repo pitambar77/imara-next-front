@@ -72,7 +72,7 @@ const Banner = () => {
 
       {/* Hero Content */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center text-white px-4">
-        <h1 className="text-[26px] md:text-5xl lg:text-7xl font-normal tracking-wide mb-2 md:mb-4 !font-cormorant">
+        <h1 className="text-3xl md:text-5xl lg:text-7xl font-normal tracking-wide mb-2 md:mb-4 !font-cormorant">
           Safari In Tanzania
         </h1>
 
@@ -84,6 +84,7 @@ const Banner = () => {
         <div className="mt-4 w-full md:w-auto px-4 md:px-0">
           <button
             type="button"
+            aria-label="Plan my Tanzania safari"
             onClick={handleScrollToForm}
             className="w-full md:w-auto px-6 py-3 md:py-2.5 bg-[#d87028] border border-[#e78e4b] text-white uppercase tracking-[2.4px] text-[12px] rounded-sm hover:bg-[#eb8034] transition duration-300 cursor-pointer whitespace-nowrap !font-avenir"
           >

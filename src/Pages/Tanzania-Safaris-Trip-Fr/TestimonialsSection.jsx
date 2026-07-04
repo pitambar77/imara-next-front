@@ -198,6 +198,7 @@ export default function TestimonialsSection() {
                 <button
                   key={index}
                   onClick={() => setCurrentReview(index)}
+                  aria-label={`Go to review ${index + 1}`}
                   className={`transition-all rounded-full ${
                     currentReview === index
                       ? "bg-[#d87029] w-8 h-2"
@@ -306,6 +307,7 @@ export default function TestimonialsSection() {
                 <button
                   key={index}
                   onClick={() => setCurrentStory(index)}
+                   aria-label={`Go to story ${index + 1}`}
                   className={`transition-all rounded-full ${
                     currentStory === index
                       ? "bg-[#d87029] w-8 h-2"

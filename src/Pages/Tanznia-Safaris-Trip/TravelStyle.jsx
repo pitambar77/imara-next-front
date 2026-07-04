@@ -65,11 +65,65 @@ export default function TravelStyle({ safariData, setSafariData }) {
         {/* Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
           {budgets.map((item) => (
+            // <div
+            //   key={item.value}
+            //   onClick={() => handleTravelStyleSelect(item.value)}
+            //   className={`group cursor-pointer rounded-sm overflow-hidden bg-white shadow-sm transition-all duration-300
+            //   `}
+            // >
+            //   <div className="relative h-[140px] md:h-[228px]">
+            //     <Image
+            //       src={item.img}
+            //       alt={item.name}
+            //       fill
+            //       sizes="(max-width:768px) 50vw, (max-width:1024px) 33vw, 25vw"
+            //       className="object-cover group-hover:scale-105 transition duration-500"
+            //     />
+
+            //     {safariData.travelStyle === item.value && (
+            //       <div className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-[#d87029] flex items-center justify-center shadow-lg">
+            //         <FaCheck className="text-white text-lg" />
+            //       </div>
+            //     )}
+            //   </div>
+
+            //   {/* Content Area */}
+            //   <div
+            //     className={`transition-all duration-300 px-4 py-4 ${
+            //       safariData.travelStyle === item.value
+            //         ? "bg-[#d87029]"
+            //         : "bg-white"
+            //     }`}
+            //   >
+            //     <h2
+            //       className={`!font-cormorant text-[22px] font-medium text-center leading-tight mb-2 ${
+            //         safariData.travelStyle === item.value
+            //           ? "text-white"
+            //           : "text-[#111]"
+            //       }`}
+            //     >
+            //       {item.name}
+            //     </h2>
+
+            //     <p
+            //       className={`!font-avenir leading-6 text-center hidden md:block ${
+            //         safariData.travelStyle === item.value
+            //           ? "text-white/90"
+            //           : "text-[#444]"
+            //       }`}
+            //     >
+            //       {item.desc}
+            //     </p>
+            //   </div>
+            // </div>
             <div
               key={item.value}
               onClick={() => handleTravelStyleSelect(item.value)}
-              className={`group cursor-pointer rounded-sm overflow-hidden bg-white shadow-sm transition-all duration-300
-              `}
+              className={`group cursor-pointer rounded-sm overflow-hidden shadow-sm transition-all duration-300 flex flex-col h-full ${
+                safariData.travelStyle === item.value
+                  ? "bg-[#d87029]"
+                  : "bg-white"
+              }`}
             >
               <div className="relative h-[140px] md:h-[228px]">
                 <Image
@@ -87,14 +141,7 @@ export default function TravelStyle({ safariData, setSafariData }) {
                 )}
               </div>
 
-              {/* Content Area */}
-              <div
-                className={`transition-all duration-300 px-4 py-4 ${
-                  safariData.travelStyle === item.value
-                    ? "bg-[#d87029]"
-                    : "bg-white"
-                }`}
-              >
+              <div className="flex-1 px-4 py-4">
                 <h2
                   className={`!font-cormorant text-[22px] font-medium text-center leading-tight mb-2 ${
                     safariData.travelStyle === item.value
