@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import TravelDatePicker from "./TravelDatePicker";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { useRouter } from "next/navigation";
 
 import { isValidPhoneNumber } from "libphonenumber-js";
 
@@ -41,6 +42,8 @@ export default function EnquiryForm({
 
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+
+  const router = useRouter();
 
   const fieldRefs = {
     name: useRef(null),
@@ -157,7 +160,8 @@ export default function EnquiryForm({
         formData,
       );
 
-      alert(res.data.message);
+      // Redirect to Thank You page
+      router.push("/thank-you");
     } catch (error) {
       alert("Submission failed");
     } finally {

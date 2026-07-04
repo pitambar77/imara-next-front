@@ -9,6 +9,7 @@ import { isValidPhoneNumber } from "libphonenumber-js";
 import axios from "axios";
 import { FaCheck } from "react-icons/fa";
 import { Check, ChevronDown } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function ItineraryForm({
   formType = "Itinerary",
@@ -39,6 +40,8 @@ export default function ItineraryForm({
   const [loading, setLoading] = useState(false);
 
   const [errors, setErrors] = useState({});
+
+  const router = useRouter();
 
   const fieldRefs = {
     name: useRef(null),
@@ -168,7 +171,8 @@ export default function ItineraryForm({
         formData,
       );
 
-      alert(res.data.message);
+      // Redirect to Thank You page
+      router.push("/thank-you");
     } catch (error) {
       alert("Submission failed");
     } finally {
@@ -383,7 +387,11 @@ export default function ItineraryForm({
         </div>
         {/* <p className=" py-4">By clicking 'Send', you agree to our <a className=" text-[#da7228]" target="blanck" href="https://imarakilelenisafaris.com/privacy-policy"> Privacy Policy.</a> </p> */}
         <p className="py-2 flex items-start gap-2 text-sm sm:text-[15px] text-gray-700 leading-relaxed">
-          <Check size={20} strokeWidth={3} className="text-green-500  flex-shrink-0" />
+          <Check
+            size={20}
+            strokeWidth={3}
+            className="text-green-500  flex-shrink-0"
+          />
 
           <span>
             By clicking 'Enquire', you agree to our{" "}
