@@ -26,6 +26,7 @@ export default function ContactForm({ safariData }) {
     travelDate: "",
     days: "",
     message: "",
+    language: "de",
   });
 
   const [loading, setLoading] = useState(false);
@@ -53,20 +54,20 @@ export default function ContactForm({ safariData }) {
     if (!safariData?.destinations?.length) {
       return scrollToSection(
         "destinations",
-        "Please select at least one destination",
+        "Bitte wählen Sie mindestens ein Reiseziel aus",
       );
     }
 
     if (!safariData?.days) {
-      return scrollToSection("days", "Please select number of days");
+      return scrollToSection("days", "Bitte wählen Sie die Anzahl der Tage aus");
     }
 
     if (!safariData?.travelStyle) {
-      return scrollToSection("travel-style", "Please select a travel style");
+      return scrollToSection("travel-style", "Bitte wählen Sie eine Reiseart aus");
     }
 
     if (!safariData?.travelDate) {
-      return scrollToSection("travel-date", "Please select your travel date");
+      return scrollToSection("travel-date", "Bitte wählen Sie Ihr Reisedatum aus");
     }
 
     setStepError("");
@@ -103,24 +104,24 @@ export default function ContactForm({ safariData }) {
     const newErrors = {};
 
     if (!formData.firstname.trim())
-      newErrors.firstname = "First name is required";
+      newErrors.firstname = "Der Vorname ist erforderlich";
     if (!formData.lastname.trim())
-      newErrors.lastname = " Last name is required";
+      newErrors.lastname = " Der Nachname ist erforderlich";
 
     if (!formData.phone) {
-      newErrors.phone = "Phone number is required";
+      newErrors.phone = "Die Telefonnummer ist erforderlich";
     } else if (!isValidPhoneNumber(formData.phone)) {
-      newErrors.phone = "Invalid phone number";
+      newErrors.phone = "Ungültige Telefonnummer";
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = "Die E-Mail-Adresse ist erforderlich";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Invalid email";
+      newErrors.email = "Ungültige E-Mail-Adresse";
     }
 
     if (!formData.countryOfResidence.trim()) {
-      newErrors.countryOfResidence = "Country of residency is required";
+      newErrors.countryOfResidence = "Das Wohnsitzland ist erforderlich";
     }
 
     setErrors(newErrors);
@@ -165,21 +166,21 @@ export default function ContactForm({ safariData }) {
     }));
 
     if (!value) {
-      setPhoneError("Phone number is required");
+      setPhoneError("Die Telefonnummer ist erforderlich");
 
       setErrors((prev) => ({
         ...prev,
-        phone: "Phone number is required",
+        phone: "Die Telefonnummer ist erforderlich",
       }));
       return;
     }
 
     if (!isValidPhoneNumber(formattedPhone)) {
-      setPhoneError("Invalid phone number");
+      setPhoneError("Ungültige Telefonnummer");
 
       setErrors((prev) => ({
         ...prev,
-        phone: "Invalid phone number",
+        phone: "Ungültige Telefonnummer",
       }));
     } else {
       setPhoneError("");
@@ -623,7 +624,7 @@ export default function ContactForm({ safariData }) {
               disabled={loading}
               className="!font-avenir text-xs tracking-[0.72px] md:tracking-[2.4px] uppercase bg-[#d87028] border border-[#e78e4b] text-white  px-6 md:py-2.5 py-3 rounded-xs hover:bg-[#eb8034de] transition cursor-pointer whitespace-nowrap w-full"
             >
-              {loading ? "Submitting..." : "Senden Sie mir meinen Safari-Plan"}
+              {loading ? "Wird gesendet..." : "Senden Sie mir meinen Safari-Plan"}
             </button>
           </form>
         </div>

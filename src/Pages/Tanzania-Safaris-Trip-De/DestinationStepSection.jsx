@@ -8,19 +8,19 @@ const destinations = [
     name: "Serengeti",
     value: "Serengeti",
     desc: "Heimat der Großen Tierwanderung und eines der bekanntesten Wildtiergebiete Afrikas.",
-    img: "/serengeti_1.webp",
+    img: "/serengeti_new_1.webp",
   },
   {
     name: "Ngorongoro",
     value: "Ngorongoro",
     desc: "Ein Naturwunder und einer der besten Orte in Afrika, um die Big Five an einem einzigen Tag zu sehen.",
-    img: "/imara_2.webp",
+    img: "/nagarangaro-new-1.webp",
   },
   {
     name: "Tarangire",
     value: "Tarangire",
     desc: "Berühmt für riesige Baobab-Bäume, große Elefantenherden und fantastische Tierbeobachtungen.",
-    img: "/imara-tz-3.webp",
+    img: "/imara-tz-new-3.webp",
   },
   {
     name: "Arusha",
@@ -50,7 +50,7 @@ const destinations = [
     name: "Nicht sicher / Andere",
     value: "Nicht sicher / Andere",
     desc: "Teilen Sie uns Ihre Interessen mit, und wir erstellen die perfekte Safari-Route für Sie.",
-    img: "/imara_8.webp",
+    img: "/imara_new_8.webp",
   },
 ];
 

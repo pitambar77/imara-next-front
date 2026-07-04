@@ -1,6 +1,7 @@
-import Hero from "@/Pages/Tanzania-Safaris-Trip-De/Hero";
+
 import React from "react";
 import Script from "next/script";
+import Hero from "@/Pages/Tanzania-Safaris-Trip-Fr/Hero";
 
 const page = () => {
   return (

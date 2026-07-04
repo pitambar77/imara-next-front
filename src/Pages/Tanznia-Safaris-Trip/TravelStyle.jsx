@@ -15,13 +15,13 @@ const budgets = [
     name: "Luxury Safari",
     value: "Luxury Safari",
     desc: "Premium lodges, exclusive experiences, and seamless service.",
-    img: "/imara_15.webp",
+    img: "/imara_new_15.webp",
   },
   {
     name: "Mid-Range Safari",
     value: "Mid-Range Safari",
     desc: "Comfortable lodges and tented camps with great value.",
-    img: "/Imara_14.webp",
+    img: "/Imara_new_14.webp",
   },
   {
     name: "Not Decided Yet",

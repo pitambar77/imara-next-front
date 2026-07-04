@@ -5,28 +5,28 @@ import { FaCheck } from "react-icons/fa";
 
 const budgets = [
   {
-    name: "Budget-Safari",
-    value: "Budget-Safari",
-    desc: "Authentische Camps mit ausgezeichneter Führung und großartigem Zugang zu Wildtiergebieten.",
+    name: "Safari économique",
+    value: "Safari économique",
+    desc: "Camps authentiques avec d’excellents guides et un très bon accès aux zones d’observation animalière.",
     img: "/Imara_13.webp",
   },
 
   {
-    name: "Luxus-Safari",
-    value: "Luxus-Safari",
-    desc: "Premium-Lodges, exklusive Erlebnisse und nahtloser Service.",
+    name: "Safari de luxe",
+    value: "Safari de luxe",
+    desc: "Lodges premium, expériences exclusives et service parfaitement organisé.",
     img: "/imara_new_15.webp",
   },
   {
-    name: "Mittelklasse-Safari",
-    value: "Mittelklasse-Safari",
-    desc: "Komfortable Lodges und Tented Camps mit einem hervorragenden Preis-Leistungs-Verhältnis.",
+    name: "Safari milieu de gamme",
+    value: "Safari milieu de gamme",
+    desc: "Lodges confortables et camps de toile avec un excellent rapport qualité-prix.",
     img: "/Imara_new_14.webp",
   },
   {
-    name: "Noch nicht entschieden",
-    value: "Noch nicht entschieden",
-    desc: "Wir empfehlen Ihnen die besten Optionen passend zu Ihren Wünschen.",
+    name: "Pas encore décidé",
+    value: "Pas encore décidé",
+    desc: "Nous vous recommanderons les meilleures options selon vos besoins.",
     img: "/Imara_16.webp",
   },
 ];
@@ -54,12 +54,12 @@ export default function TravelStyle({ safariData, setSafariData }) {
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <h2 className="!font-cormorant text-3xl md:text-4xl lg:text-5xl mb-4 capitalize">
-          3. Welchen Reisestil bevorzugen Sie?
+          3. Quel style de voyage préférez-vous?
         </h2>
 
         <p className="!font-avenir text-[#444] text-[17px] mb-6 md:mb-12">
-          Wählen Sie Ihren bevorzugten Safari-Stil — wir passen Unterkünfte,
-          Erlebnisse und Logistik entsprechend an.
+          Choisissez votre style de safari préféré — nous adapterons les lodges,
+          les expériences et la logistique en conséquence.
         </p>
 
         {/* Grid */}

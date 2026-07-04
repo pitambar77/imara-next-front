@@ -7,49 +7,49 @@ const destinations = [
   {
     name: "Serengeti",
     value: "Serengeti",
-    desc: "Home of the Great Migration and one of Africa’s most iconic wildlife destinations.",
+    desc: "Berceau de la Grande Migration et l’une des destinations animalières les plus emblématiques d’Afrique.",
     img: "/serengeti_new_1.webp",
   },
   {
     name: "Ngorongoro",
     value: "Ngorongoro",
-    desc: "A natural wonder and one of the best places in Africa to see the Big Five in a single day.",
+    desc: "Une merveille naturelle et l’un des meilleurs endroits d’Afrique pour observer les Big Five en une seule journée.",
     img: "/nagarangaro-new-1.webp",
   },
   {
     name: "Tarangire",
     value: "Tarangire",
-    desc: "Famous for giant baobab trees, large elephant herds, and incredible game viewing.",
+    desc: "Célèbre pour ses baobabs géants, ses grands troupeaux d’éléphants et ses excellentes observations animalières.",
     img: "/imara-tz-new-3.webp",
   },
   {
     name: "Arusha",
     value: "Arusha",
-    desc: "Perfect for walking safaris, canoeing, and views of Mount Meru.",
+    desc: "Idéal pour les safaris à pied, les excursions en canoë et les vues sur le mont Meru.",
     img: "/imara_5.webp",
   },
   {
-    name: "Lake Manyara",
-    value: "Lake Manyara",
-    desc: "Known for tree-climbing lions, flamingos, and lush green landscapes.",
+    name: "Lac Manyara",
+    value: "Lac Manyara",
+    desc: "Connu pour ses lions grimpeurs d’arbres, ses flamants roses et ses paysages verdoyants.",
     img: "/imara_4.webp",
   },
   {
     name: "Zanzibar",
     value: "Zanzibar",
-    desc: "White sand beaches, turquoise waters, and the historic charm of Stone Town.",
+    desc: "Plages de sable blanc, eaux turquoise et charme historique de Stone Town.",
     img: "/zanzibar-sa-trip.webp ",
   },
   {
-    name: "Mount Kilimanjaro",
-    value: "Mount Kilimanjaro",
-    desc: "Africa’s highest peak — ideal for trekking or as a stunning safari backdrop.",
+    name: "Mont Kilimandjaro",
+    value: "Mont Kilimandjaro",
+    desc: "Le plus haut sommet d’Afrique — idéal pour le trekking ou comme décor spectaculaire pour votre safari.",
     img: "/imara_6.webp",
   },
   {
-    name: "Not Sure / Others",
-    value: "Not Sure / Others",
-    desc: "Share your interests and we’ll create the perfect safari route for you.",
+    name: "Pas sûr / Autres",
+    value: "Pas sûr / Autres",
+    desc: "Partagez vos envies avec nous et nous créerons l’itinéraire safari parfait pour vous.",
     img: "/imara_new_8.webp",
   },
 ];
@@ -81,13 +81,13 @@ export default function DestinationStepSection({ safariData, setSafariData }) {
     >
       <div className="max-w-7xl mx-auto">
         <h2 className="!font-cormorant text-3xl md:text-4xl lg:text-5xl mb-4 capitalize">
-          1. Which destinations would you like to explore?
+          1. Quelles destinations souhaitez-vous explorer ?
         </h2>
 
         <p className="!font-avenir text-[#444] text-[17px] mb-6 md:mb-12">
-          Select the places that inspire you most — our safari specialists will
-          design the perfect itinerary based on your preferences, travel dates,
-          and wildlife interests.
+          Sélectionnez les lieux qui vous inspirent le plus — nos spécialistes
+          safari concevront l’itinéraire idéal selon vos préférences, vos dates
+          de voyage et vos centres d’intérêt pour la faune sauvage.
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">

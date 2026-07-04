@@ -10,12 +10,13 @@ export default function FooterSection() {
           {/* Text */}
           <div className="max-w-2xl">
             <h2 className=" !font-cormorant text-[24px] md:text-4xl leading-snug mb-3 text-center md:text-left">
-              Ihre einmalige Tansania-Safari beginnt mit einem Gespräch.
+              Votre safari de rêve en Tanzanie commence par une simple
+              conversation.
             </h2>
 
             <p className=" !font-avenir text-sm text-center md:text-left opacity-90">
-              Die Verfügbarkeit ist begrenzt. Die meisten Reiserouten werden
-              8–14 Monate im Voraus gebucht.
+              Les disponibilités sont limitées. La plupart des itinéraires sont
+              réservés 8 à 14 mois à l’avance.
             </p>
           </div>
 
@@ -28,7 +29,7 @@ export default function FooterSection() {
               }}
               className="w-full md:w-auto text-[#d87028] !font-avenir bg-white px-6 py-3 md:py-2.5 rounded-xs text-xs tracking-[0.72px] md:tracking-[2.4px] uppercase hover:bg-[#f0b184de] hover:text-white transition cursor-pointer shadow duration-300"
             >
-              Ihre individuelle Safari erstellen →
+              Créer mon safari personnalisé →
             </button>
           </div>
         </div>
@@ -39,7 +40,7 @@ export default function FooterSection() {
         <div className="  max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Left */}
           <p className=" order-2 md:order-1 !font-avenir">
-            © 2026 Imara Kileleni Safaris. Alle Rechte vorbehalten.
+            © 2026 Imara Kileleni Safaris. Tous droits réservés.
           </p>
 
           {/* Right */}
@@ -50,7 +51,7 @@ export default function FooterSection() {
               rel="noopener noreferrer"
               className=" !font-avenir hover:text-white transition"
             >
-              Datenschutzerklärung
+              Politique de confidentialité
             </Link>
             <Link
               href="/terms-and-conditions"
@@ -58,7 +59,7 @@ export default function FooterSection() {
               rel="noopener noreferrer"
               className="!font-avenir hover:text-white transition"
             >
-              Allgemeine Geschäftsbedingungen
+              Conditions générales d’utilisation
             </Link>
           </div>
         </div>

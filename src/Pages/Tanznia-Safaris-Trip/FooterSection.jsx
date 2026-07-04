@@ -46,12 +46,19 @@ export default function FooterSection() {
           {/* Right */}
           <div className="flex gap-6 order-1 md:order-2">
             <Link
-              href="#"
+              href="/privacy-policy"
+              target="_blank"
+              rel="noopener noreferrer"
               className=" !font-avenir hover:text-white transition"
             >
               Privacy Policy
             </Link>
-            <Link href="#" className="!font-avenir hover:text-white transition">
+            <Link
+              href="/terms-and-conditions"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="!font-avenir hover:text-white transition"
+            >
               Terms of Service
             </Link>
           </div>

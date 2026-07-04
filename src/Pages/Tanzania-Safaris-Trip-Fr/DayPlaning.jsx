@@ -5,23 +5,23 @@ import { FaCheck } from "react-icons/fa";
 
 const days = [
   {
-    name: "1 – 5 Tage",
-    value: "1 – 5 Tage",
+    name: "1 à 5 jours",
+    value: "1 à 5 jours",
     img: "/imara_new_9.webp",
   },
   {
-    name: "6 – 10 Tage",
-    value: "6 – 10 Tage",
+    name: "6 à 10 jours",
+    value: "6 à 10 jours",
     img: "/Imara_new_10.webp",
   },
   {
-    name: "11 – 15 Tage",
-    value: "11 – 15 Days",
+    name: "11 à 15 jours",
+    value: "11 à 15 jours",
     img: "/Imara_new_11.webp",
   },
   {
-    name: "Noch nicht sicher",
-    value: "Noch nicht sicher",
+    name: "Pas encore sûr",
+    value: "Pas encore sûr",
     img: "/Imara_12.webp",
   },
 ];
@@ -46,12 +46,13 @@ export default function DayPlaning({ safariData, setSafariData }) {
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <h2 className="!font-cormorant text-3xl md:text-4xl lg:text-5xl mb-4 capitalize">
-          2.Wie viele Tage planen Sie für Ihre Tansania-Reise?
+          2.Combien de jours pour votre voyage en Tanzanie ?
         </h2>
 
         <p className="!font-avenir text-[#444] text-[17px] mb-6 md:mb-12">
-          Ob kurzer Kurztrip oder längere Reise — wir gestalten Ihre Safari so,
-          dass Sie das Beste aus Ihrer Zeit herausholen.
+          Qu’il s’agisse d’une courte escapade ou d’un long voyage — nous
+          concevons votre safari pour maximiser votre expérience et votre
+          confort.
         </p>
 
         {/* Grid */}

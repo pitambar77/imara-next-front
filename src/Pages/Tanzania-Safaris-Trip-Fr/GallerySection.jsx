@@ -55,22 +55,22 @@ export default function GallerySection() {
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <p className="!font-avenir text-xs md:text-sm text-center tracking-[0.2em] text-[#d87029] uppercase mb-3">
-          Aus dem Safari-Alltag
+          Depuis le terrain
         </p>
 
         <div className="w-10 h-[1px] bg-[#d87029] mx-auto mb-4 md:mb-6"></div>
 
         <h2 className="!font-cormorant text-[#f3f0ed]  text-3xl md:text-4xl lg:text-5xl text-center capitalize mb-4">
-          Tansania
+          La Tanzanie à
           <span className=" !font-cormorant italic text-[#d87029]">
             {" "}
-            durch unsere Linse
+            travers notre objectif
           </span>
         </h2>
 
         <p className="!font-avenir text-[#f1a878] mt-4 mb-16 max-w-xl mx-auto text-center">
-          Jedes Bild erzählt eine echte Geschichte aus der afrikanischen
-          Wildnis. Nichts Künstliches, nichts Gestelltes.
+          Chaque image raconte une histoire authentique de la nature africaine.
+          Rien d’artificiel, rien de mis en scène.
         </p>
 
         {/* Desktop Gallery */}
@@ -238,23 +238,23 @@ export default function GallerySection() {
             {[
               {
                 value: "500+",
-                label: "ZUFRIEDENE GÄSTE",
-                subLabel: "SEIT 2012",
+                label: "VOYAGEURS SATISFAITS",
+                subLabel: "DEPUIS 2012",
               },
               {
                 value: "5.0",
-                label: "TRIPADVISOR",
-                subLabel: "BEWERTUNG",
+                label: "NOTE ",
+                subLabel: "TRIPADVISOR",
               },
               {
                 value: "4.7",
-                label: "GOOGLE",
-                subLabel: "BEWERTUNG",
+                label: "NOTE",
+                subLabel: " GOOGLE",
               },
               {
                 value: "14+",
-                label: "JAHRE ERFAHRUNG ",
-                subLabel: "IM GELÄNDE",
+                label: "ANNÉES D’EXPÉRIENCE ",
+                subLabel: "SUR LE TERRAIN",
               },
             ].map((item, index) => (
               <div

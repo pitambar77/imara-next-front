@@ -36,11 +36,12 @@ export default function WhenToTravel({ safariData, setSafariData }) {
     <section id="travel-date" className="bg-[#fbf5ef91] px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
         <h2 className="!font-cormorant text-3xl md:text-4xl lg:text-5xl mb-4 capitalize">
-          4. Wann möchten Sie reisen?
+          4. Quand souhaitez-vous voyager?
         </h2>
 
         <p className="!font-avenir text-[#444] text-lg mb-10">
-          Wählen Sie Ihre bevorzugten Reisedaten — wir beraten Sie basierend auf Wildtiersaisons, Wetter und den besten Reisebedingungen.
+          Sélectionnez vos dates préférées — nous vous conseillerons selon les
+          saisons animalières, la météo et les meilleures conditions de voyage.
         </p>
 
         <div className="flex justify-center">
@@ -48,7 +49,7 @@ export default function WhenToTravel({ safariData, setSafariData }) {
             onChange={handleDateSelect}
             value={date}
             minDate={new Date()}
-            locale="de-DE"
+            locale="fr-FR"
             prevLabel="‹"
             nextLabel="›"
             prev2Label={null}

@@ -7,17 +7,17 @@ const days = [
   {
     name: "1 – 5 Days",
     value: "1 – 5 Days",
-    img: "/imara_9.webp",
+    img: "/imara_new_9.webp",
   },
   {
     name: "6 – 10 Days",
     value: "6 – 10 Days",
-    img: "/Imara_10.webp",
+    img: "/Imara_new_10.webp",
   },
   {
     name: "11 – 15 Days",
     value: "11 – 15 Days",
-    img: "/Imara_11.webp",
+    img: "/Imara_new_11.webp",
   },
   {
     name: "Not sure yet",
