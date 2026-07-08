@@ -75,7 +75,7 @@ export default function RootLayout({ children }) {
     >
       <head>
         {/* Google Tag Manager */}
-        <Script id="gtm" strategy="afterInteractive">
+        {/* <Script id="gtm" strategy="afterInteractive">
           {`
           (function(w,d,s,l,i){
             w[l]=w[l]||[];
@@ -91,7 +91,7 @@ export default function RootLayout({ children }) {
             f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-MPBPDFQ6');
         `}
-        </Script>
+        </Script> */}
 
         {/* Microsoft Clarity */}
         <Script id="clarity" strategy="afterInteractive">
