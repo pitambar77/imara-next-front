@@ -33,21 +33,20 @@ const reasons = [
 
 export default function WhyTravel() {
   return (
-    <section className="relative w-full bg-white">
+    <section className="relative w-full ">
       <div className="mx-auto w-full max-w-[1140px] px-[30px] sm:px-[40px] lg:px-0">
         {/* Expert Content */}
         <div
           className="
              relative z-10
-            -mt-[50px]
             bg-white
             px-[15px] py-[18px]
 
             sm:-mt-[80px]
             sm:px-[25px] sm:py-[22px]
 
-            md:-mt-[230px]
-            md:px-[75px] md:py-[70px]
+            md:-mt-[160px]
+            md:px-[60px] md:py-[60px]
           "
         >
           <div className="flex items-center gap-[12px] sm:gap-[20px] md:gap-[35px]">
@@ -74,12 +73,9 @@ export default function WhyTravel() {
                   !font-avenir
                   m-0
                   text-[8px]
-                  font-bold
                   leading-[1.2]
                   text-[#f6b719]
-
                   sm:text-[13px]
-
                   md:text-[25px]
                 "
               >
@@ -91,7 +87,7 @@ export default function WhyTravel() {
                 className="
                   !font-avenir
                   m-0
-                  mt-[5px]
+                 
                   text-[6px]
                   leading-[1.45]
                   text-[#77777e]
@@ -143,8 +139,8 @@ export default function WhyTravel() {
               {reasons.map((item, index) => (
                 <article key={`${item.number}-${index}`}>
                   {/* Number */}
-                  <div className="flex h-[18px] w-[18px] items-center justify-center rounded-full border border-[#bda45d] sm:h-[25px] sm:w-[25px] md:h-[40px] md:w-[40px] md:border-2">
-                    <span className="!font-avenir text-[6px] font-medium text-[#a58b47] sm:text-[8px] md:text-[13px]">
+                  <div className="flex h-[18px] w-[18px] items-center justify-center rounded-full border border-[#d87028] sm:h-[25px] sm:w-[25px] md:h-[40px] md:w-[40px] md:border-3">
+                    <span className="!font-avenir  font-semibold flex items-center justify-center font-medium bg-[#d87028] p-3.5 h-2 w-2 rounded-full text-white sm:text-[8px] md:text-[14px]">
                       {item.number}
                     </span>
                   </div>

@@ -4,7 +4,7 @@ const durations = [
   {
     id: "2-3",
     title: "2 TO 3 DAYS",
-    image: "/planning_days-fig-1.jpg",
+    image: "/2-3days.webp",
   },
   {
     id: "4-5",
@@ -24,8 +24,28 @@ const durations = [
 ];
 
 export default function SafariDays({ selected, onSelect }) {
+  const handleSelect = (durationId) => {
+    // Select the duration
+    onSelect(durationId);
+
+    // Scroll to next section
+    setTimeout(() => {
+      const nextSection = document.getElementById("comfort-level");
+
+      if (nextSection) {
+        nextSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 250);
+  };
+
   return (
-    <section className="w-full bg-[#f7f7f7] py-[55px] sm:py-[60px] lg:py-[70px]">
+    <section
+      id="safari-days"
+      className="w-full bg-[#f7f7f7] py-[55px] sm:py-[60px] lg:py-[70px]"
+    >
       <div className="mx-auto w-full max-w-[1140px] px-[30px] sm:px-[40px] lg:px-0">
         {/* Heading */}
         <h2 className="!font-cormorant m-0 mb-4 text-3xl font-medium leading-tight text-[#29283b] md:text-4xl lg:text-5xl">
@@ -46,10 +66,10 @@ export default function SafariDays({ selected, onSelect }) {
               <button
                 key={item.id}
                 type="button"
-                onClick={() => onSelect(item.id)}
+                onClick={() => handleSelect(item.id)}
                 aria-pressed={isSelected}
                 className={`group w-full overflow-hidden bg-white text-left cursor-pointer  shadow-[0_10px_20px_rgba(0,0,0,0.12)] ${
-                  isSelected ? "ring-2 ring-[#f0b51b]" : ""
+                  isSelected ? "ring-2 ring-[#d87028]" : ""
                 }`}
               >
                 {/* Image */}
@@ -63,7 +83,14 @@ export default function SafariDays({ selected, onSelect }) {
 
                 {/* Card Content */}
                 <div className="flex items-center justify-center bg-white px-[10px] py-[15px] text-center">
-                  <h3 className="!font-cormorant m-0 text-[22px] font-medium leading-tight text-[#d87028] transition-colors duration-300 group-hover:text-[#111]">
+                  <h3
+                    className={`!font-cormorant m-0 text-[22px] transition-colors duration-300 ${
+                      isSelected
+                        ? "text-[#111]"
+                        : "text-[#d87028] group-hover:text-[#111]"
+                    }
+                    `}
+                  >
                     {item.title}
                   </h3>
                 </div>

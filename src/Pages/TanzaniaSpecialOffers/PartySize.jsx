@@ -24,8 +24,26 @@ const partySizes = [
 ];
 
 export default function PartySize({ selected, onSelect }) {
+  const handleSelect = (partyId) => {
+    onSelect(partyId);
+
+    setTimeout(() => {
+      const nextSection = document.getElementById("safari-days");
+
+      if (nextSection) {
+        nextSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 250);
+  };
+
   return (
-    <section className="w-full bg-white py-[55px] sm:py-[60px] lg:py-[70px]">
+    <section
+      id="party-size"
+      className="w-full bg-white py-[55px] sm:py-[60px] lg:py-[70px]"
+    >
       <div className="mx-auto w-full max-w-[1140px] px-[30px] sm:px-[40px] lg:px-0">
         {/* Heading */}
         <h2
@@ -34,8 +52,7 @@ export default function PartySize({ selected, onSelect }) {
             m-0
             mb-4
             text-3xl
-            font-medium
-            leading-tight
+        
             text-[#29283b]
             md:text-4xl
             lg:text-5xl
@@ -78,7 +95,7 @@ export default function PartySize({ selected, onSelect }) {
               <button
                 key={item.id}
                 type="button"
-                onClick={() => onSelect(item.id)}
+                onClick={() => handleSelect(item.id)}
                 aria-pressed={isSelected}
                 className={`
                   group
@@ -88,7 +105,7 @@ export default function PartySize({ selected, onSelect }) {
                   text-left
                   shadow-[0_10px_20px_rgba(0,0,0,0.12)]
                   cursor-pointer
-                  ${isSelected ? "ring-2 ring-[#f0b51b]" : ""}
+                  ${isSelected ? "ring-2 ring-[#d87028]" : ""}
                 `}
               >
                 {/* Image */}
@@ -123,17 +140,21 @@ export default function PartySize({ selected, onSelect }) {
                   "
                 >
                   <h3
-                    className="
+                    className={`
                       !font-cormorant
                       m-0
                       text-[22px]
                       font-medium
                       leading-tight
-                      text-[#d87028]
+                      
                       transition-colors
                       duration-300
-                      group-hover:text-[#111]
-                    "
+                     ${
+                       isSelected
+                         ? "text-[#111]"
+                         : "text-[#d87028] group-hover:text-[#111]"
+                     }
+                    `}
                   >
                     {item.title}
                   </h3>

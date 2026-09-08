@@ -25,16 +25,6 @@ const benefits = [
   },
 ];
 
-function GoldIcon() {
-  return (
-    <div className="flex h-[58px] w-[58px] shrink-0 items-center justify-center rounded-full border-[4px] border-[#c2a35a]">
-      <div className="flex h-[38px] w-[38px] items-center justify-center rounded-full border-[2px] border-[#c2a35a] text-[25px] font-normal leading-none text-[#c2a35a]">
-        ✓
-      </div>
-    </div>
-  );
-}
-
 export default function WhySafari() {
   return (
     <section
@@ -72,7 +62,7 @@ export default function WhySafari() {
         {benefits.map((item) => (
           <article key={item.title} className="min-w-0">
             {/* Icon */}
-            <img src="/tick-original.svg" alt="Checkmark" className="w-12 h-12"/>
+            <img src="/check-tik.png" alt="Checkmark" className="w-10 h-10"/>
 
             {/* Title */}
             <h3

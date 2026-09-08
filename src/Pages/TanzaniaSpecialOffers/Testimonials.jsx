@@ -98,8 +98,6 @@ export default function Testimonials() {
             m-0
             text-center
             text-[28px]
-            font-medium
-            leading-tight
             text-[#29283b]
             sm:text-[36px]
             md:text-5xl
@@ -242,14 +240,13 @@ export default function Testimonials() {
                 flex-none
                 shrink-0
                 w-[calc(100%-10px)]
-                rounded-t-[28px]
+                rounded-t-[50px]
                 bg-white
                 px-[25px]
                 pb-[55px]
                 pt-[35px]
                 text-center
-                shadow-[0_8px_30px_rgba(0,0,0,0.10)]
-
+                shadow-[0_-2px_20px_rgba(0,0,0,0.10)]
                 sm:w-[calc(50%-13px)]
                 sm:px-[30px]
                 sm:pb-[60px]

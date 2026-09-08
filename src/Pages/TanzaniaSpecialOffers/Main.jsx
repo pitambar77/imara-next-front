@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import Hero from "./Hero";
 import WhySafari from "./WhySafari";
@@ -16,16 +17,40 @@ import FinalCTA from "./FinalCTA";
 import Footer from "./Footer";
 
 const Main = () => {
-  const [parks, setParks] = useState("decide");
+  // Step 1 - Parks
+  const [parks, setParks] = useState([]);
+
+  // Step 2 - Party size
   const [party, setParty] = useState("");
+
+  // Step 3 - Safari days
   const [days, setDays] = useState("");
+
+  // Step 4 - Comfort level
   const [comfort, setComfort] = useState("");
-  const [month, setMonth] = useState("Sep");
+
+  // Step 5 - Safari date
+  const [month, setMonth] = useState({
+    month: "",
+    year: new Date().getFullYear(),
+    date: null,
+  });
+
+  // Everything selected in planner
+  const safariData = {
+    destinations: parks,
+    partySize: party,
+    days: days,
+    travelStyle: comfort,
+    travelDate: month,
+  };
 
   return (
     <main className="w-full overflow-x-hidden">
       <Hero />
+
       <WhySafari />
+
       <div id="planner">
         <SafariParks selected={parks} onSelect={setParks} />
 
@@ -37,8 +62,10 @@ const Main = () => {
 
         <SafariDate selected={month} onSelect={setMonth} />
 
-        <ContactForm />
+        {/* Pass ALL planner selections */}
+        <ContactForm safariData={safariData} />
       </div>
+
       <ExpertBanner />
       <WhyTravel />
       <Partners />

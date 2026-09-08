@@ -14,8 +14,7 @@ export default function Partners() {
         {/* Heading */}
         <h2
           className="
-             !font-cormorant m-0 text-[18px] mb-4 font-medium leading-tight text-[#29283b]  sm:text-[25px]  md:text-5xl 
-          "
+             !font-cormorant m-0 mb-4 text-3xl text-[#29283b] md:text-4xl lg:text-5xl "
         >
           Our Partners
         </h2>

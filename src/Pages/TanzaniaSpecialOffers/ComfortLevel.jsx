@@ -24,11 +24,31 @@ const comfortOptions = [
 ];
 
 export default function ComfortLevel({ selected, onSelect }) {
+  const handleSelect = (comfortId) => {
+    // Select the comfort level
+    onSelect(comfortId);
+
+    // Scroll to next section
+    setTimeout(() => {
+      const nextSection = document.getElementById("safari-date");
+
+      if (nextSection) {
+        nextSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 250);
+  };
+
   return (
-    <section className="w-full bg-white py-[55px] sm:py-[60px] lg:py-[70px]">
+    <section
+      id="comfort-level"
+      className="w-full bg-white py-[55px] sm:py-[60px] lg:py-[70px]"
+    >
       <div className="mx-auto w-full max-w-[1140px] px-[30px] sm:px-[40px] lg:px-0">
         {/* Heading */}
-        <h2 className="!font-cormorant m-0 mb-4 text-3xl font-medium leading-tight text-[#29283b] md:text-4xl lg:text-5xl">
+        <h2 className="!font-cormorant m-0 mb-4 text-3xl  text-[#29283b] md:text-4xl lg:text-5xl">
           4. Select The Comfort Level On Your Tanzania Safari
         </h2>
 
@@ -41,10 +61,10 @@ export default function ComfortLevel({ selected, onSelect }) {
               <button
                 key={item.id}
                 type="button"
-                onClick={() => onSelect(item.id)}
+                onClick={() => handleSelect(item.id)}
                 aria-pressed={isSelected}
                 className={`group w-full cursor-pointer overflow-hidden bg-white text-left shadow-[0_10px_20px_rgba(0,0,0,0.12)] ${
-                  isSelected ? "ring-2 ring-[#f0b51b]" : ""
+                  isSelected ? "ring-2 ring-[#d87028]" : ""
                 }`}
               >
                 {/* Image */}
@@ -58,7 +78,14 @@ export default function ComfortLevel({ selected, onSelect }) {
 
                 {/* Title */}
                 <div className="flex min-h-[62px] items-center justify-center bg-white px-[10px] py-[15px] text-center">
-                  <h3 className="!font-cormorant m-0 text-[22px] font-medium leading-tight text-[#d87028] transition-colors duration-300 group-hover:text-[#111]">
+                  <h3
+                    className={`!font-cormorant m-0 text-[22px] font-medium leading-tight transition-colors duration-300 ${
+                      isSelected
+                        ? "text-[#111]"
+                        : "text-[#d87028] group-hover:text-[#111]"
+                    }
+                    `}
+                  >
                     {item.title}
                   </h3>
                 </div>

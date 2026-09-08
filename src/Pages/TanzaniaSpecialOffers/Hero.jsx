@@ -1,8 +1,36 @@
 import imaralogo from "@/assets/imaralogo.png";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
+
+   const [scrolled, setScrolled] = useState(false);
+  
+    useEffect(() => {
+      const handleScroll = () => {
+        setScrolled(window.scrollY > 50);
+      };
+  
+      window.addEventListener("scroll", handleScroll);
+  
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }, []);
+  
+    const handleScrollToForm = () => {
+      const section = document.getElementById("parks");
+  
+      if (section) {
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    };
+
+
   const certificates = [
     "/tripadvisor-wht-2017.png",
     "/tripadvisor-wht-2017.png",
@@ -13,7 +41,7 @@ export default function Hero() {
     <section className="relative h-[895px] w-full overflow-hidden">
       {/* Background Image */}
       <img
-        src="/imara-ofer-banner.jpg"
+        src="/special-offers-banner.webp"
         alt="Tanzania Safari"
         className="absolute inset-0 h-full w-full object-cover object-center"
       />
@@ -84,7 +112,7 @@ export default function Hero() {
         >
           <h1
             className="
-              text-3xl md:text-5xl lg:text-7xl font-normal tracking-wide mb-2 md:mb-4 !font-cormorant"
+              text-3xl md:text-5xl lg:text-7xl font-semibold tracking-wide mb-2 md:mb-4 !font-cormorant"
           >
             TANZANIA
           </h1>
@@ -107,7 +135,9 @@ export default function Hero() {
           </p>
 
           <button
-            href="#planner"
+             type="button"
+            aria-label="Plan my Tanzania safari"
+            onClick={handleScrollToForm}
             className="
               mt-[72px]
               inline-flex

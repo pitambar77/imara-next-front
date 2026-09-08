@@ -1,4 +1,31 @@
+import { useEffect, useState } from "react";
+
 export default function FinalCTA() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleScrollToForm = () => {
+    const section = document.getElementById("parks");
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <section className="w-full bg-white py-[20px]">
       <div className="mx-auto w-full max-w-[1300px] px-[25px] sm:px-[40px] md:px-[60px]">
@@ -90,17 +117,19 @@ export default function FinalCTA() {
               </p>
 
               {/* Button */}
-              <a
-                href="#planner"
+              <button
+                type="button"
+                aria-label="Plan my Tanzania safari"
+                onClick={handleScrollToForm}
                 className="
                   !font-avenir
                   mt-[35px]
                   inline-flex
-                  h-[48px]
+                  py-2
                   w-fit
                   items-center
                   justify-center
-                  bg-[#f6b719]
+                  bg-[#d87028]
                   px-[28px]
                   text-[12px]
                   font-semibold
@@ -108,21 +137,23 @@ export default function FinalCTA() {
                   text-white
                   transition-colors
                   duration-300
-                  hover:bg-[#dfa509]
+                  hover:bg-[#e78e4b]
+                  cursor-pointer
+                  rounded-[10px]
 
                   sm:mt-[38px]
-                  sm:h-[52px]
+                  sm:py-3
                   sm:px-[30px]
                   sm:text-[13px]
 
                   md:mt-[40px]
-                  md:h-[55px]
+                  md:py-4
                   md:px-[32px]
-                  md:text-[14px]
+                  md:text-[17px]
                 "
               >
                 HELP ME PLAN
-              </a>
+              </button>
             </div>
           </div>
 
