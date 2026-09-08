@@ -52,7 +52,7 @@ export default function Hero() {
       {/* Hero Content */}
       <div className="relative z-10 mx-auto h-full w-full max-w-[1140px] ">
         {/* ================= TOP BAR ================= */}
-        <div className="flex items-start justify-between pt-[48px]">
+        <div className="flex items-start justify-between pt-[48px] px-4 sm:px-6 md:px-10 xl:px-0">
           {/* Logo */}
           <div className="h-[112px] w-[220px] overflow-hidden ">
             <Link href="/" aria-label="Go to homepage">
@@ -65,35 +65,6 @@ export default function Hero() {
                 className="h-10 sm:h-11 md:h-12 lg:h-14 w-auto"
               />
             </Link>
-          </div>
-
-         
-          {/* Tripadvisor badges */}
-          <div className="flex items-center gap-[10px]">
-            {certificates.map((image, index) => (
-              <div
-                key={index}
-                className="
-        flex
-        h-[65px]
-        w-[65px]
-        shrink-0
-        items-center
-        justify-center
-      "
-              >
-                <img
-                  src={image}
-                  alt={`Tripadvisor Certificate ${index + 1}`}
-                  draggable="false"
-                  className="
-          h-full
-          w-full
-          object-contain
-        "
-                />
-              </div>
-            ))}
           </div>
         </div>
 
@@ -112,7 +83,7 @@ export default function Hero() {
         >
           <h1
             className="
-              text-3xl md:text-5xl lg:text-7xl font-semibold tracking-wide mb-2 md:mb-4 !font-cormorant"
+              text-4xl md:text-5xl lg:text-7xl font-semibold tracking-wide mb-2 md:mb-4 !font-cormorant"
           >
             TANZANIA
           </h1>
@@ -141,14 +112,14 @@ export default function Hero() {
             className="
               mt-[72px]
               inline-flex
-              py-4
+              py-2.5
               items-center
               justify-center
               rounded-[10px]
               bg-[#d87028]
               px-[34px]
               !font-avenir
-              text-[18px]
+              text-[14px]
               font-bold
               uppercase
               tracking-[0.02em]

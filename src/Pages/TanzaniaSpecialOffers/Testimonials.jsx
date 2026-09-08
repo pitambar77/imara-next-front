@@ -4,29 +4,29 @@ import { useRef, useState } from "react";
 
 const testimonials = [
   {
-    name: "Vanessa",
-    image: "/otswotsau-fig-2.jpg",
-    text: "This is my first time writing a review about a service, but there's no way I couldn't do it since I had the best trip I could imagine.",
+    name: "Arpit G",
+    image: "/arpit.jpg",
+    text: "We recently completed an incredible 15-day journey through Tanzania with imara kileleni, exploring all the major national parks on safari before heading to Zanzibar.",
   },
   {
-    name: "Pauline P",
-    image: "/otswotsau-fig-2.jpg",
-    text: "We were so lucky in that we got to see all the big 9 before day 3 was out. In different locations and settings. Each Park has its own beauty and draws you in uniquely.",
+    name: "Lilyy",
+    image: "/lilyy.jpg",
+    text: "Had an incredible Safari with Imara, It was my first time in Tanzania and I didn'know what to expect and I’m honestly still in awe..I visited serengeti....",
   },
   {
-    name: "Roxanne",
-    image: "/otswotsau-fig-2.jpg",
-    text: "One of the most memorable trips I've ever been on! WOW! Thank you so much to the BestDay Safari team; they made us so comfortable and the trip was much smoother.",
+    name: "Gabriel P",
+    image: "/gabriel-p.jpg",
+    text: "This was the first time that we went to Tarangire National Park, but it very certainly might not be the last. Completely entrancing scenery. I can only recommend..",
   },
   {
-    name: "Pauline Paul",
-    image: "/otswotsau-fig-2.jpg",
-    text: "We were so lucky in that we got to see all the big 9 before day 3 was out. In different locations and settings. Each Park has its own beauty and draws you in uniquely.",
+    name: "Sven N",
+    image: "/sven-n.jpg",
+    text: "Climbing Kilimanjaro was an astonishing experience that we will hardly ever forget. It was certainly not the easiest, but with great effort comes great memories.",
   },
   {
-    name: "Roxanne hyuhh",
-    image: "/otswotsau-fig-2.jpg",
-    text: "One of the most memorable trips I've ever been on! WOW! Thank you so much to the BestDay Safari team; they made us so comfortable and the trip was much smoother.",
+    name: "Keegan H",
+    image: "/keegan-h.jpg",
+    text: "If you have never seen the great wildebeest migration I would suggest it genuinely. Such an atmosphere is difficult to find anywhere else.",
   },
 ];
 
@@ -121,21 +121,12 @@ export default function Testimonials() {
             md:mt-[65px]
           "
         >
-          {/* Feefo */}
-          <div
-            className="
-              !font-avenir
-              text-[42px]
-              font-bold
-              leading-none
-              tracking-[-3px]
-              text-[#4b4b4b]
-              sm:text-[48px]
-              md:text-[58px]
-            "
-          >
-            feefo
-            <span className="text-[#f5c400]">oo</span>
+          <div>
+            <img
+              src="/trip.webp"
+              alt="Tripadvisor"
+              className="h-[65px] w-auto object-contain"
+            />
           </div>
 
           {/* Rating */}
@@ -163,7 +154,7 @@ export default function Testimonials() {
                 md:text-[18px]
               "
             >
-              4.9
+              4.8
             </span>
 
             <span

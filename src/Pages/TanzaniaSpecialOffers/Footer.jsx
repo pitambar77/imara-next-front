@@ -21,12 +21,9 @@ export default function Footer() {
             md:text-[17px]
           "
         >
-          We are committed to delivering an online experience that is always
-          improving. By submitting your information, you agree to the use of it
-          as described in our{" "}
-          <Link href="https://imarakilelenisafaris.com/privacy-policy" className="font-semibold text-[#c3a15b]">privacy policy</Link>{" "}
-          so that we can best meet your personal needs. You may opt out of
-          receiving communications at any time.
+          Your privacy matters to us. By submitting your details, you agree that we may use the information provided to respond to your enquiry and personalize our services in accordance with our 
+          <Link href="https://imarakilelenisafaris.com/privacy-policy" className="font-semibold text-[#d87028]"> privacy policy</Link>{" "}.
+          You can unsubscribe from our communications at any time.
         </p>
       </section>
 

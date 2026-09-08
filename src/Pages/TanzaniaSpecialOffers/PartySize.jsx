@@ -3,23 +3,23 @@
 const partySizes = [
   {
     id: "solo",
-    title: "SOLO",
-    image: "/np-visit-1.jpg",
+    title: "Solo",
+    image: "/solo-gp.webp",
   },
   {
     id: "couple",
-    title: "COUPLE",
-    image: "/np-visit-1.jpg",
+    title: "Couple",
+    image: "/couple-gp.webp",
   },
   {
     id: "small",
-    title: "SMALL GROUP (3 TO 4)",
-    image: "/np-visit-1.jpg",
+    title: "Small Group (3 to 4)",
+    image: "/smgp.webp",
   },
   {
     id: "big",
-    title: "BIG GROUP (5+)",
-    image: "/np-visit-1.jpg",
+    title: "Big Group (5+)",
+    image: "/bggp.webp",
   },
 ];
 
@@ -58,7 +58,7 @@ export default function PartySize({ selected, onSelect }) {
             lg:text-5xl
           "
         >
-          2. How Big Is Your Party?
+          2. How Many People Are Travelling?
         </h2>
 
         {/* Description */}
@@ -73,12 +73,13 @@ export default function PartySize({ selected, onSelect }) {
             md:mb-12
           "
         >
-          Group size for your Tanzania Safari. We arrange Private Safaris and
-          Joining Small Group only.
+          Tell us your group size so we can recommend the most suitable Tanzania
+          safari option. We arrange private safaris as well as small-group
+          joining departures.
         </p>
 
         {/* Cards */}
-        <div
+        {/* <div
           className="
             grid
             grid-cols-1
@@ -108,7 +109,7 @@ export default function PartySize({ selected, onSelect }) {
                   ${isSelected ? "ring-2 ring-[#d87028]" : ""}
                 `}
               >
-                {/* Image */}
+                
                 <div className="h-[201.25px] w-full overflow-hidden">
                   <img
                     src={item.image}
@@ -126,7 +127,7 @@ export default function PartySize({ selected, onSelect }) {
                   />
                 </div>
 
-                {/* Card title */}
+                
                 <div
                   className="
                     flex
@@ -155,6 +156,95 @@ export default function PartySize({ selected, onSelect }) {
                          : "text-[#d87028] group-hover:text-[#111]"
                      }
                     `}
+                  >
+                    {item.title}
+                  </h3>
+                </div>
+              </button>
+            );
+          })}
+        </div> */}
+        {/* Cards */}
+        <div
+          className="
+    grid
+    grid-cols-2
+    gap-x-[15px]
+    gap-y-[20px]
+    lg:grid-cols-4
+    lg:gap-x-[30px]
+    lg:gap-y-[36px]
+  "
+        >
+          {partySizes.map((item) => {
+            const isSelected = selected === item.id;
+
+            return (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => handleSelect(item.id)}
+                aria-pressed={isSelected}
+                className={`
+          group
+          w-full
+          overflow-hidden
+          bg-white
+          text-left
+          shadow-[0_10px_20px_rgba(0,0,0,0.12)]
+          cursor-pointer
+          ${isSelected ? "ring-2 ring-[#d87028]" : ""}
+        `}
+              >
+                {/* Image */}
+                <div className="h-[150px] w-full overflow-hidden sm:h-[180px] lg:h-[201.25px]">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="
+              h-full
+              w-full
+              scale-125
+              object-cover
+              transition-transform
+              duration-700
+              ease-out
+              group-hover:scale-100
+            "
+                  />
+                </div>
+
+                {/* Card title */}
+                <div
+                  className="
+            flex
+            min-h-[65px]
+            items-center
+            justify-center
+            bg-white
+            px-[8px]
+            py-[12px]
+            text-center
+            sm:min-h-[70px]
+          "
+                >
+                  <h3
+                    className={`
+              !font-cormorant
+              m-0
+              text-[18px]
+              font-medium
+              leading-tight
+              transition-colors
+              duration-300
+              sm:text-[21px]
+              lg:text-[22px]
+              ${
+                isSelected
+                  ? "text-[#111]"
+                  : "text-[#d87028] group-hover:text-[#111]"
+              }
+            `}
                   >
                     {item.title}
                   </h3>

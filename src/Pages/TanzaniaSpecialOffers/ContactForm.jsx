@@ -287,7 +287,7 @@ export default function ContactForm({ safariData }) {
 
       console.log("Safari form submitted successfully:", data);
 
-      // router.push("/thank-you");
+      router.push("/thank-you");
 
       // Reset contact form
       setFormData({
@@ -326,18 +326,18 @@ export default function ContactForm({ safariData }) {
     >
       <div className="mx-auto w-full max-w-[1140px] px-[30px] sm:px-[40px] lg:px-0">
         <h2 className="!font-cormorant m-0 mb-4 text-3xl text-[#29283b] md:text-4xl lg:text-5xl">
-          6. And Finally Your Contact Information
+          6. Where Can We Send Your Safari Proposal?
         </h2>
 
         {/* Description */}
-        <p className="!font-avenir m-0 mb-6 max-w-[800px] text-[17px] leading-[1.6] text-[#444] md:mb-10">
-          We will send quotes to your email ID. Your contact information will be
-          confidential and will be used only to send quotes for Safari in
-          Tanzania.
+        <p className="!font-avenir m-0 mb-6  text-[17px] leading-[1.6] text-[#444] md:mb-10">
+          Share your contact details so we can send your personalized Tanzania
+          safari quote and itinerary suggestions. Your information will remain
+          private and will only be used to respond to your travel enquiry.
         </p>
 
         {/* RIGHT SIDE FORM */}
-        <div className=" text-black rounded-md max-w-xl">
+        <div className=" text-black rounded-md max-w-xl mx-auto">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -691,7 +691,7 @@ export default function ContactForm({ safariData }) {
               type="submit"
               disabled={loading}
               aria-label="Send Me My Safari Plan"
-              className="!font-avenir text-xs tracking-[0.72px] md:tracking-[2.4px] uppercase bg-[#d87028] border border-[#e78e4b] text-white  px-6 md:py-2.5 py-3 rounded-xs hover:bg-[#eb8034de] transition cursor-pointer whitespace-nowrap w-full"
+              className="!font-avenir text-[14px] tracking-[0.72px] md:tracking-[2.4px] uppercase bg-[#d87028] border border-[#e78e4b] text-white  px-6 md:py-2.5 py-3 rounded-[10px] hover:bg-[#eb8034de] transition cursor-pointer whitespace-nowrap w-full"
             >
               {loading ? "Submitting..." : "Send Me My Safari Plan"}
             </button>

@@ -210,7 +210,7 @@ export default function SafariDate({ selected, onSelect }) {
           </p>
 
           {/* Calendar */}
-          <div className="safari-calendar inline-block bg-white ">
+          <div className="safari-calendar mx-auto flex w-fit justify-center bg-white">
             <Calendar
               onChange={handleDateSelect}
               // IMPORTANT:
@@ -236,6 +236,7 @@ export default function SafariDate({ selected, onSelect }) {
           .safari-calendar .react-calendar {
             border: none !important;
             width: 320px;
+            
             font-family: inherit;
           }
 
@@ -301,7 +302,7 @@ export default function SafariDate({ selected, onSelect }) {
         </p>
 
         {/* Month Picker */}
-        <div className="w-[300px] max-w-full bg-white p-[24px]">
+        <div className="w-[300px] max-w-full mx-auto bg-white p-[24px]">
           <div className="rounded-[12px] px-4 py-[2px]">
             {/* Year Navigation */}
             <div className="mb-[42px] flex items-center justify-between">
