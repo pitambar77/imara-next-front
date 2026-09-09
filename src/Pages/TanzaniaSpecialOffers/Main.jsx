@@ -46,7 +46,7 @@ const Main = () => {
   };
 
   return (
-    <main className="w-full overflow-x-hidden">
+    <main className="w-full max-w-full overflow-x-hidden">
       <Hero />
 
       <WhySafari />

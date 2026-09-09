@@ -78,33 +78,32 @@ export default function WhySafari() {
           lg:text-5xl
         "
       >
-        Why Tanzania is your dream safari choice
+        Why Tanzania Is a Top Safari Destination
       </h2>
 
       {/* ================= BENEFITS ================= */}
 
       <div
         className="
-          /* Desktop grid */
-          grid
-          grid-cols-3
-          gap-x-[65px]
-          gap-y-[82px]
+    grid
+    grid-cols-3
+    gap-x-[65px]
+    gap-y-[82px]
 
-          /* Mobile horizontal slider */
-          max-md:flex
-          max-md:gap-[20px]
-          max-md:overflow-x-auto
-          max-md:px-[25px]
-          max-md:pb-[15px]
-          max-md:snap-x
-          max-md:snap-mandatory
-          max-md:scroll-smooth
-
-          /* Hide scrollbar */
-          max-md:[scrollbar-width:none]
-          max-md:[&::-webkit-scrollbar]:hidden
-        "
+    max-md:flex
+    max-md:w-full
+    max-md:max-w-full
+    max-md:overflow-x-auto
+    max-md:overflow-y-hidden
+    max-md:gap-[20px]
+    max-md:px-[25px]
+    max-md:pb-[15px]
+    max-md:snap-x
+    max-md:snap-mandatory
+    max-md:scroll-smooth
+    max-md:[scrollbar-width:none]
+    max-md:[&::-webkit-scrollbar]:hidden
+  "
       >
         {benefits.map((item) => (
           <article

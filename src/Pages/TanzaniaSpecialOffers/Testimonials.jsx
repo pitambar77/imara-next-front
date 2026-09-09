@@ -5,28 +5,28 @@ import { useRef, useState } from "react";
 const testimonials = [
   {
     name: "Arpit G",
-    image: "/arpit.jpg",
+    image: "/arpit.webp",
     text: "We recently completed an incredible 15-day journey through Tanzania with imara kileleni, exploring all the major national parks on safari before heading to Zanzibar.",
   },
   {
     name: "Lilyy",
-    image: "/lilyy.jpg",
+    image: "/lilyy.webp",
     text: "Had an incredible Safari with Imara, It was my first time in Tanzania and I didn'know what to expect and I’m honestly still in awe..I visited serengeti....",
   },
   {
     name: "Gabriel P",
-    image: "/gabriel-p.jpg",
+    image: "/gabriel-p.webp",
     text: "This was the first time that we went to Tarangire National Park, but it very certainly might not be the last. Completely entrancing scenery. I can only recommend..",
   },
   {
     name: "Sven N",
-    image: "/sven-n.jpg",
+    image: "/sven-n.webp",
     text: "Climbing Kilimanjaro was an astonishing experience that we will hardly ever forget. It was certainly not the easiest, but with great effort comes great memories.",
   },
   {
-    name: "Keegan H",
-    image: "/keegan-h.jpg",
-    text: "If you have never seen the great wildebeest migration I would suggest it genuinely. Such an atmosphere is difficult to find anywhere else.",
+    name: "Swati N",
+    image: "/swati-n.webp",
+    text: "Our Tanzania safari exceeded every expectation and became one of the most memorable trips of our lives! From the very beginning, everything was perfectly ....",
   },
 ];
 
@@ -105,6 +105,23 @@ export default function Testimonials() {
         >
           What our travellers say
         </h2>
+        <p className="
+            !font-avenir
+            mx-auto
+            mt-[10px]
+            max-w-[650px]
+            text-[14px]
+            leading-[1.5]
+            text-[#444]
+            sm:mt-[10px]
+            sm:text-[14px]
+            md:mt-[12px]
+            md:text-[17px]
+          ">
+          Read genuine feedback from travellers who explored Tanzania with us,
+          sharing their safari experiences, favourite moments, and thoughts on
+          our service and guides.
+        </p>
 
         {/* =========================
             FEEFO / RATING
@@ -176,7 +193,7 @@ export default function Testimonials() {
                 whitespace-nowrap
                 text-[16px]
                 tracking-[2px]
-                text-[#f2b719]
+                text-[#d87028]
                 sm:ml-[12px]
                 sm:text-[19px]
                 md:ml-[15px]
@@ -225,135 +242,281 @@ export default function Testimonials() {
           `}
         >
           {testimonials.map((item, index) => (
+            // <article
+            //   key={`${item.name}-${index}`}
+            //   className="
+            //     flex-none
+            //     shrink-0
+            //     w-[calc(100%-10px)]
+            //     rounded-t-[50px]
+            //     bg-white
+            //     px-[25px]
+            //     pb-[55px]
+            //     pt-[35px]
+            //     text-center
+            //     shadow-[0_-2px_20px_rgba(0,0,0,0.10)]
+            //     sm:w-[calc(50%-13px)]
+            //     sm:px-[30px]
+            //     sm:pb-[60px]
+            //     sm:pt-[40px]
+
+            //     md:w-[calc(33.333%-20px)]
+            //     md:px-[38px]
+            //     md:pb-[65px]
+            //     md:pt-[42px]
+            //   "
+            // >
+            //   {/* =========================
+            //       TRAVELLER IMAGE
+            //   ========================== */}
+            //   <div className="flex justify-center">
+            //     <img
+            //       src={item.image}
+            //       alt={item.name}
+            //       draggable="false"
+            //       className="
+            //         pointer-events-none
+            //         h-[105px]
+            //         w-[105px]
+            //         rounded-full
+            //         border-[8px]
+            //         border-[#eef0ef]
+            //         object-cover
+
+            //         sm:h-[115px]
+            //         sm:w-[115px]
+
+            //         md:h-[125px]
+            //         md:w-[125px]
+            //       "
+            //     />
+            //   </div>
+
+            //   {/* =========================
+            //       NAME
+            //   ========================== */}
+            //   <h3
+            //     className="
+            //       !font-avenir
+            //       m-0
+            //       mt-[25px]
+            //       text-[20px]
+            //       font-bold
+            //       leading-tight
+            //       text-[#29283b]
+
+            //       sm:text-[22px]
+
+            //       md:text-[25px]
+            //     "
+            //   >
+            //     {item.name}
+            //   </h3>
+
+            //   {/* =========================
+            //       TRAVELLER
+            //   ========================== */}
+            //   <p
+            //     className="
+            //       !font-avenir
+            //       m-0
+            //       mt-[8px]
+            //       text-[14px]
+            //       text-[#a4a4a4]
+
+            //       sm:text-[15px]
+
+            //       md:text-[17px]
+            //     "
+            //   >
+            //     Traveller
+            //   </p>
+
+            //   {/* =========================
+            //       QUOTE
+            //   ========================== */}
+            //   <div
+            //     className="
+            //       !font-cormorant
+            //       mt-[25px]
+            //       text-left
+            //       text-[55px]
+            //       leading-[0.5]
+            //       text-[#d9d9d9]
+
+            //       md:text-[60px]
+            //     "
+            //   >
+            //     “
+            //   </div>
+
+            //   {/* =========================
+            //       REVIEW
+            //   ========================== */}
+            //   <p
+            //     className="
+            //       !font-avenir
+            //       m-0
+            //       px-[5px]
+            //       text-center
+            //       text-[13px]
+            //       leading-[1.65]
+            //       text-[#818087]
+
+            //       sm:text-[14px]
+
+            //       md:text-[16px]
+            //       md:leading-[1.6]
+            //     "
+            //   >
+            //     {item.text}
+            //   </p>
+            // </article>
+
             <article
               key={`${item.name}-${index}`}
               className="
-                flex-none
-                shrink-0
-                w-[calc(100%-10px)]
-                rounded-t-[50px]
-                bg-white
-                px-[25px]
-                pb-[55px]
-                pt-[35px]
-                text-center
-                shadow-[0_-2px_20px_rgba(0,0,0,0.10)]
-                sm:w-[calc(50%-13px)]
-                sm:px-[30px]
-                sm:pb-[60px]
-                sm:pt-[40px]
+    flex-none
+    shrink-0
+    w-[calc(100%-10px)]
+    overflow-hidden
+    rounded-[10px]
+    bg-white
+    text-left
+    shadow-[0_2px_12px_rgba(0,0,0,0.12)]
 
-                md:w-[calc(33.333%-20px)]
-                md:px-[38px]
-                md:pb-[65px]
-                md:pt-[42px]
-              "
+    sm:w-[calc(50%-13px)]
+
+    md:w-[calc(33.333%-20px)]
+  "
             >
               {/* =========================
-                  TRAVELLER IMAGE
-              ========================== */}
-              <div className="flex justify-center">
+      TESTIMONIAL IMAGE
+  ========================== */}
+              <div
+                className="
+      h-[210px]
+      w-full
+      overflow-hidden
+
+     
+    "
+              >
                 <img
                   src={item.image}
                   alt={item.name}
                   draggable="false"
                   className="
-                    pointer-events-none
-                    h-[105px]
-                    w-[105px]
-                    rounded-full
-                    border-[8px]
-                    border-[#eef0ef]
-                    object-cover
-
-                    sm:h-[115px]
-                    sm:w-[115px]
-
-                    md:h-[125px]
-                    md:w-[125px]
-                  "
+        pointer-events-none
+        h-full
+        w-full
+        object-cover
+      "
                 />
               </div>
 
               {/* =========================
-                  NAME
-              ========================== */}
-              <h3
+      NAME BAR
+  ========================== */}
+              {/* <div
                 className="
-                  !font-avenir
-                  m-0
-                  mt-[25px]
-                  text-[20px]
-                  font-bold
-                  leading-tight
-                  text-[#29283b]
+      flex
+      h-[50px]
+      w-full
+      items-center
+      justify-center
+      bg-[#d87028]
+      px-[15px]
+      text-center
 
-                  sm:text-[22px]
+      sm:h-[55px]
 
-                  md:text-[25px]
-                "
+      md:h-[50px]
+    "
               >
-                {item.name}
-              </h3>
+                <h3
+                  className="
+        !font-avenir
+        m-0
+        text-[18px]
+        font-medium
+        tracking-[0.08em]
+        text-white
+
+        sm:text-[19px]
+
+        md:text-[18px]
+      "
+                >
+                  {item.name}
+                </h3>
+              </div> */}
 
               {/* =========================
-                  TRAVELLER
-              ========================== */}
-              <p
-                className="
-                  !font-avenir
-                  m-0
-                  mt-[8px]
-                  text-[14px]
-                  text-[#a4a4a4]
-
-                  sm:text-[15px]
-
-                  md:text-[17px]
-                "
-              >
-                Traveller
-              </p>
-
-              {/* =========================
-                  QUOTE
-              ========================== */}
+      REVIEW CONTENT
+  ========================== */}
               <div
                 className="
-                  !font-cormorant
-                  mt-[25px]
-                  text-left
-                  text-[55px]
-                  leading-[0.5]
-                  text-[#d9d9d9]
+      px-[25px]
+      pb-[20px]
+      pt-[30px]
 
-                  md:text-[60px]
-                "
+      sm:px-[30px]
+      sm:pb-[25px]
+      sm:pt-[35px]
+
+      md:px-[32px]
+      md:pb-[30px]
+      md:pt-[35px]
+    "
               >
-                “
+                {/* Quote */}
+                <div
+                  className="
+        !font-cormorant
+        text-[50px]
+        leading-[0.5]
+        text-[#d9d9d9]
+
+        md:text-[55px]
+      "
+                >
+                  “
+                </div>
+
+                {/* Review */}
+                <p
+                  className="
+        !font-avenir
+        m-0
+        
+        text-[15px]
+        italic
+        leading-[1.6]
+        text-[#555]
+
+        sm:text-[16px]
+
+        md:text-[17px]
+      "
+                >
+                  {item.text}
+                </p>
+
+                {/* Traveller Name */}
+                <p
+                  className="
+        !font-avenir
+        m-0
+        mt-[22px]
+        text-[16px]
+        text-[#d87028]
+        md:text-[17px]
+      "
+                >
+                  {item.name}
+                </p>
               </div>
-
-              {/* =========================
-                  REVIEW
-              ========================== */}
-              <p
-                className="
-                  !font-avenir
-                  m-0
-                  px-[5px]
-                  text-center
-                  text-[13px]
-                  leading-[1.65]
-                  text-[#818087]
-
-                  sm:text-[14px]
-
-                  md:text-[16px]
-                  md:leading-[1.6]
-                "
-              >
-                {item.text}
-              </p>
             </article>
           ))}
         </div>
