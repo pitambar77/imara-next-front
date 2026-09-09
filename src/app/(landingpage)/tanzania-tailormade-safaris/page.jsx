@@ -1,6 +1,6 @@
 
 
-import Script from "next/script";
+// import Script from "next/script";
 import Hero from "@/Pages/Tanzania-tailormade-safaris/Hero";
 
 export default function Page() {
@@ -8,7 +8,7 @@ export default function Page() {
     <>
       <Hero />
 
-      <Script id="landing-conversion" strategy="afterInteractive">
+      {/* <Script id="landing-conversion" strategy="afterInteractive">
         {`
           gtag('event', 'conversion', {
             send_to: 'AW-17893363008/sdljCIGrxvQbEMCanNRC',
@@ -16,7 +16,7 @@ export default function Page() {
             currency: 'USD'
           });
         `}
-      </Script>
+      </Script> */}
     </>
   );
 }

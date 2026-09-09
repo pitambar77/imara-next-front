@@ -1,10 +1,7 @@
-
-
 "use client";
 
 import imaralogo from "@/assets/imaralogo.png";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Hero() {
   const handleScrollToForm = () => {
@@ -39,16 +36,14 @@ export default function Hero() {
         <div className="flex items-start justify-between px-4 pt-[48px] sm:px-6 md:px-10 xl:px-0">
           {/* Logo */}
           <div className="h-[112px] w-[220px] overflow-hidden">
-            <Link href="/" aria-label="Go to homepage">
-              <Image
-                src={imaralogo}
-                alt="Imara Kileleni Safaris"
-                width={180}
-                height={60}
-                priority
-                className="h-10 w-auto sm:h-11 md:h-12 lg:h-14"
-              />
-            </Link>
+            <Image
+              src={imaralogo}
+              alt="Imara Kileleni Safaris"
+              width={180}
+              height={60}
+              priority
+              className="h-10 w-auto sm:h-11 md:h-12 lg:h-14"
+            />
           </div>
         </div>
 

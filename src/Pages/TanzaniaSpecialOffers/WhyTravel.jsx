@@ -92,7 +92,8 @@ export default function WhyTravel() {
                 "
               >
                 Gervas Ngikari
-                <span className="text-[#29283b]">
+                <br />
+                <span className="text-[#29283b] text-[17px] font-normal leading-[1.4] italic">
                   {" "}
                   Founder, Imara Kileleni Safari
                 </span>

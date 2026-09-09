@@ -1,12 +1,12 @@
 import Main from "@/Pages/TanzaniaSpecialOffers/Main";
-import Script from "next/script";
+// import Script from "next/script";
 import React from "react";
 
 const page = () => {
   return (
     <div>
       <Main />
-      <Script id="landing-conversion" strategy="afterInteractive">
+      {/* <Script id="landing-conversion" strategy="afterInteractive">
         {`
           gtag('event', 'conversion', {
             'send_to': 'AW-17893363008/sdljCIGrxvQbEMCanNRC',
@@ -14,7 +14,7 @@ const page = () => {
             'currency': 'USD'
           });
         `}
-      </Script>
+      </Script> */}
     </div>
   );
 };
