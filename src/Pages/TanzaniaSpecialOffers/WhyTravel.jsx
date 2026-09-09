@@ -68,8 +68,8 @@ export default function WhyTravel() {
           <div className="flex items-center gap-[35px]">
             {/* Expert Image */}
             <img
-              src="/peter-charls-fig-1.jpg"
-              alt="Peter Charles"
+              src="/profile-im.webp"
+              alt="Profile Image"
               className="
                 h-[150px]
                 w-[150px]

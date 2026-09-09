@@ -13,7 +13,7 @@ export default function ExpertBanner() {
           md:h-[700px]
         "
         style={{
-          backgroundImage: "url('/marykease-bg.jpg')",
+          backgroundImage: "url('/export-banner-new.webp')",
         }}
       >
         {/* =========================
@@ -43,8 +43,8 @@ export default function ExpertBanner() {
             {/* Expert Image */}
             <div className="flex justify-center">
               <img
-                src="/peter-charls-fig-1.jpg"
-                alt="Peter Charles"
+                src="/profile-im.webp"
+                alt="Profile Image"
                 className="
                   h-[145px]
                   w-[145px]
