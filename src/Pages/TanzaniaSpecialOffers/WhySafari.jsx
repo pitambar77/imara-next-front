@@ -78,7 +78,7 @@ export default function WhySafari() {
           lg:text-5xl
         "
       >
-        Why Tanzania Is a Top Safari Destination
+        Why Tanzania is a leading African Safari destination
       </h2>
 
       {/* ================= BENEFITS ================= */}
