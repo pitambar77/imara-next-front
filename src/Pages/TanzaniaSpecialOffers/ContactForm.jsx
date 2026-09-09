@@ -326,7 +326,7 @@ export default function ContactForm({ safariData }) {
     >
       <div className="mx-auto w-full max-w-[1140px] px-[30px] sm:px-[40px] lg:px-0">
         <h2 className="!font-cormorant m-0 mb-4 text-3xl text-[#29283b] md:text-4xl lg:text-5xl">
-          6. Where Can We Send Your Safari Proposal?
+          6. Where can we send your safari proposal?
         </h2>
 
         {/* Description */}
@@ -691,7 +691,7 @@ export default function ContactForm({ safariData }) {
               type="submit"
               disabled={loading}
               aria-label="Send Me My Safari Plan"
-              className="!font-avenir text-[14px] tracking-[0.72px] md:tracking-[2.4px] uppercase bg-[#d87028] border border-[#e78e4b] text-white  px-6 md:py-2.5 py-3 rounded-[10px] hover:bg-[#eb8034de] transition cursor-pointer whitespace-nowrap w-full"
+              className="!font-avenir text-[14px] tracking-[0.02em] uppercase bg-[#d87028] border border-[#e78e4b] text-white  px-6 md:py-2.5 py-3 rounded-[10px] hover:bg-[#eb8034de] transition cursor-pointer whitespace-nowrap w-full"
             >
               {loading ? "Submitting..." : "Send Me My Safari Plan"}
             </button>

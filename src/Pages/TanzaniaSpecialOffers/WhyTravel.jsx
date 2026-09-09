@@ -3,32 +3,32 @@
 const reasons = [
   {
     number: "1",
-    title: "Local Knowledge",
+    title: "Local knowledge",
     text: "Our team understands Tanzania firsthand, from its famous national parks to lesser-known regions, seasonal wildlife movements, and the best ways to connect each destination.",
   },
   {
     number: "2",
-    title: "Personalised Planning",
+    title: "Personalised planning",
     text: "Every journey is shaped around your interests, travel dates, budget, pace, and preferred experiences rather than built from a standard itinerary.",
   },
   {
     number: "3",
-    title: "Carefully Selected Stays",
+    title: "Carefully selected stays",
     text: "We recommend camps and lodges based on location, service, comfort, atmosphere, and overall safari experience, helping you choose the right stay for every stage of your trip.",
   },
   {
     number: "4",
-    title: "Seamless Travel",
+    title: "Seamless travel",
     text: "From airport arrivals and safari transfers to accommodation, park logistics, domestic flights, and special arrangements, we coordinate the details so your journey runs smoothly.",
   },
   {
     number: "5",
-    title: "Support When You Need It",
+    title: "Support when you need it",
     text: "You have reliable assistance before departure and throughout your trip, giving you a trusted point of contact whenever plans, questions, or unexpected situations arise.",
   },
   {
     number: "6",
-    title: "Experiences That Matter",
+    title: "Experiences that matter",
     text: "We focus on creating meaningful journeys, whether you are looking for exceptional wildlife viewing, a private family safari, a honeymoon, photography opportunities, or a safari-and-beach combination.",
   },
 ];
@@ -150,7 +150,7 @@ export default function WhyTravel() {
               md:text-5xl
             "
           >
-            Why Travel With Us
+            Why travel with us
           </h2>
 
           {/* =====================================

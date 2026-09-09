@@ -1,20 +1,36 @@
-// import atta from "../../assets/atta.webp";
-// import safaribooking from "../../assets/safaribooking.webp";
-// import Tato from "../../assets/Tato.webp";
-// import trip from "../../assets/trip.webp";
-// import kpap from "../../assets/kpap.webp";
+// "use client";
 
 // const partners = [
-//   { id: 1, name: "ATTA", img: atta, link: "" },
-//   { id: 2, name: "SafariBookings", img: safaribooking, link: "" },
-//   { id: 3, name: "TATO", img: Tato, link: "" },
+//   {
+//     id: 1,
+//     name: "ATTA",
+//     img: "/atta-im.png",
+//     link: "",
+//   },
+//   {
+//     id: 2,
+//     name: "SafariBookings",
+//     img: "/safari-booking-im.png",
+//     link: "",
+//   },
+//   {
+//     id: 3,
+//     name: "TATO",
+//     img: "/Tato-im.png",
+//     link: "",
+//   },
 //   {
 //     id: 4,
 //     name: "Tripadvisor",
-//     img: trip,
-//     link: "https://www.tripadvisor.com/Attraction_Review-g317084-d34222480-Reviews-Imara_Kileleni_Safaris-Moshi_Kilimanjaro_Region.html",
+//     img: "/trip-im.png",
+//     link: "",
 //   },
-//   { id: 5, name: "KPAP", img: kpap, link: "" },
+//   {
+//     id: 5,
+//     name: "KPAP",
+//     img: "/kapap-im.png",
+//     link: "",
+//   },
 // ];
 
 // export default function Partners() {
@@ -24,9 +40,16 @@
 //         {/* Heading */}
 //         <h2
 //           className="
-//              !font-cormorant m-0 mb-4 text-3xl text-[#29283b] md:text-4xl lg:text-5xl "
+//             !font-cormorant
+//             m-0
+//             mb-4
+//             text-3xl
+//             text-[#29283b]
+//             md:text-4xl
+//             lg:text-5xl
+//           "
 //         >
-//           Our Partners
+//           Our trusted partners
 //         </h2>
 
 //         {/* Description */}
@@ -38,7 +61,7 @@
 //             max-w-[650px]
 //             text-[14px]
 //             leading-[1.5]
-//             text-[#c0a463]
+//             text-[#d87028]
 
 //             sm:mt-[10px]
 //             sm:text-[14px]
@@ -47,8 +70,10 @@
 //             md:text-[17px]
 //           "
 //         >
-//           Everything is about relationships. Fortunately, we've built great ones
-//           working with the top names in Africa for more than 20 years.
+//           Great journeys are built through strong collaboration. We work closely
+//           with carefully selected lodges, camps, guides, and travel partners
+//           across Africa to deliver reliable service and memorable travel
+//           experiences.
 //         </p>
 
 //         {/* Partners */}
@@ -60,34 +85,74 @@
 //             items-center
 //             justify-center
 //             gap-x-[25px]
-//             gap-y-[12px]
+//             gap-y-[20px]
 
 //             sm:mt-[28px]
 //             sm:gap-x-[40px]
-//             sm:gap-y-[15px]
+//             sm:gap-y-[25px]
 
 //             md:mt-[32px]
 //             md:gap-x-[55px]
+//             md:gap-y-[30px]
 //           "
 //         >
-//           {partners.map((partner) => (
-//             <span
-//               key={partner}
-//               className="
-//                 !font-avenir
-//                 text-[9px]
-//                 font-light
-//                 tracking-wide
-//                 text-[#aaa9ad]
+//           {partners.map((partner) =>
+//             partner.link ? (
+//               <a
+//                 key={partner.id}
+//                 href={partner.link}
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 aria-label={`Visit ${partner.name}`}
+//                 className="flex items-center justify-center"
+//               >
+//                 <img
+//                   src={partner.img}
+//                   alt={partner.name}
+//                   className="
+//                     h-[45px]
+//                     w-auto
+//                     max-w-[110px]
+//                     object-contain
+//                     transition-transform
+//                     duration-300
+//                     hover:scale-105
 
-//                 sm:text-[12px]
+//                     sm:h-[55px]
+//                     sm:max-w-[140px]
 
-//                 md:text-[15px]
-//               "
-//             >
-//               {partner}
-//             </span>
-//           ))}
+//                     md:h-[65px]
+//                     md:max-w-[170px]
+//                   "
+//                 />
+//               </a>
+//             ) : (
+//               <div
+//                 key={partner.id}
+//                 className="flex items-center justify-center"
+//               >
+//                 <img
+//                   src={partner.img}
+//                   alt={partner.name}
+//                   className="
+//                     h-[45px]
+//                     w-auto
+//                     max-w-[110px]
+//                     object-contain
+//                     transition-transform
+//                     duration-300
+//                     hover:scale-105
+
+//                     sm:h-[55px]
+//                     sm:max-w-[140px]
+
+//                     md:h-[65px]
+//                     md:max-w-[170px]
+//                   "
+//                 />
+//               </div>
+//             ),
+//           )}
 //         </div>
 //       </div>
 //     </section>
@@ -100,31 +165,31 @@ const partners = [
   {
     id: 1,
     name: "ATTA",
-    img: "/atta.webp",
+    img: "/atta-im.png",
     link: "",
   },
   {
     id: 2,
     name: "SafariBookings",
-    img: "/safaribooking.webp",
+    img: "/safari-booking-im.png",
     link: "",
   },
   {
     id: 3,
     name: "TATO",
-    img: "/Tato.webp",
+    img: "/Tato-im.png",
     link: "",
   },
   {
     id: 4,
     name: "Tripadvisor",
-    img: "/trip.webp",
-    link: "https://www.tripadvisor.com/Attraction_Review-g317084-d34222480-Reviews-Imara_Kileleni_Safaris-Moshi_Kilimanjaro_Region.html",
+    img: "/trip-im.png",
+    link: "",
   },
   {
     id: 5,
     name: "KPAP",
-    img: "/kpap.webp",
+    img: "/kapap-im.png",
     link: "",
   },
 ];
@@ -145,7 +210,7 @@ export default function Partners() {
             lg:text-5xl
           "
         >
-          Our Trusted Partners
+          Our trusted partners
         </h2>
 
         {/* Description */}
@@ -158,10 +223,8 @@ export default function Partners() {
             text-[14px]
             leading-[1.5]
             text-[#d87028]
-
             sm:mt-[10px]
             sm:text-[14px]
-
             md:mt-[12px]
             md:text-[17px]
           "
@@ -176,79 +239,97 @@ export default function Partners() {
         <div
           className="
             mt-[22px]
+
+            /* MOBILE SLIDER */
             flex
-            flex-wrap
-            items-center
-            justify-center
-            gap-x-[25px]
-            gap-y-[20px]
+            snap-x
+            snap-mandatory
+            flex-nowrap
+            justify-start
+            gap-[25px]
+            overflow-x-auto
+            pb-[10px]
+            scrollbar-hide
 
             sm:mt-[28px]
-            sm:gap-x-[40px]
-            sm:gap-y-[25px]
+            sm:gap-[40px]
 
-            md:mt-[32px]
+            /* DESKTOP - ORIGINAL LAYOUT */
+            md:flex-wrap
+            md:justify-center
             md:gap-x-[55px]
             md:gap-y-[30px]
+            md:overflow-visible
+            md:pb-0
+            md:snap-none
           "
         >
-          {partners.map((partner) =>
-            partner.link ? (
+          {partners.map((partner) => {
+            const content = (
+              <img
+                src={partner.img}
+                alt={partner.name}
+                className="
+                  h-[55px]
+                  w-auto
+                  max-w-[140px]
+                  object-contain
+                  transition-transform
+                  duration-300
+                  hover:scale-105
+
+                  md:h-[65px]
+                  md:max-w-[170px]
+                "
+              />
+            );
+
+            return partner.link ? (
               <a
                 key={partner.id}
                 href={partner.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Visit ${partner.name}`}
-                className="flex items-center justify-center"
+                className="
+                  flex
+                  h-[75px]
+                  min-w-[150px]
+                  shrink-0
+                  snap-center
+                  items-center
+                  justify-center
+
+                  md:h-auto
+                  md:min-w-0
+                  md:shrink
+                  md:snap-none
+                "
               >
-                <img
-                  src={partner.img}
-                  alt={partner.name}
-                  className="
-                    h-[45px]
-                    w-auto
-                    max-w-[110px]
-                    object-contain
-                    transition-transform
-                    duration-300
-                    hover:scale-105
-
-                    sm:h-[55px]
-                    sm:max-w-[140px]
-
-                    md:h-[65px]
-                    md:max-w-[170px]
-                  "
-                />
+                {content}
               </a>
             ) : (
               <div
                 key={partner.id}
-                className="flex items-center justify-center"
+                className="
+                  flex
+                  h-[75px]
+                  min-w-[150px]
+                  shrink-0
+                  snap-center
+                  items-center
+                  justify-center
+
+                  md:h-auto
+                  md:min-w-0
+                  md:shrink
+                  md:snap-none
+                "
               >
-                <img
-                  src={partner.img}
-                  alt={partner.name}
-                  className="
-                    h-[45px]
-                    w-auto
-                    max-w-[110px]
-                    object-contain
-                    transition-transform
-                    duration-300
-                    hover:scale-105
-
-                    sm:h-[55px]
-                    sm:max-w-[140px]
-
-                    md:h-[65px]
-                    md:max-w-[170px]
-                  "
-                />
+                {content}
               </div>
-            ),
-          )}
+            );
+          })}
         </div>
       </div>
     </section>

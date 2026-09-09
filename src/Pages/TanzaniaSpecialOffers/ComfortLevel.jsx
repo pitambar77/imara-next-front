@@ -1,133 +1,23 @@
-// "use client";
-
-// const comfortOptions = [
-//   {
-//     id: "decide",
-//     title: "YET TO DECIDE",
-//     image: "/comfrt_levl-fig-1.jpg",
-//   },
-//   {
-//     id: "basic",
-//     title: "BASIC CAMPING",
-//     image: "/comfrt_levl-fig-1.jpg",
-//   },
-//   {
-//     id: "mid",
-//     title: "MID-RANGE SAFARIS",
-//     image: "/comfrt_levl-fig-1.jpg",
-//   },
-//   {
-//     id: "luxury",
-//     title: "LUXURY SAFARIS",
-//     image: "/comfrt_levl-fig-1.jpg",
-//   },
-// ];
-
-// export default function ComfortLevel({ selected, onSelect }) {
-//   const handleSelect = (comfortId) => {
-//     // Select the comfort level
-//     onSelect(comfortId);
-
-//     // Scroll to next section
-//     setTimeout(() => {
-//       const nextSection = document.getElementById("safari-date");
-
-//       if (nextSection) {
-//         nextSection.scrollIntoView({
-//           behavior: "smooth",
-//           block: "start",
-//         });
-//       }
-//     }, 250);
-//   };
-
-//   return (
-//     <section
-//       id="comfort-level"
-//       className="w-full bg-white py-[55px] sm:py-[60px] lg:py-[70px]"
-//     >
-//       <div className="mx-auto w-full max-w-[1140px] px-[30px] sm:px-[40px] lg:px-0">
-//         {/* Heading */}
-//         <h2 className="!font-cormorant m-0 mb-4 text-3xl  text-[#29283b] md:text-4xl lg:text-5xl">
-//           4. Select The Comfort Level On Your Tanzania Safari
-//         </h2>
-
-//         {/* Cards */}
-//         <div
-//           className="mt-[40px] grid grid-cols-2 gap-x-[12px]
-//             gap-y-[22px]
-// gap-x-[12px]
-//             gap-y-[22px]
-//             sm:grid-cols-2
-//             sm:gap-x-[20px]
-//             sm:gap-y-[30px]
-//  md:gap-x-[30px] md:gap-y-[36px] sm:grid-cols-3 lg:grid-cols-4"
-//         >
-//           {comfortOptions.map((item) => {
-//             const isSelected = selected === item.id;
-
-//             return (
-//               <button
-//                 key={item.id}
-//                 type="button"
-//                 onClick={() => handleSelect(item.id)}
-//                 aria-pressed={isSelected}
-//                 className={`group w-full cursor-pointer overflow-hidden bg-white text-left shadow-[0_10px_20px_rgba(0,0,0,0.12)] ${
-//                   isSelected ? "ring-2 ring-[#d87028]" : ""
-//                 }`}
-//               >
-//                 {/* Image */}
-//                 <div className="h-[201.25px] w-full overflow-hidden">
-//                   <img
-//                     src={item.image}
-//                     alt={item.title}
-//                     className="h-full w-full scale-125 object-cover transition-transform duration-700 ease-out group-hover:scale-100"
-//                   />
-//                 </div>
-
-//                 {/* Title */}
-//                 <div className="flex min-h-[62px] items-center justify-center bg-white px-[10px] py-[15px] text-center">
-//                   <h3
-//                     className={`!font-cormorant m-0 text-[22px] font-medium leading-tight transition-colors duration-300 ${
-//                       isSelected
-//                         ? "text-[#111]"
-//                         : "text-[#d87028] group-hover:text-[#111]"
-//                     }
-//                     `}
-//                   >
-//                     {item.title}
-//                   </h3>
-//                 </div>
-//               </button>
-//             );
-//           })}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
 "use client";
 
 const comfortOptions = [
-  
   {
-    id: "basic",
+    id: "Basic Camping",
     title: "Basic Camping",
     image: "/comfrt_levl-fig-1.jpg",
   },
   {
-    id: "midrange",
+    id: "Mid-Range Safaris",
     title: "Mid-Range Safaris",
     image: "/mid-rang.webp",
   },
   {
-    id: "luxury",
+    id: "Luxury Safaris",
     title: "Luxury Safaris",
     image: "/lux-safari.webp",
   },
   {
-    id: "decide",
+    id: "Yet to Decide",
     title: "Yet To Decide",
     image: "/basic-campaign.webp",
   },
@@ -184,8 +74,24 @@ export default function ComfortLevel({ selected, onSelect }) {
             lg:text-5xl
           "
         >
-          4. What Level of Comfort Do You Prefer?
+          4. What type of safari accommodation would you prefer?
         </h2>
+        <p
+          className="
+            !font-avenir
+            m-0
+            mb-6
+            text-[16px]
+            leading-[1.6]
+            text-[#444]
+            md:mb-12
+            md:text-[17px]
+          "
+        >
+          Choose your preferred Tanzania safari accommodation, from comfortable
+          mid-range lodges to luxury tented camps. We match every stay to your
+          budget, comfort level, and location inside the parks.
+        </p>
 
         {/* Cards */}
         <div
@@ -225,11 +131,7 @@ export default function ComfortLevel({ selected, onSelect }) {
                   shadow-[0_10px_20px_rgba(0,0,0,0.12)]
                   transition-all
                   duration-200
-                  ${
-                    isSelected
-                      ? "ring-[3px] ring-[#d87028] "
-                      : "ring-0"
-                  }
+                  ${isSelected ? "ring-[3px] ring-[#d87028] " : "ring-0"}
                 `}
               >
                 {/* Image */}
@@ -264,7 +166,7 @@ export default function ComfortLevel({ selected, onSelect }) {
                 <div
                   className="
                     flex
-                    min-h-[65px]
+                    min-h-[35px]
                     items-center
                     justify-center
                     bg-white
@@ -272,7 +174,7 @@ export default function ComfortLevel({ selected, onSelect }) {
                     py-[15px]
                     text-center
 
-                    sm:min-h-[75px]
+                    sm:min-h-[55px]
                     sm:px-[12px]
                     sm:py-[18px]
 

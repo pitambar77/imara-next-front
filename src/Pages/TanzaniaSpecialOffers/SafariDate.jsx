@@ -201,7 +201,7 @@ export default function SafariDate({ selected, onSelect }) {
       >
         <div className="mx-auto w-full max-w-[1140px] px-[30px] sm:px-[40px] lg:px-0">
           <h2 className="!font-cormorant m-0 mb-4 text-3xl text-[#29283b] md:text-4xl lg:text-5xl">
-            5. When Are You Planning For The Safari?
+            5. When are you planning for the safari?
           </h2>
 
           <p className="!font-avenir m-0 mb-6 max-w-[850px] text-[17px] leading-[1.6] text-[#444] md:mb-10">
@@ -293,7 +293,7 @@ export default function SafariDate({ selected, onSelect }) {
     >
       <div className="mx-auto w-full max-w-[1140px] px-[30px] sm:px-[40px] lg:px-0">
         <h2 className="!font-cormorant m-0 mb-4 text-3xl font-medium leading-tight text-[#29283b] md:text-4xl lg:text-5xl">
-          5. When Are You Planning For The Safari?
+          5. When are you planning for the safari?
         </h2>
 
         <p className="!font-avenir m-0 mb-6 max-w-[850px] text-[17px] leading-[1.6] text-[#444] md:mb-10">

@@ -154,7 +154,7 @@ export default function FinalCTA() {
                 In A Lifetimes
                 <br className="hidden md:block" />
                 Will You Have? */}
-                Your Tanzania Journey Starts With One Conversation
+                Your tanzania journey starts with one conversation
               </h2>
 
               {/* Description */}
@@ -202,6 +202,7 @@ export default function FinalCTA() {
     justify-center
     rounded-[10px]
     bg-[#d87028]
+    border border-[#e78e4b]
     px-[28px]
     py-2.5
     text-[14px]
@@ -214,12 +215,12 @@ export default function FinalCTA() {
 
     sm:mt-[38px]
     sm:px-[30px]
-    sm:py-3
+    
     sm:text-[13px]
 
     md:mt-[40px]
     md:px-[32px]
-    md:py-4
+   
     md:text-[14px]
   "
               >

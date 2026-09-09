@@ -1,125 +1,26 @@
-// const benefits = [
-//   {
-//     title: "Witness The Wildebeest Migration",
-//     text: "Hardly any other destination on Earth can offer a wildlife encounter to match the annual Wildebeest Migration. Forming the pride and joy of most Tanzania safari itineraries, the Migration is a mind-blowing display of nature at her most extraordinary.",
-//   },
-//   {
-//     title: "Superb, Year-Round Game Viewing",
-//     text: "Thanks to a mild climate, wide open spaces and an abundance of wildlife in heavyweight destinations like the Serengeti, Ngorongoro Crater and Tarangire, Tanzania delivers sensational safari experiences any time of the year.",
-//   },
-//   {
-//     title: "Interact With The Masai",
-//     text: "The iconic colorful attire and jumping dance of the Maasai have become synonymous with Africa, and it is in Tanzania and neighboring Kenya that these semi-nomadic people can be interacted with.",
-//   },
-//   {
-//     title: "One-Of-A-Kind Experiences",
-//     text: "From watching thousands of grunting wildebeest dodge massive crocodiles during the Migration's perilous river crossings to seeing each member of the Big 5, Tanzania offers the kind of experiences found nowhere else on Earth.",
-//   },
-//   {
-//     title: "Exclusive Lodges & Camps",
-//     text: "Despite some camps being situated in remote wilderness locations, they still offer superb amenities like private plunge pools, spas and gyms.",
-//   },
-//   {
-//     title: "Quick & Easy Air Transfers",
-//     text: "There are dedicated airports that service most of Tanzania's national parks and game reserves. The best Tanzania safaris are fly-in itineraries.",
-//   },
-// ];
-
-// export default function WhySafari() {
-//   return (
-//     <section
-//       className="
-//         relative
-//         z-30
-//         mx-auto
-//         -mt-[180px]
-//         w-[calc(100%-120px)]
-//         max-w-[1140px]
-//         bg-white
-//         px-[85px]
-//         pb-[95px]
-//         pt-[78px]
-//       "
-//     >
-//       {/* ================= HEADING ================= */}
-//       <h2
-//         className="
-//           !font-cormorant text-3xl md:text-4xl lg:text-5xl mb-4 capitalize mb-20
-//         "
-//       >
-//         Why Go on a Tanzania Safari?
-//       </h2>
-
-//       {/* ================= BENEFITS ================= */}
-//       <div
-//         className="
-//           grid
-//           grid-cols-3
-//           gap-x-[65px]
-//           gap-y-[82px]
-//         "
-//       >
-//         {benefits.map((item) => (
-//           <article key={item.title} className="min-w-0">
-//             {/* Icon */}
-//             <img src="/check-tik.png" alt="Checkmark" className="w-10 h-10"/>
-
-//             {/* Title */}
-//             <h3
-//               className="
-//                 m-0
-//                 mt-[25px]
-//                 !font-cormorant
-//                 text-[25px]
-//                 font-medium
-//                 leading-[1.15]
-//                 tracking-[-0.01em]
-//                 text-[#29283b]
-//               "
-//             >
-//               {item.title}
-//             </h3>
-
-//             {/* Description */}
-//             <p
-//               className="
-//                 m-0
-//                 mt-[28px]
-//                 !font-avenir text-[#444] text-[17px]
-//               "
-//             >
-//               {item.text}
-//             </p>
-//           </article>
-//         ))}
-//       </div>
-//     </section>
-//   );
-// }
-
 const benefits = [
   {
-    title: "Wildlife Moments That Feel Unscripted",
+    title: "Wildlife moments that feel unscripted",
     text: "Tanzania delivers the kind of encounters travelers remember for years — lions resting on the plains, elephants moving through baobab country, cheetahs scanning the horizon, and enormous herds gathering across the Serengeti.",
   },
   {
-    title: "Remarkable Landscapes in One Journey",
+    title: "Remarkable landscapes in one journey",
     text: "Few destinations combine so much variety. Travel from the open grasslands of the Serengeti to the Ngorongoro highlands, Tarangire’s ancient baobabs, Kilimanjaro’s slopes, and the tropical coastline of Zanzibar.",
   },
   {
-    title: "Different Experiences in Every Region",
+    title: "Different experiences in every region",
     text: "No two parts of Tanzania feel the same. Enjoy classic game drives, walking experiences, cultural visits, crater exploration, mountain adventures, private concessions, or a relaxed island escape after your time in the wilderness.",
   },
   {
-    title: "A Destination That Works Across Seasons",
+    title: "A destination that works across seasons",
     text: "Tanzania offers rewarding travel throughout the year. Different seasons bring changing wildlife movements, landscapes, temperatures, and experiences, making it possible to plan around what matters most to you.",
   },
   {
-    title: "Stays That Become Part of the Experience",
+    title: "Stays that become part of the experience",
     text: "Accommodation ranges from intimate tented camps in remote wilderness areas to elegant lodges overlooking dramatic landscapes. Many properties are designed to keep you close to nature without compromising comfort.",
   },
   {
-    title: "Easy to Combine Safari, Mountain & Beach",
+    title: "Easy to combine safari, mountain & beach",
     text: "One trip can include several completely different experiences. Explore wildlife-rich national parks, trek Mount Kilimanjaro, then finish beside the Indian Ocean in Zanzibar — all within one destination.",
   },
 ];
@@ -177,7 +78,7 @@ export default function WhySafari() {
           lg:text-5xl
         "
       >
-        Why Tanzania Is Your Dream Safari Choice
+        Why Tanzania is your dream safari choice
       </h2>
 
       {/* ================= BENEFITS ================= */}

@@ -103,7 +103,7 @@ export default function Testimonials() {
             md:text-5xl
           "
         >
-          What Our Travellers Say
+          What our travellers say
         </h2>
 
         {/* =========================

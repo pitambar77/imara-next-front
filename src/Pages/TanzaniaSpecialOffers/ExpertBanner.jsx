@@ -69,7 +69,7 @@ export default function ExpertBanner() {
                 Gervas Ngikari
                 <span className="text-[#29283b]">
                   {" "}
-                  Tanzania Travel Specialist
+                  Founder, Imara Kileleni Safari
                 </span>
               </h2>
 

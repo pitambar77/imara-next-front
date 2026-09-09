@@ -2,22 +2,22 @@
 
 const partySizes = [
   {
-    id: "solo",
+    id: "Solo",
     title: "Solo",
     image: "/solo-gp.webp",
   },
   {
-    id: "couple",
+    id: "Couple",
     title: "Couple",
     image: "/couple-gp.webp",
   },
   {
-    id: "small",
+    id: "Small Group (3 to 4)",
     title: "Small Group (3 to 4)",
     image: "/smgp.webp",
   },
   {
-    id: "big",
+    id: "Big Group (5+)",
     title: "Big Group (5+)",
     image: "/bggp.webp",
   },
@@ -44,7 +44,7 @@ export default function PartySize({ selected, onSelect }) {
       id="party-size"
       className="w-full bg-white py-[55px] sm:py-[60px] lg:py-[70px]"
     >
-      <div className="mx-auto w-full max-w-[1140px] px-[30px] sm:px-[40px] lg:px-0">
+      <div className="mx-auto w-full max-w-[1140px] px-[20px] sm:px-[40px] lg:px-0">
         {/* Heading */}
         <h2
           className="
@@ -58,7 +58,7 @@ export default function PartySize({ selected, onSelect }) {
             lg:text-5xl
           "
         >
-          2. How Many People Are Travelling?
+          2. How many people are travelling?
         </h2>
 
         {/* Description */}
@@ -78,93 +78,6 @@ export default function PartySize({ selected, onSelect }) {
           joining departures.
         </p>
 
-        {/* Cards */}
-        {/* <div
-          className="
-            grid
-            grid-cols-1
-            gap-x-[30px]
-            gap-y-[36px]
-            sm:grid-cols-2
-            lg:grid-cols-4
-          "
-        >
-          {partySizes.map((item) => {
-            const isSelected = selected === item.id;
-
-            return (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => handleSelect(item.id)}
-                aria-pressed={isSelected}
-                className={`
-                  group
-                  w-full
-                  overflow-hidden
-                  bg-white
-                  text-left
-                  shadow-[0_10px_20px_rgba(0,0,0,0.12)]
-                  cursor-pointer
-                  ${isSelected ? "ring-2 ring-[#d87028]" : ""}
-                `}
-              >
-                
-                <div className="h-[201.25px] w-full overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="
-                      h-full
-                      w-full
-                      scale-125
-                      object-cover
-                      transition-transform
-                      duration-700
-                      ease-out
-                      group-hover:scale-100
-                    "
-                  />
-                </div>
-
-                
-                <div
-                  className="
-                    flex
-                    
-                    items-center
-                    justify-center
-                    bg-white
-                    px-[10px]
-                    py-[15px]
-                    text-center
-                  "
-                >
-                  <h3
-                    className={`
-                      !font-cormorant
-                      m-0
-                      text-[22px]
-                      font-medium
-                      leading-tight
-                      
-                      transition-colors
-                      duration-300
-                     ${
-                       isSelected
-                         ? "text-[#111]"
-                         : "text-[#d87028] group-hover:text-[#111]"
-                     }
-                    `}
-                  >
-                    {item.title}
-                  </h3>
-                </div>
-              </button>
-            );
-          })}
-        </div> */}
-        {/* Cards */}
         <div
           className="
     grid
@@ -218,7 +131,7 @@ export default function PartySize({ selected, onSelect }) {
                 <div
                   className="
             flex
-            min-h-[65px]
+            min-h-[35px]
             items-center
             justify-center
             bg-white

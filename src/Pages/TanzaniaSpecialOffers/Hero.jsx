@@ -4,32 +4,30 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Hero() {
+  const [scrolled, setScrolled] = useState(false);
 
-   const [scrolled, setScrolled] = useState(false);
-  
-    useEffect(() => {
-      const handleScroll = () => {
-        setScrolled(window.scrollY > 50);
-      };
-  
-      window.addEventListener("scroll", handleScroll);
-  
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }, []);
-  
-    const handleScrollToForm = () => {
-      const section = document.getElementById("parks");
-  
-      if (section) {
-        section.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
     };
 
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleScrollToForm = () => {
+    const section = document.getElementById("parks");
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
 
   const certificates = [
     "/tripadvisor-wht-2017.png",
@@ -38,7 +36,7 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative h-[895px] w-full overflow-hidden">
+    <section className="relative h-[95vh] md:h-[895px] w-full overflow-hidden">
       {/* Background Image */}
       <img
         src="/special-offers-banner.webp"
@@ -96,7 +94,7 @@ export default function Hero() {
               text-[25px]
               font-normal
               leading-none
-              tracking-[0.25em]
+              tracking-[0.15em]
               text-white
               sm:text-[27px]
               lg:text-[29px]
@@ -106,17 +104,19 @@ export default function Hero() {
           </p>
 
           <button
-             type="button"
+            type="button"
             aria-label="Plan my Tanzania safari"
             onClick={handleScrollToForm}
             className="
-              mt-[72px]
+            mt-[45px]
+              md:mt-[72px]
               inline-flex
               py-2.5
               items-center
               justify-center
               rounded-[10px]
               bg-[#d87028]
+              border border-[#e78e4b]
               px-[34px]
               !font-avenir
               text-[14px]
