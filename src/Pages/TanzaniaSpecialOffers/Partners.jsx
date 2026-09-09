@@ -171,7 +171,7 @@ const partners = [
   {
     id: 2,
     name: "SafariBookings",
-    img: "/safari-booking-im.png",
+    img: "/Safari-booking-im.png",
     link: "",
   },
   {
@@ -189,7 +189,7 @@ const partners = [
   {
     id: 5,
     name: "KPAP",
-    img: "/kapap-im.png",
+    img: "/Kapap-im.png",
     link: "",
   },
 ];
