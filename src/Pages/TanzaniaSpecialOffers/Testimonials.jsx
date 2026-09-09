@@ -210,7 +210,7 @@ export default function Testimonials() {
             pb-[15px]
             select-none
             touch-pan-x
-
+            touch-pan-y
             sm:mt-[65px]
             sm:gap-[25px]
 

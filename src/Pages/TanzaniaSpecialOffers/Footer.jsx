@@ -10,14 +10,12 @@ export default function Footer() {
             mx-auto
             max-w-[850px]
             text-center
-            text-[9px]
+            text-[15px]
             font-normal
             leading-[1.7]
             tracking-[0.01em]
             text-[#85848b]
-
             sm:text-[15px]
-
             md:text-[17px]
           "
         >
@@ -50,7 +48,6 @@ export default function Footer() {
             leading-none
             tracking-[0.02em]
             text-white
-
             sm:text-[17px]
           "
         >
