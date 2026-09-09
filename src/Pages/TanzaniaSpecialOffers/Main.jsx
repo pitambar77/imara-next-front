@@ -36,7 +36,7 @@ const Main = () => {
     date: null,
   });
 
-  // Everything selected in planner
+ 
   const safariData = {
     destinations: parks,
     partySize: party,
