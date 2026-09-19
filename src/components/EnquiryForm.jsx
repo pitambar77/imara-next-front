@@ -156,8 +156,8 @@ export default function EnquiryForm({
 
     try {
       const res = await axios.post(
-        // "https://imarabackend.imarakilelenisafaris.com/api/enquiry",
-        "http://localhost:8000/api/enquiry",
+        "https://imarabackend.imarakilelenisafaris.com/api/enquiry",
+        // "http://localhost:8000/api/enquiry",
         formData,
       );
 
