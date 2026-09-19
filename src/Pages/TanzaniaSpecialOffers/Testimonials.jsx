@@ -40,7 +40,7 @@ export default function Testimonials() {
   const scrollLeft = useRef(0);
 
   // =========================
-  // MOUSE DOWN
+  // MOUSE DOWN ghhgg
   // =========================
   const handleMouseDown = (event) => {
     if (!sliderRef.current) return;
