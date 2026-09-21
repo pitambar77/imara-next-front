@@ -7,12 +7,7 @@
       name="viewport"
     />
     <title>Climb Mount Kilimanjaro | Imara Kileleni Safaris</title>
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="../favicon.png"
-    />
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
@@ -96,6 +91,7 @@
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
     <style>
       :root {
         --ink: #1a1a1a;
@@ -104,7 +100,7 @@
         --cream: #faf8f3;
         --line: #e8e3d8;
         --text: #6b6558;
-        --green: #4c7a5e;
+        --green: #d87028;
         --white: #ffffff;
       }
 
@@ -319,7 +315,10 @@
       }
       .hero-bg img {
         width: 100%;
+        height: 78vh;
+        object-fit: cover;
       }
+
       .tripadvisor-logo {
         width: 100px; /* Adjust as needed */
         height: auto;
@@ -482,8 +481,8 @@
         padding: 26px;
       }
       .season-card.best {
-        border-color: rgba(76, 122, 94, 0.35);
-        background: rgba(76, 122, 94, 0.05);
+        border-color: rgba(223, 147, 33, 0.35);
+        background: rgba(167, 139, 92, 0.05);
       }
       .season-tag {
         display: inline-block;
@@ -493,7 +492,7 @@
         letter-spacing: 0.04em;
         padding: 5px 12px;
         border-radius: 14px;
-        background: rgba(76, 122, 94, 0.15);
+        background: rgba(212, 152, 73, 0.15);
         color: var(--green);
         margin-bottom: 14px;
       }
@@ -722,6 +721,8 @@
       }
 
       /* PROGRESS STRIP */
+
+      /* PROGRESS STRIP */
       .progress-strip {
         background: linear-gradient(to right, #1a0f08, #2a1a0f, #1a0f08);
         position: sticky;
@@ -736,6 +737,21 @@
         width: 100%;
         padding: 0 28px;
       }
+
+      /* .progress-strip {
+        background: linear-gradient(to right, #1a0f08, #2a1a0f, #1a0f08);
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        display: flex;
+        overflow-x: auto;
+      }
+      .progress-strip .wrap {
+        display: flex;
+        gap: 0;
+        width: 100%;
+        padding: 0 28px;
+      } */
       .pstep {
         flex: 1;
         text-align: center;
@@ -1469,6 +1485,643 @@
           padding-bottom: 70px;
         }
       }
+
+      /* =========================================================
+         RESPONSIVE OVERRIDES
+         ========================================================= */
+
+      /* Large tablets / smaller laptops */
+      @media (max-width: 1024px) {
+        .wrap,
+        .topbar-inner,
+        .hero-content {
+          max-width: 100%;
+        }
+
+        .wrap {
+          padding-left: 22px;
+          padding-right: 22px;
+        }
+
+        .topbar-inner {
+          padding-left: 22px;
+          padding-right: 22px;
+        }
+
+        .hero-content {
+          padding-left: 22px;
+          padding-right: 22px;
+        }
+
+        .hero {
+          min-height: 68vh;
+        }
+
+        .section {
+          padding: 64px 0;
+        }
+
+        .route-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .route-grid .route-card:nth-child(5),
+        .route-grid .route-card:nth-child(6) {
+          grid-column: auto;
+        }
+
+        .benefits-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      /* Tablets */
+      @media (max-width: 768px) {
+        .wrap {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+
+        .topbar-inner {
+          padding: 12px 18px;
+          min-height: 66px;
+        }
+
+        .logo-block img {
+          width: 90px;
+        }
+
+        .topbar-cta {
+          padding: 8px 13px;
+          font-size: 12px;
+        }
+
+        .progress-strip .wrap {
+          padding: 0;
+          overflow-x: auto;
+          scrollbar-width: none;
+        }
+
+        .progress-strip .wrap::-webkit-scrollbar {
+          display: none;
+        }
+
+        .pstep {
+          flex: 0 0 auto;
+          min-width: 110px;
+          padding: 11px 12px;
+          font-size: 11px;
+        }
+
+        .hero {
+          min-height: 72vh;
+        }
+
+        .hero-content {
+          padding: 54px 18px 42px;
+        }
+
+        .hero h1 {
+          font-size: clamp(30px, 7vw, 42px);
+        }
+
+        .hero p.lede {
+          font-size: 15px;
+          max-width: 100%;
+        }
+
+        .hero-ctas {
+          width: 100%;
+        }
+
+        .btn-gold {
+          width: fit-content;
+          justify-content: center;
+          padding: 14px 20px;
+        }
+
+        .hero-trust {
+          gap: 12px 18px;
+          margin-top: 24px;
+        }
+
+        .hero-trust-item {
+          font-size: 12px;
+        }
+
+        .summary-bar {
+          top: 41px;
+        }
+
+        .summary-inner {
+          padding: 10px 18px;
+          align-items: stretch;
+        }
+
+        .summary-chips {
+          width: 100%;
+          overflow-x: auto;
+          flex-wrap: nowrap;
+          scrollbar-width: none;
+        }
+
+        .summary-chips::-webkit-scrollbar {
+          display: none;
+        }
+
+        .chip {
+          flex: 0 0 auto;
+          font-size: 11px;
+          padding: 5px 10px;
+        }
+
+        .summary-cta {
+          width: 100%;
+          padding: 10px 16px;
+        }
+
+        .section {
+          padding: 56px 0;
+        }
+
+        .step-head {
+          margin-bottom: 26px;
+        }
+
+        .step-head h2 {
+          display: flex;
+          align-items: flex-start;
+          gap: 10px;
+          font-size: 21px;
+          line-height: 1.35;
+        }
+
+        .step-num {
+          flex: 0 0 32px;
+          width: 32px;
+          height: 32px;
+          margin-right: 0;
+          font-size: 14px;
+        }
+
+        .step-head p {
+          margin-left: 42px;
+          font-size: 13.5px;
+          line-height: 1.6;
+        }
+
+        .route-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 14px;
+        }
+
+        .route-body {
+          padding: 14px;
+        }
+
+        .route-body h3 {
+          font-size: 15px;
+        }
+
+        .route-tags {
+          font-size: 12px;
+        }
+
+        .party-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 14px;
+        }
+
+        .party-card {
+          padding: 22px 14px;
+        }
+
+        .cal-wrap {
+          width: 100%;
+          max-width: 420px;
+          padding: 20px;
+        }
+
+        .cal-grid {
+          gap: 8px;
+        }
+
+        .cal-month {
+          padding: 11px 0;
+        }
+
+        .form-shell {
+          max-width: 100%;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .kilimanjaro-gallery-section {
+          padding: 60px 0;
+        }
+
+        .kilimanjaro-gallery {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-auto-rows: 220px;
+        }
+
+        .season-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .review-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      /* Phones */
+      @media (max-width: 600px) {
+        .wrap {
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+
+        .topbar-inner {
+          padding: 10px 15px;
+          gap: 10px;
+        }
+
+        .logo-block {
+          min-width: 0;
+        }
+
+        .logo-block img {
+          width: 82px;
+          height: auto;
+        }
+
+        .topbar-cta {
+          margin-left: auto;
+          padding: 8px 11px;
+          font-size: 11px;
+          white-space: nowrap;
+        }
+
+        .progress-strip {
+          position: sticky;
+          top: 0;
+        }
+
+        .pstep {
+          min-width: 96px;
+          padding: 10px 8px;
+          font-size: 10.5px;
+        }
+
+        .hero {
+          min-height: 76vh;
+          align-items: flex-end;
+        }
+
+        .hero-bg img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .hero-content {
+          padding: 48px 15px 34px;
+        }
+
+        .hero-eyebrow {
+          font-size: 11px;
+          margin-bottom: 10px;
+          letter-spacing: 0.08em;
+        }
+
+        .hero-eyebrow::before {
+          width: 15px;
+        }
+
+        .hero h1 {
+          font-size: clamp(28px, 8.5vw, 36px);
+          line-height: 1.1;
+        }
+
+        .hero h1 br {
+          display: none;
+        }
+
+        .hero p.lede {
+          font-size: 14px;
+          line-height: 1.55;
+          margin-bottom: 20px;
+        }
+
+        .hero-ctas {
+          display: flex !important;
+        }
+
+        .btn-gold {
+          font-size: 13px;
+          padding: 13px 16px;
+        }
+
+        .hero-trust {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 9px;
+          margin-top: 20px;
+        }
+
+        .hero-trust-item {
+          font-size: 11.5px;
+        }
+
+        .summary-bar {
+          position: relative;
+          top: auto;
+          z-index: 20;
+        }
+
+        .summary-inner {
+          padding: 10px 15px;
+        }
+
+        .summary-chips {
+          gap: 7px;
+        }
+
+        .summary-cta {
+          font-size: 12px;
+        }
+
+        .section {
+          padding: 46px 0;
+        }
+
+        .step-head h2 {
+          font-size: 19px;
+          gap: 9px;
+        }
+
+        .step-head p {
+          margin-left: 0;
+          margin-top: 12px;
+          font-size: 13px;
+        }
+
+        .step-num {
+          flex-basis: 30px;
+          width: 30px;
+          height: 30px;
+          font-size: 13px;
+        }
+
+        .route-grid {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .route-card {
+          width: 100%;
+        }
+
+        .route-art-img {
+          width: 100%;
+          height: 190px;
+          object-fit: cover;
+        }
+
+        .route-body {
+          padding: 14px 15px 16px;
+        }
+
+        .route-body h3 {
+          font-size: 16px;
+        }
+
+        .route-price {
+          font-size: 14px;
+        }
+
+        .route-tags {
+          font-size: 12.5px;
+        }
+
+        .party-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+        }
+
+        .party-card {
+          padding: 18px 10px;
+        }
+
+        .party-icon {
+          width: 46px;
+          height: 46px;
+          margin-bottom: 10px;
+        }
+
+        .party-card h4 {
+          font-size: 14px;
+        }
+
+        .party-card span {
+          font-size: 11px;
+        }
+
+        .cal-wrap {
+          padding: 16px;
+          border-radius: 10px;
+        }
+
+        .cal-year {
+          gap: 14px;
+          margin-bottom: 15px;
+        }
+
+        .cal-year b {
+          font-size: 16px;
+        }
+
+        .cal-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 7px;
+        }
+
+        .cal-month {
+          padding: 10px 0;
+          font-size: 12px;
+        }
+
+        .cal-month.best::after {
+          right: 5px;
+          top: 3px;
+          font-size: 7px;
+        }
+
+        .cal-legend {
+          font-size: 10.5px;
+          line-height: 1.4;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+          gap: 13px;
+          margin-bottom: 13px;
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+          font-size: 14px;
+          padding: 12px;
+        }
+
+        .kilimanjaro-gallery-section {
+          padding: 48px 0;
+        }
+
+        .gallery-heading {
+          margin-bottom: 28px;
+        }
+
+        .gallery-heading h2 {
+          font-size: clamp(28px, 8vw, 38px);
+        }
+
+        .gallery-heading p {
+          font-size: 14px;
+        }
+
+        .kilimanjaro-gallery {
+          grid-template-columns: 1fr;
+          grid-auto-rows: 230px;
+          gap: 10px;
+        }
+
+        .gallery-overlay {
+          opacity: 1;
+          padding: 14px;
+        }
+
+        .gallery-overlay span {
+          transform: none;
+          font-size: 14px;
+        }
+
+        .season-card {
+          padding: 20px;
+        }
+
+        .season-stats {
+          gap: 10px;
+        }
+
+        .season-stats b {
+          font-size: 10px;
+        }
+
+        .season-stats span {
+          font-size: 12px;
+        }
+
+        .faq-q2 {
+          padding: 16px 0;
+          font-size: 14px;
+          gap: 12px;
+        }
+
+        .faq-a2 p {
+          font-size: 13px;
+        }
+
+        .review-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .benefits-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 18px 14px;
+        }
+
+        .benefit-card h4 {
+          font-size: 14px;
+        }
+
+        .benefit-card p {
+          font-size: 12px;
+        }
+
+        .footer-top {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .footer-bottom {
+          padding: 20px 15px;
+          font-size: 11px;
+        }
+
+        .mobile-cta {
+          padding: 9px 12px;
+        }
+
+        .mobile-cta a {
+          padding: 11px;
+          font-size: 13px;
+        }
+
+        body {
+          padding-bottom: 62px;
+        }
+      }
+
+      /* Very small phones */
+      @media (max-width: 380px) {
+        .topbar-cta {
+          padding: 7px 9px;
+          font-size: 10px;
+        }
+
+        .logo-block img {
+          width: 76px;
+        }
+
+        .hero-content {
+          padding-left: 13px;
+          padding-right: 13px;
+        }
+
+        .hero h1 {
+          font-size: 27px;
+        }
+
+        .party-grid {
+          grid-template-columns: 2fr2fr;
+        }
+
+        .cal-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .benefits-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Prevent horizontal overflow caused by long content */
+      html,
+      body {
+        max-width: 100%;
+        /* overflow-x: hidden; */
+      }
+
+      input,
+      select,
+      textarea,
+      button {
+        max-width: 100%;
+      }
     </style>
   </head>
   <body>
@@ -1539,7 +2192,7 @@
     <section class="hero">
       <div class="hero-bg">
         <img
-          src="../climb-kilimanjaro-banner-up.webp"
+          src="../imara-kilimanjaro-landing.webp"
           alt="Hero Banner"
           class="hero-image"
         />
@@ -2449,7 +3102,6 @@
                   minlength="6"
                   maxlength="20"
                   pattern="[0-9() +\-]{6,20}"
-                  required
                 />
                 <p
                   class="validation-message field-error"
@@ -3647,8 +4299,7 @@
       }
     </style>
     <script>
-
-const API_BASE_URL = "https://imarakilelenisafaris.com";
+      const API_BASE_URL = "https://imarabackend.imarakilelenisafaris.com";
 
       (function () {
         "use strict";
@@ -3666,7 +4317,6 @@ const API_BASE_URL = "https://imarakilelenisafaris.com";
         const routePriceInput = document.getElementById("routePrice");
         const partyInput = document.getElementById("partySize");
         const tripDateInput = document.getElementById("tripDate");
-        console.log(tripDateInput);
         const tripMonthInput = document.getElementById("tripMonth");
         const tripYearInput = document.getElementById("tripYear");
 
@@ -4217,12 +4867,26 @@ const API_BASE_URL = "https://imarakilelenisafaris.com";
               "X-Requested-With": "XMLHttpRequest",
             },
           })
-            .then(function (response) {
+            .then(async function (response) {
+              const responseText = await response.text();
+
+              console.log("Server status:", response.status);
+              console.log("Server response:", responseText);
+
               if (!response.ok) {
-                throw new Error("Server returned status " + response.status);
+                let errorMessage = "Server returned status " + response.status;
+
+                try {
+                  const errorData = JSON.parse(responseText);
+                  errorMessage = errorData.message || errorMessage;
+                } catch (error) {
+                  // Response wasn't JSON
+                }
+
+                throw new Error(errorMessage);
               }
 
-              return response.text();
+              return responseText;
             })
             .then(function (response) {
               console.log("Form response:", response);
@@ -4298,7 +4962,7 @@ const API_BASE_URL = "https://imarakilelenisafaris.com";
                * Redirect after four seconds.
                */
               window.setTimeout(function () {
-                window.location.href = "<?=$base_url?>thank-you";
+                window.location.href = "thank-you";
               }, 4000);
             })
             .catch(function (error) {
