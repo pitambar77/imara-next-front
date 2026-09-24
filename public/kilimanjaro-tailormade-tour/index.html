@@ -23,13 +23,15 @@
         j.async = true;
         j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
         f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-KG7B8FF");
+      })(window, document, "script", "dataLayer", "GTM-MPBPDFQ6");
     </script>
     <!-- End Google Tag Manager -->
+
     <!-- Global site tag (gtag.js) - Google Ads: 984725052 -->
+
     <script
       async
-      src="https://www.googletagmanager.com/gtag/js?id=AW-984725052"
+      src="https://www.googletagmanager.com/gtag/js?id=AW-17893363008"
     ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -37,44 +39,21 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-      gtag("config", "AW-984725052");
+
+      gtag("config", "AW-17893363008");
     </script>
-    <!-- Meta Pixel Code -->
-    <script>
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod
-            ? n.callMethod.apply(n, arguments)
-            : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = "2.0";
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(
-        window,
-        document,
-        "script",
-        "https://connect.facebook.net/en_US/fbevents.js",
-      );
-      fbq("init", "1598004128610695");
-      fbq("track", "PageView");
-    </script>
+
+    <!-- Google Tag Manager (noscript) -->
     <noscript
-      ><img
-        height="1"
-        width="1"
-        style="display: none"
-        src="https://www.facebook.com/tr?id=1598004128610695&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-MPBPDFQ6"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <script type="text/javascript">
       (function (c, l, a, r, i, t, y) {
         c[a] =
@@ -87,7 +66,7 @@
         t.src = "https://www.clarity.ms/tag/" + i;
         y = l.getElementsByTagName(r)[0];
         y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "ulu05b10dd");
+      })(window, document, "clarity", "script", "vfkj3g5erd");
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -2312,7 +2291,6 @@
             <div
               class="route-card"
               data-route="Marangu (5-6 Days)"
-              data-price="$1,740"
               role="radio"
               aria-checked="false"
               tabindex="0"
@@ -2351,7 +2329,7 @@
             <div
               class="route-card"
               data-route="Machame (6-7 Days)"
-              data-price="$1,755"
+              
               role="radio"
               aria-checked="false"
               tabindex="0"
@@ -2389,7 +2367,7 @@
             <div
               class="route-card"
               data-route="Lemosho (7-8 Days)"
-              data-price="$1,850"
+              
               role="radio"
               aria-checked="false"
               tabindex="0"
@@ -2427,7 +2405,7 @@
             <div
               class="route-card"
               data-route="Northern Circuit (8-9 Days)"
-              data-price="$2,430"
+              
               role="radio"
               aria-checked="false"
               tabindex="0"
@@ -2466,7 +2444,7 @@
             <div
               class="route-card"
               data-route="Rongai (6-7 Days)"
-              data-price="$1,850"
+             
               role="radio"
               aria-checked="false"
               tabindex="0"
@@ -2504,7 +2482,6 @@
             <div
               class="route-card"
               data-route="Not Decided Yet"
-              data-price=""
               role="radio"
               aria-checked="false"
               tabindex="0"
@@ -2536,7 +2513,6 @@
             </div>
           </div>
           <input type="hidden" name="preferred_route" id="preferredRoute" />
-          <input type="hidden" name="route_price" id="routePrice" />
           <p class="validation-message" id="routeError" aria-live="polite"></p>
         </div>
       </section>
@@ -4300,6 +4276,7 @@
     </style>
     <script>
       const API_BASE_URL = "https://imarabackend.imarakilelenisafaris.com";
+      // const API_BASE_URL = "http://localhost:8000";
 
       (function () {
         "use strict";
@@ -4314,7 +4291,6 @@
         const calGrid = document.getElementById("calGrid");
 
         const routeInput = document.getElementById("preferredRoute");
-        const routePriceInput = document.getElementById("routePrice");
         const partyInput = document.getElementById("partySize");
         const tripDateInput = document.getElementById("tripDate");
         const tripMonthInput = document.getElementById("tripMonth");
@@ -4461,7 +4437,6 @@
           selectRadioCard(routeGrid, card);
 
           routeInput.value = card.dataset.route || "";
-          routePriceInput.value = card.dataset.price || "";
 
           clearGroupError(routeGrid, routeError);
         });
@@ -4913,7 +4888,6 @@
                * Clear hidden fields.
                */
               routeInput.value = "";
-              routePriceInput.value = "";
               partyInput.value = "";
 
               if (tripDateInput) {

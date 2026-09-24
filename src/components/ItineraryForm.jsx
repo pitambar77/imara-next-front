@@ -168,6 +168,7 @@ export default function ItineraryForm({
     try {
       const res = await axios.post(
         "https://imarabackend.imarakilelenisafaris.com/api/itinerary",
+        // "http://localhost:8000/api/itinerary",
         formData,
       );
 
